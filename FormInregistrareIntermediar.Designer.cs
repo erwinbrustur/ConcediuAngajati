@@ -40,6 +40,7 @@
             this.btnInregistrare = new System.Windows.Forms.Button();
             this.btnAdaugaImagine = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,11 +149,21 @@
             this.button2.TabIndex = 11;
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(701, 147);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(94, 29);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // FormInregistrareIntermediar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 338);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnAdaugaImagine);
             this.Controls.Add(this.btnInregistrare);
@@ -187,5 +198,6 @@
         private Button btnInregistrare;
         private Button btnAdaugaImagine;
         private Button button2;
+        private Button button3;
     }
 }
