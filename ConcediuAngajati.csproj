@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="C:\Users\damian.mares\Desktop\Form Istoric Concedii 1.0" Link="Form Istoric Concedii 1.0" />
+  </ItemGroup>
+
 </Project>
