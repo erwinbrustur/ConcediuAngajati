@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace ConcediuAngajati
 {
-    public partial class FormInregitsrareIntermediar : Form
+    public partial class IstoricConcedii : Form
     {
-        public FormInregitsrareIntermediar()
+        public IstoricConcedii()
         {
             InitializeComponent();
         }
-
-
     }
 }
