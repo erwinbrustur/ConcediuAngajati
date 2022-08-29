@@ -36,10 +36,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbNumar = new System.Windows.Forms.TextBox();
             this.pbImagineProfil = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnInregistrare = new System.Windows.Forms.Button();
             this.btnAdaugaImagine = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnInregistrare = new System.Windows.Forms.Button();
+            this.btnInapoi = new System.Windows.Forms.Button();
+            this.btnX = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,14 +111,14 @@
             this.pbImagineProfil.TabIndex = 6;
             this.pbImagineProfil.TabStop = false;
             // 
-            // button1
+            // btnAdaugaImagine
             // 
-            this.button1.Location = new System.Drawing.Point(32, 210);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(158, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Adauga imagine";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdaugaImagine.Location = new System.Drawing.Point(32, 210);
+            this.btnAdaugaImagine.Name = "btnAdaugaImagine";
+            this.btnAdaugaImagine.Size = new System.Drawing.Size(158, 29);
+            this.btnAdaugaImagine.TabIndex = 7;
+            this.btnAdaugaImagine.Text = "Adauga imagine";
+            this.btnAdaugaImagine.UseVisualStyleBackColor = true;
             // 
             // btnInregistrare
             // 
@@ -128,37 +129,41 @@
             this.btnInregistrare.Text = "Inregistrare";
             this.btnInregistrare.UseVisualStyleBackColor = true;
             // 
-            // btnAdaugaImagine
+            // btnInapoi
             // 
-            this.btnAdaugaImagine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdaugaImagine.BackgroundImage")));
-            this.btnAdaugaImagine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdaugaImagine.Location = new System.Drawing.Point(12, 5);
-            this.btnAdaugaImagine.Name = "btnAdaugaImagine";
-            this.btnAdaugaImagine.Size = new System.Drawing.Size(42, 34);
-            this.btnAdaugaImagine.TabIndex = 10;
-            this.btnAdaugaImagine.UseVisualStyleBackColor = true;
-            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaImagine_Click);
+            this.btnInapoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInapoi.BackgroundImage")));
+            this.btnInapoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInapoi.Location = new System.Drawing.Point(12, 5);
+            this.btnInapoi.Name = "btnInapoi";
+            this.btnInapoi.Size = new System.Drawing.Size(42, 34);
+            this.btnInapoi.TabIndex = 10;
+            this.btnInapoi.UseVisualStyleBackColor = true;
+            this.btnInapoi.Click += new System.EventHandler(this.btnAdaugaImagine_Click);
             // 
-            // button2
+            // btnX
             // 
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Location = new System.Drawing.Point(796, 5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 36);
-            this.button2.TabIndex = 11;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnX.BackgroundImage")));
+            this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnX.Location = new System.Drawing.Point(796, 5);
+            this.btnX.Name = "btnX";
+            this.btnX.Size = new System.Drawing.Size(45, 36);
+            this.btnX.TabIndex = 11;
+            this.btnX.UseVisualStyleBackColor = true;
+            this.btnX.Click += new System.EventHandler(this.btnX_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // FormInregitsrareIntermediar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 338);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btnAdaugaImagine);
+            this.Controls.Add(this.btnX);
+            this.Controls.Add(this.btnInapoi);
             this.Controls.Add(this.btnInregistrare);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAdaugaImagine);
             this.Controls.Add(this.pbImagineProfil);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -185,9 +190,10 @@
         private Label label3;
         private TextBox tbNumar;
         private PictureBox pbImagineProfil;
-        private Button button1;
-        private Button btnInregistrare;
         private Button btnAdaugaImagine;
-        private Button button2;
+        private Button btnInregistrare;
+        private Button btnInapoi;
+        private Button btnX;
+        private OpenFileDialog openFileDialog1;
     }
 }

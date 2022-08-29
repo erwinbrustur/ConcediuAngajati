@@ -17,14 +17,22 @@ namespace ConcediuAngajati
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
 
         private void btnAdaugaImagine_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.ShowDialog();
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                PictureBox pictureBox = new PictureBox();
+                //pictureBox.Image = dlg.
+            }
 
+        }
+
+        private void btnX_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
