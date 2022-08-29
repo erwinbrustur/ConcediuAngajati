@@ -17,6 +17,14 @@ namespace ConcediuAngajati
             InitializeComponent();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
 
+        private void btnAdaugaImagine_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

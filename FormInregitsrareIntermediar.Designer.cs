@@ -137,6 +137,7 @@
             this.btnAdaugaImagine.Size = new System.Drawing.Size(42, 34);
             this.btnAdaugaImagine.TabIndex = 10;
             this.btnAdaugaImagine.UseVisualStyleBackColor = true;
+            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaImagine_Click);
             // 
             // button2
             // 
@@ -147,6 +148,7 @@
             this.button2.Size = new System.Drawing.Size(45, 36);
             this.button2.TabIndex = 11;
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FormInregitsrareIntermediar
             // 
