@@ -34,7 +34,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DateleMele = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.DropConcedii = new System.Windows.Forms.FlowLayoutPanel();
@@ -70,7 +70,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 28);
             this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
+            this.button2.Text = "Concedii";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -80,7 +80,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 28);
             this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
+            this.button3.Text = "Cerere";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -90,8 +90,9 @@
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 28);
             this.button4.TabIndex = 4;
-            this.button4.Text = "button4";
+            this.button4.Text = "Istoric";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // pictureBox1
             // 
@@ -101,15 +102,15 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // button1
+            // DateleMele
             // 
-            this.button1.Location = new System.Drawing.Point(124, 86);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 25);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.DateleMele.Location = new System.Drawing.Point(124, 86);
+            this.DateleMele.Name = "DateleMele";
+            this.DateleMele.Size = new System.Drawing.Size(75, 25);
+            this.DateleMele.TabIndex = 1;
+            this.DateleMele.Text = "DateleMele";
+            this.DateleMele.UseVisualStyleBackColor = true;
+            this.DateleMele.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // timer1
             // 
@@ -135,7 +136,7 @@
             this.DropConcedii.MaximumSize = new System.Drawing.Size(82, 100);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(82, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(82, 32);
+            this.DropConcedii.Size = new System.Drawing.Size(82, 100);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
@@ -170,7 +171,7 @@
             this.AdminDrop.MaximumSize = new System.Drawing.Size(82, 100);
             this.AdminDrop.MinimumSize = new System.Drawing.Size(82, 32);
             this.AdminDrop.Name = "AdminDrop";
-            this.AdminDrop.Size = new System.Drawing.Size(82, 33);
+            this.AdminDrop.Size = new System.Drawing.Size(82, 99);
             this.AdminDrop.TabIndex = 4;
             // 
             // button8
@@ -214,7 +215,7 @@
             this.ClientSize = new System.Drawing.Size(873, 412);
             this.Controls.Add(this.AdminDrop);
             this.Controls.Add(this.DropConcedii);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.DateleMele);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.DropDown);
             this.Name = "PaginaPrincipala";
@@ -234,7 +235,7 @@
         private Button button3;
         private Button button4;
         private PictureBox pictureBox1;
-        private Button button1;
+        private Button DateleMele;
         private System.Windows.Forms.Timer timer1;
         private Button button5;
         private FlowLayoutPanel DropConcedii;

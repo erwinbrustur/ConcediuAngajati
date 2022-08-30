@@ -25,9 +25,9 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void Concedii_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
-
+        
         private bool esteInchis;
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -118,19 +118,32 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
+            PaginaMea pg = new PaginaMea();
+            pg.Show();
+            
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            IstoricConcedii istoricConcedii = new IstoricConcedii();
-            istoricConcedii.Show();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Afisare cerere
+            CerereConcediu con = new CerereConcediu();
+            con.Show();
+
+            //Afiseaza calendarul magic
             CalendarMagic.CalendarMagic Calendar = new CalendarMagic.CalendarMagic();
-            Calendar.Show();   
+            Calendar.Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //Afisare istoric
+            IstoricConcediu coni = new IstoricConcediu();
+            coni.Show();
         }
     }
 }

@@ -23,5 +23,11 @@ namespace ConcediuAngajati
             ing.Show();
             this.Hide();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala  ppg = new PaginaPrincipala.PaginaPrincipala();
+            ppg.Show();
+        }
     }
 }
