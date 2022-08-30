@@ -1,4 +1,4 @@
-﻿namespace ConcediuAngajati
+﻿/*namespace ConcediuAngajati
 {
     partial class Form1
     {
@@ -46,3 +46,4 @@
         #endregion
     }
 }
+*/
