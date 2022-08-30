@@ -43,7 +43,6 @@ namespace ConcediuAngajati
             this.Utilizator.PlaceholderText = "Utilizator";
             this.Utilizator.Size = new System.Drawing.Size(176, 23);
             this.Utilizator.TabIndex = 0;
-            this.Utilizator.TextChanged += new System.EventHandler(this.Utilizator_TextChanged);
             // 
             // Parola
             // 
@@ -63,7 +62,7 @@ namespace ConcediuAngajati
             this.button1.TabIndex = 2;
             this.button1.Text = "Login";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Logare_Click);
             // 
             // button2
             // 
