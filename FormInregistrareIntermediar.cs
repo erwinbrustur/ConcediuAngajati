@@ -14,7 +14,7 @@ namespace ConcediuAngajati
     public partial class FormInregistrareIntermediar : Form
     {
         public string connectionString;
-        public FormInregistrareIntermediar()
+        public FormInregistrareIntermediar(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";

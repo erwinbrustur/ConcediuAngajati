@@ -1,3 +1,5 @@
+using System.Windows.Forms;
+
 namespace ConcediuAngajati
 {
     public partial class PaginaMea : Form
@@ -81,5 +83,15 @@ namespace ConcediuAngajati
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TotiAngajatii tanga = new TotiAngajatii();
+            tanga.ShowDialog();
+            this.Show();
+        }
+
+       
     }
 }

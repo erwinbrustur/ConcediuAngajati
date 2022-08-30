@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConcediuAngajati
 {
-    internal class Angajat
+    public class Angajat
     {
         int id;
         string nume;
