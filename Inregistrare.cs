@@ -34,21 +34,38 @@ namespace ConcediuAngajati
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (FieldPass.Text != null
-                    && FieldEmail != null
-                    && FieldNrTel != null
-                    && FieldNume != null
-                    && FieldPrenume != null)
+            
+            if (FieldPass.Text == "") 
             {
-                if (FieldPass.Text == FieldConfirmPass.Text)
-                {
-
+                MessageBox.Show("parola este obligatorie");
+            }
+            else if(FieldEmail.Text == "")
+                        {
+                MessageBox.Show("parola este obligatorie");
+            }
+                        else if(FieldNrTel.Text == "")
+                            {
+                MessageBox.Show("parola este obligatorie");
+            }    
+                            else if( FieldNume.Text == "") 
+                                 {
+                MessageBox.Show("parola este obligatorie");
+            }
+                                 else if(FieldPrenume.Text == "") 
+                                     {
+                MessageBox.Show("parola este obligatorie");
+            }
+                                else if (FieldPass.Text == FieldConfirmPass.Text)
+               {
+                    Angajat a = new Angajat(FieldNume.Text, FieldPrenume.Text, FieldEmail.Text, Hash(FieldPass.Text), FieldNrTel.Text);
+                    FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
+                    Fii.Show();
+                    this.Hide();
                 }
                 else
                     MessageBox.Show("Parolele sunt diferite");
-            }
-            else
-                MessageBox.Show("Toate campurile sunt obligatorii");
+                 
+       
           
         }
 
