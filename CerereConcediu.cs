@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices.ObjectiveC;
@@ -15,20 +16,66 @@ namespace ConcediuAngajati
 {
     public partial class CerereConcediu : Form
     {
-        
-
+        List<string> list;
+        string connectionString;
         public CerereConcediu()
         {
             InitializeComponent();
+            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            list = extragereTipConcediiDB();
+            foreach(string s in list)
+            {
+                cbTipConcediu.Items.Add(s);
+            }
+            //cbTipConcediu.SelectedItem = cbTipConcediu.Items.IndexOf(0);
+            cbTipConcediu.SelectedIndex = 0;
+
+        }
+
+        public List<string> extragereTipConcediiDB()
+        {
+            List<string> strings = new List<string>();
+            string selectSQL = "SELECT * from TipConcediu";
+            SqlConnection conexiune = new SqlConnection(connectionString);
+            SqlCommand querySelect = new SqlCommand(selectSQL);
+            try
+            {
+                conexiune.Open();
+                querySelect.Connection = conexiune;
+                SqlDataReader reader = querySelect.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    strings.Add(reader[1].ToString());
+                   
+                }
+
+
+                return strings;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexiune.Close();
+                
+                
+            }
+            
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value) ;
             DateTime outTime = Convert.ToDateTime(dateTimePicker2.Value);
+            
+           
             if (outTime >= inTime)
             {
-                textBox1.Text = outTime.Subtract(inTime).Days.ToString();
+                textBox1.Text = (outTime.Date - inTime.Date).Days.ToString();
             }
         }
 
@@ -72,13 +119,40 @@ namespace ConcediuAngajati
             {
        
                 string message2 = "Cerere de concediu trimisa";
-                DialogResult result2 = MessageBox.Show(message2, title);
-               
+                
+           
+                DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
+                DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker2.Value);
+
+                SqlConnection conexiune = new SqlConnection(connectionString);
+                MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
+                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "')";
+
+                SqlCommand queryInsert = new SqlCommand(insertSQL);
+                try
+                {
+                    conexiune.Open();
+                    queryInsert.Connection = conexiune;
+                    
+                    queryInsert.ExecuteNonQuery();
+                    MessageBox.Show("da");
+
+                    DialogResult result2 = MessageBox.Show(message2, title);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    conexiune.Close();
+                }
+              
+
             }
          
         }
 
-      
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             
@@ -86,7 +160,7 @@ namespace ConcediuAngajati
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {    
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDown;
+            cbTipConcediu.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
@@ -95,7 +169,7 @@ namespace ConcediuAngajati
             DateTime outTime = Convert.ToDateTime(dateTimePicker2.Value);
             if (outTime >= inTime)
             {
-                textBox1.Text = outTime.Subtract(inTime).Days.ToString();
+                textBox1.Text = (outTime.Date - inTime.Date).Days.ToString();
             }
         }
 

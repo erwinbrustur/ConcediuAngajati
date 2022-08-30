@@ -38,7 +38,7 @@
             this.odihnaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medicalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbTipConcediu = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
@@ -119,19 +119,15 @@
             this.medicalToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.medicalToolStripMenuItem.Text = "Medical";
             // 
-            // comboBox1
+            // cbTipConcediu
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Remote",
-            "Odihna",
-            "Medical"});
-            this.comboBox1.Location = new System.Drawing.Point(34, 85);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipConcediu.FormattingEnabled = true;
+            this.cbTipConcediu.Location = new System.Drawing.Point(34, 85);
+            this.cbTipConcediu.Name = "cbTipConcediu";
+            this.cbTipConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbTipConcediu.TabIndex = 7;
+            this.cbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -157,7 +153,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbTipConcediu);
             this.Controls.Add(this.Trimite);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
@@ -182,7 +178,7 @@
         private ToolStripMenuItem odihnaToolStripMenuItem;
         private ToolStripMenuItem remoteToolStripMenuItem;
         private ToolStripMenuItem medicalToolStripMenuItem;
-        private ComboBox comboBox1;
+        private ComboBox cbTipConcediu;
         private Label label2;
         public TextBox textBox1;
     }
