@@ -13,5 +13,7 @@ namespace ConcediuAngajati
             ApplicationConfiguration.Initialize();
             Application.Run(new PaginaMea());
         }
+
+        
     }
 }
