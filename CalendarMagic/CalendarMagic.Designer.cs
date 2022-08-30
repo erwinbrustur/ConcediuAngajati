@@ -542,7 +542,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 766);
+            this.ClientSize = new System.Drawing.Size(972, 749);
             this.Controls.Add(this.lunaAfis);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
@@ -554,7 +554,6 @@
             this.Controls.Add(this.Next);
             this.Controls.Add(this.Back);
             this.Controls.Add(this.zi);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "CalendarMagic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
