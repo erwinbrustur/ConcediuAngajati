@@ -14,10 +14,12 @@ namespace ConcediuAngajati
     public partial class FormInregistrareIntermediar : Form
     {
         public string connectionString;
+        Angajat angajat;
         public FormInregistrareIntermediar(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            angajat = a;
         }
 
         private void btnX_Click(object sender, EventArgs e)
@@ -112,12 +114,14 @@ namespace ConcediuAngajati
             else
             {
                 dataNastere = "20" + cnp.Substring(1, 6);
-            } 
+            }
+
+            MessageBox.Show(dataNastere);
             
            
 
             SqlConnection conexiune = new SqlConnection(connectionString);
-            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon) VALUES ('Dorel', 'Popescu', 'popescu.dorel@totalsoft.ro', 'ddoru34', getdate(), +" + dataNastere + ", '" + cnp + "', '" +  serie + "', '" + numar + "', '0767896595')" ;
+            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon +"')" ;
             SqlCommand queryInsert = new SqlCommand(insertSQL);
             try
             {
