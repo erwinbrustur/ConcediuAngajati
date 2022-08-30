@@ -37,23 +37,23 @@ namespace ConcediuAngajati
             
             if (FieldPass.Text == "") 
             {
-                MessageBox.Show("parola este obligatorie");
+                MessageBox.Show("Parola este obligatorie!");
             }
             else if(FieldEmail.Text == "")
                         {
-                MessageBox.Show("parola este obligatorie");
+                MessageBox.Show("Mailul este obligatoriu!");
             }
                         else if(FieldNrTel.Text == "")
                             {
-                MessageBox.Show("parola este obligatorie");
+                MessageBox.Show("Numarul de telefon este obligatoriu");
             }    
                             else if( FieldNume.Text == "") 
                                  {
-                MessageBox.Show("parola este obligatorie");
+                MessageBox.Show("Numele este obligatoriu");
             }
                                  else if(FieldPrenume.Text == "") 
                                      {
-                MessageBox.Show("parola este obligatorie");
+                MessageBox.Show("Prenumele este obligatoriu");
             }
                                 else if (FieldPass.Text == FieldConfirmPass.Text)
                {
@@ -71,9 +71,9 @@ namespace ConcediuAngajati
 
         private void button1_Click(object sender, EventArgs e)
         {
-            LoginPhase lp = new LoginPhase();
+          /*  LoginPhase lp = new LoginPhase();
             lp.Show();
-            this.Hide();
+            this.Hide();*/
         }
 
       
