@@ -42,6 +42,7 @@
             this.Username.PlaceholderText = "Utilizator";
             this.Username.Size = new System.Drawing.Size(205, 23);
             this.Username.TabIndex = 0;
+            this.Username.TextChanged += new System.EventHandler(this.Username_TextChanged);
             // 
             // Parola
             // 
@@ -69,6 +70,7 @@
             this.Inregistrare.TabIndex = 3;
             this.Inregistrare.Text = "Inregistrare";
             this.Inregistrare.UseVisualStyleBackColor = true;
+            this.Inregistrare.Click += new System.EventHandler(this.Inregistrare_Click);
             // 
             // checkBox1
             // 

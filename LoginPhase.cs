@@ -12,6 +12,7 @@ namespace ConcediuAngajati
 {
     public partial class LoginPhase : Form
     {
+        String userId, userPass;
         public LoginPhase()
         {
             InitializeComponent();
@@ -24,14 +25,33 @@ namespace ConcediuAngajati
 
         private void Logare_Click(object sender, EventArgs e)
         {
+            if (checkBox1.Checked)
+            {
+                File.WriteAllText("credentials.txt", userId.ToString());
+            }
             PaginaMea rg = new PaginaMea();
             rg.Show();
             this.Visible = false;
         }
 
-        private void LoginPhase_Load(object sender, EventArgs e)
+        private void Username_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Inregistrare_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPhase_Load(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                string possibleUserId = File.ReadAllText("credentials.txt");
+            }
+            userId = Username.Text;
+            userPass = Parola.Text;
         }
     }
 }
