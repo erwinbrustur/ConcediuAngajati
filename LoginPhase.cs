@@ -12,7 +12,7 @@ namespace ConcediuAngajati
 {
     public partial class LoginPhase : Form
     {
-        String userId, userPass;
+       /* String userId, userPass;
         public LoginPhase()
         {
             InitializeComponent();
@@ -44,6 +44,18 @@ namespace ConcediuAngajati
 
         }
 
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // LoginPhase
+            // 
+            this.ClientSize = new System.Drawing.Size(280, 261);
+            this.Name = "LoginPhase";
+            this.ResumeLayout(false);
+
+        }
+
         private void LoginPhase_Load(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -53,5 +65,7 @@ namespace ConcediuAngajati
             userId = Username.Text;
             userPass = Parola.Text;
         }
+       */
     }
+       
 }
