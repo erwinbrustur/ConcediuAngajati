@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace ConcediuAngajati
+﻿namespace ConcediuAngajati
 {
     partial class LoginPhase
     {
@@ -30,61 +28,72 @@ namespace ConcediuAngajati
         /// </summary>
         private void InitializeComponent()
         {
-            this.Utilizator = new System.Windows.Forms.TextBox();
+            this.Username = new System.Windows.Forms.TextBox();
             this.Parola = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Logare = new System.Windows.Forms.Button();
+            this.Inregistrare = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // Utilizator
+            // Username
             // 
-            this.Utilizator.Location = new System.Drawing.Point(496, 281);
-            this.Utilizator.Name = "Utilizator";
-            this.Utilizator.PlaceholderText = "Utilizator";
-            this.Utilizator.Size = new System.Drawing.Size(176, 23);
-            this.Utilizator.TabIndex = 0;
-            this.Utilizator.TextChanged += new System.EventHandler(this.Utilizator_TextChanged);
+            this.Username.Location = new System.Drawing.Point(550, 303);
+            this.Username.Name = "Username";
+            this.Username.PlaceholderText = "Utilizator";
+            this.Username.Size = new System.Drawing.Size(205, 23);
+            this.Username.TabIndex = 0;
             // 
             // Parola
             // 
-            this.Parola.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.Parola.Location = new System.Drawing.Point(496, 320);
+            this.Parola.Location = new System.Drawing.Point(550, 342);
             this.Parola.Name = "Parola";
-            this.Parola.PasswordChar = '•';
             this.Parola.PlaceholderText = "Parola";
-            this.Parola.Size = new System.Drawing.Size(176, 23);
+            this.Parola.Size = new System.Drawing.Size(205, 23);
             this.Parola.TabIndex = 1;
             // 
-            // button1
+            // Logare
             // 
-            this.button1.Location = new System.Drawing.Point(580, 373);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Logare.Location = new System.Drawing.Point(550, 396);
+            this.Logare.Name = "Logare";
+            this.Logare.Size = new System.Drawing.Size(75, 23);
+            this.Logare.TabIndex = 2;
+            this.Logare.Text = "Logare";
+            this.Logare.UseVisualStyleBackColor = true;
+            this.Logare.Click += new System.EventHandler(this.Logare_Click);
             // 
-            // button2
+            // Inregistrare
             // 
-            this.button2.Location = new System.Drawing.Point(468, 373);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(79, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Inregistrare";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Inregistrare.Location = new System.Drawing.Point(631, 396);
+            this.Inregistrare.Name = "Inregistrare";
+            this.Inregistrare.Size = new System.Drawing.Size(124, 23);
+            this.Inregistrare.TabIndex = 3;
+            this.Inregistrare.Text = "Inregistrare";
+            this.Inregistrare.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(550, 371);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(118, 19);
+            this.checkBox1.TabIndex = 4;
+            this.checkBox1.Text = "Retine utilizatorul";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // LoginPhase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.Inregistrare);
+            this.Controls.Add(this.Logare);
             this.Controls.Add(this.Parola);
-            this.Controls.Add(this.Utilizator);
+            this.Controls.Add(this.Username);
             this.Name = "LoginPhase";
             this.Text = "LoginPhase";
+            this.Load += new System.EventHandler(this.LoginPhase_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,9 +101,10 @@ namespace ConcediuAngajati
 
         #endregion
 
-        private TextBox Utilizator;
+        private TextBox Username;
         private TextBox Parola;
-        private Button button1;
-        private Button button2;
+        private Button Logare;
+        private Button Inregistrare;
+        private CheckBox checkBox1;
     }
 }
