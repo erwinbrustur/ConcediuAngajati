@@ -41,7 +41,9 @@ namespace ConcediuAngajati
 
         private void Inregistrare_Click(object sender, EventArgs e)
         {
-
+            ConcediuAngajati.Inregistrare inreg = new Inregistrare();
+            inreg.Show();
+            this.Hide();
         }
 
         private void InitializeComponent()
