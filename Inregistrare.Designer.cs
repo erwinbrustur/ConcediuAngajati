@@ -115,6 +115,7 @@
             this.FieldNume.Name = "FieldNume";
             this.FieldNume.Size = new System.Drawing.Size(153, 23);
             this.FieldNume.TabIndex = 7;
+            this.FieldNume.TextChanged += new System.EventHandler(this.FieldNume_TextChanged);
             // 
             // FieldPrenume
             // 
@@ -122,6 +123,7 @@
             this.FieldPrenume.Name = "FieldPrenume";
             this.FieldPrenume.Size = new System.Drawing.Size(153, 23);
             this.FieldPrenume.TabIndex = 8;
+            this.FieldPrenume.TextChanged += new System.EventHandler(this.FieldPrenume_TextChanged);
             // 
             // FieldNrTel
             // 
@@ -141,6 +143,7 @@
             // 
             this.FieldPass.Location = new System.Drawing.Point(152, 207);
             this.FieldPass.Name = "FieldPass";
+            this.FieldPass.PasswordChar = '•';
             this.FieldPass.Size = new System.Drawing.Size(153, 23);
             this.FieldPass.TabIndex = 11;
             // 
@@ -148,6 +151,7 @@
             // 
             this.FieldConfirmPass.Location = new System.Drawing.Point(436, 207);
             this.FieldConfirmPass.Name = "FieldConfirmPass";
+            this.FieldConfirmPass.PasswordChar = '•';
             this.FieldConfirmPass.Size = new System.Drawing.Size(153, 23);
             this.FieldConfirmPass.TabIndex = 12;
             // 
