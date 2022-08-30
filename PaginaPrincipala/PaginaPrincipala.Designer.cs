@@ -45,18 +45,20 @@
             this.DropDown.Controls.Add(this.button2);
             this.DropDown.Controls.Add(this.button3);
             this.DropDown.Controls.Add(this.button4);
-            this.DropDown.Location = new System.Drawing.Point(202, 83);
-            this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
-            this.DropDown.MinimumSize = new System.Drawing.Size(81, 30);
+            this.DropDown.Location = new System.Drawing.Point(231, 111);
+            this.DropDown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.DropDown.MaximumSize = new System.Drawing.Size(93, 133);
+            this.DropDown.MinimumSize = new System.Drawing.Size(93, 40);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 30);
+            this.DropDown.Size = new System.Drawing.Size(93, 40);
             this.DropDown.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(3, 3);
+            this.button2.Location = new System.Drawing.Point(3, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(86, 31);
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
@@ -64,51 +66,57 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(3, 32);
+            this.button3.Location = new System.Drawing.Point(3, 43);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(86, 31);
             this.button3.TabIndex = 3;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(3, 61);
+            this.button4.Location = new System.Drawing.Point(3, 82);
+            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(86, 31);
             this.button4.TabIndex = 4;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(7, 16);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(109, 101);
+            this.pictureBox1.Size = new System.Drawing.Size(125, 135);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(124, 86);
+            this.button1.Location = new System.Drawing.Point(142, 115);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(86, 31);
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
+            this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // PaginaPrincipala
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 412);
+            this.ClientSize = new System.Drawing.Size(998, 549);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.DropDown);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "PaginaPrincipala";
             this.Text = "PaginaPrincipala";
             this.DropDown.ResumeLayout(false);
