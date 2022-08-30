@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
+
 namespace ConcediuAngajati
 {
     public partial class Inregistrare : Form
@@ -83,9 +84,9 @@ namespace ConcediuAngajati
 
         private void button1_Click(object sender, EventArgs e)
         {
-          /*  LoginPhase lp = new LoginPhase();
+            LoginPhase lp = new LoginPhase();
             lp.Show();
-            this.Hide();*/
+            this.Hide();
         }
 
       
