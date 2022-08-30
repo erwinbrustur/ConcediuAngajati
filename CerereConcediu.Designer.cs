@@ -28,12 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PaginaMea = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.Trimite = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.odihnaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.remoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.medicalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PaginaMea
@@ -46,15 +54,6 @@
             this.PaginaMea.UseVisualStyleBackColor = true;
             this.PaginaMea.Click += new System.EventHandler(this.PaginaMea_Click_1);
             this.PaginaMea.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PaginaMea_MouseClick);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(33, 85);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(111, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "Tip concediu";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -79,6 +78,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 4;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // Trimite
             // 
@@ -90,19 +90,82 @@
             this.Trimite.UseVisualStyleBackColor = true;
             this.Trimite.Click += new System.EventHandler(this.Trimite_Click);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.odihnaToolStripMenuItem,
+            this.remoteToolStripMenuItem,
+            this.medicalToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.ShowCheckMargin = true;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 70);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // odihnaToolStripMenuItem
+            // 
+            this.odihnaToolStripMenuItem.Name = "odihnaToolStripMenuItem";
+            this.odihnaToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.odihnaToolStripMenuItem.Text = "Odihna";
+            // 
+            // remoteToolStripMenuItem
+            // 
+            this.remoteToolStripMenuItem.Name = "remoteToolStripMenuItem";
+            this.remoteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.remoteToolStripMenuItem.Text = "Remote";
+            // 
+            // medicalToolStripMenuItem
+            // 
+            this.medicalToolStripMenuItem.Name = "medicalToolStripMenuItem";
+            this.medicalToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.medicalToolStripMenuItem.Text = "Medical";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Remote",
+            "Odihna",
+            "Medical"});
+            this.comboBox1.Location = new System.Drawing.Point(34, 85);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(639, 85);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(115, 23);
+            this.textBox1.TabIndex = 8;
+            this.textBox1.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(639, 60);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = " Numar zile concediu :";
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.Trimite);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.PaginaMea);
             this.Name = "CerereConcediu";
             this.Text = "CerereConcediu";
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,10 +174,16 @@
         #endregion
 
         private Button PaginaMea;
-        private TextBox textBox1;
         private Label label1;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
         private Button Trimite;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem odihnaToolStripMenuItem;
+        private ToolStripMenuItem remoteToolStripMenuItem;
+        private ToolStripMenuItem medicalToolStripMenuItem;
+        private ComboBox comboBox1;
+        private Label label2;
+        public TextBox textBox1;
     }
 }

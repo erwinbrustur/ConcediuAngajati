@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
+
 namespace ConcediuAngajati
 {
     public partial class Inregistrare : Form
@@ -34,21 +35,50 @@ namespace ConcediuAngajati
         }
         public void button2_Click(object sender, EventArgs e)
         {
-            if (FieldPass.Text != null
-                    && FieldEmail != null
-                    && FieldNrTel != null
-                    && FieldNume != null
-                    && FieldPrenume != null)
-            {
-                if (FieldPass.Text == FieldConfirmPass.Text)
-                {
 
-                }
-                else
-                    MessageBox.Show("Parolele sunt diferite");
+            if (FieldPass.Text == "")
+            {
+                MessageBox.Show("Parola este obligatorie!");
+            }
+            else if (FieldPass.TextLength < 8)
+            {
+                MessageBox.Show("Parola este prea scurta");
+            }
+            else if (FieldEmail.Text == "")
+            {
+                MessageBox.Show("Mailul este obligatoriu!");
+            }
+            else if (FieldEmail.Text.IndexOf("@totalsoft.ro")==-1 )
+            {
+                MessageBox.Show("Format mail incorect");
+            }
+            else if (FieldNrTel.Text == "")
+            {
+                MessageBox.Show("Numarul de telefon este obligatoriu");
+            }
+            else if (FieldNrTel.TextLength != 10)
+            {
+                MessageBox.Show("Numarul de telefon trebuie sa aiba 10 cifre");
+            }
+            else if (FieldNume.Text == "")
+            {
+                MessageBox.Show("Numele este obligatoriu");
+            }
+            else if (FieldPrenume.Text == "")
+            {
+                MessageBox.Show("Prenumele este obligatoriu");
+            }
+            else if (FieldPass.Text == FieldConfirmPass.Text)
+            {
+                Angajat a = new Angajat(FieldNume.Text, FieldPrenume.Text, FieldEmail.Text, Hash(FieldPass.Text), FieldNrTel.Text);
+                FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
+                Fii.Show();
+                this.Hide();
             }
             else
-                MessageBox.Show("Toate campurile sunt obligatorii");
+                MessageBox.Show("Parolele sunt diferite");
+                 
+       
           
         }
 

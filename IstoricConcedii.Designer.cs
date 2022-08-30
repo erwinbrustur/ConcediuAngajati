@@ -46,9 +46,10 @@
             this.columnHeader4,
             this.columnHeader5});
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(20, 72);
+            this.listView1.Location = new System.Drawing.Point(18, 54);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(761, 366);
+            this.listView1.Size = new System.Drawing.Size(666, 276);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -81,20 +82,22 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(301, 12);
+            this.textBox1.Location = new System.Drawing.Point(263, 9);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(189, 43);
+            this.textBox1.Size = new System.Drawing.Size(166, 36);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "Istoric Concedii";
             // 
             // IstoricConcedii
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IstoricConcedii";
             this.Text = "IstoricConcedii";
             this.ResumeLayout(false);
