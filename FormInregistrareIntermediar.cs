@@ -14,7 +14,7 @@ namespace ConcediuAngajati
     public partial class FormInregistrareIntermediar : Form
     {
         public string connectionString;
-        public FormInregistrareIntermediar()
+        public FormInregistrareIntermediar(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
@@ -104,9 +104,20 @@ namespace ConcediuAngajati
             string cnp = tbCNP.Text;
             string numar = tbNumar.Text;
             string serie = tbSerie.Text;
+            string dataNastere;
+
+            if (cnp.IndexOf('1') == 0 || cnp.IndexOf('2') == 0) {
+                dataNastere = "19" + cnp.Substring(1, 6);
+            }
+            else
+            {
+                dataNastere = "20" + cnp.Substring(1, 6);
+            } 
+            
+           
 
             SqlConnection conexiune = new SqlConnection(connectionString);
-            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon) VALUES ('Dorel', 'Popescu', 'popescu.dorel@totalsoft.ro', 'ddoru34', getdate(), '19990202', '" + cnp + "', '" +  serie + "', '" + numar + "', '0767896595')" ;
+            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon) VALUES ('Dorel', 'Popescu', 'popescu.dorel@totalsoft.ro', 'ddoru34', getdate(), +" + dataNastere + ", '" + cnp + "', '" +  serie + "', '" + numar + "', '0767896595')" ;
             SqlCommand queryInsert = new SqlCommand(insertSQL);
             try
             {
