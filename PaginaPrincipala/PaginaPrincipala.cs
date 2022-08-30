@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConcediuAngajati.CalendarMagic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +56,81 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button2_Click(object sender, EventArgs e)
         {
             timer1.Start();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            timer3.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (esteInchis)
+            {
+                DropConcedii.Height += 10;
+                if (DropConcedii.Size == DropConcedii.MaximumSize)
+                {
+                    timer2.Stop();
+                    esteInchis = false;
+                }
+
+            }
+            else
+            {
+                DropConcedii.Height -= 10;
+                if (DropConcedii.Size == DropConcedii.MinimumSize)
+                {
+                    timer2.Stop();
+                    esteInchis = true;
+                }
+
+            }
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            if(esteInchis)
+            {
+                AdminDrop.Height += 10;
+                if (AdminDrop.Size == AdminDrop.MaximumSize)
+                {
+                    timer3.Stop();
+                    esteInchis = false;
+                }
+
+            }
+            else
+            {
+                AdminDrop.Height -= 10;
+                if (AdminDrop.Size == AdminDrop.MinimumSize)
+                {
+                    timer3.Stop();
+                    esteInchis = true;
+                }
+
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            IstoricConcedii istoricConcedii = new IstoricConcedii();
+            istoricConcedii.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CalendarMagic.CalendarMagic Calendar = new CalendarMagic.CalendarMagic();
+            Calendar.Show();   
         }
     }
 }
