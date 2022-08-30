@@ -12,7 +12,7 @@ namespace ConcediuAngajati
 {
     public partial class LoginPhase : Form
     {
-        String userId, userPass;
+       /* String userId, userPass;
         public LoginPhase()
         {
             InitializeComponent();
@@ -41,6 +41,20 @@ namespace ConcediuAngajati
 
         private void Inregistrare_Click(object sender, EventArgs e)
         {
+            ConcediuAngajati.Inregistrare inreg = new Inregistrare();
+            inreg.Show();
+            this.Hide();
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // LoginPhase
+            // 
+            this.ClientSize = new System.Drawing.Size(280, 261);
+            this.Name = "LoginPhase";
+            this.ResumeLayout(false);
 
         }
 
@@ -53,5 +67,7 @@ namespace ConcediuAngajati
             userId = Username.Text;
             userPass = Parola.Text;
         }
+       */
     }
+       
 }

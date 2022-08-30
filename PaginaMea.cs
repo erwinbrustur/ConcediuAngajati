@@ -46,7 +46,10 @@ namespace ConcediuAngajati
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            CerereConcediu cerereConcediu = new CerereConcediu();
+            cerereConcediu.ShowDialog();
+            this.Show();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

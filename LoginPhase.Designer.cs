@@ -1,4 +1,4 @@
-﻿namespace ConcediuAngajati
+﻿/*namespace ConcediuAngajati
 {
     partial class LoginPhase
     {
@@ -110,3 +110,4 @@
         private CheckBox checkBox1;
     }
 }
+*/

@@ -16,5 +16,23 @@ namespace ConcediuAngajati
         {
             InitializeComponent();
         }
+
+
+        private void btnAdaugaImagine_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.ShowDialog();
+            if(dlg.ShowDialog() == DialogResult.OK)
+            {
+                PictureBox pictureBox = new PictureBox();
+                //pictureBox.Image = dlg.
+            }
+
+        }
+
+        private void btnX_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }
