@@ -145,5 +145,16 @@ namespace ConcediuAngajati.PaginaPrincipala
             IstoricConcediu coni = new IstoricConcediu();
             coni.Show();
         }
+
+        private void CereriConcedii_Click(object sender, EventArgs e)
+        {
+            //acest buton o sa fie vizibil pentru manager si admin
+
+        }
+
+        private void PaginaPrincipala_Load(object sender, EventArgs e)
+        {
+            // verificare daca userul este > gradul 0
+        }
     }
 }

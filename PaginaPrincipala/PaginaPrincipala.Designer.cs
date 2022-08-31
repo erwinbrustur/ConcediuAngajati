@@ -46,6 +46,7 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.CereriConcedii = new System.Windows.Forms.Button();
             this.DropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.DropConcedii.SuspendLayout();
@@ -57,7 +58,7 @@
             this.DropDown.Controls.Add(this.button2);
             this.DropDown.Controls.Add(this.button3);
             this.DropDown.Controls.Add(this.button4);
-            this.DropDown.Location = new System.Drawing.Point(202, 83);
+            this.DropDown.Location = new System.Drawing.Point(211, 81);
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
@@ -104,9 +105,9 @@
             // 
             // DateleMele
             // 
-            this.DateleMele.Location = new System.Drawing.Point(124, 86);
+            this.DateleMele.Location = new System.Drawing.Point(121, 85);
             this.DateleMele.Name = "DateleMele";
-            this.DateleMele.Size = new System.Drawing.Size(75, 25);
+            this.DateleMele.Size = new System.Drawing.Size(75, 28);
             this.DateleMele.TabIndex = 1;
             this.DateleMele.Text = "DateleMele";
             this.DateleMele.UseVisualStyleBackColor = true;
@@ -132,7 +133,7 @@
             this.DropConcedii.Controls.Add(this.button5);
             this.DropConcedii.Controls.Add(this.button6);
             this.DropConcedii.Controls.Add(this.button7);
-            this.DropConcedii.Location = new System.Drawing.Point(289, 82);
+            this.DropConcedii.Location = new System.Drawing.Point(389, 84);
             this.DropConcedii.MaximumSize = new System.Drawing.Size(82, 100);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(82, 32);
             this.DropConcedii.Name = "DropConcedii";
@@ -167,11 +168,11 @@
             this.AdminDrop.Controls.Add(this.button8);
             this.AdminDrop.Controls.Add(this.button9);
             this.AdminDrop.Controls.Add(this.button10);
-            this.AdminDrop.Location = new System.Drawing.Point(377, 82);
+            this.AdminDrop.Location = new System.Drawing.Point(477, 84);
             this.AdminDrop.MaximumSize = new System.Drawing.Size(82, 100);
             this.AdminDrop.MinimumSize = new System.Drawing.Size(82, 32);
             this.AdminDrop.Name = "AdminDrop";
-            this.AdminDrop.Size = new System.Drawing.Size(82, 99);
+            this.AdminDrop.Size = new System.Drawing.Size(82, 100);
             this.AdminDrop.TabIndex = 4;
             // 
             // button8
@@ -208,11 +209,22 @@
             this.timer3.Interval = 15;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // CereriConcedii
+            // 
+            this.CereriConcedii.Location = new System.Drawing.Point(308, 85);
+            this.CereriConcedii.Name = "CereriConcedii";
+            this.CereriConcedii.Size = new System.Drawing.Size(75, 28);
+            this.CereriConcedii.TabIndex = 5;
+            this.CereriConcedii.Text = "Cereri";
+            this.CereriConcedii.UseVisualStyleBackColor = true;
+            this.CereriConcedii.Click += new System.EventHandler(this.CereriConcedii_Click);
+            // 
             // PaginaPrincipala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 412);
+            this.Controls.Add(this.CereriConcedii);
             this.Controls.Add(this.AdminDrop);
             this.Controls.Add(this.DropConcedii);
             this.Controls.Add(this.DateleMele);
@@ -220,6 +232,7 @@
             this.Controls.Add(this.DropDown);
             this.Name = "PaginaPrincipala";
             this.Text = "PaginaPrincipala";
+            this.Load += new System.EventHandler(this.PaginaPrincipala_Load);
             this.DropDown.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.DropConcedii.ResumeLayout(false);
@@ -247,5 +260,6 @@
         private Button button9;
         private Button button10;
         private System.Windows.Forms.Timer timer3;
+        private Button CereriConcedii;
     }
 }
