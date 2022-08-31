@@ -48,7 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
+           // this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PaginaMea
@@ -166,7 +166,7 @@
             this.textBox1.Size = new System.Drawing.Size(115, 23);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "0";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            //this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2
             // 
@@ -251,12 +251,12 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PaginaMea);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
+           // this.Controls.Add(this.panel1);
+            //this.Controls.Add(this.panel2);
             this.Name = "CerereConcediu";
             this.Text = "CerereConcediu";
             this.contextMenuStrip1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            //this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
