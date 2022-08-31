@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace ConcediuAngajati
 {
@@ -23,6 +24,12 @@ namespace ConcediuAngajati
             Inregistrare ing = new Inregistrare();
             ing.Show();
             this.Hide();
+        }
+        public static string Hash(string Value)
+        {
+            using var hash = SHA256.Create();
+            var byteArray = hash.ComputeHash(Encoding.UTF8.GetBytes(Value));
+            return Convert.ToHexString(byteArray);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,18 +47,38 @@ namespace ConcediuAngajati
             //MessageBox.Show(parolaDinbaza);
             
             SqlDataReader reader = UserCheck.ExecuteReader();
-            
-                String parolaDinbaza = reader[0].ToString();
-                MessageBox.Show(parolaDinbaza);
-            
 
+            String parolaDinbaza = "";
+
+            if (reader.Read())
+            {
+
+                parolaDinbaza = reader[0].ToString();
+
+                if (parolaDinbaza == Hash(textBox2.Text))
+                {
+                    PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala();
+                    ppg.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Parola incorecta!");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Utilizator gresit!");
+            }
+                //MessageBox.Show(parolaDinbaza);
+            
+          
 
             sqlConnection.Close();
             
             
-            //PaginaPrincipala.PaginaPrincipala  ppg = new PaginaPrincipala.PaginaPrincipala();
-            //ppg.Show();
-            //this.Hide();
+            
         }
 
         // user
