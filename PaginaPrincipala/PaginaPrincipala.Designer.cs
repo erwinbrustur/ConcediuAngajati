@@ -62,7 +62,7 @@
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 32);
+            this.DropDown.Size = new System.Drawing.Size(81, 100);
             this.DropDown.TabIndex = 0;
             // 
             // button2
@@ -148,6 +148,7 @@
             this.button6.TabIndex = 3;
             this.button6.Text = "button6";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button7
             // 

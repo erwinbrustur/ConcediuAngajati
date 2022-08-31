@@ -48,22 +48,29 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PaginaMea
             // 
+            this.PaginaMea.BackColor = System.Drawing.Color.DarkSalmon;
+            this.PaginaMea.FlatAppearance.BorderSize = 0;
+            this.PaginaMea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PaginaMea.ForeColor = System.Drawing.Color.Maroon;
             this.PaginaMea.Location = new System.Drawing.Point(33, 15);
             this.PaginaMea.Name = "PaginaMea";
             this.PaginaMea.Size = new System.Drawing.Size(88, 23);
             this.PaginaMea.TabIndex = 0;
             this.PaginaMea.Text = "Pagina mea";
-            this.PaginaMea.UseVisualStyleBackColor = true;
+            this.PaginaMea.UseVisualStyleBackColor = false;
             this.PaginaMea.Click += new System.EventHandler(this.PaginaMea_Click_1);
             this.PaginaMea.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PaginaMea_MouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(34, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 15);
@@ -72,6 +79,11 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.Maroon;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.DarkSalmon;
+            this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.Maroon;
+            this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DarkSalmon;
             this.dateTimePicker1.Location = new System.Drawing.Point(179, 85);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
@@ -80,7 +92,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(411, 85);
+            this.dateTimePicker2.Location = new System.Drawing.Point(415, 41);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 4;
@@ -88,12 +100,16 @@
             // 
             // Trimite
             // 
+            this.Trimite.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Trimite.FlatAppearance.BorderSize = 0;
+            this.Trimite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Trimite.ForeColor = System.Drawing.Color.Maroon;
             this.Trimite.Location = new System.Drawing.Point(591, 245);
             this.Trimite.Name = "Trimite";
             this.Trimite.Size = new System.Drawing.Size(75, 23);
             this.Trimite.TabIndex = 5;
             this.Trimite.Text = "Trimite";
-            this.Trimite.UseVisualStyleBackColor = true;
+            this.Trimite.UseVisualStyleBackColor = false;
             this.Trimite.Click += new System.EventHandler(this.Trimite_Click);
             // 
             // contextMenuStrip1
@@ -127,7 +143,10 @@
             // 
             // cbTipConcediu
             // 
+            this.cbTipConcediu.BackColor = System.Drawing.Color.DarkSalmon;
             this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipConcediu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.cbTipConcediu.ForeColor = System.Drawing.Color.Maroon;
             this.cbTipConcediu.FormattingEnabled = true;
             this.cbTipConcediu.Location = new System.Drawing.Point(34, 85);
             this.cbTipConcediu.Name = "cbTipConcediu";
@@ -137,15 +156,23 @@
             // 
             // textBox1
             // 
+            this.textBox1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.Maroon;
             this.textBox1.Location = new System.Drawing.Point(639, 85);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(115, 23);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "0";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
             this.label2.Location = new System.Drawing.Point(639, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 15);
@@ -221,13 +248,15 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.cbTipConcediu);
             this.Controls.Add(this.Trimite);
-            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PaginaMea);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel2);
             this.Name = "CerereConcediu";
             this.Text = "CerereConcediu";
             this.contextMenuStrip1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

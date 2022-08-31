@@ -1,15 +1,4 @@
-﻿using ConcediuAngajati.CalendarMagic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ConcediuAngajati.PaginaPrincipala
+﻿namespace ConcediuAngajati.PaginaPrincipala
 {
     public partial class PaginaPrincipala : Form
     {
@@ -142,7 +131,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button4_Click(object sender, EventArgs e)
         {
             //Afisare istoric
-            IstoricConcediu coni = new IstoricConcediu();
+            IstoricConcedii coni = new IstoricConcedii();
             coni.Show();
         }
 
@@ -155,6 +144,13 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
             // verificare daca userul este > gradul 0
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CevaSpecial.CevaSpecial cvsp = new CevaSpecial.CevaSpecial();
+            //cvsp.Crea
+            
         }
     }
 }

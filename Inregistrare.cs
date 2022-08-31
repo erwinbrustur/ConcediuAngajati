@@ -105,6 +105,11 @@ namespace ConcediuAngajati
             this.Hide();
         }
 
-      
+        private void button4_Click(object sender, EventArgs e )
+        {
+            this.Close();
+            Environment.Exit(1);
+            
+        }
     }
 }
