@@ -123,7 +123,7 @@ namespace ConcediuAngajati
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime outTime = Convert.ToDateTime(dateTimePicker2.Value);
+            DateTime outTime = Convert.ToDateTime(dateTimePicker3.Value);
 
             if (inTime > outTime)
             {
@@ -160,7 +160,7 @@ namespace ConcediuAngajati
             firstDay = firstDay.Date;
             lastDay = lastDay.Date;
             TimeSpan span = lastDay - firstDay;
-            int zileConcediu = span.Days;
+            int zileConcediu = span.Days + 1;
             int fullWeekCount = zileConcediu / 7;
             if (zileConcediu > fullWeekCount * 7)
             {
@@ -170,12 +170,15 @@ namespace ConcediuAngajati
                     lastDayOfWeek += 7;
                 if (firstDayOfWeek <= 6)
                 {
-                    if (lastDayOfWeek >= 6)
+
+                    if (lastDayOfWeek >= 7)
+                        zileConcediu -= 2; // Altfel scadem doar sambata si duminica
+                    else if (lastDayOfWeek >= 6)
                         zileConcediu -= 1; // Trebuie sa scadem sambata
-                    else if (lastDayOfWeek >= 7)
-                        zileConcediu -= 2; // Altfel scadem doar sambata si uminica
+                    else if (lastDayOfWeek <= 5) // Trebuie sa scadem doar duminica
+                        zileConcediu -= 1;
                 }
-                else if (firstDayOfWeek <= 7 && lastDayOfWeek >= 7) // Scadem doar duminica
+               else if (firstDayOfWeek <= 7 &&  lastDayOfWeek >= 7 ) // Scadem doar duminica
                     zileConcediu -= 1;
             }
             zileConcediu -= fullWeekCount + fullWeekCount;
@@ -192,7 +195,7 @@ namespace ConcediuAngajati
 
 
 
-      
+ 
 
         private void PaginaMea_Click_1(object sender, EventArgs e)
         {
@@ -234,7 +237,7 @@ namespace ConcediuAngajati
                 
            
                 DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
-                DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker2.Value);
+                DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
                 MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
@@ -275,7 +278,7 @@ namespace ConcediuAngajati
             cbTipConcediu.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        /*private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
             DateTime outTime = Convert.ToDateTime(dateTimePicker2.Value);
@@ -292,6 +295,7 @@ namespace ConcediuAngajati
             }
 
         }
+        */
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
@@ -310,6 +314,23 @@ namespace ConcediuAngajati
                     idInlocuitor = Convert.ToInt32(s[0]);
                    
                 }
+            }
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
+            DateTime outTime = Convert.ToDateTime(dateTimePicker3.Value);
+            if (inTime > outTime)
+            {
+                textBox1.Text = "0";
+                MessageBox.Show("zile de concediu negative");
+
+            }
+            else
+            {
+                textBox1.Text = ZileConcediu(inTime, outTime).ToString();
+
             }
         }
     }

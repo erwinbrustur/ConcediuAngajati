@@ -47,8 +47,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip1.SuspendLayout();
-           // this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // PaginaMea
@@ -96,7 +96,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 4;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            //this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // Trimite
             // 
@@ -166,7 +166,6 @@
             this.textBox1.Size = new System.Drawing.Size(115, 23);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "0";
-            //this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // label2
             // 
@@ -233,11 +232,20 @@
             this.label6.TabIndex = 15;
             this.label6.Text = "Pana la :";
             // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Location = new System.Drawing.Point(411, 85);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker3.TabIndex = 16;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -251,12 +259,9 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PaginaMea);
-           // this.Controls.Add(this.panel1);
-            //this.Controls.Add(this.panel2);
             this.Name = "CerereConcediu";
             this.Text = "CerereConcediu";
             this.contextMenuStrip1.ResumeLayout(false);
-            //this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +287,6 @@
         private Label label4;
         private Label label5;
         private Label label6;
+        private DateTimePicker dateTimePicker3;
     }
 }
