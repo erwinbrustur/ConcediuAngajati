@@ -5,10 +5,11 @@ namespace ConcediuAngajati
 {
     public partial class PaginaMea : Form
     {
+        Angajat angajat;
         public PaginaMea(Angajat a)
         {
             InitializeComponent();
-            Angajat angajat = a;
+            angajat = a;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace ConcediuAngajati
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala();
+            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(angajat);
             pagprin.ShowDialog();
             this.Show();
       
