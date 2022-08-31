@@ -151,5 +151,10 @@ namespace ConcediuAngajati.PaginaPrincipala
             //acest buton o sa fie vizibil pentru manager si admin
 
         }
+
+        private void PaginaPrincipala_Load(object sender, EventArgs e)
+        {
+            // verificare daca userul este > gradul 0
+        }
     }
 }

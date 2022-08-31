@@ -232,6 +232,7 @@
             this.Controls.Add(this.DropDown);
             this.Name = "PaginaPrincipala";
             this.Text = "PaginaPrincipala";
+            this.Load += new System.EventHandler(this.PaginaPrincipala_Load);
             this.DropDown.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.DropConcedii.ResumeLayout(false);
