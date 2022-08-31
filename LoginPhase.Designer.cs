@@ -43,6 +43,7 @@
             this.textBox1.PlaceholderText = "Utilizator";
             this.textBox1.Size = new System.Drawing.Size(185, 23);
             this.textBox1.TabIndex = 0;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -52,6 +53,7 @@
             this.textBox2.PlaceholderText = "Parola";
             this.textBox2.Size = new System.Drawing.Size(185, 23);
             this.textBox2.TabIndex = 1;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // button1
             // 
@@ -80,6 +82,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(386, 226);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // LoginPhase
             // 

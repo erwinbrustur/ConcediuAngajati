@@ -1,21 +1,12 @@
-﻿using ConcediuAngajati.CalendarMagic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ConcediuAngajati.PaginaPrincipala
+﻿namespace ConcediuAngajati.PaginaPrincipala
 {
     public partial class PaginaPrincipala : Form
     {
-        public PaginaPrincipala()
+        Angajat angajat;
+        public PaginaPrincipala(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -118,7 +109,7 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            PaginaMea pg = new PaginaMea();
+            PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
             
         }
@@ -131,7 +122,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button3_Click(object sender, EventArgs e)
         {
             //Afisare cerere
-            CerereConcediu con = new CerereConcediu();
+            CerereConcediu con = new CerereConcediu(null);
             con.Show();
 
             //Afiseaza calendarul magic
@@ -150,6 +141,18 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             //acest buton o sa fie vizibil pentru manager si admin
 
+        }
+
+        private void PaginaPrincipala_Load(object sender, EventArgs e)
+        {
+            // verificare daca userul este > gradul 0
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CevaSpecial.CevaSpecial cvsp = new CevaSpecial.CevaSpecial();
+            //cvsp.Crea
+            
         }
     }
 }

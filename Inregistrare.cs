@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Net;
+using System.Net.Mail;
 
 
 namespace ConcediuAngajati
@@ -74,12 +76,26 @@ namespace ConcediuAngajati
                 FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
                 Fii.Show();
                 this.Hide();
+                //Email inregistrare 
+               /*   MailMessage message = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
+                message.From = new MailAddress("sebastian.andrei@totalsoft.ro");
+                message.To.Add(new MailAddress("sebastian.andrei@totalsoft.ro"));
+                message.Subject = "Email inregistrare StrangerThings Hr";
+                message.Body = "Bun venit la strangerThingsHr";
+                smtp.Port = 587;
+                smtp.Host = "mailer14.totalsoft.local";
+                smtp.EnableSsl = true;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential("sebastian.andrei@totalsoft.ro", "STats123rm");
+                smtp.Send(message);*/
             }
             else
                 MessageBox.Show("Parolele sunt diferite");
-                 
-       
-          
+           
+                
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -89,6 +105,11 @@ namespace ConcediuAngajati
             this.Hide();
         }
 
-      
+        private void button4_Click(object sender, EventArgs e )
+        {
+            this.Close();
+            Environment.Exit(1);
+            
+        }
     }
 }
