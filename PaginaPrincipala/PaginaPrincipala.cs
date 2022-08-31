@@ -1,21 +1,12 @@
-﻿using ConcediuAngajati.CalendarMagic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace ConcediuAngajati.PaginaPrincipala
+﻿namespace ConcediuAngajati.PaginaPrincipala
 {
     public partial class PaginaPrincipala : Form
     {
-        public PaginaPrincipala()
+        Angajat angajat;
+        public PaginaPrincipala(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,17 +19,17 @@ namespace ConcediuAngajati.PaginaPrincipala
             
         }
         
-        private bool esteInchis;
+        private bool esteInchis1;
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (esteInchis)
+            if (esteInchis1)
             {
                 DropDown.Height += 10;
                 if(DropDown.Size == DropDown.MaximumSize)
                 {
                     timer1.Stop();
-                    esteInchis = false;
+                    esteInchis1 = false;
                 }
 
             }else
@@ -47,7 +38,7 @@ namespace ConcediuAngajati.PaginaPrincipala
                 if (DropDown.Size == DropDown.MinimumSize)
                 {
                     timer1.Stop();
-                    esteInchis = true;
+                    esteInchis1 = true;
                 }
 
             }
@@ -68,15 +59,17 @@ namespace ConcediuAngajati.PaginaPrincipala
             timer3.Start();
         }
 
+
+        private bool esteInchis2;
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (esteInchis)
+            if (esteInchis2)
             {
                 DropConcedii.Height += 10;
                 if (DropConcedii.Size == DropConcedii.MaximumSize)
                 {
                     timer2.Stop();
-                    esteInchis = false;
+                    esteInchis2 = false;
                 }
 
             }
@@ -86,21 +79,22 @@ namespace ConcediuAngajati.PaginaPrincipala
                 if (DropConcedii.Size == DropConcedii.MinimumSize)
                 {
                     timer2.Stop();
-                    esteInchis = true;
+                    esteInchis2 = true;
                 }
 
             }
         }
 
+        private bool esteInchis3;
         private void timer3_Tick(object sender, EventArgs e)
         {
-            if(esteInchis)
+            if(esteInchis3)
             {
                 AdminDrop.Height += 10;
                 if (AdminDrop.Size == AdminDrop.MaximumSize)
                 {
                     timer3.Stop();
-                    esteInchis = false;
+                    esteInchis3 = false;
                 }
 
             }
@@ -110,7 +104,7 @@ namespace ConcediuAngajati.PaginaPrincipala
                 if (AdminDrop.Size == AdminDrop.MinimumSize)
                 {
                     timer3.Stop();
-                    esteInchis = true;
+                    esteInchis3 = true;
                 }
 
             }
@@ -118,7 +112,7 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            PaginaMea pg = new PaginaMea();
+            PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
             
         }
@@ -131,7 +125,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button3_Click(object sender, EventArgs e)
         {
             //Afisare cerere
-            CerereConcediu con = new CerereConcediu();
+            CerereConcediu con = new CerereConcediu(angajat);
             con.Show();
 
             //Afiseaza calendarul magic
@@ -142,14 +136,52 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button4_Click(object sender, EventArgs e)
         {
             //Afisare istoric
-            IstoricConcediu coni = new IstoricConcediu();
+            IstoricConcedii coni = new IstoricConcedii();
             coni.Show();
         }
 
         private void CereriConcedii_Click(object sender, EventArgs e)
         {
             //acest buton o sa fie vizibil pentru manager si admin
+            timer4.Start();
+                
+        }
 
+        private void PaginaPrincipala_Load(object sender, EventArgs e)
+        {
+            // verificare daca userul este > gradul 0
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            CevaSpecial.CevaSpecial cvsp = new CevaSpecial.CevaSpecial();
+            //cvsp.Crea
+            
+        }
+        private bool esteInchis4;
+        private void timer4_Tick(object sender, EventArgs e)
+        {
+
+            if (esteInchis4)
+            {
+                CereriConcediBut.Height += 10;
+                if (CereriConcediBut.Size == CereriConcediBut.MaximumSize)
+                {
+                    timer4.Stop();
+                    esteInchis4 = false;
+                }
+
+            }
+            else
+            {
+                CereriConcediBut.Height -= 10;
+                if (CereriConcediBut.Size == CereriConcediBut.MinimumSize)
+                {
+                    timer4.Stop();
+                    esteInchis4 = true;
+                }
+
+            }
         }
     }
 }

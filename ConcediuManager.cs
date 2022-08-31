@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ConcediuAngajati
 {
-    public partial class IstoricConcediu : Form
+    public partial class ConcediuManager : Form
     {
-        public IstoricConcediu()
+        public ConcediuManager()
         {
             InitializeComponent();
         }
