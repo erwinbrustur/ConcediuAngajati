@@ -23,10 +23,14 @@ namespace ConcediuAngajati
         List<string> listaInlocuitori;
         int idInlocuitor;
         Angajat userCurent;
+        
         public CerereConcediu(Angajat a)
         {
+            
             InitializeComponent();
             userCurent = a;
+
+            MessageBox.Show("User: " + userCurent.Nume + userCurent.Prenume + userCurent.Email + userCurent.ManagerId);
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             list = extragereTipConcediiDB();
             foreach (string s in list)
@@ -87,7 +91,8 @@ namespace ConcediuAngajati
         public List<string> extragereInlocuitoriEchipaDB()
         {
             List<string> strings = new List<string>();
-            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + "23";
+            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId;
+            MessageBox.Show(userCurent.ManagerId + "Vacanta");
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
@@ -241,7 +246,7 @@ namespace ConcediuAngajati
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
                 MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
-                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " +  "24" + ")";  //userCurent.Id
+                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ")";  
 
                 SqlCommand queryInsert = new SqlCommand(insertSQL);
                 try

@@ -46,7 +46,7 @@ namespace ConcediuAngajati
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala();
+            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(null);
             pagprin.ShowDialog();
             this.Show();
       
