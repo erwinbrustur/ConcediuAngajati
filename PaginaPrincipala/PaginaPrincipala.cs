@@ -142,7 +142,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button4_Click(object sender, EventArgs e)
         {
             //Afisare istoric
-            IstoricConcediu coni = new IstoricConcediu();
+            IstoricConcedii coni = new IstoricConcedii();
             coni.Show();
         }
 
