@@ -4,8 +4,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,7 +32,7 @@ namespace ConcediuAngajati
         private void btnAdaugaPoza_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Images (*.PNG) | *.PNG";
+            openFileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG, *.JPEG)| *.BMP; *.JPG; *.PNG, *.JPEG | All files(*.*) | *.*";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -65,9 +67,11 @@ namespace ConcediuAngajati
         private void tbCNP_Validating(object sender, CancelEventArgs e)
         {
             string cnp = ((TextBox)sender).Text;
-            if(cnp.Length != 13)
+            var strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+            Regex regex = new Regex(strRegex);
+            if (!regex.IsMatch(cnp))
             {
-                errorProvider1.SetError(tbCNP, "CNP invalid! CNP-ul trebuie sa contina 13 cifre!");
+                errorProvider1.SetError(tbCNP, "CNP invalid!");
             }
             else
             {
@@ -108,6 +112,14 @@ namespace ConcediuAngajati
             string serie = tbSerie.Text;
             string dataNastere;
 
+            MemoryStream ms = new MemoryStream();
+            pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
+            byte[] image_array = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(image_array, 0, image_array.Length);
+
+            
+
             if (cnp.IndexOf('1') == 0 || cnp.IndexOf('2') == 0) {
                 dataNastere = "19" + cnp.Substring(1, 6);
             }
@@ -121,11 +133,12 @@ namespace ConcediuAngajati
            
 
             SqlConnection conexiune = new SqlConnection(connectionString);
-            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon +"')" ;
+            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza)";
             SqlCommand queryInsert = new SqlCommand(insertSQL);
             try
             {
                 conexiune.Open();
+                queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
                 queryInsert.Connection = conexiune;
                 queryInsert.ExecuteNonQuery();
 
@@ -140,6 +153,11 @@ namespace ConcediuAngajati
             {
                 conexiune.Close();
             }
+        }
+
+        private void btnAdaugaImagine_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
