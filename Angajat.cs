@@ -23,7 +23,7 @@ namespace ConcediuAngajati
         bool esteAdmin;
         int managerId;
 
-        public Angajat(string nume, string prenume, string email, string parola, DateTime dataAngajare, DateTime dataNasterii, string cnp, string serie, string no, string nrTelefon, byte[] poza)
+        public Angajat(int id, string nume, string prenume, string email, string parola, DateTime dataAngajare, DateTime dataNasterii, string cnp, string serie, string no, string nrTelefon, byte[] poza, bool esteAdmin,int managerId)
         {
             this.nume = nume;
             this.prenume = prenume;
@@ -36,6 +36,9 @@ namespace ConcediuAngajati
             this.no = no;
             this.nrTelefon = nrTelefon;
             this.poza = poza;
+            this.id = id;
+            this.esteAdmin = esteAdmin;
+            this.managerId = managerId;
         }
 
         public Angajat(string nume, string prenume, string email, string parola, string nrTelefon)

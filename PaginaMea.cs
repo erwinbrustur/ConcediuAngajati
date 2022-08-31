@@ -5,9 +5,10 @@ namespace ConcediuAngajati
 {
     public partial class PaginaMea : Form
     {
-        public PaginaMea()
+        public PaginaMea(Angajat a)
         {
             InitializeComponent();
+            Angajat angajat = a;
         }
 
         private void Form1_Load(object sender, EventArgs e)

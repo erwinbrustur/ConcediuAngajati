@@ -2,9 +2,11 @@
 {
     public partial class PaginaPrincipala : Form
     {
-        public PaginaPrincipala()
+        Angajat angajat;
+        public PaginaPrincipala(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -107,7 +109,7 @@
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            PaginaMea pg = new PaginaMea();
+            PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
             
         }
