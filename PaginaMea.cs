@@ -1,3 +1,4 @@
+using ConcediuAngajati.PaginaPrincipala;
 using System.Windows.Forms;
 
 namespace ConcediuAngajati
@@ -43,13 +44,18 @@ namespace ConcediuAngajati
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala();
+            pagprin.ShowDialog();
+            this.Show();
+      
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CerereConcediu cerereConcediu = new CerereConcediu();
+            CerereConcediu cerereConcediu = new CerereConcediu(null);
             cerereConcediu.ShowDialog();
             this.Show();
         }
@@ -91,7 +97,6 @@ namespace ConcediuAngajati
             tanga.ShowDialog();
             this.Show();
         }
-
        
     }
 }

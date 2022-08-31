@@ -131,7 +131,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button3_Click(object sender, EventArgs e)
         {
             //Afisare cerere
-            CerereConcediu con = new CerereConcediu();
+            CerereConcediu con = new CerereConcediu(null);
             con.Show();
 
             //Afiseaza calendarul magic

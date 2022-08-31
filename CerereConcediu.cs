@@ -20,17 +20,32 @@ namespace ConcediuAngajati
     {
         List<string> list;
         string connectionString;
-        public CerereConcediu()
+        List<string> listaInlocuitori;
+        int idInlocuitor;
+        Angajat userCurent;
+        public CerereConcediu(Angajat a)
         {
             InitializeComponent();
+            userCurent = a;
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             list = extragereTipConcediiDB();
             foreach (string s in list)
             {
                 cbTipConcediu.Items.Add(s);
             }
-            //cbTipConcediu.SelectedItem = cbTipConcediu.Items.IndexOf(0);
+            
             cbTipConcediu.SelectedIndex = 0;
+            
+            listaInlocuitori = extragereInlocuitoriEchipaDB();
+            foreach(string inlocuitor in listaInlocuitori)
+            {
+                string[] str = inlocuitor.Split(',');
+                cbInlocuitor.Items.Add(str[1]);
+
+            }
+
+            cbInlocuitor.SelectedIndex = 0;
+           
 
         }
 
@@ -68,6 +83,42 @@ namespace ConcediuAngajati
             }
 
         }
+
+        public List<string> extragereInlocuitoriEchipaDB()
+        {
+            List<string> strings = new List<string>();
+            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + "23";
+            SqlConnection conexiune = new SqlConnection(connectionString);
+            SqlCommand querySelect = new SqlCommand(selectSQL);
+            try
+            {
+                conexiune.Open();
+                querySelect.Connection = conexiune;
+                SqlDataReader reader = querySelect.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
+
+                }
+
+
+                return strings;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexiune.Close();
+
+
+            }
+
+        }
+
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
@@ -187,7 +238,7 @@ namespace ConcediuAngajati
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
                 MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
-                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "')";
+                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " +  "24" + ")";  //userCurent.Id
 
                 SqlCommand queryInsert = new SqlCommand(insertSQL);
                 try
@@ -242,6 +293,25 @@ namespace ConcediuAngajati
 
         }
 
-        
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+             
+            
+            foreach(string str in listaInlocuitori)
+            {
+                 string[] s = str.Split(',');
+                if (s[1].CompareTo(cbInlocuitor.Text) == 0)
+                {
+                    idInlocuitor = Convert.ToInt32(s[0]);
+                   
+                }
+            }
+        }
     }
 }
+
