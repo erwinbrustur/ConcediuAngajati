@@ -48,6 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.btnInchiderePP = new System.Windows.Forms.Button();
             this.DropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.DropConcedii.SuspendLayout();
@@ -121,6 +122,7 @@
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -169,11 +171,13 @@
             // 
             // timer2
             // 
+            this.timer2.Enabled = true;
             this.timer2.Interval = 15;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // timer3
             // 
+            this.timer3.Enabled = true;
             this.timer3.Interval = 15;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
@@ -222,8 +226,23 @@
             // 
             // timer4
             // 
+            this.timer4.Enabled = true;
             this.timer4.Interval = 15;
             this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // btnInchiderePP
+            // 
+            this.btnInchiderePP.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchiderePP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchiderePP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchiderePP.ForeColor = System.Drawing.Color.Silver;
+            this.btnInchiderePP.Location = new System.Drawing.Point(824, 12);
+            this.btnInchiderePP.Name = "btnInchiderePP";
+            this.btnInchiderePP.Size = new System.Drawing.Size(37, 43);
+            this.btnInchiderePP.TabIndex = 7;
+            this.btnInchiderePP.Text = "X";
+            this.btnInchiderePP.UseVisualStyleBackColor = false;
+            this.btnInchiderePP.Click += new System.EventHandler(this.btnInchiderePP_Click);
             // 
             // PaginaPrincipala
             // 
@@ -232,6 +251,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(873, 412);
+            this.Controls.Add(this.btnInchiderePP);
             this.Controls.Add(this.CereriConcediBut);
             this.Controls.Add(this.DropConcedii);
             this.Controls.Add(this.DateleMele);
@@ -270,5 +290,6 @@
         private Button button1;
         private Button button11;
         private System.Windows.Forms.Timer timer4;
+        private Button btnInchiderePP;
     }
 }
