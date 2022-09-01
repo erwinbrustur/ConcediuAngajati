@@ -52,8 +52,8 @@
             this.LblPrenume = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
-            this.panelModificareManageri = new System.Windows.Forms.Panel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+//               this.panelModificareManageri = new System.Windows.Forms.Panel();
+            //this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -93,7 +93,7 @@
             // 
             this.panelAdaugareAngajat.BackColor = System.Drawing.Color.White;
             this.panelAdaugareAngajat.Controls.Add(this.textBox9);
-            this.panelAdaugareAngajat.Controls.Add(this.textBox8);
+            //this.panelAdaugareAngajat.Controls.Add(this.textBox8);
             this.panelAdaugareAngajat.Controls.Add(this.button1);
             this.panelAdaugareAngajat.Controls.Add(this.pictureBox1);
             this.panelAdaugareAngajat.Controls.Add(this.label7);
@@ -329,15 +329,15 @@
             // 
             // panelModificareManageri
             // 
-            this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
+           /* this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
             this.panelModificareManageri.Size = new System.Drawing.Size(803, 12);
             this.panelModificareManageri.TabIndex = 4;
-            // 
+            // */
             // textBox8
             // 
-            this.textBox8.BackColor = System.Drawing.Color.DarkSalmon;
+         /*   this.textBox8.BackColor = System.Drawing.Color.DarkSalmon;
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.ForeColor = System.Drawing.Color.Maroon;
             this.textBox8.Location = new System.Drawing.Point(94, 249);
@@ -345,7 +345,7 @@
             this.textBox8.Name = "textBox8";
             this.textBox8.PasswordChar = '•';
             this.textBox8.Size = new System.Drawing.Size(143, 23);
-            this.textBox8.TabIndex = 12;
+            this.textBox8.TabIndex = 12;*/
             // 
             // textBox9
             // 

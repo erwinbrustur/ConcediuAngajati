@@ -34,35 +34,8 @@
             this.Actualizare = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
-            // 
-            // checkAccept
-            // 
-            this.checkAccept.AllowUserToOrderColumns = true;
-            this.checkAccept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkAccept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn3,
-            this.Respins});
-            this.checkAccept.Location = new System.Drawing.Point(10, 49);
-            this.checkAccept.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.checkAccept.Name = "checkAccept";
-            this.checkAccept.RowHeadersWidth = 51;
-            this.checkAccept.RowTemplate.Height = 29;
-            this.checkAccept.Size = new System.Drawing.Size(769, 278);
-            this.checkAccept.TabIndex = 13;
-            this.checkAccept.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // dataGridViewCheckBoxColumn3
-            // 
-            this.dataGridViewCheckBoxColumn3.HeaderText = "Accept";
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Respins
-            // 
-            this.Respins.HeaderText = "Respins";
-            this.Respins.Name = "Respins";
-            this.Respins.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Respins.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+           
+          
             // 
             // label1
             // 
@@ -114,7 +87,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 338);
-            this.Controls.Add(this.checkAccept);
+            
             this.Controls.Add(this.label1);
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";

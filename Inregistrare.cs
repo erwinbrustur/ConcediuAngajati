@@ -19,7 +19,9 @@ namespace ConcediuAngajati
         public Inregistrare()
         {
             InitializeComponent();
-            
+            this.panel2.BackColor = Color.FromArgb(64, 127, 124, 127);
+            //this.FieldNume.BackColor = Color.FromArgb(64, 128, 0, 0);
+
         }
         public static string Hash(string Value)
         {
@@ -109,6 +111,11 @@ namespace ConcediuAngajati
         {
             this.Close();
             Environment.Exit(1);
+            
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
             
         }
     }
