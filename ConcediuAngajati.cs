@@ -17,7 +17,7 @@ namespace ConcediuAngajati
         List<string> listaStare;
         List<string> angajatistring;
         int idAngajatSelectat;
-        int StareConcediuId;
+        int stareConcediuId;
 
         public ConcediuAngajati()
         {
@@ -27,7 +27,7 @@ namespace ConcediuAngajati
 
 
             listaStare = extragereStareConcediuDB();
-         
+
             foreach (string s in listaStare)
             {
                 string[] str = s.Split(',');
@@ -85,26 +85,6 @@ namespace ConcediuAngajati
 
         }
 
-        private void lblConcediuManageri_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         public List<string> extragereStareConcediuDB()
         {
             List<string> stareConcediu = new List<string>();
@@ -119,7 +99,7 @@ namespace ConcediuAngajati
 
                 while (reader.Read())
                 {
-                    stareConcediu.Add(reader[0] + ", "  + reader[1].ToString());
+                    stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
 
                 }
 
@@ -139,14 +119,14 @@ namespace ConcediuAngajati
             }
 
         }
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbStareConcediu_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (string str in listaStare)
             {
                 string[] s = str.Split(',');
                 if (s[1].CompareTo(cbStareConcediu.Text) == 0)
                 {
-                    StareConcediuId = Convert.ToInt32(s[0]);
+                    stareConcediuId = Convert.ToInt32(s[0]);
 
                 }
             }
@@ -165,16 +145,16 @@ namespace ConcediuAngajati
 
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
-            
-                string insertSQL = "UPDATE c SET stareConcediuId = FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1)";
 
-                SqlCommand queryInsert = new SqlCommand(insertSQL);
+                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1";
+                
+                SqlCommand queryUpdate = new SqlCommand(updateSQL);
                 try
                 {
                     conexiune.Open();
-                    queryInsert.Connection = conexiune;
-
-                    queryInsert.ExecuteNonQuery();
+                    queryUpdate.Connection = conexiune;
+                    queryUpdate.Parameters.AddWithValue("@stareConcediuId", stareConcediuId);
+                    queryUpdate.ExecuteNonQuery();
                     MessageBox.Show("da");
 
                     DialogResult result2 = MessageBox.Show(message2, title);
@@ -192,43 +172,40 @@ namespace ConcediuAngajati
 
         }
 
-        private void dataGridView1_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        private void dgvConcedii_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (e.StateChanged != DataGridViewElementStates.Selected) 
+            if (e.StateChanged != DataGridViewElementStates.Selected)
                 return;
 
         }
 
-       
-        private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+      
 
         private void dgvConcedii_SelectionChanged(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in dgvConcedii.SelectedRows)
+            foreach (DataGridViewRow row in dgvConcedii.SelectedRows)
             {
                 string nume_prenume = row.Cells[0].ToString();
 
-                foreach(string s in angajatistring)
+                foreach (string s in angajatistring)
                 {
                     string[] t = s.Split(',');
-                    if(nume_prenume.Equals(t[1]))
+                    if (nume_prenume.Equals(t[1]))
                     {
                         idAngajatSelectat = Convert.ToInt32(t[0]);
                     }
                 }
-                
+
             }
-           
+
         }
 
         public List<string> extragereAngajatiDB()
         {
             List<string> extrageAngajati = new List<string>();
             string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
-            
+
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
@@ -260,5 +237,5 @@ namespace ConcediuAngajati
 
         }
     }
-      
+
 }
