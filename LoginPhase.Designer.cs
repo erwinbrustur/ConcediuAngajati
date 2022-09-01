@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnInchidereLP = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +98,20 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // btnInchidereLP
+            // 
+            this.btnInchidereLP.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchidereLP.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
+            this.btnInchidereLP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidereLP.ForeColor = System.Drawing.Color.Silver;
+            this.btnInchidereLP.Location = new System.Drawing.Point(882, 12);
+            this.btnInchidereLP.Name = "btnInchidereLP";
+            this.btnInchidereLP.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereLP.TabIndex = 5;
+            this.btnInchidereLP.Text = "X";
+            this.btnInchidereLP.UseVisualStyleBackColor = false;
+            this.btnInchidereLP.Click += new System.EventHandler(this.btnInchidereLP_Click);
+            // 
             // LoginPhase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -104,6 +119,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(931, 480);
+            this.Controls.Add(this.btnInchidereLP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -126,5 +142,6 @@
         private Button button1;
         private Button button2;
         private PictureBox pictureBox1;
+        private Button btnInchidereLP;
     }
 }
