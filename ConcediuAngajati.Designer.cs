@@ -31,6 +31,11 @@
             this.Actualizare = new System.Windows.Forms.Button();
             this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcedii = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,13 +61,45 @@
             // dgvConcedii
             // 
             this.dgvConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConcedii.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
             this.dgvConcedii.Location = new System.Drawing.Point(31, 73);
+            this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowTemplate.Height = 25;
             this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
             this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nume";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Data Inceput";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Data Sfarsit";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Inlocuitor";
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Comentarii";
+            this.Column5.Name = "Column5";
             // 
             // ConcediuAngajati
             // 
@@ -84,5 +121,10 @@
         private Button Actualizare;
         private ComboBox cbStareConcediu;
         private DataGridView dgvConcedii;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

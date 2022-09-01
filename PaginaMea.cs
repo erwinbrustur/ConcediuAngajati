@@ -49,7 +49,7 @@ namespace ConcediuAngajati
             this.Hide();
             PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(angajat);
             pagprin.ShowDialog();
-            this.Show();
+            
       
         }
 
@@ -57,7 +57,7 @@ namespace ConcediuAngajati
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CerereConcediu cerereConcediu = new CerereConcediu(null);
+            CerereConcediu cerereConcediu = new CerereConcediu(angajat);
             cerereConcediu.ShowDialog();
             this.Show();
         }
@@ -99,6 +99,35 @@ namespace ConcediuAngajati
             tanga.ShowDialog();
             this.Show();
         }
-       
+
+        private void Meniu_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        bool esteInchis;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (esteInchis)
+            {
+                MeniuFlow.Height += 10;
+                if (MeniuFlow.Size == MeniuFlow.MaximumSize)
+                {
+                    timer1.Stop();
+                    esteInchis = false;
+                }
+
+            }
+            else
+            {
+                MeniuFlow.Height -= 10;
+                if (MeniuFlow.Size == MeniuFlow.MinimumSize)
+                {
+                    timer1.Stop();
+                    esteInchis = true;
+                }
+
+            }
+        }
     }
 }

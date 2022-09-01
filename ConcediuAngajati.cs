@@ -18,6 +18,7 @@ namespace ConcediuAngajati
         List<string> angajatistring;
         int idAngajatSelectat;
         int stareConcediuId;
+        int idConcediu;
 
         public ConcediuAngajati()
         {
@@ -48,25 +49,35 @@ namespace ConcediuAngajati
         public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii' FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
+            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii' FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
                 conexiune.Open();
                 querySelect.Connection = conexiune;
-                //SqlDataReader reader = querySelect.ExecuteReader();
+                SqlDataReader reader = querySelect.ExecuteReader();
 
-                //while (reader.Read())
-                //{
-                //    Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
-                //    listaConcedii.Add(c);
-                //}
+                while (reader.Read())
+                {
+                    DataGridViewRow row = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
+                    string[] s1 = reader[2].ToString().Split(' ');
+                    string[] s2 = reader[3].ToString().Split(' ');
+                    row.Cells[0].Value = reader[1].ToString();
+                    row.Cells[1].Value = s1[0];
+                    row.Cells[2].Value = s2[0];
+                    row.Cells[3].Value = reader[4].ToString();
+                    row.Cells[4].Value = reader[5].ToString();
+                    dgvConcedii.Rows.Add(row);
+                    row.Tag = reader[0];
+                    //Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
+                    //listaConcedii.Add(c);
+                }
 
-                DataTable dt = new DataTable();
-                SqlDataAdapter adapt = new SqlDataAdapter(selectSQL, conexiune);
-                adapt.Fill(dt);
-                dgvConcedii.DataSource = dt;
+                //DataTable dt = new DataTable();
+                //SqlDataAdapter adapt = new SqlDataAdapter(selectSQL, conexiune);
+                //adapt.Fill(dt);
+                //dgvConcedii.DataSource = dt;
 
 
 
@@ -142,11 +153,11 @@ namespace ConcediuAngajati
             {
 
                 string message2 = "Lista a fost actualizata";
-
+                
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
 
-                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1";
+                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
                 
                 SqlCommand queryUpdate = new SqlCommand(updateSQL);
                 try
@@ -187,6 +198,7 @@ namespace ConcediuAngajati
             foreach (DataGridViewRow row in dgvConcedii.SelectedRows)
             {
                 string nume_prenume = row.Cells[0].ToString();
+                idConcediu = Convert.ToInt32(row.Tag);
 
                 foreach (string s in angajatistring)
                 {
