@@ -152,7 +152,16 @@
 
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
-            // verificare daca userul este > gradul 0
+            
+            DropConcedii.Hide();
+            AdminDrop.Hide();
+
+            if (angajat.EsteAdmin)
+            {
+                DropConcedii.Show();
+                AdminDrop.Show();
+
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -199,6 +208,11 @@
             //concediu manageri
             ConcediuManager cmng = new ConcediuManager();
             cmng.Show();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

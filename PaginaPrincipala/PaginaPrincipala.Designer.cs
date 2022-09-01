@@ -67,7 +67,7 @@
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 99);
+            this.DropDown.Size = new System.Drawing.Size(81, 34);
             this.DropDown.TabIndex = 0;
             // 
             // button2
@@ -142,7 +142,7 @@
             this.DropConcedii.MaximumSize = new System.Drawing.Size(82, 100);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(82, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(82, 99);
+            this.DropConcedii.Size = new System.Drawing.Size(82, 34);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
@@ -163,6 +163,7 @@
             this.button7.TabIndex = 4;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // timer2
             // 
@@ -178,7 +179,7 @@
             this.AdminDrop.MaximumSize = new System.Drawing.Size(82, 100);
             this.AdminDrop.MinimumSize = new System.Drawing.Size(82, 32);
             this.AdminDrop.Name = "AdminDrop";
-            this.AdminDrop.Size = new System.Drawing.Size(82, 99);
+            this.AdminDrop.Size = new System.Drawing.Size(82, 34);
             this.AdminDrop.TabIndex = 4;
             // 
             // button8
@@ -234,7 +235,7 @@
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
-            this.CereriConcediBut.Size = new System.Drawing.Size(85, 99);
+            this.CereriConcediBut.Size = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.TabIndex = 6;
             // 
             // button1
