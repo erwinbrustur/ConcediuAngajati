@@ -86,9 +86,6 @@ namespace ConcediuAngajati
 
         }
 
-        private void checkRespins_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
