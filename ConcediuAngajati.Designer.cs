@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.checkAccept = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Respins = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.checkAccept)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,16 +51,6 @@
             this.checkAccept.TabIndex = 13;
             this.checkAccept.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(227, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 38);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Concediu Angajati";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
             // dataGridViewCheckBoxColumn3
             // 
             this.dataGridViewCheckBoxColumn3.HeaderText = "Accept";
@@ -73,6 +63,16 @@
             this.Respins.Name = "Respins";
             this.Respins.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Respins.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(227, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(219, 38);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Concediu Angajati";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // ConcediuAngajati
             // 
