@@ -7,6 +7,8 @@
         {
             InitializeComponent();
             angajat = a;
+            MemoryStream ms = new MemoryStream(a.Poza);
+            pictureBox1.Image = Image.FromStream(ms);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,26 +90,6 @@
         private bool esteInchis3;
         private void timer3_Tick(object sender, EventArgs e)
         {
-            if(esteInchis3)
-            {
-                AdminDrop.Height += 10;
-                if (AdminDrop.Size == AdminDrop.MaximumSize)
-                {
-                    timer3.Stop();
-                    esteInchis3 = false;
-                }
-
-            }
-            else
-            {
-                AdminDrop.Height -= 10;
-                if (AdminDrop.Size == AdminDrop.MinimumSize)
-                {
-                    timer3.Stop();
-                    esteInchis3 = true;
-                }
-
-            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -153,21 +135,12 @@
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
             
-            DropConcedii.Hide();
-            AdminDrop.Hide();
-
-            if (angajat.EsteAdmin)
-            {
-                DropConcedii.Show();
-                AdminDrop.Show();
-
-            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            CevaSpecial.CevaSpecial cvsp = new CevaSpecial.CevaSpecial();
-            //cvsp.Crea
+            AdministrareAngajati admn = new AdministrareAngajati();
+            admn.Show();
             
         }
         private bool esteInchis4;
@@ -211,6 +184,11 @@
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

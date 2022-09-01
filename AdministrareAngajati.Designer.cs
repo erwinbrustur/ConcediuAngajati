@@ -33,6 +33,8 @@
             this.buttonAdaugareAngajat = new System.Windows.Forms.Button();
             this.buttonModificareManageri = new System.Windows.Forms.Button();
             this.panelAdaugareAngajat = new System.Windows.Forms.Panel();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -53,8 +55,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -112,6 +112,30 @@
             this.panelAdaugareAngajat.Size = new System.Drawing.Size(803, 382);
             this.panelAdaugareAngajat.TabIndex = 3;
             this.panelAdaugareAngajat.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdaugareAngajat_Paint);
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.DarkSalmon;
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox9.Location = new System.Drawing.Point(349, 249);
+            this.textBox9.Multiline = true;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.PasswordChar = '•';
+            this.textBox9.Size = new System.Drawing.Size(143, 23);
+            this.textBox9.TabIndex = 21;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.DarkSalmon;
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox8.Location = new System.Drawing.Point(94, 249);
+            this.textBox8.Multiline = true;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.PasswordChar = '•';
+            this.textBox8.Size = new System.Drawing.Size(143, 23);
+            this.textBox8.TabIndex = 12;
             // 
             // button1
             // 
@@ -335,40 +359,19 @@
             this.panelModificareManageri.Size = new System.Drawing.Size(803, 12);
             this.panelModificareManageri.TabIndex = 4;
             // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.DarkSalmon;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox8.Location = new System.Drawing.Point(94, 249);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PasswordChar = '•';
-            this.textBox8.Size = new System.Drawing.Size(143, 23);
-            this.textBox8.TabIndex = 12;
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.DarkSalmon;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox9.Location = new System.Drawing.Point(349, 249);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.PasswordChar = '•';
-            this.textBox9.Size = new System.Drawing.Size(143, 23);
-            this.textBox9.TabIndex = 21;
-            // 
             // AdministrareAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 495);
             this.Controls.Add(this.panelModificareManageri);
             this.Controls.Add(this.panelAdaugareAngajat);
             this.Controls.Add(this.buttonModificareManageri);
             this.Controls.Add(this.buttonAdaugareAngajat);
             this.Controls.Add(this.BtnPaginaPrincipala);
+            this.DoubleBuffered = true;
             this.Name = "AdministrareAngajati";
             this.Text = "AdministrareAngajati";
             this.Load += new System.EventHandler(this.AdministrareAngajati_Load);
