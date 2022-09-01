@@ -183,5 +183,19 @@
 
             }
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            //concediuAngajati  
+            ConcediuAngajati cang = new ConcediuAngajati();
+            cang.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            //concediu manageri
+            ConcediuManager cmng = new ConcediuManager();
+            cmng.Show();
+        }
     }
 }

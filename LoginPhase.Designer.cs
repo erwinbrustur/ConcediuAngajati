@@ -47,6 +47,7 @@
             // 
             // textBox2
             // 
+            this.textBox2.AcceptsReturn = true;
             this.textBox2.Location = new System.Drawing.Point(527, 332);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '•';

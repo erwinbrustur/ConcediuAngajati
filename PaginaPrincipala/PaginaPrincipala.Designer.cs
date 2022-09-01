@@ -67,7 +67,7 @@
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 34);
+            this.DropDown.Size = new System.Drawing.Size(81, 99);
             this.DropDown.TabIndex = 0;
             // 
             // button2
@@ -142,7 +142,7 @@
             this.DropConcedii.MaximumSize = new System.Drawing.Size(82, 100);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(82, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(82, 33);
+            this.DropConcedii.Size = new System.Drawing.Size(82, 99);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
@@ -178,7 +178,7 @@
             this.AdminDrop.MaximumSize = new System.Drawing.Size(82, 100);
             this.AdminDrop.MinimumSize = new System.Drawing.Size(82, 32);
             this.AdminDrop.Name = "AdminDrop";
-            this.AdminDrop.Size = new System.Drawing.Size(82, 33);
+            this.AdminDrop.Size = new System.Drawing.Size(82, 99);
             this.AdminDrop.TabIndex = 4;
             // 
             // button8
@@ -234,7 +234,7 @@
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
-            this.CereriConcediBut.Size = new System.Drawing.Size(85, 34);
+            this.CereriConcediBut.Size = new System.Drawing.Size(85, 99);
             this.CereriConcediBut.TabIndex = 6;
             // 
             // button1
@@ -245,6 +245,7 @@
             this.button1.TabIndex = 6;
             this.button1.Text = "Angajati";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // button11
             // 
@@ -254,6 +255,7 @@
             this.button11.TabIndex = 7;
             this.button11.Text = "Manageri";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // timer4
             // 
