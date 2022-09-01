@@ -9,7 +9,7 @@ namespace ConcediuAngajati
         public PaginaMea(Angajat a)
         {
             InitializeComponent();
-            angajat = a;
+             angajat = a;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,20 +46,20 @@ namespace ConcediuAngajati
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(angajat);
             pagprin.ShowDialog();
-            //this.Show();
+            this.Show();
       
         }
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide();
             CerereConcediu cerereConcediu = new CerereConcediu(null);
             cerereConcediu.ShowDialog();
-            //this.Show();
+            this.Show();
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -94,10 +94,10 @@ namespace ConcediuAngajati
 
         private void button6_Click(object sender, EventArgs e)
         {
-            this.Close();
-            TotiAngajatii totiang = new TotiAngajatii();
-            totiang.ShowDialog();
-            //this.Show();
+            this.Hide();
+            TotiAngajatii tanga = new TotiAngajatii();
+            tanga.ShowDialog();
+            this.Show();
         }
        
     }
