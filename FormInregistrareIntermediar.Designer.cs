@@ -39,7 +39,7 @@
             this.pbImagineProfil = new System.Windows.Forms.PictureBox();
             this.btnAdaugaPoza = new System.Windows.Forms.Button();
             this.btnInregistrare = new System.Windows.Forms.Button();
-            this.btnAdaugaImagine = new System.Windows.Forms.Button();
+            this.btnInapoi = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
@@ -143,16 +143,16 @@
             this.btnInregistrare.UseVisualStyleBackColor = true;
             this.btnInregistrare.Click += new System.EventHandler(this.btnInregistrare_Click);
             // 
-            // btnAdaugaImagine
+            // btnInapoi
             // 
-            this.btnAdaugaImagine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdaugaImagine.BackgroundImage")));
-            this.btnAdaugaImagine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdaugaImagine.Location = new System.Drawing.Point(12, 5);
-            this.btnAdaugaImagine.Name = "btnAdaugaImagine";
-            this.btnAdaugaImagine.Size = new System.Drawing.Size(42, 34);
-            this.btnAdaugaImagine.TabIndex = 10;
-            this.btnAdaugaImagine.UseVisualStyleBackColor = true;
-            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaImagine_Click);
+            this.btnInapoi.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInapoi.BackgroundImage")));
+            this.btnInapoi.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInapoi.Location = new System.Drawing.Point(12, 5);
+            this.btnInapoi.Name = "btnInapoi";
+            this.btnInapoi.Size = new System.Drawing.Size(42, 34);
+            this.btnInapoi.TabIndex = 10;
+            this.btnInapoi.UseVisualStyleBackColor = true;
+            this.btnInapoi.Click += new System.EventHandler(this.btnInapoi_Click);
             // 
             // btnX
             // 
@@ -175,7 +175,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(853, 338);
             this.Controls.Add(this.btnX);
-            this.Controls.Add(this.btnAdaugaImagine);
+            this.Controls.Add(this.btnInapoi);
             this.Controls.Add(this.btnInregistrare);
             this.Controls.Add(this.btnAdaugaPoza);
             this.Controls.Add(this.pbImagineProfil);
@@ -207,7 +207,7 @@
         private PictureBox pbImagineProfil;
         private Button btnAdaugaPoza;
         private Button btnInregistrare;
-        private Button btnAdaugaImagine;
+        private Button btnInapoi;
         private Button btnX;
         private ErrorProvider errorProvider1;
     }
