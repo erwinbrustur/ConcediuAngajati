@@ -125,7 +125,7 @@
         private void button3_Click(object sender, EventArgs e)
         {
             //Afisare cerere
-            CerereConcediu con = new CerereConcediu(null);
+            CerereConcediu con = new CerereConcediu(angajat);
             con.Show();
 
             //Afiseaza calendarul magic
