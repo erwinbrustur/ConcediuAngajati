@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using ConcediuAngajati.PaginaPrincipala;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ using static System.Windows.Forms.DataFormats;
 
 namespace ConcediuAngajati
 {
+   
     public partial class CerereConcediu : Form
     {
         List<string> list;
@@ -212,6 +214,8 @@ namespace ConcediuAngajati
             if (result == DialogResult.Yes)
             {
                 this.Close();
+                PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(userCurent);
+                pagprin.ShowDialog();
             }
             else
             {
