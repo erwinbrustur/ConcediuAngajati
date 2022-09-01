@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             this.zi = new System.Windows.Forms.Label();
+            this.NumePers = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // zi
@@ -41,15 +42,25 @@
             this.zi.TabIndex = 0;
             this.zi.Text = "00";
             // 
+            // NumePers
+            // 
+            this.NumePers.Location = new System.Drawing.Point(4, 47);
+            this.NumePers.Multiline = true;
+            this.NumePers.Name = "NumePers";
+            this.NumePers.Size = new System.Drawing.Size(100, 50);
+            this.NumePers.TabIndex = 1;
+            this.NumePers.TextChanged += new System.EventHandler(this.NumePers_TextChanged);
+            // 
             // UserControlDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.NumePers);
             this.Controls.Add(this.zi);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(123, 100);
-            this.Load += new System.EventHandler(this.UserControlDays_Load);
+            //this.Load += new System.EventHandler(this.UserControlDays_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -58,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Label zi;
+        private TextBox NumePers;
     }
 }

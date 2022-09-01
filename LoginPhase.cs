@@ -18,9 +18,11 @@ namespace ConcediuAngajati
         public LoginPhase()
         {
             InitializeComponent();
-        }    
-       
-          
+            
+        }
+
+
+
         private void button2_Click(object sender, EventArgs e)
         {
             Inregistrare ing = new Inregistrare();
@@ -132,7 +134,8 @@ namespace ConcediuAngajati
         // user
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            
+                //Opacity = 0.2;
         }
 
 
@@ -144,6 +147,11 @@ namespace ConcediuAngajati
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginPhase_Load(object sender, EventArgs e)
         {
 
         }
