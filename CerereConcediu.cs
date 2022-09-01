@@ -91,7 +91,7 @@ namespace ConcediuAngajati
         public List<string> extragereInlocuitoriEchipaDB()
         {
             List<string> strings = new List<string>();
-            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId;
+            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
             MessageBox.Show(userCurent.ManagerId + "Vacanta");
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
@@ -283,24 +283,7 @@ namespace ConcediuAngajati
             cbTipConcediu.DropDownStyle = ComboBoxStyle.DropDown;
         }
 
-        /*private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
-            DateTime outTime = Convert.ToDateTime(dateTimePicker2.Value);
-            if (inTime > outTime)
-            {
-                textBox1.Text = "0";
-                MessageBox.Show("zile de concediu negative");
-                
-            }
-            else
-            {
-                textBox1.Text = ZileConcediu(inTime, outTime).ToString();
-
-            }
-
-        }
-        */
+    
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {

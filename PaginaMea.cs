@@ -57,7 +57,7 @@ namespace ConcediuAngajati
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CerereConcediu cerereConcediu = new CerereConcediu(null);
+            CerereConcediu cerereConcediu = new CerereConcediu(angajat);
             cerereConcediu.ShowDialog();
             this.Show();
         }

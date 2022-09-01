@@ -18,70 +18,9 @@ namespace ConcediuAngajati
         public LoginPhase()
         {
             InitializeComponent();
-        }
-        
-        public int ExtractIntFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "@totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            int parametrulDinBaza = 0;
-            if (dr.Read())
-            {
-                parametrulDinBaza = (dr.GetInt32(0));
-            }
-            conexiune.Close();
-            MessageBox.Show(parametru + user + parametrulDinBaza.ToString());
-            return parametrulDinBaza;
-        }
-        public bool ExtractBoolFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            bool parametrulDinBaza = true;
-            if (dr.Read())
-            {
-                parametrulDinBaza = bool.Parse((string)dr[0]);
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public DateTime ExtractDateFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            DateTime parametrulDinBaza = DateTime.Now;
-            if (dr.Read())
-            {
-                parametrulDinBaza = DateTime.Parse((string)dr[0]);
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public byte[] ExtractByteArrFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine,conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            byte[] parametrulDinBaza=Encoding.ASCII.GetBytes("");
-            if (dr.Read())
-            {
-                parametrulDinBaza = (byte[])dr[0];
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
+        }    
+       
+          
         private void button2_Click(object sender, EventArgs e)
         {
             Inregistrare ing = new Inregistrare();
@@ -166,7 +105,7 @@ namespace ConcediuAngajati
                     Angajat angajat = ExtractAngajatFromSql(user);
 
                     PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
-                    MessageBox.Show("User: " + angajat.Id + angajat.Nume + angajat.Prenume + angajat.Email + angajat.ManagerId);
+                   // MessageBox.Show("User: " + angajat.Id + angajat.Nume + angajat.Prenume + angajat.Email + angajat.ManagerId);
                     ppg.Show();
                     this.Hide();
                 }
