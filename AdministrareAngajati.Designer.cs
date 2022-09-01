@@ -33,7 +33,9 @@
             this.buttonAdaugareAngajat = new System.Windows.Forms.Button();
             this.buttonModificareManageri = new System.Windows.Forms.Button();
             this.panelAdaugareAngajat = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ConfParola = new System.Windows.Forms.TextBox();
+            this.Parola = new System.Windows.Forms.TextBox();
+            this.BtnAdaugareAngajat = new System.Windows.Forms.Button();
             this.Poza = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,7 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.Cnp = new System.Windows.Forms.TextBox();
+            this.CNP = new System.Windows.Forms.TextBox();
             this.Nr = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.Serie = new System.Windows.Forms.TextBox();
@@ -53,15 +55,9 @@
             this.Nume = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.panelModificareManageri.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnPaginaPrincipala
@@ -75,7 +71,7 @@
             // 
             // buttonAdaugareAngajat
             // 
-            this.buttonAdaugareAngajat.Location = new System.Drawing.Point(12, 69);
+            this.buttonAdaugareAngajat.Location = new System.Drawing.Point(12, 78);
             this.buttonAdaugareAngajat.Name = "buttonAdaugareAngajat";
             this.buttonAdaugareAngajat.Size = new System.Drawing.Size(125, 31);
             this.buttonAdaugareAngajat.TabIndex = 1;
@@ -85,7 +81,7 @@
             // 
             // buttonModificareManageri
             // 
-            this.buttonModificareManageri.Location = new System.Drawing.Point(143, 69);
+            this.buttonModificareManageri.Location = new System.Drawing.Point(143, 78);
             this.buttonModificareManageri.Name = "buttonModificareManageri";
             this.buttonModificareManageri.Size = new System.Drawing.Size(125, 31);
             this.buttonModificareManageri.TabIndex = 2;
@@ -96,9 +92,9 @@
             // panelAdaugareAngajat
             // 
             this.panelAdaugareAngajat.BackColor = System.Drawing.Color.White;
-            this.panelAdaugareAngajat.Controls.Add(this.textBox9);
+            this.panelAdaugareAngajat.Controls.Add(this.ConfParola);
             this.panelAdaugareAngajat.Controls.Add(this.Parola);
-            this.panelAdaugareAngajat.Controls.Add(this.button1);
+            this.panelAdaugareAngajat.Controls.Add(this.BtnAdaugareAngajat);
             this.panelAdaugareAngajat.Controls.Add(this.Poza);
             this.panelAdaugareAngajat.Controls.Add(this.label7);
             this.panelAdaugareAngajat.Controls.Add(this.label6);
@@ -111,26 +107,50 @@
             this.panelAdaugareAngajat.Controls.Add(this.LblPrenume);
             this.panelAdaugareAngajat.Controls.Add(this.Nume);
             this.panelAdaugareAngajat.Controls.Add(this.LblNume);
-            this.panelAdaugareAngajat.Location = new System.Drawing.Point(0, 106);
+            this.panelAdaugareAngajat.Location = new System.Drawing.Point(0, 115);
             this.panelAdaugareAngajat.Name = "panelAdaugareAngajat";
-            this.panelAdaugareAngajat.Size = new System.Drawing.Size(803, 390);
+            this.panelAdaugareAngajat.Size = new System.Drawing.Size(803, 382);
             this.panelAdaugareAngajat.TabIndex = 3;
             this.panelAdaugareAngajat.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdaugareAngajat_Paint);
             // 
-            // button1
+            // ConfParola
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkSalmon;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.Maroon;
-            this.button1.Location = new System.Drawing.Point(568, 222);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(131, 50);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Adaugare angajat";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.ConfParola.BackColor = System.Drawing.Color.DarkSalmon;
+            this.ConfParola.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConfParola.ForeColor = System.Drawing.Color.Maroon;
+            this.ConfParola.Location = new System.Drawing.Point(349, 249);
+            this.ConfParola.Multiline = true;
+            this.ConfParola.Name = "ConfParola";
+            this.ConfParola.PasswordChar = '•';
+            this.ConfParola.Size = new System.Drawing.Size(143, 23);
+            this.ConfParola.TabIndex = 9;
+            // 
+            // Parola
+            // 
+            this.Parola.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Parola.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Parola.ForeColor = System.Drawing.Color.Maroon;
+            this.Parola.Location = new System.Drawing.Point(94, 249);
+            this.Parola.Multiline = true;
+            this.Parola.Name = "Parola";
+            this.Parola.PasswordChar = '•';
+            this.Parola.Size = new System.Drawing.Size(143, 23);
+            this.Parola.TabIndex = 8;
+            // 
+            // BtnAdaugareAngajat
+            // 
+            this.BtnAdaugareAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnAdaugareAngajat.FlatAppearance.BorderSize = 0;
+            this.BtnAdaugareAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnAdaugareAngajat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnAdaugareAngajat.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnAdaugareAngajat.Location = new System.Drawing.Point(568, 222);
+            this.BtnAdaugareAngajat.Name = "BtnAdaugareAngajat";
+            this.BtnAdaugareAngajat.Size = new System.Drawing.Size(131, 50);
+            this.BtnAdaugareAngajat.TabIndex = 20;
+            this.BtnAdaugareAngajat.Text = "Adaugare angajat";
+            this.BtnAdaugareAngajat.UseVisualStyleBackColor = false;
+            this.BtnAdaugareAngajat.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Poza
             // 
@@ -169,17 +189,17 @@
             this.NrTel.BackColor = System.Drawing.Color.DarkSalmon;
             this.NrTel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NrTel.ForeColor = System.Drawing.Color.Maroon;
-            this.NrTel.Location = new System.Drawing.Point(349, 88);
+            this.NrTel.Location = new System.Drawing.Point(360, 91);
             this.NrTel.Multiline = true;
             this.NrTel.Name = "NrTel";
             this.NrTel.Size = new System.Drawing.Size(143, 23);
-            this.NrTel.TabIndex = 14;
+            this.NrTel.TabIndex = 4;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Maroon;
-            this.label5.Location = new System.Drawing.Point(243, 91);
+            this.label5.Location = new System.Drawing.Point(254, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 15);
             this.label5.TabIndex = 13;
@@ -189,7 +209,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Snow;
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.Cnp);
+            this.groupBox1.Controls.Add(this.CNP);
             this.groupBox1.Controls.Add(this.Nr);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.Serie);
@@ -214,16 +234,16 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Serie";
             // 
-            // Cnp
+            // CNP
             // 
-            this.Cnp.BackColor = System.Drawing.Color.DarkSalmon;
-            this.Cnp.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Cnp.ForeColor = System.Drawing.Color.Maroon;
-            this.Cnp.Location = new System.Drawing.Point(46, 59);
-            this.Cnp.Multiline = true;
-            this.Cnp.Name = "Cnp";
-            this.Cnp.Size = new System.Drawing.Size(143, 23);
-            this.Cnp.TabIndex = 7;
+            this.CNP.BackColor = System.Drawing.Color.DarkSalmon;
+            this.CNP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CNP.ForeColor = System.Drawing.Color.Maroon;
+            this.CNP.Location = new System.Drawing.Point(46, 59);
+            this.CNP.Multiline = true;
+            this.CNP.Name = "CNP";
+            this.CNP.Size = new System.Drawing.Size(143, 23);
+            this.CNP.TabIndex = 7;
             // 
             // Nr
             // 
@@ -234,7 +254,7 @@
             this.Nr.Multiline = true;
             this.Nr.Name = "Nr";
             this.Nr.Size = new System.Drawing.Size(143, 23);
-            this.Nr.TabIndex = 11;
+            this.Nr.TabIndex = 6;
             // 
             // label1
             // 
@@ -255,7 +275,7 @@
             this.Serie.Multiline = true;
             this.Serie.Name = "Serie";
             this.Serie.Size = new System.Drawing.Size(143, 23);
-            this.Serie.TabIndex = 9;
+            this.Serie.TabIndex = 5;
             // 
             // label3
             // 
@@ -272,21 +292,21 @@
             this.Email.BackColor = System.Drawing.Color.DarkSalmon;
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Email.ForeColor = System.Drawing.Color.Maroon;
-            this.Email.Location = new System.Drawing.Point(349, 42);
+            this.Email.Location = new System.Drawing.Point(360, 42);
             this.Email.Multiline = true;
             this.Email.Name = "Email";
             this.Email.Size = new System.Drawing.Size(143, 23);
-            this.Email.TabIndex = 5;
+            this.Email.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Maroon;
-            this.label2.Location = new System.Drawing.Point(254, 45);
+            this.label2.Location = new System.Drawing.Point(249, 42);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(89, 15);
+            this.label2.Size = new System.Drawing.Size(105, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Nume utilizator";
+            this.label2.Text = "Nume de utilizator";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Prenume
@@ -298,7 +318,8 @@
             this.Prenume.Multiline = true;
             this.Prenume.Name = "Prenume";
             this.Prenume.Size = new System.Drawing.Size(143, 23);
-            this.Prenume.TabIndex = 3;
+            this.Prenume.TabIndex = 2;
+            this.Prenume.TextChanged += new System.EventHandler(this.Prenume_TextChanged);
             // 
             // LblPrenume
             // 
@@ -309,6 +330,7 @@
             this.LblPrenume.Size = new System.Drawing.Size(55, 15);
             this.LblPrenume.TabIndex = 2;
             this.LblPrenume.Text = "Prenume";
+            this.LblPrenume.Click += new System.EventHandler(this.LblPrenume_Click);
             // 
             // Nume
             // 
@@ -320,6 +342,7 @@
             this.Nume.Name = "Nume";
             this.Nume.Size = new System.Drawing.Size(143, 23);
             this.Nume.TabIndex = 1;
+            this.Nume.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // LblNume
             // 
@@ -334,44 +357,16 @@
             // 
             // panelModificareManageri
             // 
-            this.panelModificareManageri.BackColor = System.Drawing.Color.White;
-            this.panelModificareManageri.Controls.Add(this.groupBox4);
-            this.panelModificareManageri.Controls.Add(this.groupBox3);
-            this.panelModificareManageri.Controls.Add(this.groupBox2);
-            this.panelModificareManageri.Location = new System.Drawing.Point(0, 106);
+            this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
-            this.panelModificareManageri.Size = new System.Drawing.Size(803, 390);
+            this.panelModificareManageri.Size = new System.Drawing.Size(803, 382);
             this.panelModificareManageri.TabIndex = 4;
-            // 
-            // textBox8
-            // 
-            this.textBox8.BackColor = System.Drawing.Color.DarkSalmon;
-            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox8.Location = new System.Drawing.Point(94, 249);
-            this.textBox8.Multiline = true;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PasswordChar = '•';
-            this.textBox8.Size = new System.Drawing.Size(143, 23);
-            this.textBox8.TabIndex = 12;
-            // 
-            // textBox9
-            // 
-            this.textBox9.BackColor = System.Drawing.Color.DarkSalmon;
-            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox9.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox9.Location = new System.Drawing.Point(349, 249);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.PasswordChar = '•';
-            this.textBox9.Size = new System.Drawing.Size(143, 23);
-            this.textBox9.TabIndex = 21;
             // 
             // AdministrareAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 495);
             this.Controls.Add(this.panelModificareManageri);
@@ -388,13 +383,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panelModificareManageri.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -407,7 +395,7 @@
         private Panel panelAdaugareAngajat;
         private Panel panelModificareManageri;
         private Label LblNume;
-        private TextBox Cnp;
+        private TextBox CNP;
         private Label label1;
         private TextBox Email;
         private Label label2;
@@ -424,27 +412,8 @@
         private Label label6;
         private TextBox NrTel;
         private Label label5;
-        private Button button1;
-        private TextBox textBox9;
+        private Button BtnAdaugareAngajat;
+        private TextBox ConfParola;
         private TextBox Parola;
-        private Button BtnMutare;
-        private GroupBox groupBox2;
-        private Label label9;
-        private Label label8;
-        private GroupBox groupBox3;
-        private ComboBox CreareManager;
-        private Label label11;
-        private Button BtnCreare;
-        private ComboBox MutareManagerNou;
-        private ComboBox MutareAngajat;
-        private ComboBox MutareManagerActual;
-        private Label label10;
-        private GroupBox groupBox4;
-        private ComboBox StergereManager2;
-        private Label label13;
-        private ComboBox StergereManager;
-        private Label label12;
-        private Button button4;
-        private Label label14;
     }
 }

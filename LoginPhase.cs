@@ -155,5 +155,11 @@ namespace ConcediuAngajati
         {
 
         }
+
+        private void btnInchidereLP_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Environment.Exit(1);
+        }
     }
 }
