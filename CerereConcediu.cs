@@ -325,6 +325,17 @@ namespace ConcediuAngajati
 
             }
         }
+
+        private void CerereConcediu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInchidereCC_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Environment.Exit(1);
+        }
     }
 }
 

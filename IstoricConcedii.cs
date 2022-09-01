@@ -39,5 +39,11 @@ namespace ConcediuAngajati
         {
 
         }
+
+        private void btnInchidere_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Environment.Exit(1);
+        }
     }
 }

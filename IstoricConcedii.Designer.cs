@@ -35,6 +35,7 @@
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.lblIstoric = new System.Windows.Forms.Label();
+            this.btnInchidere = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listView1
@@ -45,6 +46,7 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.listView1.ForeColor = System.Drawing.Color.Maroon;
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(21, 72);
             this.listView1.Name = "listView1";
@@ -81,19 +83,35 @@
             // lblIstoric
             // 
             this.lblIstoric.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblIstoric.ForeColor = System.Drawing.Color.Maroon;
             this.lblIstoric.Location = new System.Drawing.Point(301, 9);
             this.lblIstoric.Name = "lblIstoric";
             this.lblIstoric.Size = new System.Drawing.Size(200, 50);
             this.lblIstoric.TabIndex = 4;
             this.lblIstoric.Text = "Istoric Concedii";
             // 
+            // btnInchidere
+            // 
+            this.btnInchidere.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidere.ForeColor = System.Drawing.Color.Maroon;
+            this.btnInchidere.Location = new System.Drawing.Point(751, 9);
+            this.btnInchidere.Name = "btnInchidere";
+            this.btnInchidere.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidere.TabIndex = 5;
+            this.btnInchidere.Text = "X";
+            this.btnInchidere.UseVisualStyleBackColor = true;
+            this.btnInchidere.Click += new System.EventHandler(this.btnInchidere_Click);
+            // 
             // IstoricConcedii
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.btnInchidere);
             this.Controls.Add(this.lblIstoric);
             this.Controls.Add(this.listView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IstoricConcedii";
             this.Text = "IstoricConcedii";
             this.ResumeLayout(false);
@@ -109,5 +127,6 @@
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
         private Label lblIstoric;
+        private Button btnInchidere;
     }
 }
