@@ -19,7 +19,9 @@ namespace ConcediuAngajati
         public AdministrareAngajati()
         {
             InitializeComponent();
-     
+            this.panelAdaugareAngajat.BackColor = Color.FromArgb(99, 127, 124, 127);
+
+           
         }
 
         public static string Hash(string Value)

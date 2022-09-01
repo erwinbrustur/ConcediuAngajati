@@ -55,38 +55,52 @@
             this.Nume = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.panelModificareManageri.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnPaginaPrincipala
             // 
+            this.BtnPaginaPrincipala.BackColor = System.Drawing.Color.Transparent;
+            this.BtnPaginaPrincipala.FlatAppearance.BorderSize = 0;
+            this.BtnPaginaPrincipala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPaginaPrincipala.ForeColor = System.Drawing.Color.White;
             this.BtnPaginaPrincipala.Location = new System.Drawing.Point(12, 12);
             this.BtnPaginaPrincipala.Name = "BtnPaginaPrincipala";
             this.BtnPaginaPrincipala.Size = new System.Drawing.Size(164, 34);
             this.BtnPaginaPrincipala.TabIndex = 0;
             this.BtnPaginaPrincipala.Text = "Inapoi la pagina principala";
-            this.BtnPaginaPrincipala.UseVisualStyleBackColor = true;
+            this.BtnPaginaPrincipala.UseVisualStyleBackColor = false;
             // 
             // buttonAdaugareAngajat
             // 
+            this.buttonAdaugareAngajat.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAdaugareAngajat.FlatAppearance.BorderSize = 0;
+            this.buttonAdaugareAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdaugareAngajat.ForeColor = System.Drawing.Color.White;
             this.buttonAdaugareAngajat.Location = new System.Drawing.Point(12, 78);
             this.buttonAdaugareAngajat.Name = "buttonAdaugareAngajat";
             this.buttonAdaugareAngajat.Size = new System.Drawing.Size(125, 31);
             this.buttonAdaugareAngajat.TabIndex = 1;
             this.buttonAdaugareAngajat.Text = "Adaugare angajat";
-            this.buttonAdaugareAngajat.UseVisualStyleBackColor = true;
+            this.buttonAdaugareAngajat.UseVisualStyleBackColor = false;
             this.buttonAdaugareAngajat.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonModificareManageri
             // 
+            this.buttonModificareManageri.BackColor = System.Drawing.Color.Transparent;
+            this.buttonModificareManageri.FlatAppearance.BorderSize = 0;
+            this.buttonModificareManageri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificareManageri.ForeColor = System.Drawing.Color.White;
             this.buttonModificareManageri.Location = new System.Drawing.Point(143, 78);
             this.buttonModificareManageri.Name = "buttonModificareManageri";
             this.buttonModificareManageri.Size = new System.Drawing.Size(125, 31);
             this.buttonModificareManageri.TabIndex = 2;
             this.buttonModificareManageri.Text = "Modificare manageri";
-            this.buttonModificareManageri.UseVisualStyleBackColor = true;
+            this.buttonModificareManageri.UseVisualStyleBackColor = false;
             this.buttonModificareManageri.Click += new System.EventHandler(this.buttonModificareManageri_Click);
             // 
             // panelAdaugareAngajat
@@ -154,6 +168,7 @@
             // 
             // Poza
             // 
+            this.Poza.BackColor = System.Drawing.Color.Transparent;
             this.Poza.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Poza.BackgroundImage")));
             this.Poza.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Poza.Location = new System.Drawing.Point(558, 45);
@@ -167,6 +182,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.Maroon;
             this.label7.Location = new System.Drawing.Point(243, 252);
             this.label7.Name = "label7";
@@ -177,6 +193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.Maroon;
             this.label6.Location = new System.Drawing.Point(48, 252);
             this.label6.Name = "label6";
@@ -198,6 +215,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.Maroon;
             this.label5.Location = new System.Drawing.Point(254, 91);
             this.label5.Name = "label5";
@@ -207,7 +225,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.Snow;
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.CNP);
             this.groupBox1.Controls.Add(this.Nr);
@@ -227,6 +245,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.Maroon;
             this.label4.Location = new System.Drawing.Point(8, 24);
             this.label4.Name = "label4";
@@ -259,6 +278,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(11, 62);
             this.label1.Name = "label1";
@@ -280,6 +300,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.Maroon;
             this.label3.Location = new System.Drawing.Point(251, 24);
             this.label3.Name = "label3";
@@ -301,6 +322,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.Maroon;
             this.label2.Location = new System.Drawing.Point(249, 42);
             this.label2.Name = "label2";
@@ -324,6 +346,7 @@
             // LblPrenume
             // 
             this.LblPrenume.AutoSize = true;
+            this.LblPrenume.BackColor = System.Drawing.Color.Transparent;
             this.LblPrenume.ForeColor = System.Drawing.Color.Maroon;
             this.LblPrenume.Location = new System.Drawing.Point(33, 91);
             this.LblPrenume.Name = "LblPrenume";
@@ -347,6 +370,7 @@
             // LblNume
             // 
             this.LblNume.AutoSize = true;
+            this.LblNume.BackColor = System.Drawing.Color.Transparent;
             this.LblNume.ForeColor = System.Drawing.Color.Maroon;
             this.LblNume.Location = new System.Drawing.Point(48, 45);
             this.LblNume.Name = "LblNume";
@@ -358,15 +382,25 @@
             // panelModificareManageri
             // 
             this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelModificareManageri.Controls.Add(this.comboBox1);
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
             this.panelModificareManageri.Size = new System.Drawing.Size(803, 382);
             this.panelModificareManageri.TabIndex = 4;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(78, 32);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 0;
+            // 
             // AdministrareAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 495);
             this.Controls.Add(this.panelModificareManageri);
@@ -383,6 +417,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.panelModificareManageri.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -415,5 +450,6 @@
         private Button BtnAdaugareAngajat;
         private TextBox ConfParola;
         private TextBox Parola;
+        private ComboBox comboBox1;
     }
 }
