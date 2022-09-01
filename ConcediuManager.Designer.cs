@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Accept = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Respins = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Accept = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,6 +43,16 @@
             this.label1.Size = new System.Drawing.Size(219, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
+            // 
+            // Respins
+            // 
+            this.Respins.HeaderText = "Respins";
+            this.Respins.Name = "Respins";
+            // 
+            // Accept
+            // 
+            this.Accept.HeaderText = "Accept";
+            this.Accept.Name = "Accept";
             // 
             // dataGridView1
             // 
@@ -58,16 +68,8 @@
             this.dataGridView1.RowTemplate.Height = 29;
             this.dataGridView1.Size = new System.Drawing.Size(593, 229);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Accept
-            // 
-            this.Accept.HeaderText = "Accept";
-            this.Accept.Name = "Accept";
-            // 
-            // Respins
-            // 
-            this.Respins.HeaderText = "Respins";
-            this.Respins.Name = "Respins";
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
             // 
             // ConcediuManager
             // 
@@ -87,8 +89,8 @@
         #endregion
 
         private Label label1;
-        private DataGridView dataGridView1;
-        private DataGridViewCheckBoxColumn Accept;
         private DataGridViewCheckBoxColumn Respins;
+        private DataGridViewCheckBoxColumn Accept;
+        private DataGridView dataGridView1;
     }
 }

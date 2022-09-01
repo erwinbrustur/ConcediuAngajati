@@ -28,82 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.checkAccept = new System.Windows.Forms.DataGridView();
-            this.dataGridViewCheckBoxColumn3 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Respins = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.checkAccept)).BeginInit();
+            this.Actualizare = new System.Windows.Forms.Button();
+            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
+            this.dgvConcedii = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
             // 
-            // checkAccept
+            // Actualizare
             // 
-            this.checkAccept.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Maroon;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DarkSalmon;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Coral;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.LightCoral;
-            this.checkAccept.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.checkAccept.BackgroundColor = System.Drawing.Color.White;
-            this.checkAccept.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkAccept.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewCheckBoxColumn3,
-            this.Respins});
-            this.checkAccept.GridColor = System.Drawing.Color.Maroon;
-            this.checkAccept.Location = new System.Drawing.Point(11, 65);
-            this.checkAccept.Name = "checkAccept";
-            this.checkAccept.RowHeadersWidth = 51;
-            this.checkAccept.RowTemplate.Height = 29;
-            this.checkAccept.Size = new System.Drawing.Size(879, 371);
-            this.checkAccept.TabIndex = 13;
-            this.checkAccept.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.Actualizare.Location = new System.Drawing.Point(624, 26);
+            this.Actualizare.Name = "Actualizare";
+            this.Actualizare.Size = new System.Drawing.Size(107, 23);
+            this.Actualizare.TabIndex = 0;
+            this.Actualizare.Text = "Actualizare";
+            this.Actualizare.UseVisualStyleBackColor = true;
+            this.Actualizare.Click += new System.EventHandler(this.Actualizare_Click);
             // 
-            // dataGridViewCheckBoxColumn3
+            // cbStareConcediu
             // 
-            this.dataGridViewCheckBoxColumn3.HeaderText = "Accept";
-            this.dataGridViewCheckBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewCheckBoxColumn3.Name = "dataGridViewCheckBoxColumn3";
-            this.dataGridViewCheckBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCheckBoxColumn3.Width = 125;
+            this.cbStareConcediu.FormattingEnabled = true;
+            this.cbStareConcediu.Location = new System.Drawing.Point(31, 21);
+            this.cbStareConcediu.Name = "cbStareConcediu";
+            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbStareConcediu.TabIndex = 1;
+            this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
-            // Respins
+            // dgvConcedii
             // 
-            this.Respins.HeaderText = "Respins";
-            this.Respins.MinimumWidth = 6;
-            this.Respins.Name = "Respins";
-            this.Respins.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Respins.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Respins.Width = 125;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(259, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 51);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Concediu Angajati";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.dgvConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConcedii.Location = new System.Drawing.Point(31, 73);
+            this.dgvConcedii.Name = "dgvConcedii";
+            this.dgvConcedii.RowTemplate.Height = 25;
+            this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
+            this.dgvConcedii.TabIndex = 2;
+            this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
+            this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
             // 
             // ConcediuAngajati
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkSalmon;
-            this.ClientSize = new System.Drawing.Size(904, 451);
-            this.Controls.Add(this.checkAccept);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvConcedii);
+            this.Controls.Add(this.cbStareConcediu);
+            this.Controls.Add(this.Actualizare);
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
-            ((System.ComponentModel.ISupportInitialize)(this.checkAccept)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private DataGridView checkAccept;
-        private Label label1;
-        private DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn3;
-        private DataGridViewCheckBoxColumn Respins;
+
+        private Button Actualizare;
+        private ComboBox cbStareConcediu;
+        private DataGridView dgvConcedii;
     }
 }

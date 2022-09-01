@@ -363,12 +363,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 495);
             this.Controls.Add(this.panelModificareManageri);
             this.Controls.Add(this.panelAdaugareAngajat);
             this.Controls.Add(this.buttonModificareManageri);
             this.Controls.Add(this.buttonAdaugareAngajat);
             this.Controls.Add(this.BtnPaginaPrincipala);
+            this.DoubleBuffered = true;
             this.Name = "AdministrareAngajati";
             this.Text = "AdministrareAngajati";
             this.Load += new System.EventHandler(this.AdministrareAngajati_Load);
