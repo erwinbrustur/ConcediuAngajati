@@ -43,6 +43,25 @@ namespace ConcediuAngajati
 
             angajatistring = extragereAngajatiDB();
 
+            extragereConcediiDB();
+
+
+            listaStare = extragereStareConcediuDB();
+
+            foreach (string s in listaStare)
+            {
+                string[] str = s.Split(',');
+                cbStareConcediu.Items.Add(str[1]);
+
+            }
+            cbStareConcediu.SelectedIndex = 0;
+            listaStare = extragereStareConcediuDB();
+
+
+            cbStareConcediu.SelectedIndex = 0;
+
+            angajatistring = extragereAngajatiDB();
+
 
         }
 
@@ -132,15 +151,7 @@ namespace ConcediuAngajati
         }
         private void cbStareConcediu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (string str in listaStare)
-            {
-                string[] s = str.Split(',');
-                if (s[1].CompareTo(cbStareConcediu.Text) == 0)
-                {
-                    stareConcediuId = Convert.ToInt32(s[0]);
-
-                }
-            }
+            
         }
 
         private void Actualizare_Click(object sender, EventArgs e)
