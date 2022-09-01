@@ -14,13 +14,15 @@ namespace ConcediuAngajati
     public partial class ConcediuAngajati : Form
     {
         string connectionString;
+        List<Concediu> concedii;
         public ConcediuAngajati()
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            concedii = extragereConcediiDB();
         }
 
-        public List<Concediu> extragereTipConcediiDB()
+        public List<Concediu> extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
             string selectSQL = "SELECT * from Concediu";
@@ -37,9 +39,40 @@ namespace ConcediuAngajati
                     Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
                     listaConcedii.Add(c);
                 }
-
-
                 return listaConcedii;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            finally
+            {
+                conexiune.Close();
+            }
+
+        }
+
+        public List<string> extragereInlocuitoriEchipaDB()
+        {
+            List<string> strings = new List<string>();
+            string selectSQL = "SELECT * FROM Angajat";
+            SqlConnection conexiune = new SqlConnection(connectionString);
+            SqlCommand querySelect = new SqlCommand(selectSQL);
+            try
+            {
+                conexiune.Open();
+                querySelect.Connection = conexiune;
+                SqlDataReader reader = querySelect.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
+
+                }
+
+
+                return strings;
             }
             catch (Exception ex)
             {
@@ -53,6 +86,15 @@ namespace ConcediuAngajati
 
             }
 
+        }
+
+        private void populareLv(List<Concediu> lista)
+        {
+            foreach(Concediu concediu in lista)
+            {
+                DataGridViewRow rand = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
+                //rand.Cells[0].Value = concediu.;
+            }
         }
 
         private void lblConcediuManageri_Click(object sender, EventArgs e)
