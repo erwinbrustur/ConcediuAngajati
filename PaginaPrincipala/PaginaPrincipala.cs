@@ -112,6 +112,7 @@
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            this.Close();
             PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
             
@@ -124,6 +125,7 @@
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Close();
             //Afisare cerere
             CerereConcediu con = new CerereConcediu(angajat);
             con.Show();
@@ -135,6 +137,7 @@
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Close();
             //Afisare istoric
             IstoricConcedii coni = new IstoricConcedii();
             coni.Show();
