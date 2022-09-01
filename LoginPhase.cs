@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
+using System.Reflection.Metadata;
 
 namespace ConcediuAngajati
 {
@@ -17,80 +18,9 @@ namespace ConcediuAngajati
         public LoginPhase()
         {
             InitializeComponent();
-        }
-        public string ExtractFromSql(string parametru,string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine,conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            string parametrulDinBaza="";
-            if (dr.Read()) {
-                parametrulDinBaza = dr[0].ToString(); }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public int ExtractIntFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            int parametrulDinBaza = 0;
-            if (dr.Read())
-            {
-                parametrulDinBaza = int.Parse((string)dr[0]);
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public bool ExtractBoolFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            bool parametrulDinBaza = true;
-            if (dr.Read())
-            {
-                parametrulDinBaza = bool.Parse((string)dr[0]);
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public DateTime ExtractDateFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            DateTime parametrulDinBaza = DateTime.Now;
-            if (dr.Read())
-            {
-                parametrulDinBaza = DateTime.Parse((string)dr[0]);
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
-        public byte[] ExtractByteArrFromSql(string parametru, string user)
-        {
-            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            conexiune.Open();
-            string CommandLine = "SELECT " + parametru + " FROM Angajat WHERE email='" + user + "totalsoft.ro'";
-            SqlCommand cmd = new SqlCommand(CommandLine,conexiune);
-            SqlDataReader dr = cmd.ExecuteReader();
-            byte[] parametrulDinBaza=Encoding.ASCII.GetBytes("");
-            if (dr.Read())
-            {
-                parametrulDinBaza = (byte[])dr[0];
-            }
-            conexiune.Close();
-            return parametrulDinBaza;
-        }
+        }    
+       
+          
         private void button2_Click(object sender, EventArgs e)
         {
             Inregistrare ing = new Inregistrare();
@@ -102,6 +32,41 @@ namespace ConcediuAngajati
             using var hash = SHA256.Create();
             var byteArray = hash.ComputeHash(Encoding.UTF8.GetBytes(Value));
             return Convert.ToHexString(byteArray);
+        }
+
+        public Angajat ExtractAngajatFromSql(string user)
+        {
+            SqlConnection conexiune = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
+            conexiune.Open();
+            string CommandLine = "SELECT * FROM Angajat WHERE email='" + user + "@totalsoft.ro'";
+            SqlCommand cmd = new SqlCommand(CommandLine, conexiune);
+            SqlDataReader dr = cmd.ExecuteReader();
+            Angajat angajat = null;
+            if (dr.Read())
+            {
+                // Boolean d = Convert.ToBoolean(dr[12].ToString());
+                // MessageBox.Show(dr[5].ToString());
+
+                //  MessageBox.Show(Convert.ToInt32(dr[0].ToString()) + dr[1].ToString() + dr[2].ToString()+ dr[3].ToString()+ dr[4].ToString()+ Convert.ToDateTime(dr[5].ToString())+ Convert.ToDateTime(dr[6].ToString())+ dr[7].ToString()+ dr[8].ToString()+ dr[9].ToString(), dr[10].ToString()+ Convert.ToBoolean(dr[12].ToString())+ Convert.ToInt32(dr[13].ToString()));
+                int id = Convert.ToInt32(dr[0].ToString());
+                string nume = dr[1].ToString();
+                string prenume = dr[2].ToString();
+                string email = dr[3].ToString();
+                string parola = dr[4].ToString();
+                DateTime dataAngajare = Convert.ToDateTime(dr[5].ToString());
+                DateTime dataNastere = Convert.ToDateTime(dr[6].ToString());
+                string cnp = dr[7].ToString();
+                string serie = dr[8].ToString();
+                string numar = dr[9].ToString();
+                string telefon = dr[10].ToString();
+                byte[] poza = (byte[])dr[11];
+                bool esteAdmin = Convert.ToBoolean(dr[12].ToString());
+                int managerId = Convert.ToInt32(dr[13].ToString());
+                //MessageBox.Show(dr[13].ToString());
+                angajat = new Angajat(id,nume,prenume,email,parola,dataAngajare,dataNastere,cnp,serie,numar,telefon,poza,esteAdmin,managerId);
+            }
+            conexiune.Close();
+            return angajat;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -135,24 +100,12 @@ namespace ConcediuAngajati
                     bool esteAdmin;
                     int managerId,id;
 
-                    
-                    id = ExtractIntFromSql("id", textBox1.Text);
-                    managerId = ExtractIntFromSql("managerId", textBox1.Text);
-                    esteAdmin = ExtractBoolFromSql("esteAdmin", textBox1.Text);
-                    nume = ExtractFromSql("nume",textBox1.Text);
-                    prenume = ExtractFromSql("prenume", textBox1.Text);
-                    email = ExtractFromSql("email", textBox1.Text);
-                    parola = ExtractFromSql("parola", textBox1.Text);
-                    nrTelefon = ExtractFromSql("nrTelefon", textBox1.Text);
-                    dataAngajare = ExtractDateFromSql("dataAngajare", textBox1.Text);
-                    dataNasterii = ExtractDateFromSql("dataNasterii", textBox1.Text);
-                    cnp = ExtractFromSql("cnp", textBox1.Text);
-                    serie = ExtractFromSql("serie", textBox1.Text);
-                    no = ExtractFromSql("no", textBox1.Text);
-                    poza = ExtractByteArrFromSql("poza", textBox1.Text);
-                    
-                    Angajat angajat = new Angajat(id,nume, prenume, email, parola,  dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza,esteAdmin,managerId);
+
+
+                    Angajat angajat = ExtractAngajatFromSql(user);
+
                     PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+                   // MessageBox.Show("User: " + angajat.Id + angajat.Nume + angajat.Prenume + angajat.Email + angajat.ManagerId);
                     ppg.Show();
                     this.Hide();
                 }

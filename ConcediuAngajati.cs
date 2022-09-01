@@ -14,70 +14,43 @@ namespace ConcediuAngajati
     public partial class ConcediuAngajati : Form
     {
         string connectionString;
-        List<Concediu> concedii;
         public ConcediuAngajati()
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
-            concedii = extragereConcediiDB();
+            extragereConcediiDB();
         }
 
-        public List<Concediu> extragereConcediiDB()
+        public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT * from Concediu";
+            string selectSQL = "SELECT a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii' FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
                 conexiune.Open();
                 querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
+                //SqlDataReader reader = querySelect.ExecuteReader();
 
-                while (reader.Read())
-                {
-                    Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
-                    listaConcedii.Add(c);
-                }
-                return listaConcedii;
+                //while (reader.Read())
+                //{
+                //    Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
+                //    listaConcedii.Add(c);
+                //}
+                
+                DataTable dt = new DataTable();
+                SqlDataAdapter adapt = new SqlDataAdapter(selectSQL, conexiune);
+                adapt.Fill(dt);
+                checkAccept.DataSource = dt;
+          
+
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-            }
-
-        }
-
-        public List<string> extragereInlocuitoriEchipaDB()
-        {
-            List<string> strings = new List<string>();
-            string selectSQL = "SELECT * FROM Angajat";
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
-            {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-
-                }
-
-
-                return strings;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
+                
             }
             finally
             {
@@ -86,15 +59,6 @@ namespace ConcediuAngajati
 
             }
 
-        }
-
-        private void populareLv(List<Concediu> lista)
-        {
-            foreach(Concediu concediu in lista)
-            {
-                DataGridViewRow rand = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
-                //rand.Cells[0].Value = concediu.;
-            }
         }
 
         private void lblConcediuManageri_Click(object sender, EventArgs e)
@@ -121,5 +85,7 @@ namespace ConcediuAngajati
         {
 
         }
+
+        
     }
 }
