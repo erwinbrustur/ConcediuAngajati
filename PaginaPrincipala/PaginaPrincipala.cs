@@ -121,7 +121,7 @@
         {
             this.Close();
             //Afisare istoric
-            IstoricConcedii coni = new IstoricConcedii();
+            IstoricConcedii coni = new IstoricConcedii(angajat);
             coni.Show();
         }
 
@@ -191,6 +191,13 @@
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnInchiderePP_Click(object sender, EventArgs e)
+        {
+            LoginPhase login = new LoginPhase();
+            login.Show();
+            this.Close();
         }
     }
 }

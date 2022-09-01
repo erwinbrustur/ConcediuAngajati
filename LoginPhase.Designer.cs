@@ -97,7 +97,7 @@
             // btnInchidereLP
             // 
             this.btnInchidereLP.BackColor = System.Drawing.Color.Transparent;
-            this.btnInchidereLP.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
+            this.btnInchidereLP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInchidereLP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchidereLP.ForeColor = System.Drawing.Color.Silver;
             this.btnInchidereLP.Location = new System.Drawing.Point(882, 12);

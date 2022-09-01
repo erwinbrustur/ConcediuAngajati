@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConcediuAngajati.PaginaPrincipala;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,11 @@ namespace ConcediuAngajati
 {
     public partial class IstoricConcedii : Form
     {
-        public IstoricConcedii()
+        Angajat angajat;
+        public IstoricConcedii(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
         }
 
 
@@ -42,8 +45,9 @@ namespace ConcediuAngajati
 
         private void btnInchidere_Click(object sender, EventArgs e)
         {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
+            paginap.Show();
             this.Close();
-            Environment.Exit(1);
         }
     }
 }

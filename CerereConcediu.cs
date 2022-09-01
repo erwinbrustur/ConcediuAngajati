@@ -336,8 +336,9 @@ namespace ConcediuAngajati
 
         private void btnInchidereCC_Click(object sender, EventArgs e)
         {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(userCurent);
+            paginap.Show();
             this.Close();
-            Environment.Exit(1);
         }
     }
 }
