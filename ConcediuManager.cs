@@ -12,9 +12,11 @@ namespace ConcediuAngajati
 {
     public partial class ConcediuManager : Form
     {
-        public ConcediuManager()
+        Angajat angajat;
+        public ConcediuManager(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
         }
 
         private void dataGridView1_CurrentCellChanged(object sender, EventArgs e)
@@ -40,6 +42,13 @@ namespace ConcediuAngajati
                     }
                 }
             }
+        }
+
+        private void btnInchidereCM_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
+            paginap.Show();
+            this.Close();
         }
     }
 }
