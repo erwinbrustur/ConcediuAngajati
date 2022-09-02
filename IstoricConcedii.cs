@@ -22,19 +22,15 @@ namespace ConcediuAngajati
         int idAngajatSelectat;
         int stareConcediuId;
         int idConcediu;
+        Angajat angajat;
         public IstoricConcedii(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            angajat = a;
             listaStare = extragereStareConcediuDB();
-
-           
 
             extragereConcediiDB();
-            
-            listaStare = extragereStareConcediuDB();
-
-
      
 
             angajatistring = extragereAngajatiDB();
@@ -94,8 +90,9 @@ namespace ConcediuAngajati
 
         private void btnInchidere_Click(object sender, EventArgs e)
         {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
+            paginap.Show();
             this.Close();
-            Environment.Exit(1);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

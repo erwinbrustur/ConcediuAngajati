@@ -1,4 +1,6 @@
-﻿namespace ConcediuAngajati.PaginaPrincipala
+﻿using System.Data.SqlClient;
+
+namespace ConcediuAngajati.PaginaPrincipala
 {
     public partial class PaginaPrincipala : Form
     {
@@ -134,6 +136,32 @@
 
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
+            SqlConnection cnx = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
+            cnx.Open();
+            SqlCommand managerID = new SqlCommand("select managerId from Angajat group by managerId",cnx);
+            SqlDataReader reader = managerID.ExecuteReader();
+            List<string> iduri= new List<string>();
+
+
+            while (reader.Read())
+            {
+                iduri.Add(reader[0].ToString());
+            }
+
+            foreach(string id in iduri)
+            {
+                if (angajat.Id.ToString() == id)
+                {
+                    CereriConcediBut.Show();
+                    DropConcedii.Show();
+                }
+                else
+                {
+                    CereriConcediBut.Hide();
+                    DropConcedii.Hide();
+                }
+                cnx.Close();
+            }
             
         }
 
@@ -171,8 +199,9 @@
 
         private void button1_Click_2(object sender, EventArgs e)
         {
-            //concediuAngajati  
-            ConcediuAngajati cang = new ConcediuAngajati();
+            //concediuAngajati
+            this.Close();
+            ConcediuAngajati cang = new ConcediuAngajati(angajat);
             cang.Show();
         }
 
@@ -194,6 +223,12 @@
         }
 
         private void btnInchiderePP_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Environment.Exit(1);
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
         {
             LoginPhase login = new LoginPhase();
             login.Show();
