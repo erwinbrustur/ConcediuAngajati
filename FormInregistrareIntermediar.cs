@@ -161,7 +161,7 @@ namespace ConcediuAngajati
             }
         }
 
-        private void btnAdaugaImagine_Click(object sender, EventArgs e)
+        private void btnInapoi_Click(object sender, EventArgs e)
         {
             Close();
         }
