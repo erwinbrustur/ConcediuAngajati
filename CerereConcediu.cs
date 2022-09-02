@@ -177,6 +177,7 @@ namespace ConcediuAngajati
             {
                 int firstDayOfWeek = (int)firstDay.DayOfWeek;
                 int lastDayOfWeek = (int)lastDay.DayOfWeek;
+                firstDayOfWeek = firstDayOfWeek == 0 ? 7 : firstDayOfWeek;
                 if (lastDayOfWeek < firstDayOfWeek)
                     lastDayOfWeek += 7;
                 if (firstDayOfWeek <= 6)
@@ -186,9 +187,6 @@ namespace ConcediuAngajati
                         zileConcediu -= 2; // Altfel scadem doar sambata si duminica
                     else if (lastDayOfWeek >= 6)
                         zileConcediu -= 1;
-                    else if (lastDayOfWeek <= 5)
-                        zileConcediu -= 1; // Trebuie sa scadem sambata
-                    
                
                 }
                else if (firstDayOfWeek <= 7 &&  lastDayOfWeek >= 7 ) // Scadem doar duminica
