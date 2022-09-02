@@ -29,59 +29,112 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.Respins = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Accept = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Actualizeaza = new System.Windows.Forms.Button();
+            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
+            this.dgvConcediuManager = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inceput = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sfarsit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Inlocuitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comentarii = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(239, 7);
+            this.label1.Location = new System.Drawing.Point(255, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(219, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
             // 
-            // Respins
+            // Actualizeaza
             // 
-            this.Respins.HeaderText = "Respins";
-            this.Respins.Name = "Respins";
+            this.Actualizeaza.Location = new System.Drawing.Point(582, 17);
+            this.Actualizeaza.Name = "Actualizeaza";
+            this.Actualizeaza.Size = new System.Drawing.Size(84, 23);
+            this.Actualizeaza.TabIndex = 1;
+            this.Actualizeaza.Text = "Actualizare";
+            this.Actualizeaza.UseVisualStyleBackColor = true;
+            this.Actualizeaza.Click += new System.EventHandler(this.Actualizare_Click);
             // 
-            // Accept
+            // cbStareConcediu
             // 
-            this.Accept.HeaderText = "Accept";
-            this.Accept.Name = "Accept";
+            this.cbStareConcediu.FormattingEnabled = true;
+            this.cbStareConcediu.Location = new System.Drawing.Point(24, 13);
+            this.cbStareConcediu.Name = "cbStareConcediu";
+            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbStareConcediu.TabIndex = 2;
+            this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
-            // dataGridView1
+            // dgvConcediuManager
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Accept,
-            this.Respins});
-            this.dataGridView1.Location = new System.Drawing.Point(10, 46);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(593, 229);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
-            this.dataGridView1.CurrentCellChanged += new System.EventHandler(this.dataGridView1_CurrentCellChanged);
+            this.dgvConcediuManager.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvConcediuManager.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn2,
+            this.Inceput,
+            this.Sfarsit,
+            this.Inlocuitor,
+            this.Comentarii});
+            this.dgvConcediuManager.Location = new System.Drawing.Point(24, 70);
+            this.dgvConcediuManager.Name = "dgvConcediuManager";
+            this.dgvConcediuManager.RowTemplate.Height = 25;
+            this.dgvConcediuManager.Size = new System.Drawing.Size(647, 246);
+            this.dgvConcediuManager.TabIndex = 3;
+            this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
+            this.dgvConcediuManager.SelectionChanged += new System.EventHandler(this.dgvConcediuManager_SelectionChanged);
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Inceput
+            // 
+            this.Inceput.HeaderText = "Inceput";
+            this.Inceput.Name = "Inceput";
+            // 
+            // Sfarsit
+            // 
+            this.Sfarsit.HeaderText = "Sfarsit";
+            this.Sfarsit.Name = "Sfarsit";
+            // 
+            // Inlocuitor
+            // 
+            this.Inlocuitor.HeaderText = "Inlocuitor";
+            this.Inlocuitor.Name = "Inlocuitor";
+            // 
+            // Comentarii
+            // 
+            this.Comentarii.HeaderText = "Comentarii";
+            this.Comentarii.Name = "Comentarii";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // Nume
+            // 
+            this.Nume.HeaderText = "Nume";
+            this.Nume.Name = "Nume";
             // 
             // ConcediuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 338);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvConcediuManager);
+            this.Controls.Add(this.cbStareConcediu);
+            this.Controls.Add(this.Actualizeaza);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -89,8 +142,15 @@
         #endregion
 
         private Label label1;
-        private DataGridViewCheckBoxColumn Respins;
-        private DataGridViewCheckBoxColumn Accept;
-        private DataGridView dataGridView1;
+        private Button Actualizeaza;
+        private ComboBox cbStareConcediu;
+        private DataGridView dgvConcediuManager;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Nume;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn Inceput;
+        private DataGridViewTextBoxColumn Sfarsit;
+        private DataGridViewTextBoxColumn Inlocuitor;
+        private DataGridViewTextBoxColumn Comentarii;
     }
 }
