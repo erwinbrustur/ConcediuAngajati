@@ -36,12 +36,28 @@ namespace ConcediuAngajati
 
             }
             cbStareConcediu.SelectedIndex = 0;
-            listaStare = extragereStareConcediuDB();
-
-
-            cbStareConcediu.SelectedIndex = 0;
+            
 
             angajatistring = extragereAngajatiDB();
+
+            //extragereConcediiDB();
+
+
+            //listaStare = extragereStareConcediuDB();
+
+            //foreach (string s in listaStare)
+            //{
+            //    string[] str = s.Split(',');
+            //    cbStareConcediu.Items.Add(str[1]);
+
+            //}
+            //cbStareConcediu.SelectedIndex = 0;
+            //listaStare = extragereStareConcediuDB();
+
+
+            //cbStareConcediu.SelectedIndex = 0;
+
+            //angajatistring = extragereAngajatiDB();
 
 
         }
@@ -49,7 +65,7 @@ namespace ConcediuAngajati
         public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii' FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
+            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii'  FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
@@ -113,6 +129,7 @@ namespace ConcediuAngajati
                     stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
 
                 }
+                
 
 
                 return stareConcediu;
@@ -157,6 +174,8 @@ namespace ConcediuAngajati
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
 
+                MessageBox.Show(idConcediu.ToString() + ' ' + stareConcediuId.ToString());
+                
                 string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
                 
                 SqlCommand queryUpdate = new SqlCommand(updateSQL);
