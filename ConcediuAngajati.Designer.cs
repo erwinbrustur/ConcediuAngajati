@@ -38,6 +38,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
+           
+          
             // 
             // Actualizare
             // 
