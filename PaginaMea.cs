@@ -120,9 +120,6 @@ namespace ConcediuAngajati
                 ms.Read(image_array, 0, image_array.Length);
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
-
-                MessageBox.Show(nrTel + " " + image_array);
-
                 string updateSQL = "UPDATE Angajat SET nrTelefon = '" + nrTel + "', poza = @poza WHERE id = " + angajat.Id;
 
                 SqlCommand queryUpdate = new SqlCommand(updateSQL, conexiune);
@@ -152,8 +149,6 @@ namespace ConcediuAngajati
                 btnActualizareDate.Text = "Actualizeaza";
             }
 
-            //btnActualizareDate.Visible = false;
-
         }
 
         private void pbImagineProfil_Click(object sender, EventArgs e)
@@ -177,6 +172,27 @@ namespace ConcediuAngajati
                     pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
                 }
             }  
+        }
+
+        private void tbNrTelefon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tbNrTelefon_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string serie = ((TextBox)sender).Text;
+            if (serie.Length != 10)
+            {
+                errorProvider1.SetError(tbNrTelefon, "Numar de telefon invalid! Numarul de telefon trebuie sa contina 10 cifre!");
+            }
+            else
+            {
+                errorProvider1.Clear();
+            }
         }
     }
 }

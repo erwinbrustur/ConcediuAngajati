@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaginaMea));
             this.pbImagineProfil = new System.Windows.Forms.PictureBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
@@ -59,8 +60,10 @@
             this.tbFunctie = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.tbDepartament = new System.Windows.Forms.TextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
             this.menuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbImagineProfil
@@ -103,10 +106,13 @@
             this.tbNrTelefon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbNrTelefon.Location = new System.Drawing.Point(703, 312);
             this.tbNrTelefon.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tbNrTelefon.MaxLength = 10;
             this.tbNrTelefon.Name = "tbNrTelefon";
             this.tbNrTelefon.ReadOnly = true;
             this.tbNrTelefon.Size = new System.Drawing.Size(231, 34);
             this.tbNrTelefon.TabIndex = 8;
+            this.tbNrTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNrTelefon_KeyPress);
+            this.tbNrTelefon.Validating += new System.ComponentModel.CancelEventHandler(this.tbNrTelefon_Validating);
             // 
             // tbDataNastere
             // 
@@ -380,6 +386,10 @@
             this.tbDepartament.Size = new System.Drawing.Size(317, 34);
             this.tbDepartament.TabIndex = 33;
             // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // PaginaMea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -422,6 +432,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +469,6 @@
         private TextBox tbFunctie;
         private Label label12;
         private TextBox tbDepartament;
+        private ErrorProvider errorProvider1;
     }
 }
