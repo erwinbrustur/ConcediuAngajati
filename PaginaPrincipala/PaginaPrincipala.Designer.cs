@@ -123,9 +123,9 @@
             this.DateleMele.ForeColor = System.Drawing.Color.White;
             this.DateleMele.Location = new System.Drawing.Point(121, 82);
             this.DateleMele.Name = "DateleMele";
-            this.DateleMele.Size = new System.Drawing.Size(75, 28);
+            this.DateleMele.Size = new System.Drawing.Size(79, 28);
             this.DateleMele.TabIndex = 1;
-            this.DateleMele.Text = "DateleMele";
+            this.DateleMele.Text = "Datele Mele";
             this.DateleMele.UseVisualStyleBackColor = false;
             this.DateleMele.Click += new System.EventHandler(this.button1_Click_1);
             // 

@@ -139,6 +139,7 @@ namespace ConcediuAngajati
 
         private void Actualizare_Click(object sender, EventArgs e)
         {
+            
             string message = "Sigur vrei sa actualizezi lista de concedii?";
             string title = "Actualizare stare concedii";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
