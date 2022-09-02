@@ -26,7 +26,9 @@ namespace ConcediuAngajati
 
         private void btnX_Click(object sender, EventArgs e)
         {
-            Close();
+            LoginPhase login = new LoginPhase();
+            login.Show();
+            this.Close(); 
         }
 
         private void btnAdaugaPoza_Click(object sender, EventArgs e)

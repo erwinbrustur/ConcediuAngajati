@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using ConcediuAngajati.PaginaPrincipala;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ using static System.Windows.Forms.DataFormats;
 
 namespace ConcediuAngajati
 {
+   
     public partial class CerereConcediu : Form
     {
         List<string> list;
@@ -30,7 +32,7 @@ namespace ConcediuAngajati
             InitializeComponent();
             userCurent = a;
 
-            MessageBox.Show("User: " + userCurent.Nume + userCurent.Prenume + userCurent.Email + userCurent.ManagerId);
+            //MessageBox.Show("User: " + userCurent.Nume + userCurent.Prenume + userCurent.Email + userCurent.ManagerId);
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             list = extragereTipConcediiDB();
             foreach (string s in list)
@@ -91,6 +93,7 @@ namespace ConcediuAngajati
         public List<string> extragereInlocuitoriEchipaDB()
         {
             List<string> strings = new List<string>();
+            MessageBox.Show(userCurent.ManagerId.ToString());
             string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
             MessageBox.Show(userCurent.ManagerId + "Vacanta");
             SqlConnection conexiune = new SqlConnection(connectionString);
@@ -179,9 +182,11 @@ namespace ConcediuAngajati
                     if (lastDayOfWeek >= 7)
                         zileConcediu -= 2; // Altfel scadem doar sambata si duminica
                     else if (lastDayOfWeek >= 6)
-                        zileConcediu -= 1; // Trebuie sa scadem sambata
-                    else if (lastDayOfWeek <= 5) // Trebuie sa scadem doar duminica
                         zileConcediu -= 1;
+                    else if (lastDayOfWeek <= 5)
+                        zileConcediu -= 1; // Trebuie sa scadem sambata
+                    
+               
                 }
                else if (firstDayOfWeek <= 7 &&  lastDayOfWeek >= 7 ) // Scadem doar duminica
                     zileConcediu -= 1;
@@ -212,6 +217,8 @@ namespace ConcediuAngajati
             if (result == DialogResult.Yes)
             {
                 this.Close();
+                PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(userCurent);
+                pagprin.ShowDialog();
             }
             else
             {
@@ -320,6 +327,18 @@ namespace ConcediuAngajati
                 textBox1.Text = ZileConcediu(inTime, outTime).ToString();
 
             }
+        }
+
+        private void CerereConcediu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInchidereCC_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(userCurent);
+            paginap.Show();
+            this.Close();
         }
     }
 }

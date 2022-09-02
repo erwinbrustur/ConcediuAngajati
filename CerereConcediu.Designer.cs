@@ -48,6 +48,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.btnInchidereCC = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,7 +97,6 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker2.TabIndex = 4;
-            //this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // Trimite
             // 
@@ -114,6 +114,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.odihnaToolStripMenuItem,
             this.remoteToolStripMenuItem,
@@ -198,6 +199,7 @@
             // 
             // rtbComentarii
             // 
+            this.rtbComentarii.BackColor = System.Drawing.Color.DarkSalmon;
             this.rtbComentarii.Location = new System.Drawing.Point(34, 159);
             this.rtbComentarii.Name = "rtbComentarii";
             this.rtbComentarii.Size = new System.Drawing.Size(345, 96);
@@ -240,11 +242,27 @@
             this.dateTimePicker3.TabIndex = 16;
             this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
+            // btnInchidereCC
+            // 
+            this.btnInchidereCC.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnInchidereCC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchidereCC.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidereCC.ForeColor = System.Drawing.Color.Maroon;
+            this.btnInchidereCC.Location = new System.Drawing.Point(757, 6);
+            this.btnInchidereCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInchidereCC.Name = "btnInchidereCC";
+            this.btnInchidereCC.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereCC.TabIndex = 17;
+            this.btnInchidereCC.Text = "X";
+            this.btnInchidereCC.UseVisualStyleBackColor = false;
+            this.btnInchidereCC.Click += new System.EventHandler(this.btnInchidereCC_Click);
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnInchidereCC);
             this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -259,8 +277,10 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PaginaMea);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CerereConcediu";
             this.Text = "CerereConcediu";
+            this.Load += new System.EventHandler(this.CerereConcediu_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,5 +308,6 @@
         private Label label5;
         private Label label6;
         private DateTimePicker dateTimePicker3;
+        private Button btnInchidereCC;
     }
 }
