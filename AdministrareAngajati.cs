@@ -19,10 +19,13 @@ namespace ConcediuAngajati
         int idManager;
         int idManager2;
         int idAngajat;
+        int idManagerEN;
+        int idManagerSE;
         string cnx;
         List<string> managerActualMutare = new List<string>();
         List<string> angajatMutare = new List<string>();
         List<string> managerNouMutare = new List<string>();
+        List<string> viitorManager = new List<string>();
         public AdministrareAngajati()
         {
             InitializeComponent();
@@ -36,6 +39,8 @@ namespace ConcediuAngajati
             foreach (string s in managerActualMutare)
             {
                 comboBox1.Items.Add(s.Substring(3));
+                comboBox4.Items.Add(s.Substring(3));
+                comboBox6.Items.Add(s.Substring(3));
             }
 
 
@@ -179,6 +184,8 @@ namespace ConcediuAngajati
         {
 
             string numeManager = comboBox1.Text;
+         
+   
        
             foreach (string s in managerActualMutare)
             {
@@ -187,9 +194,8 @@ namespace ConcediuAngajati
                 {
                     idManager = Convert.ToInt32(s.Substring(0, 2));
                 }
-
-
-
+             
+            
             }
             string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManager + "and managerId!=id";
             angajatMutare = datePersoana(moveGetEmployee, cnx);
@@ -249,6 +255,89 @@ namespace ConcediuAngajati
                 if (comboBox3.Text == s.Substring(3))
                     idManager2 = Convert.ToInt32(s.Substring(0, 2));
             }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string numeManagerEN=comboBox4.Text;
+            foreach(string s in managerActualMutare)
+            {
+                if (numeManagerEN == s.Substring(3))
+                {
+                    idManagerEN = Convert.ToInt32(s.Substring(0, 2));
+                }
+                string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManagerEN + "and managerId!=id";
+                viitorManager = datePersoana(moveGetEmployee, cnx);
+                comboBox5.Items.Clear();
+                foreach (string p in viitorManager)
+                {
+                    comboBox5.Items.Add(p.Substring(3));
+
+                }
+            }
+        }
+
+        private void panelModificareManageri_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string numeManagerSE = comboBox6.Text;
+      
+            foreach (string s in managerActualMutare)
+            {
+                
+                if (numeManagerSE == s.Substring(3))
+                {
+                    idManagerSE = Convert.ToInt32(s.Substring(0, 2));
+                
+                }
+            }
+        }
+
+        private void BtnStergere_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(idManagerSE.ToString());
+            string stergerecmd = "update Angajat set managerId=30 where managerId=" + idManagerSE;
+            string stergerecmd2 = "update Angajat set managerId=30 where id=" + idManagerSE;
+
+
+            SqlConnection con = new SqlConnection(cnx);
+            con.Open();
+            SqlCommand stergere = new SqlCommand(stergerecmd, con);
+            SqlCommand stergere2 = new SqlCommand(stergerecmd2, con);
+            stergere.ExecuteNonQuery();
+            stergere2.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
+        }
+
+        private void BtnEchipaNoua_Click(object sender, EventArgs e)
+        {
+            int idVManager=0; 
+            foreach (string p in viitorManager)
+            {
+                if (comboBox5.Text == p.Substring(3))
+                {
+                    idVManager = Convert.ToInt32(p.Substring(0, 2));
+                }
+            }
+            string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
+
+            SqlConnection con = new SqlConnection(cnx);
+            con.Open();
+            SqlCommand cmden = new SqlCommand(echipaNoua, con);
+            cmden.ExecuteNonQuery();
+
+            con.Close();
+            MessageBox.Show("Ati creat o noua echipa manageriata de "+comboBox5.Text+"!");
         }
     }
 }
