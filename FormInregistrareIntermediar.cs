@@ -22,6 +22,10 @@ namespace ConcediuAngajati
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
+
+            pbImagineProfil.BackColor = Color.FromArgb(86, 127, 124, 127);
+
+
         }
 
         private void btnX_Click(object sender, EventArgs e)
@@ -160,6 +164,11 @@ namespace ConcediuAngajati
         private void btnAdaugaImagine_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pbImagineProfil_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuAngajati));
             this.Actualizare = new System.Windows.Forms.Button();
             this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcedii = new System.Windows.Forms.DataGridView();
@@ -38,17 +39,18 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
-           
-          
             // 
             // Actualizare
             // 
+            this.Actualizare.BackColor = System.Drawing.Color.Transparent;
+            this.Actualizare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Actualizare.ForeColor = System.Drawing.Color.White;
             this.Actualizare.Location = new System.Drawing.Point(624, 26);
             this.Actualizare.Name = "Actualizare";
             this.Actualizare.Size = new System.Drawing.Size(107, 23);
             this.Actualizare.TabIndex = 0;
             this.Actualizare.Text = "Actualizare";
-            this.Actualizare.UseVisualStyleBackColor = true;
+            this.Actualizare.UseVisualStyleBackColor = false;
             this.Actualizare.Click += new System.EventHandler(this.Actualizare_Click);
             // 
             // cbStareConcediu
@@ -62,6 +64,7 @@
             // 
             // dgvConcedii
             // 
+            this.dgvConcedii.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConcedii.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -75,6 +78,7 @@
             this.dgvConcedii.RowTemplate.Height = 25;
             this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
             this.dgvConcedii.TabIndex = 2;
+            this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
             this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
             // 
@@ -107,10 +111,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvConcedii);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizare);
+            this.DoubleBuffered = true;
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();

@@ -40,6 +40,8 @@ namespace ConcediuAngajati
 
             angajatistring = extragereAngajatiDB();
 
+            dgvConcedii.BackColor= Color.FromArgb(99, 127, 124, 127);
+
             //extragereConcediiDB();
 
 
@@ -265,6 +267,11 @@ namespace ConcediuAngajati
 
 
             }
+
+        }
+
+        private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
