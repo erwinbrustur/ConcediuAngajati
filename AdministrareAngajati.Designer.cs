@@ -56,6 +56,7 @@
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -382,6 +383,7 @@
             // panelModificareManageri
             // 
             this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelModificareManageri.Controls.Add(this.comboBox2);
             this.panelModificareManageri.Controls.Add(this.comboBox1);
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
@@ -395,6 +397,15 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 0;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(78, 71);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 23);
+            this.comboBox2.TabIndex = 1;
             // 
             // AdministrareAngajati
             // 
@@ -451,5 +462,6 @@
         private TextBox ConfParola;
         private TextBox Parola;
         private ComboBox comboBox1;
+        private ComboBox comboBox2;
     }
 }

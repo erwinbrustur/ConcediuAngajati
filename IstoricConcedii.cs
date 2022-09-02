@@ -28,13 +28,7 @@ namespace ConcediuAngajati
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             listaStare = extragereStareConcediuDB();
 
-           
-
             extragereConcediiDB();
-            
-            listaStare = extragereStareConcediuDB();
-
-
      
 
             angajatistring = extragereAngajatiDB();
