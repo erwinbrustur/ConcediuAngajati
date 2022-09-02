@@ -55,12 +55,19 @@
             this.Nume = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelModificareManageri.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnPaginaPrincipala
@@ -383,29 +390,92 @@
             // panelModificareManageri
             // 
             this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panelModificareManageri.Controls.Add(this.comboBox2);
-            this.panelModificareManageri.Controls.Add(this.comboBox1);
+            this.panelModificareManageri.Controls.Add(this.groupBox2);
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
             this.panelModificareManageri.Size = new System.Drawing.Size(803, 382);
             this.panelModificareManageri.TabIndex = 4;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.Location = new System.Drawing.Point(19, 16);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(424, 118);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Transfer Angajat";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(261, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 38);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Transfera";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 15);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Manager actual";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(78, 15);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Manager nou";
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(78, 32);
+            this.comboBox1.Location = new System.Drawing.Point(101, 28);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(47, 60);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 15);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Angajat";
+            // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(78, 71);
+            this.comboBox2.Location = new System.Drawing.Point(101, 57);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 23);
             this.comboBox2.TabIndex = 1;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(101, 86);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 23);
+            this.comboBox3.TabIndex = 2;
+            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // AdministrareAngajati
             // 
@@ -429,6 +499,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelModificareManageri.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -463,5 +535,11 @@
         private TextBox Parola;
         private ComboBox comboBox1;
         private ComboBox comboBox2;
+        private ComboBox comboBox3;
+        private GroupBox groupBox2;
+        private Button button1;
+        private Label label8;
+        private Label label10;
+        private Label label9;
     }
 }
