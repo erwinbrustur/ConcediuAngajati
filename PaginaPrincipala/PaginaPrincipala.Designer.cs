@@ -40,7 +40,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.DropConcedii = new System.Windows.Forms.FlowLayoutPanel();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.CereriConcedii = new System.Windows.Forms.Button();
@@ -49,6 +48,7 @@
             this.button11 = new System.Windows.Forms.Button();
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.btnInchiderePP = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.DropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.DropConcedii.SuspendLayout();
@@ -70,6 +70,8 @@
             // 
             // button2
             // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(3, 3);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 28);
@@ -80,6 +82,8 @@
             // 
             // button3
             // 
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(3, 37);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 28);
@@ -90,6 +94,8 @@
             // 
             // button4
             // 
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(3, 71);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 28);
@@ -112,12 +118,15 @@
             // 
             // DateleMele
             // 
+            this.DateleMele.BackColor = System.Drawing.Color.Transparent;
+            this.DateleMele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DateleMele.ForeColor = System.Drawing.Color.White;
             this.DateleMele.Location = new System.Drawing.Point(121, 82);
             this.DateleMele.Name = "DateleMele";
             this.DateleMele.Size = new System.Drawing.Size(75, 28);
             this.DateleMele.TabIndex = 1;
             this.DateleMele.Text = "DateleMele";
-            this.DateleMele.UseVisualStyleBackColor = true;
+            this.DateleMele.UseVisualStyleBackColor = false;
             this.DateleMele.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // timer1
@@ -128,6 +137,8 @@
             // 
             // button5
             // 
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(3, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(95, 28);
@@ -141,16 +152,17 @@
             this.DropConcedii.BackColor = System.Drawing.Color.Transparent;
             this.DropConcedii.Controls.Add(this.button5);
             this.DropConcedii.Controls.Add(this.button6);
-            this.DropConcedii.Controls.Add(this.button7);
             this.DropConcedii.Location = new System.Drawing.Point(380, 79);
-            this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 100);
+            this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 65);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(100, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(100, 100);
+            this.DropConcedii.Size = new System.Drawing.Size(100, 34);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
             // 
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(3, 37);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(95, 28);
@@ -158,16 +170,6 @@
             this.button6.Text = "Angajati";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(3, 71);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(95, 28);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // timer2
             // 
@@ -183,6 +185,8 @@
             // 
             // CereriConcedii
             // 
+            this.CereriConcedii.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CereriConcedii.ForeColor = System.Drawing.Color.White;
             this.CereriConcedii.Location = new System.Drawing.Point(3, 3);
             this.CereriConcedii.Name = "CereriConcedii";
             this.CereriConcedii.Size = new System.Drawing.Size(75, 28);
@@ -206,6 +210,8 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(3, 37);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
@@ -216,6 +222,8 @@
             // 
             // button11
             // 
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Location = new System.Drawing.Point(3, 71);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(75, 28);
@@ -244,6 +252,19 @@
             this.btnInchiderePP.UseVisualStyleBackColor = false;
             this.btnInchiderePP.Click += new System.EventHandler(this.btnInchiderePP_Click);
             // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(745, 371);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(116, 29);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "Delogare";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
             // PaginaPrincipala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -251,6 +272,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(873, 412);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.btnInchiderePP);
             this.Controls.Add(this.CereriConcediBut);
             this.Controls.Add(this.DropConcedii);
@@ -282,7 +304,6 @@
         private Button button5;
         private FlowLayoutPanel DropConcedii;
         private Button button6;
-        private Button button7;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
         private Button CereriConcedii;
@@ -291,5 +312,6 @@
         private Button button11;
         private System.Windows.Forms.Timer timer4;
         private Button btnInchiderePP;
+        private Button button7;
     }
 }

@@ -10,20 +10,50 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Drawing.Imaging;
+using Microsoft.VisualBasic;
 
 namespace ConcediuAngajati
 {
     public partial class AdministrareAngajati : Form
     {
-       
+        int idManager;
+        int idManager2;
+        string cnx;
+        List<string> managerActualMutare = new List<string>();
+        List<string> angajatMutare = new List<string>();
         public AdministrareAngajati()
         {
             InitializeComponent();
             this.panelAdaugareAngajat.BackColor = Color.FromArgb(99, 127, 124, 127);
+            this.panelModificareManageri.BackColor = Color.FromArgb(99, 127, 124, 127);
+             cnx = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            
+            string moveGetActualManager = "select id,nume,prenume from Angajat where id in (select managerId from Angajat group by managerId) and esteAdmin=0";
+            managerActualMutare = datePersoana(moveGetActualManager, cnx);
+            foreach (string s in managerActualMutare)
+            {
+                comboBox1.Items.Add(s.Substring(3));
+            }
 
-           
+            string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" +idManager +"and managerId!=id";
+            angajatMutare = datePersoana(moveGetEmployee, cnx);
+            foreach(string s in angajatMutare)
+            {
+                comboBox2.Items.Add(s.Substring(3));
+            }
         }
-
+        public List<string> datePersoana(string CmdLine,string conex) {
+            List<string> date = new List<string>();
+            SqlConnection cnx = new SqlConnection(conex);
+            cnx.Open();
+            SqlCommand cmd = new SqlCommand(CmdLine, cnx);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                date.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
+            }
+            cnx.Close();
+            return date; }
         public static string Hash(string Value)
         {
             using var hash = SHA256.Create();
@@ -142,6 +172,25 @@ namespace ConcediuAngajati
         private void LblPrenume_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           string numeManager= comboBox1.Text;
+
+            foreach (string s in managerActualMutare)
+            {
+                if (numeManager == s.Substring(3))
+                {
+                    idManager = Convert.ToInt32(s.Substring(0, 2));
+                }
+                string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManager + "and managerId!=id";
+                angajatMutare = datePersoana(moveGetEmployee, cnx);
+                foreach (string p in angajatMutare)
+                {
+                    comboBox2.Items.Add(p.Substring(3));
+                }
+            }
         }
     }
 }
