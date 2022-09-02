@@ -168,7 +168,6 @@
             // btnAdaugaImagine
             // 
             this.btnAdaugaImagine.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdaugaImagine.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdaugaImagine.BackgroundImage")));
             this.btnAdaugaImagine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAdaugaImagine.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdaugaImagine.Location = new System.Drawing.Point(10, 4);
