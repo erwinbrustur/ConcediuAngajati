@@ -22,6 +22,10 @@ namespace ConcediuAngajati
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
+
+            pbImagineProfil.BackColor = Color.FromArgb(86, 127, 124, 127);
+
+
         }
 
         private void btnX_Click(object sender, EventArgs e)
@@ -135,7 +139,7 @@ namespace ConcediuAngajati
            
 
             SqlConnection conexiune = new SqlConnection(connectionString);
-            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza)";
+            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza,managerId) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza,30)";
             SqlCommand queryInsert = new SqlCommand(insertSQL);
             try
             {
@@ -157,9 +161,14 @@ namespace ConcediuAngajati
             }
         }
 
-        private void btnAdaugaImagine_Click(object sender, EventArgs e)
+        private void btnInapoi_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void pbImagineProfil_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
