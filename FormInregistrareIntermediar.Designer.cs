@@ -177,7 +177,7 @@
             this.btnAdaugaImagine.Size = new System.Drawing.Size(37, 26);
             this.btnAdaugaImagine.TabIndex = 10;
             this.btnAdaugaImagine.UseVisualStyleBackColor = false;
-            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaImagine_Click);
+            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaPoza_Click);
             // 
             // btnX
             // 

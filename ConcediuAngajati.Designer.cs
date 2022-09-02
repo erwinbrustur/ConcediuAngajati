@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuAngajati));
             this.Actualizare = new System.Windows.Forms.Button();
             this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcedii = new System.Windows.Forms.DataGridView();
@@ -43,9 +42,10 @@
             // 
             // Actualizare
             // 
-            this.Actualizare.Location = new System.Drawing.Point(624, 26);
+            this.Actualizare.Location = new System.Drawing.Point(546, 20);
+            this.Actualizare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Actualizare.Name = "Actualizare";
-            this.Actualizare.Size = new System.Drawing.Size(122, 31);
+            this.Actualizare.Size = new System.Drawing.Size(107, 23);
             this.Actualizare.TabIndex = 0;
             this.Actualizare.Text = "Actualizare";
             this.Actualizare.UseVisualStyleBackColor = false;
@@ -54,10 +54,9 @@
             // cbStareConcediu
             // 
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(35, 28);
-            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbStareConcediu.Location = new System.Drawing.Point(31, 21);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(138, 28);
+            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
             this.cbStareConcediu.TabIndex = 1;
             this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
@@ -71,13 +70,12 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvConcedii.Location = new System.Drawing.Point(35, 97);
-            this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dgvConcedii.Location = new System.Drawing.Point(31, 73);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(825, 360);
+            this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
@@ -129,16 +127,16 @@
             this.btnInchidereCA.TabIndex = 3;
             this.btnInchidereCA.Text = "X";
             this.btnInchidereCA.UseVisualStyleBackColor = false;
-            this.btnInchidereCA.Click += new System.EventHandler(this.btnInchidereCA_Click);
             // 
             // ConcediuAngajati
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(779, 375);
             this.Controls.Add(this.dgvConcedii);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizare);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();

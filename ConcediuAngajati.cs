@@ -20,7 +20,7 @@ namespace ConcediuAngajati
         int stareConcediuId;
         int idConcediu;
 
-        public ConcediuAngajati()
+        public ConcediuAngajati(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
