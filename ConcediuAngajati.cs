@@ -40,7 +40,7 @@ namespace ConcediuAngajati
 
             angajatistring = extragereAngajatiDB();
 
-            dgvConcedii.BackColor= Color.FromArgb(99, 127, 124, 127);
+            
 
             //extragereConcediiDB();
 
@@ -178,7 +178,7 @@ namespace ConcediuAngajati
 
                 MessageBox.Show(idConcediu.ToString() + ' ' + stareConcediuId.ToString());
                 
-                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
+                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId,  FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
                 
                 SqlCommand queryUpdate = new SqlCommand(updateSQL);
                 try
