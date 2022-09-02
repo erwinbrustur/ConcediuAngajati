@@ -36,16 +36,16 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInchidereCA = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
-           
-          
             // 
             // Actualizare
             // 
-            this.Actualizare.Location = new System.Drawing.Point(624, 26);
+            this.Actualizare.Location = new System.Drawing.Point(713, 35);
+            this.Actualizare.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Actualizare.Name = "Actualizare";
-            this.Actualizare.Size = new System.Drawing.Size(107, 23);
+            this.Actualizare.Size = new System.Drawing.Size(122, 31);
             this.Actualizare.TabIndex = 0;
             this.Actualizare.Text = "Actualizare";
             this.Actualizare.UseVisualStyleBackColor = true;
@@ -54,9 +54,10 @@
             // cbStareConcediu
             // 
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(31, 21);
+            this.cbStareConcediu.Location = new System.Drawing.Point(35, 28);
+            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbStareConcediu.Size = new System.Drawing.Size(138, 28);
             this.cbStareConcediu.TabIndex = 1;
             this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
@@ -69,11 +70,13 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvConcedii.Location = new System.Drawing.Point(31, 73);
+            this.dgvConcedii.Location = new System.Drawing.Point(35, 97);
+            this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
+            this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
+            this.dgvConcedii.Size = new System.Drawing.Size(825, 360);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
             this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
@@ -81,36 +84,62 @@
             // Column1
             // 
             this.Column1.HeaderText = "Nume";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "Data Inceput";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
+            this.Column2.Width = 125;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Data Sfarsit";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
+            this.Column3.Width = 125;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Inlocuitor";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
+            this.Column4.Width = 125;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Comentarii";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
+            this.Column5.Width = 125;
+            // 
+            // btnInchidereCA
+            // 
+            this.btnInchidereCA.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchidereCA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInchidereCA.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidereCA.Location = new System.Drawing.Point(865, 12);
+            this.btnInchidereCA.Name = "btnInchidereCA";
+            this.btnInchidereCA.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereCA.TabIndex = 3;
+            this.btnInchidereCA.Text = "X";
+            this.btnInchidereCA.UseVisualStyleBackColor = false;
+            this.btnInchidereCA.Click += new System.EventHandler(this.btnInchidereCA_Click);
             // 
             // ConcediuAngajati
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.btnInchidereCA);
             this.Controls.Add(this.dgvConcedii);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizare);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
@@ -128,5 +157,6 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
+        private Button btnInchidereCA;
     }
 }
