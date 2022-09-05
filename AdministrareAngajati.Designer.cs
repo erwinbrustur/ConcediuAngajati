@@ -75,6 +75,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.panelConcediere = new System.Windows.Forms.Panel();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnConcediereAngajat = new System.Windows.Forms.Button();
+            this.angajatConcediat = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.concediereManager = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.btnConcedPanel = new System.Windows.Forms.Button();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -82,6 +91,8 @@
             this.Stergere.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.panelConcediere.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnPaginaPrincipala
@@ -96,6 +107,7 @@
             this.BtnPaginaPrincipala.TabIndex = 0;
             this.BtnPaginaPrincipala.Text = "Inapoi la pagina principala";
             this.BtnPaginaPrincipala.UseVisualStyleBackColor = false;
+            this.BtnPaginaPrincipala.Click += new System.EventHandler(this.BtnPaginaPrincipala_Click);
             // 
             // buttonAdaugareAngajat
             // 
@@ -117,7 +129,7 @@
             this.buttonModificareManageri.FlatAppearance.BorderSize = 0;
             this.buttonModificareManageri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonModificareManageri.ForeColor = System.Drawing.Color.White;
-            this.buttonModificareManageri.Location = new System.Drawing.Point(143, 78);
+            this.buttonModificareManageri.Location = new System.Drawing.Point(274, 78);
             this.buttonModificareManageri.Name = "buttonModificareManageri";
             this.buttonModificareManageri.Size = new System.Drawing.Size(125, 31);
             this.buttonModificareManageri.TabIndex = 2;
@@ -403,7 +415,7 @@
             // 
             // panelModificareManageri
             // 
-            this.panelModificareManageri.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panelModificareManageri.BackColor = System.Drawing.Color.White;
             this.panelModificareManageri.Controls.Add(this.Stergere);
             this.panelModificareManageri.Controls.Add(this.groupBox3);
             this.panelModificareManageri.Controls.Add(this.groupBox2);
@@ -415,18 +427,24 @@
             // 
             // Stergere
             // 
+            this.Stergere.BackColor = System.Drawing.Color.Transparent;
             this.Stergere.Controls.Add(this.comboBox6);
             this.Stergere.Controls.Add(this.BtnStergere);
             this.Stergere.Controls.Add(this.label15);
+            this.Stergere.ForeColor = System.Drawing.Color.Maroon;
             this.Stergere.Location = new System.Drawing.Point(465, 88);
             this.Stergere.Name = "Stergere";
             this.Stergere.Size = new System.Drawing.Size(323, 100);
             this.Stergere.TabIndex = 8;
             this.Stergere.TabStop = false;
             this.Stergere.Text = "Stergere echipa";
+            this.Stergere.Enter += new System.EventHandler(this.Stergere_Enter);
             // 
             // comboBox6
             // 
+            this.comboBox6.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox6.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(144, 22);
             this.comboBox6.Name = "comboBox6";
@@ -436,13 +454,16 @@
             // 
             // BtnStergere
             // 
+            this.BtnStergere.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnStergere.FlatAppearance.BorderSize = 0;
             this.BtnStergere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnStergere.ForeColor = System.Drawing.Color.Maroon;
             this.BtnStergere.Location = new System.Drawing.Point(99, 55);
             this.BtnStergere.Name = "BtnStergere";
             this.BtnStergere.Size = new System.Drawing.Size(135, 38);
             this.BtnStergere.TabIndex = 7;
             this.BtnStergere.Text = "Sterge";
-            this.BtnStergere.UseVisualStyleBackColor = true;
+            this.BtnStergere.UseVisualStyleBackColor = false;
             this.BtnStergere.Click += new System.EventHandler(this.BtnStergere_Click);
             // 
             // label15
@@ -456,6 +477,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.BtnEchipaNoua);
             this.groupBox3.Controls.Add(this.comboBox5);
             this.groupBox3.Controls.Add(this.label14);
@@ -463,6 +485,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.comboBox4);
             this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.ForeColor = System.Drawing.Color.Maroon;
             this.groupBox3.Location = new System.Drawing.Point(23, 150);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(420, 117);
@@ -473,17 +496,23 @@
             // 
             // BtnEchipaNoua
             // 
+            this.BtnEchipaNoua.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnEchipaNoua.FlatAppearance.BorderSize = 0;
             this.BtnEchipaNoua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEchipaNoua.ForeColor = System.Drawing.Color.Maroon;
             this.BtnEchipaNoua.Location = new System.Drawing.Point(257, 54);
             this.BtnEchipaNoua.Name = "BtnEchipaNoua";
             this.BtnEchipaNoua.Size = new System.Drawing.Size(135, 38);
             this.BtnEchipaNoua.TabIndex = 7;
             this.BtnEchipaNoua.Text = "Echipa noua";
-            this.BtnEchipaNoua.UseVisualStyleBackColor = true;
+            this.BtnEchipaNoua.UseVisualStyleBackColor = false;
             this.BtnEchipaNoua.Click += new System.EventHandler(this.BtnEchipaNoua_Click);
             // 
             // comboBox5
             // 
+            this.comboBox5.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox5.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Location = new System.Drawing.Point(116, 78);
             this.comboBox5.Name = "comboBox5";
@@ -493,6 +522,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.Color.Maroon;
             this.label14.Location = new System.Drawing.Point(31, 81);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 15);
@@ -510,6 +540,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.ForeColor = System.Drawing.Color.Maroon;
             this.label12.Location = new System.Drawing.Point(25, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 15);
@@ -518,6 +549,9 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox4.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Location = new System.Drawing.Point(116, 46);
             this.comboBox4.Name = "comboBox4";
@@ -528,6 +562,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.Color.Maroon;
             this.label11.Location = new System.Drawing.Point(31, 49);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 15);
@@ -536,6 +571,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.BtnTransfer);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label10);
@@ -543,6 +579,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.comboBox3);
+            this.groupBox2.ForeColor = System.Drawing.Color.Maroon;
             this.groupBox2.Location = new System.Drawing.Point(19, 16);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(424, 118);
@@ -552,13 +589,16 @@
             // 
             // BtnTransfer
             // 
+            this.BtnTransfer.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnTransfer.FlatAppearance.BorderSize = 0;
             this.BtnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnTransfer.ForeColor = System.Drawing.Color.Maroon;
             this.BtnTransfer.Location = new System.Drawing.Point(261, 48);
             this.BtnTransfer.Name = "BtnTransfer";
             this.BtnTransfer.Size = new System.Drawing.Size(135, 38);
             this.BtnTransfer.TabIndex = 6;
             this.BtnTransfer.Text = "Transfera";
-            this.BtnTransfer.UseVisualStyleBackColor = true;
+            this.BtnTransfer.UseVisualStyleBackColor = false;
             this.BtnTransfer.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // label8
@@ -581,6 +621,9 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(101, 28);
             this.comboBox1.Name = "comboBox1";
@@ -599,6 +642,9 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(101, 57);
             this.comboBox2.Name = "comboBox2";
@@ -608,12 +654,121 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox3.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(101, 86);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(121, 23);
             this.comboBox3.TabIndex = 2;
             this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            // 
+            // panelConcediere
+            // 
+            this.panelConcediere.BackColor = System.Drawing.Color.White;
+            this.panelConcediere.Controls.Add(this.groupBox5);
+            this.panelConcediere.Location = new System.Drawing.Point(-5, 115);
+            this.panelConcediere.Name = "panelConcediere";
+            this.panelConcediere.Size = new System.Drawing.Size(811, 382);
+            this.panelConcediere.TabIndex = 9;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox5.Controls.Add(this.btnConcediereAngajat);
+            this.groupBox5.Controls.Add(this.angajatConcediat);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.label18);
+            this.groupBox5.Controls.Add(this.concediereManager);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox5.Location = new System.Drawing.Point(52, 112);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(420, 117);
+            this.groupBox5.TabIndex = 7;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Concediere angajat";
+            // 
+            // btnConcediereAngajat
+            // 
+            this.btnConcediereAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnConcediereAngajat.FlatAppearance.BorderSize = 0;
+            this.btnConcediereAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConcediereAngajat.ForeColor = System.Drawing.Color.Maroon;
+            this.btnConcediereAngajat.Location = new System.Drawing.Point(249, 38);
+            this.btnConcediereAngajat.Name = "btnConcediereAngajat";
+            this.btnConcediereAngajat.Size = new System.Drawing.Size(135, 38);
+            this.btnConcediereAngajat.TabIndex = 7;
+            this.btnConcediereAngajat.Text = "Concediaza";
+            this.btnConcediereAngajat.UseVisualStyleBackColor = false;
+            this.btnConcediereAngajat.Click += new System.EventHandler(this.btnConcediereAngajat_Click);
+            // 
+            // angajatConcediat
+            // 
+            this.angajatConcediat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.angajatConcediat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.angajatConcediat.ForeColor = System.Drawing.Color.Maroon;
+            this.angajatConcediat.FormattingEnabled = true;
+            this.angajatConcediat.Location = new System.Drawing.Point(116, 58);
+            this.angajatConcediat.Name = "angajatConcediat";
+            this.angajatConcediat.Size = new System.Drawing.Size(121, 23);
+            this.angajatConcediat.TabIndex = 11;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.ForeColor = System.Drawing.Color.Maroon;
+            this.label17.Location = new System.Drawing.Point(62, 64);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(48, 15);
+            this.label17.TabIndex = 10;
+            this.label17.Text = "Angajat";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(31, 77);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(0, 15);
+            this.label18.TabIndex = 9;
+            // 
+            // concediereManager
+            // 
+            this.concediereManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.concediereManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.concediereManager.ForeColor = System.Drawing.Color.Maroon;
+            this.concediereManager.FormattingEnabled = true;
+            this.concediereManager.Location = new System.Drawing.Point(116, 30);
+            this.concediereManager.Name = "concediereManager";
+            this.concediereManager.Size = new System.Drawing.Size(121, 23);
+            this.concediereManager.TabIndex = 7;
+            this.concediereManager.SelectedIndexChanged += new System.EventHandler(this.concediereManager_SelectedIndexChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.ForeColor = System.Drawing.Color.Maroon;
+            this.label20.Location = new System.Drawing.Point(31, 33);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(79, 15);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "Din echipa lui";
+            this.label20.Click += new System.EventHandler(this.label20_Click);
+            // 
+            // btnConcedPanel
+            // 
+            this.btnConcedPanel.BackColor = System.Drawing.Color.Transparent;
+            this.btnConcedPanel.FlatAppearance.BorderSize = 0;
+            this.btnConcedPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConcedPanel.ForeColor = System.Drawing.Color.White;
+            this.btnConcedPanel.Location = new System.Drawing.Point(143, 78);
+            this.btnConcedPanel.Name = "btnConcedPanel";
+            this.btnConcedPanel.Size = new System.Drawing.Size(125, 31);
+            this.btnConcedPanel.TabIndex = 5;
+            this.btnConcedPanel.Text = "Concediere Angajat";
+            this.btnConcedPanel.UseVisualStyleBackColor = false;
+            this.btnConcedPanel.Click += new System.EventHandler(this.btnConcedPanel_Click);
             // 
             // AdministrareAngajati
             // 
@@ -622,6 +777,8 @@
             this.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 495);
+            this.Controls.Add(this.panelConcediere);
+            this.Controls.Add(this.btnConcedPanel);
             this.Controls.Add(this.panelModificareManageri);
             this.Controls.Add(this.panelAdaugareAngajat);
             this.Controls.Add(this.buttonModificareManageri);
@@ -643,6 +800,9 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.panelConcediere.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -695,5 +855,14 @@
         private Button BtnStergere;
         private ComboBox comboBox6;
         private Label label15;
+        private Panel panelConcediere;
+        private GroupBox groupBox5;
+        private Button btnConcediereAngajat;
+        private ComboBox angajatConcediat;
+        private Label label17;
+        private Label label18;
+        private ComboBox concediereManager;
+        private Label label20;
+        private Button btnConcedPanel;
     }
 }
