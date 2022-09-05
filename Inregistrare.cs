@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Net;
 using System.Net.Mail;
-
+using ProiectASP.Models;
 
 namespace ConcediuAngajati
 {
@@ -75,10 +75,8 @@ namespace ConcediuAngajati
             else if (FieldPass.Text == FieldConfirmPass.Text)
             {
 
-                Angajat a = new Angajat(FieldNume.Text, FieldPrenume.Text, FieldEmail.Text, Hash(FieldPass.Text), FieldNrTel.Text);
+                Angajat a = new Angajat() { Nume = FieldNume.Text, Prenume = FieldPrenume.Text, Email = FieldEmail.Text, Parola = Hash(FieldPass.Text), NrTelefon = FieldNrTel.Text };
                 FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
-                //Angajat a2 = new Angajat() { Nume = FieldNume.Text}
-                //a2.Nume =
                 Fii.Show();
                 this.Hide();
                 //Email inregistrare 
@@ -97,9 +95,6 @@ namespace ConcediuAngajati
             }
             else
                 MessageBox.Show("Parolele sunt diferite");
-           
-                
-
 
         }
 
