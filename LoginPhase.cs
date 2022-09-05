@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Reflection.Metadata;
+using ProiectASP.Models;
 
 namespace ConcediuAngajati
 {
@@ -64,8 +65,7 @@ namespace ConcediuAngajati
                 byte[] poza = (byte[])dr[11];
                 bool esteAdmin = Convert.ToBoolean(dr[12].ToString());
                 int managerId = Convert.ToInt32(dr[13].ToString());
-                //MessageBox.Show(dr[13].ToString());
-                angajat = new Angajat(id,nume,prenume,email,parola,dataAngajare,dataNastere,cnp,serie,numar,telefon,poza,esteAdmin,managerId);
+                angajat = new Angajat() { Id = id, Nume = nume, Prenume = prenume, Email = email, Parola = parola, DataAngajare = dataAngajare, DataNasterii = dataNastere, Cnp = cnp, Serie = serie, No = numar, NrTelefon = telefon, Poza = poza, EsteAdmin = esteAdmin, ManagerId = managerId };
             }
             conexiune.Close();
             return angajat;

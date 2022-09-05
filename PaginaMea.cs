@@ -1,5 +1,6 @@
 using ConcediuAngajati.PaginaPrincipala;
 using Microsoft.VisualBasic;
+using ProiectASP.Models;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
@@ -30,14 +31,14 @@ namespace ConcediuAngajati
             tbPrenume.Text = a.Prenume;
             tbEmail.Text = a.Email;
 
-            DateTime dataNastere = Convert.ToDateTime(a.DataNastarii.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
+            DateTime dataNastere = Convert.ToDateTime(a.DataNasterii.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
             string dataS = dataNastere.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             tbDataNastere.Text = dataS;
-            tbCNP.Text = a.CNP;
+            tbCNP.Text = a.Cnp;
             tbSerie.Text = a.Serie;
-            tbNumar.Text = a.Numar;
+            tbNumar.Text = a.No;
 
-            if (a.CNP.IndexOf('1') == 0 || a.CNP.IndexOf('5') == 0)
+            if (a.Cnp.IndexOf('1') == 0 || a.Cnp.IndexOf('5') == 0)
             {
                 tbGen.Text = "M";
             }

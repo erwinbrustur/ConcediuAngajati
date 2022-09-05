@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using ProiectASP.Models;
+using System.Data.SqlClient;
 
 namespace ConcediuAngajati.PaginaPrincipala
 {

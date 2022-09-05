@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using ProiectASP.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ namespace ConcediuAngajati
 {
     public partial class ConcediuAngajati : Form
     {
+        static readonly HttpClient client = new HttpClient();
         string connectionString;
         List<string> listaStare;
         List<string> angajatistring;
@@ -26,69 +29,103 @@ namespace ConcediuAngajati
             angajat = a;
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             extragereConcediiDB();
-
-
-            listaStare = extragereStareConcediuDB();
-
-            foreach (string s in listaStare)
-            {
-                string[] str = s.Split(',');
-                cbStareConcediu.Items.Add(str[1]);
-
-            }
-            cbStareConcediu.SelectedIndex = 0;
-
-            DataGridViewRow selectedRow = dgvConcedii.Rows[0];
-            //selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
-
-
-            foreach (string s in listaStare)
-            {
-                string[] str = s.Split(',');
-                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(str[1]);
-
-            }
-            //(dgvConcedii.Columns[5] as DataGridViewComboBoxCell).ValueMember = "In astepatare";
-            //foreach(DataGridViewRow rand in dgvConcedii.Rows)
-            //{
-            //    rand.Cells[5].Value = "In astepatare";
-            //}
-            //dgvConcedii.Rows[0].Cells[5].Value = "In astepatare";
-            //cbStareConcediu.Text
-
-            DataGridViewButtonCell btn = new DataGridViewButtonCell();
-
-
-            angajatistring = extragereAngajatiDB();
-
-            //dgvConcedii.BackColor= Color.FromArgb(99, 127, 124, 127);
-
-            //extragereConcediiDB();
+            extragereStareConcediuDB();
 
 
             //listaStare = extragereStareConcediuDB();
 
             //foreach (string s in listaStare)
             //{
-            //    string[] str = s.Split(',');
-            //    cbStareConcediu.Items.Add(str[1]);
+            //    string[] str = s.Trim().Split(',');
+            //    if (!str[1].Trim().Equals("In asteptare"))
+            //    {
+            //        //MessageBox.Show(str[1]);
+            //        //MessageBox.Show("In asteptare");
+            //        cbStareConcediu.Items.Add(str[1]);
+            //    }
 
             //}
             //cbStareConcediu.SelectedIndex = 0;
-            //listaStare = extragereStareConcediuDB();
+
+            //foreach (string s in listaStare)
+            //{
+            //    string[] str = s.Split(',');
+            //    if(!str[1].Trim().Equals("In asteptare"))
+            //    {
+            //        (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(str[1]);
+            //    }
+
+            //}
+
+            DataGridViewButtonCell btn = new DataGridViewButtonCell();
 
 
-            //cbStareConcediu.SelectedIndex = 0;
-
-            //angajatistring = extragereAngajatiDB();
-
-
+            angajatistring = extragereAngajatiDB();
         }
+
+        public async void extragereStareConcediuDB()
+        {
+           
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllStareConcediu");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
+               
+              
+                foreach(StareConcediu sc in listaStareConcedii)
+                {
+                    if(!sc.Nume.Equals("In asteptare"))
+                    {
+                        (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(sc.Nume);
+                    }
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
+
+        //public List<string> extragereStareConcediuDB()
+        //{
+        //    List<string> stareConcediu = new List<string>();
+        //    string selectSQL = "SELECT * from StareConcediu";
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
+
+        //        }
+
+        //        return stareConcediu;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+        //    }
+
+        //}
 
         public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii'  FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
+            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii'  FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId join StareConcediu sc on sc.id =  c.tipConcediuId where sc.nume = 'In asteptare'";
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
@@ -117,59 +154,19 @@ namespace ConcediuAngajati
                 //SqlDataAdapter adapt = new SqlDataAdapter(selectSQL, conexiune);
                 //adapt.Fill(dt);
                 //dgvConcedii.DataSource = dt;
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
             finally
             {
                 conexiune.Close();
-
-
             }
 
         }
 
-        public List<string> extragereStareConcediuDB()
-        {
-            List<string> stareConcediu = new List<string>();
-            string selectSQL = "SELECT * from StareConcediu";
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
-            {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
-
-                }
-                
-
-
-                return stareConcediu;
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-
-        }
+       
         private void cbStareConcediu_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (string str in listaStare)
@@ -227,8 +224,16 @@ namespace ConcediuAngajati
 
         private void dgvConcedii_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (e.StateChanged != DataGridViewElementStates.Selected)
-                return;
+            //if (e.StateChanged != DataGridViewElementStates.Selected)
+            //    MessageBox.Show("click");
+            //return;
+            foreach(DataGridViewCell cell in dgvConcedii.SelectedCells)
+            {
+                if(cell.RowIndex == 5)
+                {
+                    MessageBox.Show("click");
+                }
+            }
 
         }
 
@@ -302,7 +307,7 @@ namespace ConcediuAngajati
 
         private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void btnX_Click(object sender, EventArgs e)

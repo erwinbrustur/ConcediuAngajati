@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using System.Security.Cryptography;
 using System.Drawing.Imaging;
 using Microsoft.VisualBasic;
+using ProiectASP.Models;
 
 namespace ConcediuAngajati
 {
@@ -48,7 +49,7 @@ namespace ConcediuAngajati
             concediereManager.Hide();
             Stergere.Hide();
             label20.Hide();
-            if (!angajatCurent.EsteAdmin)
+            if ((bool)!angajatCurent.EsteAdmin)
             {
                 concedManagId = angajatCurent.Id;
                 string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
@@ -62,8 +63,7 @@ namespace ConcediuAngajati
                     angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
                 }
             }
-
-            if (angajatCurent.EsteAdmin)
+            if ((bool)angajatCurent.EsteAdmin)
             {
                 buttonModificareManageri.Show();
                 concediereManager.Show();
@@ -234,7 +234,7 @@ namespace ConcediuAngajati
 
             string numeManager = comboBox1.Text;
 
-            if (angajatCurent.EsteAdmin)
+            if ((bool)angajatCurent.EsteAdmin)
             {
 
                 foreach (string s in managerActualMutare)
