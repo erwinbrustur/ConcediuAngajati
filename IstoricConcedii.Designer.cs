@@ -35,14 +35,17 @@
             this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
             this.lblIstoric = new System.Windows.Forms.Label();
             this.btnInchidere = new System.Windows.Forms.Button();
-            this.columnHeader7 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader8 = new System.Windows.Forms.ColumnHeader();
             this.SuspendLayout();
             // 
             // listView1
             // 
+            this.listView1.AutoArrange = false;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8,
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
@@ -63,13 +66,15 @@
             // 
             // columnHeader1
             // 
+            this.columnHeader1.DisplayIndex = 0;
             this.columnHeader1.Text = "Data Inceput";
-            this.columnHeader1.Width = 100;
+            this.columnHeader1.Width = 80;
             // 
             // columnHeader2
             // 
+            this.columnHeader2.DisplayIndex = 1;
             this.columnHeader2.Text = "Data Sfarsit";
-            this.columnHeader2.Width = 100;
+            this.columnHeader2.Width = 80;
             // 
             // columnHeader3
             // 
@@ -78,18 +83,24 @@
             // 
             // columnHeader4
             // 
+            this.columnHeader4.DisplayIndex = 3;
             this.columnHeader4.Text = "Inlocuitor";
-            this.columnHeader4.Width = 100;
+            this.columnHeader4.Width = 80;
             // 
             // columnHeader5
             // 
             this.columnHeader5.Text = "Comentarii";
-            this.columnHeader5.Width = 200;
+            this.columnHeader5.Width = 140;
             // 
             // columnHeader6
             // 
             this.columnHeader6.Text = "Stare Concediu";
             this.columnHeader6.Width = 100;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Concediu Ramas";
+            this.columnHeader7.Width = 120;
             // 
             // lblIstoric
             // 
@@ -114,10 +125,10 @@
             this.btnInchidere.UseVisualStyleBackColor = true;
             this.btnInchidere.Click += new System.EventHandler(this.btnInchidere_Click);
             // 
-            // columnHeader7
+            // columnHeader8
             // 
-            this.columnHeader7.Text = "Concediu Ramas";
-            this.columnHeader7.Width = 120;
+            this.columnHeader8.Text = "Nume";
+            this.columnHeader8.Width = 120;
             // 
             // IstoricConcedii
             // 
@@ -148,5 +159,6 @@
         private Button btnInchidere;
         private ColumnHeader columnHeader6;
         private ColumnHeader columnHeader7;
+        private ColumnHeader columnHeader8;
     }
 }

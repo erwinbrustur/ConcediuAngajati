@@ -47,7 +47,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(255, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 38);
+            this.label1.Size = new System.Drawing.Size(250, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
             // 
@@ -122,16 +122,29 @@
             this.Nume.HeaderText = "Nume";
             this.Nume.Name = "Nume";
             // 
+            // btnInchidereCM
+            // 
+            this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchidereCM.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidereCM.Location = new System.Drawing.Point(751, 9);
+            this.btnInchidereCM.Name = "btnInchidereCM";
+            this.btnInchidereCM.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereCM.TabIndex = 2;
+            this.btnInchidereCM.Text = "X";
+            this.btnInchidereCM.UseVisualStyleBackColor = false;
+            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click);
+            // 
             // ConcediuManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.dgvConcediuManager);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizeaza);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).EndInit();

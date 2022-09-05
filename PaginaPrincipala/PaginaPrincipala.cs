@@ -210,7 +210,8 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button11_Click(object sender, EventArgs e)
         {
             //concediu manageri
-            ConcediuManager cmng = new ConcediuManager();
+            this.Close();
+            ConcediuManager cmng = new ConcediuManager(angajat);
             cmng.Show();
         }
 
