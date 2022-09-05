@@ -211,7 +211,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             //concediu manageri
             this.Close();
-            ConcediuManager cmng = new ConcediuManager();
+            ConcediuManager cmng = new ConcediuManager(angajat);
             cmng.Show();
         }
 
