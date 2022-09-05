@@ -36,11 +36,31 @@ namespace ConcediuAngajati
 
             }
             cbStareConcediu.SelectedIndex = 0;
-            
+
+            DataGridViewRow selectedRow = dgvConcedii.Rows[0];
+            //selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
+
+
+            foreach (string s in listaStare)
+            {
+                string[] str = s.Split(',');
+                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(str[1]);
+
+            }
+            //(dgvConcedii.Columns[5] as DataGridViewComboBoxCell).ValueMember = "In astepatare";
+            //foreach(DataGridViewRow rand in dgvConcedii.Rows)
+            //{
+            //    rand.Cells[5].Value = "In astepatare";
+            //}
+            //dgvConcedii.Rows[0].Cells[5].Value = "In astepatare";
+            //cbStareConcediu.Text
+
+            DataGridViewButtonCell btn = new DataGridViewButtonCell();
+
 
             angajatistring = extragereAngajatiDB();
 
-            
+            //dgvConcedii.BackColor= Color.FromArgb(99, 127, 124, 127);
 
             //extragereConcediiDB();
 
@@ -67,7 +87,7 @@ namespace ConcediuAngajati
         public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii'  FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId where a2.managerId <> 26";
+            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii'  FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId";
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
@@ -178,7 +198,7 @@ namespace ConcediuAngajati
 
                 MessageBox.Show(idConcediu.ToString() + ' ' + stareConcediuId.ToString());
                 
-                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId,  FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
+                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
                 
                 SqlCommand queryUpdate = new SqlCommand(updateSQL);
                 try
@@ -216,19 +236,28 @@ namespace ConcediuAngajati
 
         private void dgvConcedii_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dgvConcedii.SelectedRows)
-            {
-                string nume_prenume = row.Cells[0].ToString();
-                idConcediu = Convert.ToInt32(row.Tag);
+            //foreach (DataGridViewRow row in dgvConcedii.SelectedRows)
+            //{
+            //    string nume_prenume = row.Cells[0].ToString();
+            //    idConcediu = Convert.ToInt32(row.Tag);
 
-                foreach (string s in angajatistring)
-                {
-                    string[] t = s.Split(',');
-                    if (nume_prenume.Equals(t[1]))
-                    {
-                        idAngajatSelectat = Convert.ToInt32(t[0]);
-                    }
-                }
+            //    foreach (string s in angajatistring)
+            //    {
+            //        string[] t = s.Split(',');
+            //        if (nume_prenume.Equals(t[1]))
+            //        {
+            //            idAngajatSelectat = Convert.ToInt32(t[0]);
+            //        }
+            //    }
+
+            //}
+
+            if(dgvConcedii.SelectedCells.Count > 0)
+            {
+                int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+                DataGridViewComboBoxColumn comboStareConcediu = selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
+                
 
             }
 
@@ -273,6 +302,17 @@ namespace ConcediuAngajati
         private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnX_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void dgvConcedii_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells[5].Value = "In asteptare";
+            MessageBox.Show("hmm");
         }
     }
 
