@@ -38,9 +38,9 @@ namespace ConcediuAngajati
             comboBox1.Items.Clear();
             foreach (string s in managerActualMutare)
             {
-                comboBox1.Items.Add(s.Substring(3));
-                comboBox4.Items.Add(s.Substring(3));
-                comboBox6.Items.Add(s.Substring(3));
+                comboBox1.Items.Add(s.Substring(s.IndexOf(',')+1));
+                comboBox4.Items.Add(s.Substring(s.IndexOf(',')+1));
+                comboBox6.Items.Add(s.Substring(s.IndexOf(',')+1));
             }
 
 
@@ -190,9 +190,9 @@ namespace ConcediuAngajati
             foreach (string s in managerActualMutare)
             {
                 
-                if (numeManager == s.Substring(3))
+                if (numeManager == s.Substring(s.IndexOf(',') + 1))
                 {
-                    idManager = Convert.ToInt32(s.Substring(0, 2));
+                    idManager = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
                 }
              
             
@@ -202,15 +202,15 @@ namespace ConcediuAngajati
             comboBox2.Items.Clear();
             foreach (string p in angajatMutare)
             {
-                comboBox2.Items.Add(p.Substring(3));
+                comboBox2.Items.Add(p.Substring(p.IndexOf(',') + 1));
 
             }
            
             comboBox3.Items.Clear();
             foreach (string s in managerActualMutare)
             {
-                if (comboBox1.Text != s.Substring(3))
-                    comboBox3.Items.Add(s.Substring(3));
+                if (comboBox1.Text != s.Substring(s.IndexOf(',')+1))
+                    comboBox3.Items.Add(s.IndexOf(',') + 1);
 
             }
            
@@ -238,9 +238,9 @@ namespace ConcediuAngajati
             foreach (string s in angajatMutare)
             {
 
-                if (numeAngajat == s.Substring(3))
+                if (numeAngajat == s.Substring(s.IndexOf(',') + 1))
                 {
-                    idAngajat = Convert.ToInt32(s.Substring(0, 2));
+                    idAngajat = Convert.ToInt32(s.Substring(0, s.IndexOf(',') ));
 
                 }
             }
@@ -252,8 +252,8 @@ namespace ConcediuAngajati
             foreach (string s in managerActualMutare)
             {
                
-                if (comboBox3.Text == s.Substring(3))
-                    idManager2 = Convert.ToInt32(s.Substring(0, 2));
+                if (comboBox3.Text == s.Substring(s.IndexOf(',')+1))
+                    idManager2 = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
             }
         }
 
@@ -267,16 +267,16 @@ namespace ConcediuAngajati
             string numeManagerEN=comboBox4.Text;
             foreach(string s in managerActualMutare)
             {
-                if (numeManagerEN == s.Substring(3))
+                if (numeManagerEN == s.Substring(s.IndexOf(',')))
                 {
-                    idManagerEN = Convert.ToInt32(s.Substring(0, 2));
+                    idManagerEN = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
                 }
                 string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManagerEN + "and managerId!=id";
                 viitorManager = datePersoana(moveGetEmployee, cnx);
                 comboBox5.Items.Clear();
                 foreach (string p in viitorManager)
                 {
-                    comboBox5.Items.Add(p.Substring(3));
+                    comboBox5.Items.Add(p.Substring(s.IndexOf(',') + 1));
 
                 }
             }
@@ -294,9 +294,9 @@ namespace ConcediuAngajati
             foreach (string s in managerActualMutare)
             {
                 
-                if (numeManagerSE == s.Substring(3))
+                if (numeManagerSE == s.Substring(s.IndexOf(',') + 1))
                 {
-                    idManagerSE = Convert.ToInt32(s.Substring(0, 2));
+                    idManagerSE = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
                 
                 }
             }
@@ -324,9 +324,9 @@ namespace ConcediuAngajati
             int idVManager=0; 
             foreach (string p in viitorManager)
             {
-                if (comboBox5.Text == p.Substring(3))
+                if (comboBox5.Text == p.Substring(p.IndexOf(',') + 1))
                 {
-                    idVManager = Convert.ToInt32(p.Substring(0, 2));
+                    idVManager = Convert.ToInt32(p.Substring(0, p.IndexOf(',') ));
                 }
             }
             string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
