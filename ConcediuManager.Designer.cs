@@ -39,6 +39,7 @@
             this.Comentarii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInchidereCM = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,13 +48,13 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(255, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 38);
+            this.label1.Size = new System.Drawing.Size(250, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
             // 
             // Actualizeaza
             // 
-            this.Actualizeaza.Location = new System.Drawing.Point(582, 17);
+            this.Actualizeaza.Location = new System.Drawing.Point(544, 22);
             this.Actualizeaza.Name = "Actualizeaza";
             this.Actualizeaza.Size = new System.Drawing.Size(84, 23);
             this.Actualizeaza.TabIndex = 1;
@@ -66,7 +67,7 @@
             this.cbStareConcediu.FormattingEnabled = true;
             this.cbStareConcediu.Location = new System.Drawing.Point(24, 13);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbStareConcediu.Size = new System.Drawing.Size(121, 28);
             this.cbStareConcediu.TabIndex = 2;
             this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
@@ -81,6 +82,7 @@
             this.Comentarii});
             this.dgvConcediuManager.Location = new System.Drawing.Point(24, 70);
             this.dgvConcediuManager.Name = "dgvConcediuManager";
+            this.dgvConcediuManager.RowHeadersWidth = 51;
             this.dgvConcediuManager.RowTemplate.Height = 25;
             this.dgvConcediuManager.Size = new System.Drawing.Size(647, 246);
             this.dgvConcediuManager.TabIndex = 3;
@@ -90,48 +92,78 @@
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
             // 
             // Inceput
             // 
             this.Inceput.HeaderText = "Inceput";
+            this.Inceput.MinimumWidth = 6;
             this.Inceput.Name = "Inceput";
+            this.Inceput.Width = 125;
             // 
             // Sfarsit
             // 
             this.Sfarsit.HeaderText = "Sfarsit";
+            this.Sfarsit.MinimumWidth = 6;
             this.Sfarsit.Name = "Sfarsit";
+            this.Sfarsit.Width = 125;
             // 
             // Inlocuitor
             // 
             this.Inlocuitor.HeaderText = "Inlocuitor";
+            this.Inlocuitor.MinimumWidth = 6;
             this.Inlocuitor.Name = "Inlocuitor";
+            this.Inlocuitor.Width = 125;
             // 
             // Comentarii
             // 
             this.Comentarii.HeaderText = "Comentarii";
+            this.Comentarii.MinimumWidth = 6;
             this.Comentarii.Name = "Comentarii";
+            this.Comentarii.Width = 125;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
             // 
             // Nume
             // 
             this.Nume.HeaderText = "Nume";
+            this.Nume.MinimumWidth = 6;
             this.Nume.Name = "Nume";
+            this.Nume.Width = 125;
+            // 
+            // btnInchidereCM
+            // 
+            /*this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchidereCM.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnInchidereCM.ForeColor = System.Drawing.Color.Maroon;
+            this.btnInchidereCM.Location = new System.Drawing.Point(660, 2);
+            this.btnInchidereCM.Name = "btnInchidereCM";
+            this.btnInchidereCM.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereCM.TabIndex = 4;
+            this.btnInchidereCM.Text = "X";
+            this.btnInchidereCM.UseVisualStyleBackColor = false;
+            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click);*/
+            
             // 
             // ConcediuManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(700, 338);
+            this.Controls.Add(this.btnInchidereCM);
             this.Controls.Add(this.dgvConcediuManager);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizeaza);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).EndInit();
@@ -152,5 +184,6 @@
         private DataGridViewTextBoxColumn Sfarsit;
         private DataGridViewTextBoxColumn Inlocuitor;
         private DataGridViewTextBoxColumn Comentarii;
+        private Button btnInchidereCM;
     }
 }

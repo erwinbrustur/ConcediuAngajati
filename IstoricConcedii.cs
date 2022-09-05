@@ -39,7 +39,7 @@ namespace ConcediuAngajati
         public void extragereConcediiDB()
         {
             List<Concediu> listaConcedii = new List<Concediu>();
-            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit', a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii', sc.nume as Stare, t.ZileConcediuRamas FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId JOIN StareConcediu sc ON sc.id = c.stareConcediuId JOIN(SELECT angajatId, 21 - isnull(Sum(ZileConcediu),0) as ZileConcediuRamas from Concediu group by angajatId ) t on t.angajatId = a.id";
+            string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit',tc.nume as TipConcediu, a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii', sc.nume as Stare, t.ZileConcediuRamas FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId JOIN StareConcediu sc ON sc.id = c.stareConcediuId JOIN(SELECT angajatId, 21 - isnull(Sum(ZileConcediu),0) as ZileConcediuRamas from Concediu group by angajatId ) t on t.angajatId = a.id JOIN  TipConcediu tc ON tc.id = c.tipConcediuId";
             
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
@@ -62,6 +62,7 @@ namespace ConcediuAngajati
                     item.SubItems.Add(reader[5].ToString());
                     item.SubItems.Add(reader[6].ToString());
                     item.SubItems.Add(reader[7].ToString());
+                    item.SubItems.Add(reader[8].ToString());
 
                     listView1.Items.Add(item);
                     //Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));

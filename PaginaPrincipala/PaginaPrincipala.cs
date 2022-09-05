@@ -169,7 +169,7 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AdministrareAngajati admn = new AdministrareAngajati();
+            AdministrareAngajati admn = new AdministrareAngajati(angajat);
             admn.Show();
             
         }
@@ -210,6 +210,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         private void button11_Click(object sender, EventArgs e)
         {
             //concediu manageri
+            this.Close();
             ConcediuManager cmng = new ConcediuManager();
             cmng.Show();
         }
@@ -235,6 +236,12 @@ namespace ConcediuAngajati.PaginaPrincipala
             LoginPhase login = new LoginPhase();
             login.Show();
             this.Close();
+        }
+
+        private void Angajti_Click(object sender, EventArgs e)
+        {
+            TotiAngajatii toti = new TotiAngajatii(angajat);
+            toti.Show();
         }
     }
 }

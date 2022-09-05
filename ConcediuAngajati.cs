@@ -21,10 +21,11 @@ namespace ConcediuAngajati
         int idAngajatSelectat;
         int stareConcediuId;
         int idConcediu;
-
+        Angajat angajat;
         public ConcediuAngajati(Angajat a)
         {
             InitializeComponent();
+            angajat = a;
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             extragereConcediiDB();
             extragereStareConcediuDB();
