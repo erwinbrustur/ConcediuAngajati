@@ -33,7 +33,7 @@ namespace ConcediuAngajati
 
         public void ExtragereAngajat()
         {
-            string selectSQL = "select a.nume,a.prenume,a.email,a2.nume+' '+a2.prenume as manager,d.Denumire from Angajat a join Angajat a2 on a.managerId=a2.id join Departament d on d.id=a.departamentId";
+            string selectSQL = "select a.nume,a.prenume,a.email,a2.nume+' '+a2.prenume as manager,d.Denumire from Angajat a join Angajat a2 on a.managerId=a2.id join Departament d on d.id=a.departamentId WHERE a.id != 30";
 
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);

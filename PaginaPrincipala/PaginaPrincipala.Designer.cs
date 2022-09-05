@@ -62,7 +62,7 @@
             this.DropDown.Controls.Add(this.button2);
             this.DropDown.Controls.Add(this.button3);
             this.DropDown.Controls.Add(this.button4);
-            this.DropDown.Location = new System.Drawing.Point(202, 79);
+            this.DropDown.Location = new System.Drawing.Point(308, 79);
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
@@ -153,7 +153,7 @@
             this.DropConcedii.BackColor = System.Drawing.Color.Transparent;
             this.DropConcedii.Controls.Add(this.button5);
             this.DropConcedii.Controls.Add(this.button6);
-            this.DropConcedii.Location = new System.Drawing.Point(380, 79);
+            this.DropConcedii.Location = new System.Drawing.Point(486, 79);
             this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 65);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(100, 32);
             this.DropConcedii.Name = "DropConcedii";
@@ -202,7 +202,7 @@
             this.CereriConcediBut.Controls.Add(this.CereriConcedii);
             this.CereriConcediBut.Controls.Add(this.button1);
             this.CereriConcediBut.Controls.Add(this.button11);
-            this.CereriConcediBut.Location = new System.Drawing.Point(289, 79);
+            this.CereriConcediBut.Location = new System.Drawing.Point(395, 79);
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
@@ -268,12 +268,15 @@
             // 
             // Angajti
             // 
-            this.Angajti.Location = new System.Drawing.Point(486, 79);
+            this.Angajti.BackColor = System.Drawing.Color.Transparent;
+            this.Angajti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Angajti.ForeColor = System.Drawing.Color.White;
+            this.Angajti.Location = new System.Drawing.Point(206, 82);
             this.Angajti.Name = "Angajti";
-            this.Angajti.Size = new System.Drawing.Size(119, 31);
+            this.Angajti.Size = new System.Drawing.Size(95, 28);
             this.Angajti.TabIndex = 9;
             this.Angajti.Text = "Toti angajatii";
-            this.Angajti.UseVisualStyleBackColor = true;
+            this.Angajti.UseVisualStyleBackColor = false;
             this.Angajti.Click += new System.EventHandler(this.Angajti_Click);
             // 
             // PaginaPrincipala

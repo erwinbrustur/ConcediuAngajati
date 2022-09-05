@@ -124,7 +124,7 @@
             // 
             // btnInchidereCM
             // 
-            this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
+            /*this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
             this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInchidereCM.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchidereCM.Location = new System.Drawing.Point(751, 9);
@@ -133,7 +133,8 @@
             this.btnInchidereCM.TabIndex = 2;
             this.btnInchidereCM.Text = "X";
             this.btnInchidereCM.UseVisualStyleBackColor = false;
-            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click);
+            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click);*/
+            
             // 
             // ConcediuManager
             // 
