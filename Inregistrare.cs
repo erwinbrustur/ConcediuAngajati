@@ -74,8 +74,11 @@ namespace ConcediuAngajati
             }
             else if (FieldPass.Text == FieldConfirmPass.Text)
             {
+
                 Angajat a = new Angajat(FieldNume.Text, FieldPrenume.Text, FieldEmail.Text, Hash(FieldPass.Text), FieldNrTel.Text);
                 FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
+                //Angajat a2 = new Angajat() { Nume = FieldNume.Text}
+                //a2.Nume =
                 Fii.Show();
                 this.Hide();
                 //Email inregistrare 
