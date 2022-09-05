@@ -19,10 +19,12 @@ namespace ConcediuAngajati
         int idAngajatSelectat;
         int stareConcediuId;
         int idConcediu;
-        public ConcediuManager()
+        Angajat angajat;
+        public ConcediuManager(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+            angajat = a;
             extragereConcediiDB();
 
 
@@ -242,5 +244,11 @@ namespace ConcediuAngajati
 
         }
 
+        private void btnInchidereCM_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
+            paginap.Show();
+            this.Close();
+        }
     }
 }
