@@ -49,6 +49,7 @@
             this.timer4 = new System.Windows.Forms.Timer(this.components);
             this.btnInchiderePP = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.Angajti = new System.Windows.Forms.Button();
             this.DropDown.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.DropConcedii.SuspendLayout();
@@ -65,7 +66,7 @@
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 34);
+            this.DropDown.Size = new System.Drawing.Size(81, 100);
             this.DropDown.TabIndex = 0;
             // 
             // button2
@@ -156,7 +157,7 @@
             this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 65);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(100, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(100, 34);
+            this.DropConcedii.Size = new System.Drawing.Size(100, 65);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
@@ -205,7 +206,7 @@
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
-            this.CereriConcediBut.Size = new System.Drawing.Size(85, 34);
+            this.CereriConcediBut.Size = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.TabIndex = 6;
             // 
             // button1
@@ -265,6 +266,16 @@
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
+            // Angajti
+            // 
+            this.Angajti.Location = new System.Drawing.Point(486, 79);
+            this.Angajti.Name = "Angajti";
+            this.Angajti.Size = new System.Drawing.Size(119, 31);
+            this.Angajti.TabIndex = 9;
+            this.Angajti.Text = "Toti angajatii";
+            this.Angajti.UseVisualStyleBackColor = true;
+            this.Angajti.Click += new System.EventHandler(this.Angajti_Click);
+            // 
             // PaginaPrincipala
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -272,6 +283,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(873, 412);
+            this.Controls.Add(this.Angajti);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnInchiderePP);
             this.Controls.Add(this.CereriConcediBut);
@@ -313,5 +325,6 @@
         private System.Windows.Forms.Timer timer4;
         private Button btnInchiderePP;
         private Button button7;
+        private Button Angajti;
     }
 }

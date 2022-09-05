@@ -236,5 +236,11 @@ namespace ConcediuAngajati.PaginaPrincipala
             login.Show();
             this.Close();
         }
+
+        private void Angajti_Click(object sender, EventArgs e)
+        {
+            TotiAngajatii toti = new TotiAngajatii(angajat);
+            toti.Show();
+        }
     }
 }
