@@ -21,21 +21,55 @@ namespace ConcediuAngajati
         int idAngajat;
         int idManagerEN;
         int idManagerSE;
+        int idAngajatConcediat;
+        int concedManagId;
         string cnx;
+        Angajat angajatCurent;
         List<string> managerActualMutare = new List<string>();
         List<string> angajatMutare = new List<string>();
         List<string> managerNouMutare = new List<string>();
         List<string> viitorManager = new List<string>();
-        public AdministrareAngajati()
+        List<String> angajatiiManagerului = new List<string>();
+        public AdministrareAngajati(Angajat a)
         {
             InitializeComponent();
             this.panelAdaugareAngajat.BackColor = Color.FromArgb(99, 127, 124, 127);
             this.panelModificareManageri.BackColor = Color.FromArgb(99, 127, 124, 127);
+            this.panelConcediere.BackColor = Color.FromArgb(99, 127, 124, 127);
             cnx = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
-
+            angajatCurent = a;
             string moveGetActualManager = "select id,nume,prenume from Angajat where managerId=26 and esteAdmin=0";
             managerActualMutare = datePersoana(moveGetActualManager, cnx);
             comboBox1.Items.Clear();
+            panelAdaugareAngajat.Hide();
+            panelConcediere.Hide();
+            panelModificareManageri.Hide();
+            buttonModificareManageri.Hide();
+            concediereManager.Hide();
+            Stergere.Hide();
+            label20.Hide();
+            if (!angajatCurent.EsteAdmin)
+            {
+                concedManagId = angajatCurent.Id;
+                string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
+                SqlConnection con = new SqlConnection(cnx);
+                con.Open();
+                angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
+                con.Close();
+                angajatConcediat.Items.Clear();
+                foreach (string p in angajatiiManagerului)
+                {
+                    angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                }
+            }
+
+            if (angajatCurent.EsteAdmin)
+            {
+                buttonModificareManageri.Show();
+                concediereManager.Show();
+                Stergere.Show();
+                groupBox3.Show();
+            }
             foreach (string s in managerActualMutare)
             {
                 comboBox1.Items.Add(s.Substring(s.IndexOf(',')+1));
@@ -70,19 +104,34 @@ namespace ConcediuAngajati
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (panelAdaugareAngajat.Visible == true)
+            if (panelAdaugareAngajat.Visible == true) { 
                 panelAdaugareAngajat.Hide();
+            }
+
             else
+            {
                 panelAdaugareAngajat.Show();
+                panelModificareManageri.Hide();
+                panelConcediere.Hide();
+            }
+             
 
         }
 
         private void buttonModificareManageri_Click(object sender, EventArgs e)
         {
             if (panelModificareManageri.Visible == true)
+            {
                 panelModificareManageri.Hide();
+            }
+
             else
+            {
                 panelModificareManageri.Show();
+                panelAdaugareAngajat.Hide();
+                panelConcediere.Hide();
+            }
+             
         }
 
         private void panelAdaugareAngajat_Paint(object sender, PaintEventArgs e)
@@ -136,9 +185,9 @@ namespace ConcediuAngajati
             }
             SqlConnection cnx = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
             cnx.Open();
-            String Commandline1 = "Insert into Angajat(nume,prenume,email,parola,dataAngajare,dataNasterii,cnp,serie,no,nrTelefon,poza)";
+            String Commandline1 = "Insert into Angajat(nume,prenume,email,parola,dataAngajare,dataNasterii,cnp,serie,no,nrTelefon,poza,managerId)";
             String Commandline2 = " values ('" + Nume.Text + "','" + Prenume.Text + "','" + Email.Text + "@totalsoft.ro','" + Hash(Parola.Text)
-                + "',getDate(),'" + dataNastere + "','" + CNP.Text + "','" + Serie.Text + "','" + Nr.Text + "','" + NrTel.Text + "',@poza)";
+                + "',getDate(),'" + dataNastere + "','" + CNP.Text + "','" + Serie.Text + "','" + Nr.Text + "','" + NrTel.Text + "',@poza,30)";
             MemoryStream ms = new MemoryStream();
             Poza.Image.Save(ms, ImageFormat.Jpeg);
             byte[] image_array = new byte[ms.Length];
@@ -184,18 +233,24 @@ namespace ConcediuAngajati
         {
 
             string numeManager = comboBox1.Text;
-         
-   
-       
-            foreach (string s in managerActualMutare)
+
+            if (angajatCurent.EsteAdmin)
             {
-                
-                if (numeManager == s.Substring(s.IndexOf(',') + 1))
+
+                foreach (string s in managerActualMutare)
                 {
-                    idManager = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+
+                    if (numeManager == s.Substring(s.IndexOf(',') + 1))
+                    {
+                        idManager = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    }
+
+
                 }
-             
-            
+            }
+            else
+            {
+                idManager = angajatCurent.Id;
             }
             string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManager + "and managerId!=id";
             angajatMutare = datePersoana(moveGetEmployee, cnx);
@@ -304,7 +359,7 @@ namespace ConcediuAngajati
 
         private void BtnStergere_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(idManagerSE.ToString());
+
             string stergerecmd = "update Angajat set managerId=30 where managerId=" + idManagerSE;
             string stergerecmd2 = "update Angajat set managerId=30 where id=" + idManagerSE;
 
@@ -338,6 +393,84 @@ namespace ConcediuAngajati
 
             con.Close();
             MessageBox.Show("Ati creat o noua echipa manageriata de "+comboBox5.Text+"!");
+        }
+
+        private void btnConcedPanel_Click(object sender, EventArgs e)
+        {
+            if(panelConcediere.Visible)
+            {
+                panelConcediere.Hide();
+            }
+            else
+            {
+                panelConcediere.Show();
+                panelAdaugareAngajat.Hide();
+                panelModificareManageri.Hide();
+            }
+            SqlConnection con = new SqlConnection(cnx);
+          foreach(string p in managerActualMutare)
+            {
+                concediereManager.Items.Add(p.Substring(p.IndexOf(',')+1));
+            }
+        }
+
+        private void concediereManager_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+           
+                foreach (string p in managerActualMutare)
+                {
+                    if (p.Substring(p.IndexOf(',') + 1) == concediereManager.Text)
+                        concedManagId = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                }
+
+                string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
+                SqlConnection con = new SqlConnection(cnx);
+                con.Open();
+                angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
+                con.Close();
+                angajatConcediat.Items.Clear();
+                foreach (string p in angajatiiManagerului)
+                {
+                    angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                }
+            
+           
+        }
+        private void btnConcediereAngajat_Click(object sender, EventArgs e)
+        {
+            foreach (string p in angajatiiManagerului)
+            {
+                if (p.Substring(p.IndexOf(',') + 1) == angajatConcediat.Text)
+                {
+
+                    idAngajatConcediat = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                }
+
+            }
+            MessageBox.Show(angajatConcediat.Text);
+            SqlConnection con = new SqlConnection(cnx);
+            con.Open();
+            SqlCommand concediaza = new SqlCommand("Delete from Angajat where id=" + idAngajatConcediat.ToString(), con);
+            concediaza.ExecuteNonQuery();
+            MessageBox.Show("Angajat concediat");
+        }
+
+        private void Stergere_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnPaginaPrincipala_Click(object sender, EventArgs e)
+        {
+       
+            this.Hide();
+
         }
     }
 }
