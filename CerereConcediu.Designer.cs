@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CerereConcediu));
             this.PaginaMea = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -54,12 +55,11 @@
             // 
             // PaginaMea
             // 
-            this.PaginaMea.BackColor = System.Drawing.Color.DarkSalmon;
+            this.PaginaMea.BackColor = System.Drawing.Color.Transparent;
             this.PaginaMea.FlatAppearance.BorderSize = 0;
             this.PaginaMea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaginaMea.ForeColor = System.Drawing.Color.Maroon;
-            this.PaginaMea.Location = new System.Drawing.Point(38, 20);
-            this.PaginaMea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PaginaMea.Location = new System.Drawing.Point(33, 15);
             this.PaginaMea.Name = "PaginaMea";
             this.PaginaMea.Size = new System.Drawing.Size(101, 31);
             this.PaginaMea.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(39, 80);
+            this.label1.Location = new System.Drawing.Point(34, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 2;
@@ -82,7 +82,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.Maroon;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.Gray;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.DarkSalmon;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DarkSalmon;
@@ -102,12 +102,11 @@
             // 
             // Trimite
             // 
-            this.Trimite.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Trimite.BackColor = System.Drawing.Color.Transparent;
             this.Trimite.FlatAppearance.BorderSize = 0;
             this.Trimite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Trimite.ForeColor = System.Drawing.Color.Maroon;
-            this.Trimite.Location = new System.Drawing.Point(675, 327);
-            this.Trimite.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Trimite.Location = new System.Drawing.Point(591, 245);
             this.Trimite.Name = "Trimite";
             this.Trimite.Size = new System.Drawing.Size(86, 31);
             this.Trimite.TabIndex = 5;
@@ -147,10 +146,10 @@
             // 
             // cbTipConcediu
             // 
-            this.cbTipConcediu.BackColor = System.Drawing.Color.DarkSalmon;
+            this.cbTipConcediu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
             this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbTipConcediu.ForeColor = System.Drawing.Color.Maroon;
+            this.cbTipConcediu.ForeColor = System.Drawing.Color.White;
             this.cbTipConcediu.FormattingEnabled = true;
             this.cbTipConcediu.Location = new System.Drawing.Point(39, 113);
             this.cbTipConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -161,12 +160,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox1.Location = new System.Drawing.Point(730, 113);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Location = new System.Drawing.Point(639, 85);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(131, 31);
@@ -178,7 +176,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(730, 80);
+            this.label2.Location = new System.Drawing.Point(639, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(156, 20);
             this.label2.TabIndex = 9;
@@ -186,6 +184,8 @@
             // 
             // cbInlocuitor
             // 
+            this.cbInlocuitor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
+            this.cbInlocuitor.ForeColor = System.Drawing.Color.White;
             this.cbInlocuitor.FormattingEnabled = true;
             this.cbInlocuitor.Location = new System.Drawing.Point(470, 212);
             this.cbInlocuitor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -197,7 +197,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(470, 176);
+            this.label3.Location = new System.Drawing.Point(411, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 11;
@@ -206,8 +206,7 @@
             // rtbComentarii
             // 
             this.rtbComentarii.BackColor = System.Drawing.Color.DarkSalmon;
-            this.rtbComentarii.Location = new System.Drawing.Point(39, 212);
-            this.rtbComentarii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rtbComentarii.Location = new System.Drawing.Point(34, 159);
             this.rtbComentarii.Name = "rtbComentarii";
             this.rtbComentarii.Size = new System.Drawing.Size(394, 127);
             this.rtbComentarii.TabIndex = 12;
@@ -217,7 +216,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(39, 176);
+            this.label4.Location = new System.Drawing.Point(34, 132);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 13;
@@ -226,7 +225,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(203, 77);
+            this.label5.Location = new System.Drawing.Point(178, 58);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(51, 20);
             this.label5.TabIndex = 14;
@@ -235,7 +234,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(470, 77);
+            this.label6.Location = new System.Drawing.Point(411, 58);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 20);
             this.label6.TabIndex = 15;
@@ -243,8 +242,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(470, 113);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dateTimePicker3.Location = new System.Drawing.Point(411, 85);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(228, 27);
             this.dateTimePicker3.TabIndex = 16;
@@ -256,7 +254,8 @@
             this.btnInchidereCC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInchidereCC.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchidereCC.ForeColor = System.Drawing.Color.Maroon;
-            this.btnInchidereCC.Location = new System.Drawing.Point(865, 8);
+            this.btnInchidereCC.Location = new System.Drawing.Point(757, 6);
+            this.btnInchidereCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInchidereCC.Name = "btnInchidereCC";
             this.btnInchidereCC.Size = new System.Drawing.Size(42, 57);
             this.btnInchidereCC.TabIndex = 17;
@@ -268,7 +267,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnInchidereCC);
             this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label6);
@@ -284,6 +283,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PaginaMea);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CerereConcediu";

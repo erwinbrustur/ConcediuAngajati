@@ -51,7 +51,10 @@ namespace ConcediuAngajati
             }
 
             cbInlocuitor.SelectedIndex = 0;
-           
+
+            
+
+
 
         }
 

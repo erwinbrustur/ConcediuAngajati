@@ -150,10 +150,12 @@ namespace ConcediuAngajati.PaginaPrincipala
 
             foreach(string id in iduri)
             {
+                
                 if (angajat.Id.ToString() == id)
                 {
                     CereriConcediBut.Show();
                     DropConcedii.Show();
+                    break;
                 }
                 else
                 {

@@ -22,6 +22,8 @@ namespace ConcediuAngajati
         byte[] poza;
         bool esteAdmin;
         int managerId;
+        int departamentId;
+        int functieId;
 
         public Angajat(int id, string nume, string prenume, string email, string parola, DateTime dataAngajare, DateTime dataNasterii, string cnp, string serie, string no, string nrTelefon, byte[] poza, bool esteAdmin,int managerId)
         {
@@ -117,6 +119,16 @@ namespace ConcediuAngajati
         {
             get { return this.managerId; }
             set { this.managerId = value; }
+        }
+        public int DepartamentId
+        {
+            get { return this.departamentId; }
+            set { this.departamentId = value; }
+        }
+        public int FunctieId
+        {
+            get { return this.functieId; }
+            set { this.functieId = value; }
         }
     }
 }

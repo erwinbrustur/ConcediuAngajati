@@ -19,11 +19,10 @@ namespace ConcediuAngajati
         int idAngajatSelectat;
         int stareConcediuId;
         int idConcediu;
-        Angajat angajat;
+
         public ConcediuAngajati(Angajat a)
-        {   
+        {
             InitializeComponent();
-            angajat = a;
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             extragereConcediiDB();
 
@@ -40,6 +39,8 @@ namespace ConcediuAngajati
             
 
             angajatistring = extragereAngajatiDB();
+
+            dgvConcedii.BackColor= Color.FromArgb(99, 127, 124, 127);
 
             //extragereConcediiDB();
 
@@ -269,13 +270,10 @@ namespace ConcediuAngajati
 
         }
 
-        private void btnInchidereCA_Click(object sender, EventArgs e)
+        private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
-            paginap.Show();
-            this.Close();
+
         }
     }
-    
 
 }
