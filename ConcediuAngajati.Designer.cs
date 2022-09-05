@@ -37,15 +37,15 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInchidereCA = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
             // 
             // Actualizare
             // 
-            this.Actualizare.Location = new System.Drawing.Point(546, 20);
-            this.Actualizare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Actualizare.Location = new System.Drawing.Point(624, 27);
             this.Actualizare.Name = "Actualizare";
-            this.Actualizare.Size = new System.Drawing.Size(107, 23);
+            this.Actualizare.Size = new System.Drawing.Size(122, 31);
             this.Actualizare.TabIndex = 0;
             this.Actualizare.Text = "Actualizare";
             this.Actualizare.UseVisualStyleBackColor = false;
@@ -54,9 +54,10 @@
             // cbStareConcediu
             // 
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(31, 21);
+            this.cbStareConcediu.Location = new System.Drawing.Point(35, 28);
+            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbStareConcediu.Size = new System.Drawing.Size(138, 28);
             this.cbStareConcediu.TabIndex = 1;
             this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
@@ -70,12 +71,13 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dgvConcedii.Location = new System.Drawing.Point(31, 73);
+            this.dgvConcedii.Location = new System.Drawing.Point(35, 97);
+            this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(722, 270);
+            this.dgvConcedii.Size = new System.Drawing.Size(825, 360);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
@@ -128,15 +130,29 @@
             this.btnInchidereCA.Text = "X";
             this.btnInchidereCA.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(850, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(37, 43);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ConcediuAngajati
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 375);
+            this.ClientSize = new System.Drawing.Size(890, 500);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvConcedii);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizare);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
@@ -155,5 +171,6 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private Button btnInchidereCA;
+        private Button button1;
     }
 }

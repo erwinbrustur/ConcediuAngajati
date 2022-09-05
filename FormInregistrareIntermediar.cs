@@ -37,13 +37,9 @@ namespace ConcediuAngajati
 
         private void btnAdaugaPoza_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG, *.JPEG)| *.BMP; *.JPG; *.PNG, *.JPEG | All files(*.*) | *.*";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
-            }
+            Inregistrare inr = new Inregistrare();
+            inr.Show();
+            this.Close();
         }
 
         private void tbCNP_KeyPress(object sender, KeyPressEventArgs e)
@@ -168,7 +164,13 @@ namespace ConcediuAngajati
 
         private void pbImagineProfil_Click(object sender, EventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG, *.JPEG)| *.BMP; *.JPG; *.PNG, *.JPEG | All files(*.*) | *.*";
 
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
+            }
         }
     }
 }
