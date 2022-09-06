@@ -251,14 +251,16 @@
             // btnInchiderePP
             // 
             this.btnInchiderePP.BackColor = System.Drawing.Color.Transparent;
-            this.btnInchiderePP.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchiderePP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInchiderePP.BackgroundImage")));
+            this.btnInchiderePP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInchiderePP.FlatAppearance.BorderSize = 0;
+            this.btnInchiderePP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchiderePP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnInchiderePP.ForeColor = System.Drawing.Color.Silver;
-            this.btnInchiderePP.Location = new System.Drawing.Point(824, 12);
+            this.btnInchiderePP.ForeColor = System.Drawing.Color.Transparent;
+            this.btnInchiderePP.Location = new System.Drawing.Point(834, 8);
             this.btnInchiderePP.Name = "btnInchiderePP";
-            this.btnInchiderePP.Size = new System.Drawing.Size(37, 43);
+            this.btnInchiderePP.Size = new System.Drawing.Size(29, 28);
             this.btnInchiderePP.TabIndex = 7;
-            this.btnInchiderePP.Text = "X";
             this.btnInchiderePP.UseVisualStyleBackColor = false;
             this.btnInchiderePP.Click += new System.EventHandler(this.btnInchiderePP_Click);
             // 
@@ -293,6 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(873, 412);

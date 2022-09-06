@@ -217,6 +217,9 @@ namespace ConcediuAngajati
             }
         }
 
+        private void lblIstoric_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
