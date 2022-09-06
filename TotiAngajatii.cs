@@ -57,7 +57,7 @@ namespace ConcediuAngajati
                     item.SubItems.Add(a.Prenume.ToString());//Prenume
                     item.SubItems.Add(a.Email.ToString());//Email
                     item.SubItems.Add((a.Manager.Nume+ ' ' + a.Manager.Prenume).ToString());//Manager
-                    item.SubItems.Add(a.Departament.Nume);//Departament
+                    item.SubItems.Add(a.Departament.Denumire);//Departament
                    
                     listView1.Items.Add(item);
                     
