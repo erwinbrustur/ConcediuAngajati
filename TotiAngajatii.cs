@@ -1,4 +1,6 @@
-﻿using ProiectASP.Models;
+﻿using MySql.Data.MySqlClient.Memcached;
+using Newtonsoft.Json;
+using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,10 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ConcediuAngajati
 {
     public partial class TotiAngajatii : Form
     {
+        static readonly HttpClient client = new HttpClient();
         string connectionString;
         List<string> listaStare;
         List<string> angajatistring;
@@ -25,38 +29,45 @@ namespace ConcediuAngajati
         public TotiAngajatii(Angajat a)
         {
             InitializeComponent();
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
-
-            ExtragereAngajat();
-            angajatistring = ExtragereAngajati();
+            ExtragereAngajatAsync(a);
+           
         }
 
-        public void ExtragereAngajat()
+        public async Task ExtragereAngajatAsync(Angajat ang)
         {
-            string selectSQL = "select a.nume,a.prenume,a.email,a2.nume+' '+a2.prenume as manager,d.Denumire from Angajat a join Angajat a2 on a.managerId=a2.id join Departament d on d.id=a.departamentId WHERE a.id != 30";
+            HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TotiAngajatii");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
 
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
+
+
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
             try
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
 
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
+                //MessageBox.Show(listaAngajati.Count().ToString());
+                foreach (Angajat a in listaAngajati)
                 {
-                    ListViewItem item = new ListViewItem(reader[0].ToString());
+                    if ((bool)!a.EsteAdmin)
+                    {
+                        ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
 
-                    
-                    item.SubItems.Add(reader[1].ToString());// Nume
-                    item.SubItems.Add(reader[2].ToString());//Prenume
-                    item.SubItems.Add(reader[3].ToString());//Email
-                    item.SubItems.Add(reader[4].ToString());//Manager
-                   
-                    listView1.Items.Add(item);
-                    
+                        //MessageBox.Show(a.Nume);
+                        item.SubItems.Add(a.Prenume.ToString());//Prenume
+                        if (a.Email != null)
+                        {
+                            item.SubItems.Add(a.Email.ToString());//Email
+                        }
+                        else
+                        {
+                            item.SubItems.Add("Nu are adresa de email");
+                        }
+                        item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager
+                        item.SubItems.Add(a.Departament.Denumire);//Departament
+
+                        listView1.Items.Add(item);
+                    }
                 }
 
 
@@ -67,56 +78,21 @@ namespace ConcediuAngajati
                 MessageBox.Show(ex.Message);
 
             }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
+            
 
         }
-        public List<string> ExtragereAngajati()
-        {
-            List<string> extrageAngajati = new List<string>();
-            string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
-
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
-            {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    extrageAngajati.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-
-                }
-
-
-                return extrageAngajati;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-
-
-
-
-        }
+        
+        
 
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
 
         }
     }
