@@ -114,6 +114,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             this.Close();
             //Afisare cerere
+
             CerereConcediu con = new CerereConcediu(angajat);
             con.Show();
 
