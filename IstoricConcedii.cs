@@ -14,8 +14,8 @@ using System.Windows.Forms;
 namespace ConcediuAngajati
 {
 
-    
-    public partial class IstoricConcedii : Form      
+
+    public partial class IstoricConcedii : Form
     {
         string connectionString;
         List<string> listaStare;
@@ -32,7 +32,7 @@ namespace ConcediuAngajati
             listaStare = extragereStareConcediuDB();
 
             extragereConcediiDB();
-     
+
 
             angajatistring = extragereAngajatiDB();
         }
@@ -41,20 +41,20 @@ namespace ConcediuAngajati
         {
             List<Concediu> listaConcedii = new List<Concediu>();
             string selectSQL = "SELECT c.id, a.nume + ' ' + a.prenume as Nume, Convert(date, c.dataInceput) as 'Data Inceput', Convert(date, c.dataSfarsit) as 'Data Sfarsit',tc.nume as TipConcediu, a2.nume + ' ' + a2.prenume as Inlocuitor, c.comentarii as 'Comentarii', sc.nume as Stare, t.ZileConcediuRamas FROM Angajat a JOIN Concediu c ON a.id = c.angajatId JOIN Angajat a2 ON a2.id = c.inlocuitorId JOIN StareConcediu sc ON sc.id = c.stareConcediuId JOIN(SELECT angajatId, 21 - isnull(Sum(ZileConcediu),0) as ZileConcediuRamas from Concediu group by angajatId ) t on t.angajatId = a.id JOIN  TipConcediu tc ON tc.id = c.tipConcediuId";
-            
+
             SqlConnection conexiune = new SqlConnection(connectionString);
             SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
                 conexiune.Open();
                 querySelect.Connection = conexiune;
-                  
+
                 SqlDataReader reader = querySelect.ExecuteReader();
 
                 while (reader.Read())
                 {
                     ListViewItem item = new ListViewItem(reader[1].ToString());
-                  
+
                     string[] s1 = reader[2].ToString().Split(' ');
                     string[] s2 = reader[3].ToString().Split(' ');
                     item.SubItems.Add(s1[0].ToString());
@@ -69,7 +69,7 @@ namespace ConcediuAngajati
                     //Concediu c = new Concediu(Convert.ToInt32(reader[0].ToString()), Convert.ToInt32(reader[1].ToString()), Convert.ToDateTime(reader[2].ToString()), Convert.ToDateTime(reader[3].ToString()), Convert.ToInt32(reader[4].ToString()), reader[5].ToString(), Convert.ToInt32(reader[6].ToString()), Convert.ToInt32(reader[7].ToString()));
                     //listaConcedii.Add(c);
                 }
-              
+
 
                 //DataTable dt = new DataTable();
                 //SqlDataAdapter adapt = new SqlDataAdapter(selectSQL, conexiune);
@@ -90,7 +90,7 @@ namespace ConcediuAngajati
 
 
             }
-            
+
 
         }
 
@@ -104,7 +104,7 @@ namespace ConcediuAngajati
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
 
@@ -144,41 +144,41 @@ namespace ConcediuAngajati
             }
         }
 
-            public List<string> extragereStareConcediuDB()
+        public List<string> extragereStareConcediuDB()
+        {
+            List<string> stareConcediu = new List<string>();
+            string selectSQL = "SELECT * from StareConcediu";
+            SqlConnection conexiune = new SqlConnection(connectionString);
+            SqlCommand querySelect = new SqlCommand(selectSQL);
+            try
             {
-                List<string> stareConcediu = new List<string>();
-                string selectSQL = "SELECT * from StareConcediu";
-                SqlConnection conexiune = new SqlConnection(connectionString);
-                SqlCommand querySelect = new SqlCommand(selectSQL);
-                try
+                conexiune.Open();
+                querySelect.Connection = conexiune;
+                SqlDataReader reader = querySelect.ExecuteReader();
+
+                while (reader.Read())
                 {
-                    conexiune.Open();
-                    querySelect.Connection = conexiune;
-                    SqlDataReader reader = querySelect.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
-
-                    }
-
-
-                    return stareConcediu;
-                }
-                catch (Exception ex)
-                {
-
-                    return null;
-                }
-                finally
-                {
-                    conexiune.Close();
-
+                    stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
 
                 }
+
+
+                return stareConcediu;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+            finally
+            {
+                conexiune.Close();
+
 
             }
 
-
         }
+
+
+    }
 }
