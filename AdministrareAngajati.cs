@@ -24,8 +24,18 @@ namespace ConcediuAngajati
         int idManagerSE;
         int idAngajatConcediat;
         int concedManagId;
+        int idManagerDepartament;
+        int idManagerFunctie;
+        int idManagerFunct;
+        int idDepartament;
+        int idFunctie;
+        int idAngajatDepartament;
+        int idAngajatFunctie;
+        string numeManager;
         string cnx;
         Angajat angajatCurent;
+        List<string> FunctAngaj = new List<string>();
+        List<string> departAngaj = new List<string>();
         List<string> managerActualMutare = new List<string>();
         List<string> angajatMutare = new List<string>();
         List<string> managerNouMutare = new List<string>();
@@ -72,9 +82,13 @@ namespace ConcediuAngajati
             }
             foreach (string s in managerActualMutare)
             {
-                comboBox1.Items.Add(s.Substring(s.IndexOf(',')+1));
-                comboBox4.Items.Add(s.Substring(s.IndexOf(',')+1));
-                comboBox6.Items.Add(s.Substring(s.IndexOf(',')+1));
+                comboBox1.Items.Add(s.Substring(s.IndexOf(',') + 1));
+                comboBox4.Items.Add(s.Substring(s.IndexOf(',') + 1));
+                comboBox6.Items.Add(s.Substring(s.IndexOf(',') + 1));
+                DepartamentManager.Items.Add(s.Substring(s.IndexOf(',') + 1));
+                FunctieManager.Items.Add(s.Substring(s.IndexOf(',') + 1));
+
+
             }
 
 
@@ -94,6 +108,20 @@ namespace ConcediuAngajati
             cnx.Close();
             return date;
         }
+        public List<string> fctDep(string CmdLine, string conex)
+        {
+            List<string> date = new List<string>();
+            SqlConnection cnx = new SqlConnection(conex);
+            cnx.Open();
+            SqlCommand cmd = new SqlCommand(CmdLine, cnx);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                date.Add(reader[0].ToString() + ", " + reader[1].ToString());
+            }
+            cnx.Close();
+            return date;
+        }
         public static string Hash(string Value)
         {
             using var hash = SHA256.Create();
@@ -104,7 +132,8 @@ namespace ConcediuAngajati
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (panelAdaugareAngajat.Visible == true) { 
+            if (panelAdaugareAngajat.Visible == true)
+            {
                 panelAdaugareAngajat.Hide();
             }
 
@@ -114,7 +143,7 @@ namespace ConcediuAngajati
                 panelModificareManageri.Hide();
                 panelConcediere.Hide();
             }
-             
+
 
         }
 
@@ -131,7 +160,7 @@ namespace ConcediuAngajati
                 panelAdaugareAngajat.Hide();
                 panelConcediere.Hide();
             }
-             
+
         }
 
         private void panelAdaugareAngajat_Paint(object sender, PaintEventArgs e)
@@ -260,28 +289,28 @@ namespace ConcediuAngajati
                 comboBox2.Items.Add(p.Substring(p.IndexOf(',') + 1));
 
             }
-           
+
             comboBox3.Items.Clear();
             foreach (string s in managerActualMutare)
             {
-                if (comboBox1.Text != s.Substring(s.IndexOf(',')+1))
+                if (comboBox1.Text != s.Substring(s.IndexOf(',') + 1))
                     comboBox3.Items.Add(s.IndexOf(',') + 1);
 
             }
-           
+
         }
 
         private void button1_Click_2(object sender, EventArgs e)
         {
             string transfercmd = "update Angajat set managerId=" + idManager2 + " where id=" + idAngajat;
-        
+
             SqlConnection con = new SqlConnection(cnx);
             con.Open();
             SqlCommand transfer = new SqlCommand(transfercmd, con);
             transfer.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show(comboBox2.Text+" a fost transferat in echipa lui "+comboBox3.Text+"!");
+            MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -295,7 +324,7 @@ namespace ConcediuAngajati
 
                 if (numeAngajat == s.Substring(s.IndexOf(',') + 1))
                 {
-                    idAngajat = Convert.ToInt32(s.Substring(0, s.IndexOf(',') ));
+                    idAngajat = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
 
                 }
             }
@@ -303,11 +332,11 @@ namespace ConcediuAngajati
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             foreach (string s in managerActualMutare)
             {
-               
-                if (comboBox3.Text == s.Substring(s.IndexOf(',')+1))
+
+                if (comboBox3.Text == s.Substring(s.IndexOf(',') + 1))
                     idManager2 = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
             }
         }
@@ -319,8 +348,8 @@ namespace ConcediuAngajati
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string numeManagerEN=comboBox4.Text;
-            foreach(string s in managerActualMutare)
+            string numeManagerEN = comboBox4.Text;
+            foreach (string s in managerActualMutare)
             {
                 if (numeManagerEN == s.Substring(s.IndexOf(',')))
                 {
@@ -345,14 +374,14 @@ namespace ConcediuAngajati
         private void comboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
             string numeManagerSE = comboBox6.Text;
-      
+
             foreach (string s in managerActualMutare)
             {
-                
+
                 if (numeManagerSE == s.Substring(s.IndexOf(',') + 1))
                 {
                     idManagerSE = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
-                
+
                 }
             }
         }
@@ -376,12 +405,12 @@ namespace ConcediuAngajati
 
         private void BtnEchipaNoua_Click(object sender, EventArgs e)
         {
-            int idVManager=0; 
+            int idVManager = 0;
             foreach (string p in viitorManager)
             {
                 if (comboBox5.Text == p.Substring(p.IndexOf(',') + 1))
                 {
-                    idVManager = Convert.ToInt32(p.Substring(0, p.IndexOf(',') ));
+                    idVManager = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
                 }
             }
             string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
@@ -392,12 +421,12 @@ namespace ConcediuAngajati
             cmden.ExecuteNonQuery();
 
             con.Close();
-            MessageBox.Show("Ati creat o noua echipa manageriata de "+comboBox5.Text+"!");
+            MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
         }
 
         private void btnConcedPanel_Click(object sender, EventArgs e)
         {
-            if(panelConcediere.Visible)
+            if (panelConcediere.Visible)
             {
                 panelConcediere.Hide();
             }
@@ -408,34 +437,33 @@ namespace ConcediuAngajati
                 panelModificareManageri.Hide();
             }
             SqlConnection con = new SqlConnection(cnx);
-          foreach(string p in managerActualMutare)
+            foreach (string p in managerActualMutare)
             {
-                concediereManager.Items.Add(p.Substring(p.IndexOf(',')+1));
+                concediereManager.Items.Add(p.Substring(p.IndexOf(',') + 1));
             }
         }
 
         private void concediereManager_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-           
-                foreach (string p in managerActualMutare)
-                {
-                    if (p.Substring(p.IndexOf(',') + 1) == concediereManager.Text)
-                        concedManagId = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
-                }
 
-                string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
-                SqlConnection con = new SqlConnection(cnx);
-                con.Open();
-                angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
-                con.Close();
-                angajatConcediat.Items.Clear();
-                foreach (string p in angajatiiManagerului)
-                {
-                    angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
-                }
-            
-           
+
+            foreach (string p in managerActualMutare)
+            {
+                if (p.Substring(p.IndexOf(',') + 1) == concediereManager.Text)
+                    concedManagId = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+            }
+
+            string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
+
+            angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
+
+            angajatConcediat.Items.Clear();
+            foreach (string p in angajatiiManagerului)
+            {
+                angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            }
+
+
         }
         private void btnConcediereAngajat_Click(object sender, EventArgs e)
         {
@@ -448,7 +476,7 @@ namespace ConcediuAngajati
                 }
 
             }
-            MessageBox.Show(angajatConcediat.Text);
+         
             SqlConnection con = new SqlConnection(cnx);
             con.Open();
             SqlCommand concediaza = new SqlCommand("Delete from Angajat where id=" + idAngajatConcediat.ToString(), con);
@@ -468,8 +496,99 @@ namespace ConcediuAngajati
 
         private void BtnPaginaPrincipala_Click(object sender, EventArgs e)
         {
-       
+
             this.Hide();
+
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numeManager = DepartamentManager.Text;
+            foreach (string s in managerActualMutare)
+            {
+
+
+                if (numeManager == s.Substring(s.IndexOf(',') + 1))
+                {
+                    idManagerDepartament = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                }
+
+            }
+            string angajatiDep = "select id,nume,prenume from angajat where managerId=" + idManagerDepartament.ToString();
+            departAngaj = datePersoana(angajatiDep, cnx);
+
+            DepartamentAngajat.Items.Clear();
+            foreach (string p in departAngaj)
+            {
+                DepartamentAngajat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            }
+            string getDepart = "select id,Denumire from Departament";
+            List<string> departamente = fctDep(getDepart, cnx);
+            DepartamentDepartament.Items.Clear();
+            foreach (string p in departamente)
+            {
+                DepartamentDepartament.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            }
+            foreach (string p in departamente)
+            {
+                if (p.Substring(p.IndexOf(',') + 1) == DepartamentDepartament.Text)
+                    idDepartament =Convert.ToInt32( p.Substring(0, p.IndexOf(',')));
+            }
+        }
+
+        private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            numeManager = FunctieManager.Text;
+            foreach (string s in managerActualMutare)
+            {
+
+
+                if (numeManager == s.Substring(s.IndexOf(',') + 1))
+                {
+                    idManagerFunct = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                }
+
+            }
+            string angajatiDep = "select id,nume,prenume from angajat where managerId=" + idManagerFunct.ToString();
+            FunctAngaj = datePersoana(angajatiDep, cnx);
+
+            FunctieAngajat.Items.Clear();
+            foreach (string p in FunctAngaj)
+            {
+                FunctieAngajat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            }
+            string getFct = "select id,Denumire from Functie";
+            List<string> functii = fctDep(getFct, cnx);
+            Functiefunctie.Items.Clear();
+            foreach (string p in functii)
+            {
+                Functiefunctie.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            }
+            foreach (string p in functii)
+            {
+                if (p.Substring(p.IndexOf(',') + 1) == Functiefunctie.Text)
+                    idFunctie = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+            }
+
+        }
+
+        private void comboBox12_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnDepart_Click(object sender, EventArgs e)
+        {
+  
+        }
+
+        private void BtnFunct_Click(object sender, EventArgs e)
+        {
 
         }
     }
