@@ -29,16 +29,14 @@ namespace ConcediuAngajati
         public TotiAngajatii(Angajat a)
         {
             InitializeComponent();
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
-
-            ExtragereAngajatAsync();
-            angajatistring = ExtragereAngajati();
+            ExtragereAngajatAsync(a);
+           
         }
 
-        public async Task ExtragereAngajatAsync()
+        public async Task ExtragereAngajatAsync(Angajat ang)
         {
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllStareConcediu");
+            HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TotiAngajatii");
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -47,20 +45,29 @@ namespace ConcediuAngajati
             List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
             try
             {
-                
 
-                foreach(Angajat a in listaAngajati)
+                //MessageBox.Show(listaAngajati.Count().ToString());
+                foreach (Angajat a in listaAngajati)
                 {
-                    ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
+                    if ((bool)!a.EsteAdmin)
+                    {
+                        ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
 
-                    
-                    item.SubItems.Add(a.Prenume.ToString());//Prenume
-                    item.SubItems.Add(a.Email.ToString());//Email
-                    item.SubItems.Add((a.Manager.Nume+ ' ' + a.Manager.Prenume).ToString());//Manager
-                    item.SubItems.Add(a.Departament.Denumire);//Departament
-                   
-                    listView1.Items.Add(item);
-                    
+                        //MessageBox.Show(a.Nume);
+                        item.SubItems.Add(a.Prenume.ToString());//Prenume
+                        if (a.Email != null)
+                        {
+                            item.SubItems.Add(a.Email.ToString());//Email
+                        }
+                        else
+                        {
+                            item.SubItems.Add("Nu are adresa de email");
+                        }
+                        item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager
+                        item.SubItems.Add(a.Departament.Denumire);//Departament
+
+                        listView1.Items.Add(item);
+                    }
                 }
 
 
@@ -74,48 +81,18 @@ namespace ConcediuAngajati
             
 
         }
-        public List<string> ExtragereAngajati()
-        {
-            List<string> extrageAngajati = new List<string>();
-            string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
-
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
-            {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    extrageAngajati.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-
-                }
-
-
-                return extrageAngajati;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-
-
-
-
-        }
+        
+        
 
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
 
         }
     }
