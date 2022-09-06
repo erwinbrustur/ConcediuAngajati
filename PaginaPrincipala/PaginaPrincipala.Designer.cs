@@ -66,7 +66,7 @@
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 100);
+            this.DropDown.Size = new System.Drawing.Size(81, 34);
             this.DropDown.TabIndex = 0;
             // 
             // button2
@@ -162,7 +162,7 @@
             this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 65);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(100, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(100, 65);
+            this.DropConcedii.Size = new System.Drawing.Size(100, 34);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
@@ -213,7 +213,7 @@
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
-            this.CereriConcediBut.Size = new System.Drawing.Size(85, 100);
+            this.CereriConcediBut.Size = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.TabIndex = 6;
             // 
             // button1
