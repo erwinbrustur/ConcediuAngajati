@@ -108,7 +108,9 @@ namespace ConcediuAngajati
 
         private void concediileMeleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            IstoricConcedii iconcediu = new IstoricConcedii(angajat);
+            iconcediu.Show();
+            this.Close();
         }
 
         private void btnActualizareDate_Click(object sender, EventArgs e)
