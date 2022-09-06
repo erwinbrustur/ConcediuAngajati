@@ -55,6 +55,22 @@
             this.Nume = new System.Windows.Forms.TextBox();
             this.LblNume = new System.Windows.Forms.Label();
             this.panelModificareManageri = new System.Windows.Forms.Panel();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnFunct = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.FunctieManager = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.FunctieAngajat = new System.Windows.Forms.ComboBox();
+            this.Functiefunctie = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.BtnDepart = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.DepartamentManager = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.DepartamentAngajat = new System.Windows.Forms.ComboBox();
+            this.DepartamentDepartament = new System.Windows.Forms.ComboBox();
             this.Stergere = new System.Windows.Forms.GroupBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.BtnStergere = new System.Windows.Forms.Button();
@@ -88,6 +104,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panelModificareManageri.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.Stergere.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -416,6 +434,8 @@
             // panelModificareManageri
             // 
             this.panelModificareManageri.BackColor = System.Drawing.Color.White;
+            this.panelModificareManageri.Controls.Add(this.groupBox6);
+            this.panelModificareManageri.Controls.Add(this.groupBox4);
             this.panelModificareManageri.Controls.Add(this.Stergere);
             this.panelModificareManageri.Controls.Add(this.groupBox3);
             this.panelModificareManageri.Controls.Add(this.groupBox2);
@@ -425,6 +445,194 @@
             this.panelModificareManageri.TabIndex = 4;
             this.panelModificareManageri.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModificareManageri_Paint);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox6.Controls.Add(this.BtnFunct);
+            this.groupBox6.Controls.Add(this.label22);
+            this.groupBox6.Controls.Add(this.label23);
+            this.groupBox6.Controls.Add(this.FunctieManager);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.FunctieAngajat);
+            this.groupBox6.Controls.Add(this.Functiefunctie);
+            this.groupBox6.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox6.Location = new System.Drawing.Point(418, 264);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(370, 118);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Schimbare functie";
+            // 
+            // BtnFunct
+            // 
+            this.BtnFunct.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnFunct.FlatAppearance.BorderSize = 0;
+            this.BtnFunct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnFunct.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnFunct.Location = new System.Drawing.Point(235, 48);
+            this.BtnFunct.Name = "BtnFunct";
+            this.BtnFunct.Size = new System.Drawing.Size(135, 38);
+            this.BtnFunct.TabIndex = 6;
+            this.BtnFunct.Text = "Schimba";
+            this.BtnFunct.UseVisualStyleBackColor = false;
+            this.BtnFunct.Click += new System.EventHandler(this.BtnFunct_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(41, 31);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(54, 15);
+            this.label22.TabIndex = 3;
+            this.label22.Text = "Manager";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(47, 89);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(46, 15);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "Functie";
+            // 
+            // FunctieManager
+            // 
+            this.FunctieManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FunctieManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FunctieManager.ForeColor = System.Drawing.Color.Maroon;
+            this.FunctieManager.FormattingEnabled = true;
+            this.FunctieManager.Location = new System.Drawing.Point(101, 28);
+            this.FunctieManager.Name = "FunctieManager";
+            this.FunctieManager.Size = new System.Drawing.Size(121, 23);
+            this.FunctieManager.TabIndex = 0;
+            this.FunctieManager.SelectedIndexChanged += new System.EventHandler(this.comboBox10_SelectedIndexChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(47, 60);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(48, 15);
+            this.label24.TabIndex = 4;
+            this.label24.Text = "Angajat";
+            // 
+            // FunctieAngajat
+            // 
+            this.FunctieAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FunctieAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FunctieAngajat.ForeColor = System.Drawing.Color.Maroon;
+            this.FunctieAngajat.FormattingEnabled = true;
+            this.FunctieAngajat.Location = new System.Drawing.Point(101, 57);
+            this.FunctieAngajat.Name = "FunctieAngajat";
+            this.FunctieAngajat.Size = new System.Drawing.Size(121, 23);
+            this.FunctieAngajat.TabIndex = 1;
+            // 
+            // Functiefunctie
+            // 
+            this.Functiefunctie.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Functiefunctie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Functiefunctie.ForeColor = System.Drawing.Color.Maroon;
+            this.Functiefunctie.FormattingEnabled = true;
+            this.Functiefunctie.Location = new System.Drawing.Point(101, 86);
+            this.Functiefunctie.Name = "Functiefunctie";
+            this.Functiefunctie.Size = new System.Drawing.Size(121, 23);
+            this.Functiefunctie.TabIndex = 2;
+            this.Functiefunctie.SelectedIndexChanged += new System.EventHandler(this.comboBox12_SelectedIndexChanged);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox4.Controls.Add(this.BtnDepart);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.label19);
+            this.groupBox4.Controls.Add(this.DepartamentManager);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.DepartamentAngajat);
+            this.groupBox4.Controls.Add(this.DepartamentDepartament);
+            this.groupBox4.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox4.Location = new System.Drawing.Point(33, 264);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(370, 118);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Schimbare departament";
+            this.groupBox4.Enter += new System.EventHandler(this.groupBox4_Enter);
+            // 
+            // BtnDepart
+            // 
+            this.BtnDepart.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnDepart.FlatAppearance.BorderSize = 0;
+            this.BtnDepart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDepart.ForeColor = System.Drawing.Color.Maroon;
+            this.BtnDepart.Location = new System.Drawing.Point(235, 48);
+            this.BtnDepart.Name = "BtnDepart";
+            this.BtnDepart.Size = new System.Drawing.Size(135, 38);
+            this.BtnDepart.TabIndex = 6;
+            this.BtnDepart.Text = "Schimba";
+            this.BtnDepart.UseVisualStyleBackColor = false;
+            this.BtnDepart.Click += new System.EventHandler(this.BtnDepart_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(47, 28);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(54, 15);
+            this.label16.TabIndex = 3;
+            this.label16.Text = "Manager";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(17, 90);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(76, 15);
+            this.label19.TabIndex = 5;
+            this.label19.Text = "Departament";
+            // 
+            // DepartamentManager
+            // 
+            this.DepartamentManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DepartamentManager.ForeColor = System.Drawing.Color.Maroon;
+            this.DepartamentManager.FormattingEnabled = true;
+            this.DepartamentManager.Location = new System.Drawing.Point(101, 28);
+            this.DepartamentManager.Name = "DepartamentManager";
+            this.DepartamentManager.Size = new System.Drawing.Size(121, 23);
+            this.DepartamentManager.TabIndex = 0;
+            this.DepartamentManager.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(47, 60);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 15);
+            this.label21.TabIndex = 4;
+            this.label21.Text = "Angajat";
+            // 
+            // DepartamentAngajat
+            // 
+            this.DepartamentAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DepartamentAngajat.ForeColor = System.Drawing.Color.Maroon;
+            this.DepartamentAngajat.FormattingEnabled = true;
+            this.DepartamentAngajat.Location = new System.Drawing.Point(101, 57);
+            this.DepartamentAngajat.Name = "DepartamentAngajat";
+            this.DepartamentAngajat.Size = new System.Drawing.Size(121, 23);
+            this.DepartamentAngajat.TabIndex = 1;
+            // 
+            // DepartamentDepartament
+            // 
+            this.DepartamentDepartament.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentDepartament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DepartamentDepartament.ForeColor = System.Drawing.Color.Maroon;
+            this.DepartamentDepartament.FormattingEnabled = true;
+            this.DepartamentDepartament.Location = new System.Drawing.Point(101, 86);
+            this.DepartamentDepartament.Name = "DepartamentDepartament";
+            this.DepartamentDepartament.Size = new System.Drawing.Size(121, 23);
+            this.DepartamentDepartament.TabIndex = 2;
+            // 
             // Stergere
             // 
             this.Stergere.BackColor = System.Drawing.Color.Transparent;
@@ -432,7 +640,7 @@
             this.Stergere.Controls.Add(this.BtnStergere);
             this.Stergere.Controls.Add(this.label15);
             this.Stergere.ForeColor = System.Drawing.Color.Maroon;
-            this.Stergere.Location = new System.Drawing.Point(465, 88);
+            this.Stergere.Location = new System.Drawing.Point(452, 25);
             this.Stergere.Name = "Stergere";
             this.Stergere.Size = new System.Drawing.Size(323, 100);
             this.Stergere.TabIndex = 8;
@@ -486,9 +694,9 @@
             this.groupBox3.Controls.Add(this.comboBox4);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.ForeColor = System.Drawing.Color.Maroon;
-            this.groupBox3.Location = new System.Drawing.Point(23, 150);
+            this.groupBox3.Location = new System.Drawing.Point(33, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(420, 117);
+            this.groupBox3.Size = new System.Drawing.Size(366, 117);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Echipa noua";
@@ -500,7 +708,7 @@
             this.BtnEchipaNoua.FlatAppearance.BorderSize = 0;
             this.BtnEchipaNoua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEchipaNoua.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnEchipaNoua.Location = new System.Drawing.Point(257, 54);
+            this.BtnEchipaNoua.Location = new System.Drawing.Point(231, 54);
             this.BtnEchipaNoua.Name = "BtnEchipaNoua";
             this.BtnEchipaNoua.Size = new System.Drawing.Size(135, 38);
             this.BtnEchipaNoua.TabIndex = 7;
@@ -580,9 +788,9 @@
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.comboBox3);
             this.groupBox2.ForeColor = System.Drawing.Color.Maroon;
-            this.groupBox2.Location = new System.Drawing.Point(19, 16);
+            this.groupBox2.Location = new System.Drawing.Point(29, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(424, 118);
+            this.groupBox2.Size = new System.Drawing.Size(370, 118);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Transfer Angajat";
@@ -593,7 +801,7 @@
             this.BtnTransfer.FlatAppearance.BorderSize = 0;
             this.BtnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTransfer.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnTransfer.Location = new System.Drawing.Point(261, 48);
+            this.BtnTransfer.Location = new System.Drawing.Point(235, 71);
             this.BtnTransfer.Name = "BtnTransfer";
             this.BtnTransfer.Size = new System.Drawing.Size(135, 38);
             this.BtnTransfer.TabIndex = 6;
@@ -670,7 +878,7 @@
             this.panelConcediere.Controls.Add(this.groupBox5);
             this.panelConcediere.Location = new System.Drawing.Point(-5, 115);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(811, 382);
+            this.panelConcediere.Size = new System.Drawing.Size(811, 10);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
@@ -794,6 +1002,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panelModificareManageri.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.Stergere.ResumeLayout(false);
             this.Stergere.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -864,5 +1076,21 @@
         private ComboBox concediereManager;
         private Label label20;
         private Button btnConcedPanel;
+        private GroupBox groupBox6;
+        private Button BtnFunct;
+        private Label label22;
+        private Label label23;
+        private ComboBox FunctieManager;
+        private Label label24;
+        private ComboBox FunctieAngajat;
+        private ComboBox Functiefunctie;
+        private GroupBox groupBox4;
+        private Button BtnDepart;
+        private Label label16;
+        private Label label19;
+        private ComboBox DepartamentManager;
+        private Label label21;
+        private ComboBox DepartamentAngajat;
+        private ComboBox DepartamentDepartament;
     }
 }

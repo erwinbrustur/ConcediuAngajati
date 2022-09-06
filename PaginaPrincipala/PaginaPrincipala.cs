@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using ProiectASP.Models;
+using System.Data.SqlClient;
 
 namespace ConcediuAngajati.PaginaPrincipala
 {
@@ -211,7 +212,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             //concediu manageri
             this.Close();
-            ConcediuManager cmng = new ConcediuManager();
+            ConcediuManager cmng = new ConcediuManager(angajat);
             cmng.Show();
         }
 
