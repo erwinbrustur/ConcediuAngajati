@@ -62,15 +62,16 @@
             this.DropDown.Controls.Add(this.button2);
             this.DropDown.Controls.Add(this.button3);
             this.DropDown.Controls.Add(this.button4);
-            this.DropDown.Location = new System.Drawing.Point(308, 79);
+            this.DropDown.Location = new System.Drawing.Point(308, 105);
             this.DropDown.MaximumSize = new System.Drawing.Size(81, 100);
             this.DropDown.MinimumSize = new System.Drawing.Size(81, 32);
             this.DropDown.Name = "DropDown";
-            this.DropDown.Size = new System.Drawing.Size(81, 100);
+            this.DropDown.Size = new System.Drawing.Size(81, 34);
             this.DropDown.TabIndex = 0;
             // 
             // button2
             // 
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(3, 3);
@@ -83,6 +84,7 @@
             // 
             // button3
             // 
+            this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(3, 37);
@@ -95,6 +97,7 @@
             // 
             // button4
             // 
+            this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(3, 71);
@@ -109,7 +112,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(6, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 38);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(109, 101);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -120,9 +123,10 @@
             // DateleMele
             // 
             this.DateleMele.BackColor = System.Drawing.Color.Transparent;
+            this.DateleMele.FlatAppearance.BorderSize = 0;
             this.DateleMele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DateleMele.ForeColor = System.Drawing.Color.White;
-            this.DateleMele.Location = new System.Drawing.Point(121, 82);
+            this.DateleMele.Location = new System.Drawing.Point(121, 108);
             this.DateleMele.Name = "DateleMele";
             this.DateleMele.Size = new System.Drawing.Size(79, 28);
             this.DateleMele.TabIndex = 1;
@@ -138,6 +142,7 @@
             // 
             // button5
             // 
+            this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(3, 3);
@@ -153,15 +158,16 @@
             this.DropConcedii.BackColor = System.Drawing.Color.Transparent;
             this.DropConcedii.Controls.Add(this.button5);
             this.DropConcedii.Controls.Add(this.button6);
-            this.DropConcedii.Location = new System.Drawing.Point(486, 79);
+            this.DropConcedii.Location = new System.Drawing.Point(486, 105);
             this.DropConcedii.MaximumSize = new System.Drawing.Size(100, 65);
             this.DropConcedii.MinimumSize = new System.Drawing.Size(100, 32);
             this.DropConcedii.Name = "DropConcedii";
-            this.DropConcedii.Size = new System.Drawing.Size(100, 65);
+            this.DropConcedii.Size = new System.Drawing.Size(100, 34);
             this.DropConcedii.TabIndex = 3;
             // 
             // button6
             // 
+            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(3, 37);
@@ -186,6 +192,7 @@
             // 
             // CereriConcedii
             // 
+            this.CereriConcedii.FlatAppearance.BorderSize = 0;
             this.CereriConcedii.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CereriConcedii.ForeColor = System.Drawing.Color.White;
             this.CereriConcedii.Location = new System.Drawing.Point(3, 3);
@@ -202,15 +209,16 @@
             this.CereriConcediBut.Controls.Add(this.CereriConcedii);
             this.CereriConcediBut.Controls.Add(this.button1);
             this.CereriConcediBut.Controls.Add(this.button11);
-            this.CereriConcediBut.Location = new System.Drawing.Point(395, 79);
+            this.CereriConcediBut.Location = new System.Drawing.Point(395, 105);
             this.CereriConcediBut.MaximumSize = new System.Drawing.Size(85, 100);
             this.CereriConcediBut.MinimumSize = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.Name = "CereriConcediBut";
-            this.CereriConcediBut.Size = new System.Drawing.Size(85, 100);
+            this.CereriConcediBut.Size = new System.Drawing.Size(85, 34);
             this.CereriConcediBut.TabIndex = 6;
             // 
             // button1
             // 
+            this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(3, 37);
@@ -223,6 +231,7 @@
             // 
             // button11
             // 
+            this.button11.FlatAppearance.BorderSize = 0;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Location = new System.Drawing.Point(3, 71);
@@ -269,9 +278,10 @@
             // Angajti
             // 
             this.Angajti.BackColor = System.Drawing.Color.Transparent;
+            this.Angajti.FlatAppearance.BorderSize = 0;
             this.Angajti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Angajti.ForeColor = System.Drawing.Color.White;
-            this.Angajti.Location = new System.Drawing.Point(206, 82);
+            this.Angajti.Location = new System.Drawing.Point(206, 108);
             this.Angajti.Name = "Angajti";
             this.Angajti.Size = new System.Drawing.Size(95, 28);
             this.Angajti.TabIndex = 9;

@@ -1,5 +1,6 @@
 ﻿using ConcediuAngajati.PaginaPrincipala;
 using Microsoft.VisualBasic;
+using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,8 @@ namespace ConcediuAngajati
    
     public partial class CerereConcediu : Form
     {
-        List<string> list;
+        static readonly HttpClient client = new HttpClient();
+        
         string connectionString;
         List<string> listaInlocuitori;
         int idInlocuitor;
@@ -33,15 +35,13 @@ namespace ConcediuAngajati
             InitializeComponent();
             userCurent = a;
 
-            //MessageBox.Show("User: " + userCurent.Nume + userCurent.Prenume + userCurent.Email + userCurent.ManagerId);
+           
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
-            list = extragereTipConcediiDB();
-            foreach (string s in list)
-            {
-                cbTipConcediu.Items.Add(s);
-            }
-            
-            cbTipConcediu.SelectedIndex = 0;
+
+            extragereTipConcediuDB();
+
+
+           // cbTipConcediu.SelectedIndex = 0;
             
             listaInlocuitori = extragereInlocuitoriEchipaDB();
             foreach(string inlocuitor in listaInlocuitori)
@@ -59,41 +59,64 @@ namespace ConcediuAngajati
 
         }
 
-        public List<string> extragereTipConcediiDB()
+        //public List<string> extragereTipConcediiDB()
+        //{
+        //    List<string> strings = new List<string>();
+        //    string selectSQL = "SELECT * from TipConcediu";
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            strings.Add(reader[1].ToString());
+
+        //        }
+
+
+        //        return strings;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+
+
+        //    }
+
+        //}
+        public async void extragereTipConcediuDB()
         {
-            List<string> strings = new List<string>();
-            string selectSQL = "SELECT * from TipConcediu";
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllTipConcediu");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
 
-                while (reader.Read())
+                List<TipConcediu> listaTipConcedii = JsonConvert.DeserializeObject<List<TipConcediu>>(responseBody);
+
+               //MessageBox.Show(listaTipConcedii.Count.ToString());
+                foreach (TipConcediu tc in listaTipConcedii)
                 {
-                    strings.Add(reader[1].ToString());
-
+                    cbTipConcediu.Items.Add(tc.Nume);
+                    
                 }
-
-
-                return strings;
+                
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
                 MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
 
             }
-
         }
-
         public List<string> extragereInlocuitoriEchipaDB()
         {
             List<string> strings = new List<string>();

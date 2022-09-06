@@ -1,10 +1,12 @@
-﻿using ProiectASP.Models;
+﻿using Newtonsoft.Json;
+using ProiectASP.Models;
 using System.Data.SqlClient;
 
 namespace ConcediuAngajati.PaginaPrincipala
 {
     public partial class PaginaPrincipala : Form
     {
+        static readonly HttpClient client = new HttpClient();
         Angajat angajat;
         public PaginaPrincipala(Angajat a)
         {
@@ -112,6 +114,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             this.Close();
             //Afisare cerere
+
             CerereConcediu con = new CerereConcediu(angajat);
             con.Show();
 
@@ -137,14 +140,12 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
-            SqlConnection cnx = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            cnx.Open();
-            SqlCommand managerID = new SqlCommand("select managerId from Angajat group by managerId",cnx);
-            SqlDataReader reader = managerID.ExecuteReader();
-            List<string> iduri= new List<string>();
 
 
-            while (reader.Read())
+         
+
+
+            /*while (reader.Read())
             {
                 iduri.Add(reader[0].ToString());
             }
@@ -164,7 +165,7 @@ namespace ConcediuAngajati.PaginaPrincipala
                     DropConcedii.Hide();
                 }
                 cnx.Close();
-            }
+            }*/
             
         }
 
@@ -243,6 +244,19 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             TotiAngajatii toti = new TotiAngajatii(angajat);
             toti.Show();
+        }
+
+        public async Task GetAllManagerId()
+        {
+            HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TotiAngajatii");
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+
+
+            List<Angajat> listamanagerId = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
         }
     }
 }

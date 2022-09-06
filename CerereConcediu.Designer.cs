@@ -262,15 +262,17 @@
             // btnInchidereCC
             // 
             this.btnInchidereCC.BackColor = System.Drawing.Color.Transparent;
-            this.btnInchidereCC.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnInchidereCC.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInchidereCC.BackgroundImage")));
+            this.btnInchidereCC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInchidereCC.FlatAppearance.BorderSize = 0;
+            this.btnInchidereCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchidereCC.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnInchidereCC.ForeColor = System.Drawing.Color.White;
-            this.btnInchidereCC.Location = new System.Drawing.Point(755, -1);
+            this.btnInchidereCC.ForeColor = System.Drawing.Color.Transparent;
+            this.btnInchidereCC.Location = new System.Drawing.Point(789, 5);
             this.btnInchidereCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnInchidereCC.Name = "btnInchidereCC";
-            this.btnInchidereCC.Size = new System.Drawing.Size(37, 43);
+            this.btnInchidereCC.Size = new System.Drawing.Size(25, 24);
             this.btnInchidereCC.TabIndex = 17;
-            this.btnInchidereCC.Text = "X";
             this.btnInchidereCC.UseVisualStyleBackColor = false;
             this.btnInchidereCC.Click += new System.EventHandler(this.btnInchidereCC_Click);
             // 
