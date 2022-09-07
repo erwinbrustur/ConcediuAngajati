@@ -284,23 +284,6 @@ namespace ConcediuAngajati.PaginaPrincipala
 
             List<Angajat> listamanagerId = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
 
-
-           foreach (Angajat ang in listamanagerId)
-            {
-
-                if (ang.ManagerId == 26)
-                {
-                    CereriConcediBut.Show();
-                    DropConcedii.Show();
-                    break;
-                }
-                else
-                {
-                    CereriConcediBut.Hide();
-                    DropConcedii.Hide();
-                }
-
-            }
         }
     }
 }
