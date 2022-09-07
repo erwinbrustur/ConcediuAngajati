@@ -726,6 +726,7 @@
             this.comboBox5.Name = "comboBox5";
             this.comboBox5.Size = new System.Drawing.Size(121, 23);
             this.comboBox5.TabIndex = 11;
+            this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -878,7 +879,7 @@
             this.panelConcediere.Controls.Add(this.groupBox5);
             this.panelConcediere.Location = new System.Drawing.Point(-5, 115);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(811, 10);
+            this.panelConcediere.Size = new System.Drawing.Size(811, 382);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
