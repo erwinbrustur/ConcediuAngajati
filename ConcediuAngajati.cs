@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConcediuAngajati.Utils;
+using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace ConcediuAngajati
 {
     public partial class ConcediuAngajati : Form
     {
-        static readonly HttpClient client = new HttpClient();
+     
         string connectionString;
         List<string> listaStare;
         List<string> angajatistring;
@@ -68,22 +69,21 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllStareConcediu");
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}StareConcediu/GetAllStareConcediu", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
 
 
-                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
-                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
-                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).ValueMember = "Id";
+                (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
+                (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
+                (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
                 foreach (StareConcediu sc in listaStareConcedii)
                 {
                     if (!sc.Nume.Equals("In asteptare"))
                     {
-                        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(new {Text = sc.Nume, Value = sc});
                         cbStareConcediu.Items.Add(sc.Nume);
                         listaStare.Add(sc.Id + ", " + sc.Nume);
 
@@ -116,7 +116,7 @@ namespace ConcediuAngajati
 
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllConcediuAngajati");
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetAllConcediuAngajati", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
@@ -137,8 +137,9 @@ namespace ConcediuAngajati
                         row.Cells[2].Value = dataS;
 
                         row.Cells[3].Value = c.Inlocuitor.Nume + " " + c.Inlocuitor.Prenume;
-                        row.Cells[4].Value = c.Comentarii;
-                        (row.Cells[5] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
+                        row.Cells[4].Value = c.TipConcediu.Nume;
+                        row.Cells[5].Value = c.Comentarii;
+                        (row.Cells[6] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
                         row.Tag = c.Id;
                         dgvConcedii.Rows.Add(row);
                     }
@@ -189,7 +190,6 @@ namespace ConcediuAngajati
                     queryUpdate.Connection = conexiune;
                     queryUpdate.Parameters.AddWithValue("@stareConcediuId", stareConcediuId);
                     queryUpdate.ExecuteNonQuery();
-                    MessageBox.Show("da");
 
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }
@@ -329,30 +329,36 @@ namespace ConcediuAngajati
         private async void dgvConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            //var grid = (DataGridView)sender;
-            ////MessageBox.Show("tyuio");
+            
+        }
 
-            //if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
-            //{
-            //    int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
-            //    DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
-            //    DataGridViewComboBoxCell combobox = dgvConcedii.Rows[selectedRowIndex].Cells[5] as DataGridViewComboBoxCell;
+        private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = (DataGridView)sender;
 
-            //    int stareConcediuId = Convert.ToInt32((selectedRow.Cells[5] as DataGridViewComboBoxCell).Value);
-            //    int idConcediu = Convert.ToInt32(selectedRow.Tag);
+            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            {
+                int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+                DataGridViewComboBoxCell combobox = dgvConcedii.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
 
-            //    //MessageBox.Show(stareConcediuId + " " + idConcediu);
+                int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
+                int idConcediu = Convert.ToInt32(selectedRow.Tag);
 
-            //    //HttpResponseMessage response = await client.GetAsync("http://localhost:5096/PutConcediu?idConcediu=" + idConcediu + "&idStareConcediu=" + stareConcediuId);
-            //    //response.EnsureSuccessStatusCode();
-            //    //string responseBody = await response.Content.ReadAsStringAsync();
+                MessageBox.Show(stareConcediuId + " " + idConcediu);
 
-            //    //MessageBox.Show(responseBody);
-            //}
-            //else
-            //{
-            //    return;
-            //}
+                //string urlUpdate=
+
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                MessageBox.Show(responseBody);
+            }
+            else
+            {
+                return;
+            }
         }
     }
 

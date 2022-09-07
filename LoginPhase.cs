@@ -12,6 +12,7 @@ using System.Security.Cryptography;
 using System.Reflection.Metadata;
 using ProiectASP.Models;
 using Newtonsoft.Json;
+using ConcediuAngajati.Utils;
 
 namespace ConcediuAngajati
 {
@@ -47,7 +48,7 @@ namespace ConcediuAngajati
             try
             {
 
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAngajatByUsername?username=" + textBox1.Text + "@totalsoft.ro&parola=" + Hash(textBox2.Text));
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Angajat/GetAngajatByUsername?username={1}@totalsoft.ro&parola={2}", Globals.apiUrl, textBox1.Text, Hash(textBox2.Text)));
                 response.EnsureSuccessStatusCode();
                 string responsivebody = await response.Content.ReadAsStringAsync();
 
