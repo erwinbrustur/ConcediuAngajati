@@ -113,7 +113,7 @@ namespace ConcediuAngajati
 
         public async Task extragereConcediiDBAsync()
         {
-            
+
             try
             {
                 HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllConcediuAngajati");
@@ -121,9 +121,9 @@ namespace ConcediuAngajati
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
-                foreach(Concediu c in listaConcedii)
+                foreach (Concediu c in listaConcedii)
                 {
-                    if(c.StareConcediu.Nume.Equals("In asteptare"))
+                    if (c.StareConcediu.Nume.Equals("In asteptare"))
                     {
                         DataGridViewRow row = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
                         row.Cells[0].Value = c.Angajat.Nume + " " + c.Angajat.Prenume;
@@ -174,14 +174,14 @@ namespace ConcediuAngajati
             {
 
                 string message2 = "Lista a fost actualizata";
-                
+
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
 
                 MessageBox.Show(idConcediu.ToString() + ' ' + stareConcediuId.ToString());
-                
+
                 string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
-                
+
                 SqlCommand queryUpdate = new SqlCommand(updateSQL);
                 try
                 {
@@ -222,12 +222,12 @@ namespace ConcediuAngajati
         }
 
 
-      
+
 
         private void dgvConcedii_SelectionChanged(object sender, EventArgs e)
         {
 
-            if(dgvConcedii.SelectedCells.Count > 0)
+            if (dgvConcedii.SelectedCells.Count > 0)
             {
                 int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
@@ -235,10 +235,10 @@ namespace ConcediuAngajati
                 // DataGridViewComboBoxColumn comboStareConcediu = selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
                 //DataGridViewColumnButton 
                 //Console.WriteLine(selectedRowIndex);
-                
+
                 //dgvConcedii.CellClick += CellButton_click;
 
-                
+
 
             }
 

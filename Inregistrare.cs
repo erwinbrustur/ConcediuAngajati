@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Net;
 using System.Net.Mail;
 using ProiectASP.Models;
+using System.Text.RegularExpressions;
 
 namespace ConcediuAngajati
 {
@@ -39,7 +40,8 @@ namespace ConcediuAngajati
         }
         public void button2_Click(object sender, EventArgs e)
         {
-
+            string strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+            Regex regex = new Regex(strRegex);
             if (FieldPass.Text == "")
             {
                 MessageBox.Show("Parola este obligatorie!");
@@ -56,8 +58,14 @@ namespace ConcediuAngajati
             {
                 MessageBox.Show("Format mail incorect");
             }
+            else if (!regex.IsMatch(FieldNrTel.Text))
+            {
+                MessageBox.Show("Numarul de telefon contine doar cifre!");
+            }
+        
             else if (FieldNrTel.Text == "")
             {
+                
                 MessageBox.Show("Numarul de telefon este obligatoriu");
             }
             else if (FieldNrTel.TextLength != 10)
@@ -75,7 +83,7 @@ namespace ConcediuAngajati
             else if (FieldPass.Text == FieldConfirmPass.Text)
             {
 
-                Angajat a = new Angajat() { Nume = FieldNume.Text, Prenume = FieldPrenume.Text, Email = FieldEmail.Text, Parola = Hash(FieldPass.Text), NrTelefon = FieldNrTel.Text };
+                Angajat a = new Angajat() { Nume = FieldNume.Text, Prenume = FieldPrenume.Text, Email = FieldEmail.Text, Parola = Hash(FieldPass.Text), NrTelefon = FieldNrTel.Text ,DepartamentId=7,FunctieId=5};
                 FormInregistrareIntermediar Fii = new FormInregistrareIntermediar(a);
                 Fii.Show();
                 this.Hide();

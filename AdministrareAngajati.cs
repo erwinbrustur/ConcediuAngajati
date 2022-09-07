@@ -12,11 +12,13 @@ using System.Security.Cryptography;
 using System.Drawing.Imaging;
 using Microsoft.VisualBasic;
 using ProiectASP.Models;
+using Newtonsoft.Json;
 
 namespace ConcediuAngajati
 {
     public partial class AdministrareAngajati : Form
     {
+        static readonly HttpClient client = new HttpClient();
         int idManager;
         int idManager2;
         int idAngajat;
@@ -34,24 +36,85 @@ namespace ConcediuAngajati
         string numeManager;
         string cnx;
         Angajat angajatCurent;
-        List<string> FunctAngaj = new List<string>();
-        List<string> departAngaj = new List<string>();
-        List<string> managerActualMutare = new List<string>();
-        List<string> angajatMutare = new List<string>();
-        List<string> managerNouMutare = new List<string>();
-        List<string> viitorManager = new List<string>();
-        List<String> angajatiiManagerului = new List<string>();
+        List<Angajat> moveGetEmployee = new List<Angajat>();
+        List<Angajat> managerActualMutare = new List<Angajat>();
+        List<Angajat> angajatMutare = new List<Angajat>();
+        List<Angajat> managerNouMutare = new List<Angajat>();
+        List<Angajat> viitorManager = new List<Angajat>();
+        List<Angajat> angajatiiManagerului = new List<Angajat>();
+        public List<Functie> GetFunctie()
+        {
+            List<Functie> Functii = new List<Functie>();
+            GetFuncts();
+            MessageBox.Show("Urmeaza sa schimbati functia angajatului selectat");
+            async Task GetFuncts()
+            {
+
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllFuncties");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
+
+            }
+       
+     
+          
+            return Functii;
+        }
+        public List<Departament> GetDepartaments()
+        {
+            List<Departament> departaments = new List<Departament>();
+            GetDeparts();
+            MessageBox.Show("Urmeaza sa schimbati departamentul angajatului selectat");
+            async Task GetDeparts()
+            {
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllDepartaments");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
+                
+            }
+            
+      
+            
+            return departaments;
+        }
+
+
+          public  List<Angajat> GetManagerEmployee(int idManager)
+            {
+                HttpResponseMessage response = client.GetAsync(" http://localhost:5096/GetManagersAngajat?idManag=" + idManager).Result;
+                response.EnsureSuccessStatusCode();
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+                List<Angajat> ManagersEmployees = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            return ManagersEmployees;
+
+            }
+
+        
+        List<Angajat> EmployeesExtraction()
+        {
+            HttpResponseMessage response = client.GetAsync("http://localhost:5096/GetAllManagers").Result;
+            response.EnsureSuccessStatusCode();
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+            return managerActualMutare;
+        }
         public AdministrareAngajati(Angajat a)
         {
+
             InitializeComponent();
             this.panelAdaugareAngajat.BackColor = Color.FromArgb(99, 127, 124, 127);
             this.panelModificareManageri.BackColor = Color.FromArgb(99, 127, 124, 127);
             this.panelConcediere.BackColor = Color.FromArgb(99, 127, 124, 127);
-            cnx = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
+          
             angajatCurent = a;
-            string moveGetActualManager = "select id,nume,prenume from Angajat where managerId=26 and esteAdmin=0";
-            managerActualMutare = datePersoana(moveGetActualManager, cnx);
-            comboBox1.Items.Clear();
+            ExtragereAngajati();
+            managerActualMutare=EmployeesExtraction();
+         
+
             panelAdaugareAngajat.Hide();
             panelConcediere.Hide();
             panelModificareManageri.Hide();
@@ -62,17 +125,16 @@ namespace ConcediuAngajati
             if ((bool)!angajatCurent.EsteAdmin)
             {
                 concedManagId = angajatCurent.Id;
-                string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
-                SqlConnection con = new SqlConnection(cnx);
-                con.Open();
-                angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
-                con.Close();
+
+
+                angajatiiManagerului=GetManagerEmployee(concedManagId);
                 angajatConcediat.Items.Clear();
-                foreach (string p in angajatiiManagerului)
+                foreach (Angajat p in angajatiiManagerului)
                 {
-                    angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                   
+                    angajatConcediat.Items.Add(p.Nume+' '+p.Prenume);
                 }
-            }
+           }
             if ((bool)angajatCurent.EsteAdmin)
             {
                 buttonModificareManageri.Show();
@@ -80,20 +142,47 @@ namespace ConcediuAngajati
                 Stergere.Show();
                 groupBox3.Show();
             }
-            foreach (string s in managerActualMutare)
+           List<Angajat> ExtragereListaAngajati()
             {
-                comboBox1.Items.Add(s.Substring(s.IndexOf(',') + 1));
-                comboBox4.Items.Add(s.Substring(s.IndexOf(',') + 1));
-                comboBox6.Items.Add(s.Substring(s.IndexOf(',') + 1));
-                DepartamentManager.Items.Add(s.Substring(s.IndexOf(',') + 1));
-                FunctieManager.Items.Add(s.Substring(s.IndexOf(',') + 1));
-
-
+               
+                List<Angajat> tempAngajatii = new List<Angajat>();
+                EmployeesExtraction();
+                async Task EmployeesExtraction()
+                {
+                    HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+                    tempAngajatii = managerActualMutare;
+                    MessageBox.Show("TempAngajatiicount="+tempAngajatii.Count.ToString());
+               
+                }
+                
+             
+                return tempAngajatii;
+            
             }
+           
+            async Task ExtragereAngajati() {
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            
+                foreach (Angajat x in managerActualMutare)
+                {
 
-
+                    comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                    comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                    comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                    DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                    FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                }
+            }
+                
 
         }
+
         public List<string> datePersoana(string CmdLine, string conex)
         {
             List<string> date = new List<string>();
@@ -108,20 +197,7 @@ namespace ConcediuAngajati
             cnx.Close();
             return date;
         }
-        public List<string> fctDep(string CmdLine, string conex)
-        {
-            List<string> date = new List<string>();
-            SqlConnection cnx = new SqlConnection(conex);
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand(CmdLine, cnx);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                date.Add(reader[0].ToString() + ", " + reader[1].ToString());
-            }
-            cnx.Close();
-            return date;
-        }
+     
         public static string Hash(string Value)
         {
             using var hash = SHA256.Create();
@@ -260,18 +336,19 @@ namespace ConcediuAngajati
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
             string numeManager = comboBox1.Text;
-
+            
             if ((bool)angajatCurent.EsteAdmin)
             {
-
-                foreach (string s in managerActualMutare)
+                MessageBox.Show(managerActualMutare.Count.ToString());
+                foreach (Angajat s in managerActualMutare)
                 {
-
-                    if (numeManager == s.Substring(s.IndexOf(',') + 1))
+               
+                    if (numeManager == s.Nume+' '+s.Prenume)
                     {
-                        idManager = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                     
+                        idManager = s.Id;
                     }
 
 
@@ -280,21 +357,22 @@ namespace ConcediuAngajati
             else
             {
                 idManager = angajatCurent.Id;
+                
             }
-            string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManager + "and managerId!=id";
-            angajatMutare = datePersoana(moveGetEmployee, cnx);
-            comboBox2.Items.Clear();
-            foreach (string p in angajatMutare)
+           
+            angajatMutare = GetManagerEmployee(idManager);
+        
+            foreach (Angajat p in angajatMutare)
             {
-                comboBox2.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                comboBox2.Items.Add(p.Nume+' '+p.Prenume);
 
             }
 
             comboBox3.Items.Clear();
-            foreach (string s in managerActualMutare)
+            foreach ( Angajat s in managerActualMutare)
             {
-                if (comboBox1.Text != s.Substring(s.IndexOf(',') + 1))
-                    comboBox3.Items.Add(s.IndexOf(',') + 1);
+                if (comboBox1.Text != s.Nume+' '+s.Prenume)
+                    comboBox3.Items.Add(s.Nume+' '+s.Prenume);
 
             }
 
@@ -319,12 +397,12 @@ namespace ConcediuAngajati
 
             string numeAngajat = comboBox2.Text;
 
-            foreach (string s in angajatMutare)
+            foreach (Angajat s in angajatMutare)
             {
 
-                if (numeAngajat == s.Substring(s.IndexOf(',') + 1))
+                if (numeAngajat == s.Nume+' '+s.Prenume)
                 {
-                    idAngajat = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    idAngajat = s.Id;
 
                 }
             }
@@ -333,11 +411,11 @@ namespace ConcediuAngajati
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            foreach (string s in managerActualMutare)
+            foreach (Angajat s in managerActualMutare)
             {
 
-                if (comboBox3.Text == s.Substring(s.IndexOf(',') + 1))
-                    idManager2 = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                if (comboBox3.Text == s.Nume+' '+s.Prenume)
+                    idManager2 = s.Id;
             }
         }
 
@@ -349,18 +427,19 @@ namespace ConcediuAngajati
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             string numeManagerEN = comboBox4.Text;
-            foreach (string s in managerActualMutare)
+            foreach (Angajat s in managerActualMutare)
             {
-                if (numeManagerEN == s.Substring(s.IndexOf(',')))
+                if (numeManagerEN == s.Nume+' '+s.Prenume)
                 {
-                    idManagerEN = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    idManagerEN = s.Id;
                 }
-                string moveGetEmployee = "select id,nume,prenume from Angajat where managerId=" + idManagerEN + "and managerId!=id";
-                viitorManager = datePersoana(moveGetEmployee, cnx);
+                moveGetEmployee = GetManagerEmployee(idManagerEN);
                 comboBox5.Items.Clear();
-                foreach (string p in viitorManager)
+                MessageBox.Show(idManagerEN.ToString());
+                foreach (Angajat p in moveGetEmployee)
                 {
-                    comboBox5.Items.Add(p.Substring(s.IndexOf(',') + 1));
+
+                    comboBox5.Items.Add(p.Nume + ' '+p.Prenume) ;
 
                 }
             }
@@ -375,12 +454,12 @@ namespace ConcediuAngajati
         {
             string numeManagerSE = comboBox6.Text;
 
-            foreach (string s in managerActualMutare)
+            foreach (Angajat s in managerActualMutare)
             {
 
-                if (numeManagerSE == s.Substring(s.IndexOf(',') + 1))
+                if (numeManagerSE == s.Nume+' ' + s.Prenume)
                 {
-                    idManagerSE = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    idManagerSE = s.Id;
 
                 }
             }
@@ -406,21 +485,16 @@ namespace ConcediuAngajati
         private void BtnEchipaNoua_Click(object sender, EventArgs e)
         {
             int idVManager = 0;
-            foreach (string p in viitorManager)
+            foreach (Angajat p in viitorManager)
             {
-                if (comboBox5.Text == p.Substring(p.IndexOf(',') + 1))
+                if (comboBox5.Text == p.Nume+' '+p.Prenume)
                 {
-                    idVManager = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                    idVManager = p.Id;
                 }
             }
             string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
-
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand cmden = new SqlCommand(echipaNoua, con);
-            cmden.ExecuteNonQuery();
-
-            con.Close();
+            
+    
             MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
         }
 
@@ -437,42 +511,43 @@ namespace ConcediuAngajati
                 panelModificareManageri.Hide();
             }
             SqlConnection con = new SqlConnection(cnx);
-            foreach (string p in managerActualMutare)
+            foreach (Angajat p in managerActualMutare)
             {
-                concediereManager.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                concediereManager.Items.Add(p.Nume+' '+p.Prenume);
             }
         }
 
         private void concediereManager_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
 
-
-            foreach (string p in managerActualMutare)
+            foreach (Angajat p in managerActualMutare)
             {
-                if (p.Substring(p.IndexOf(',') + 1) == concediereManager.Text)
-                    concedManagId = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                if (p.Nume+' '+p.Prenume== concediereManager.Text)
+                    concedManagId = p.Id;
             }
 
-            string concedGetEmployee = "select id,nume,prenume from Angajat where managerId=" + concedManagId + "and managerId!=id";
+          
 
-            angajatiiManagerului = datePersoana(concedGetEmployee, cnx);
+            angajatiiManagerului = GetManagerEmployee(concedManagId);
 
             angajatConcediat.Items.Clear();
-            foreach (string p in angajatiiManagerului)
-            {
-                angajatConcediat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+            foreach (Angajat p in angajatiiManagerului)
+            {   
+                
+                angajatConcediat.Items.Add(p.Nume+' ' +p.Prenume);
             }
 
 
         }
         private void btnConcediereAngajat_Click(object sender, EventArgs e)
         {
-            foreach (string p in angajatiiManagerului)
+            foreach (Angajat p in angajatiiManagerului)
             {
-                if (p.Substring(p.IndexOf(',') + 1) == angajatConcediat.Text)
+                if (p.Nume+' '+p.Prenume== angajatConcediat.Text)
                 {
 
-                    idAngajatConcediat = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                    idAngajatConcediat = p.Id;
                 }
 
             }
@@ -509,71 +584,72 @@ namespace ConcediuAngajati
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
             numeManager = DepartamentManager.Text;
-            foreach (string s in managerActualMutare)
+            foreach (Angajat s in managerActualMutare)
             {
 
 
-                if (numeManager == s.Substring(s.IndexOf(',') + 1))
+                if (numeManager == s.Nume+' '+s.Prenume)
                 {
-                    idManagerDepartament = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    idManagerDepartament = s.Id;
                 }
 
             }
-            string angajatiDep = "select id,nume,prenume from angajat where managerId=" + idManagerDepartament.ToString();
-            departAngaj = datePersoana(angajatiDep, cnx);
+            
+            List<Angajat> departAngaj = GetManagerEmployee(idManagerDepartament);
 
             DepartamentAngajat.Items.Clear();
-            foreach (string p in departAngaj)
+            foreach (Angajat a in departAngaj)
             {
-                DepartamentAngajat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                DepartamentAngajat.Items.Add(a.Nume+' '+a.Prenume);
             }
-            string getDepart = "select id,Denumire from Departament";
-            List<string> departamente = fctDep(getDepart, cnx);
+
+            List<Departament> departamente = GetDepartaments();
             DepartamentDepartament.Items.Clear();
-            foreach (string p in departamente)
+            foreach (Departament d in departamente)
             {
-                DepartamentDepartament.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                DepartamentDepartament.Items.Add(d.Denumire);
             }
-            foreach (string p in departamente)
+            foreach (Departament p in departamente)
             {
-                if (p.Substring(p.IndexOf(',') + 1) == DepartamentDepartament.Text)
-                    idDepartament =Convert.ToInt32( p.Substring(0, p.IndexOf(',')));
+                if (p.Denumire == DepartamentDepartament.Text)
+                    idDepartament =p.Id;
             }
         }
 
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
             numeManager = FunctieManager.Text;
-            foreach (string s in managerActualMutare)
+            foreach (Angajat s in managerActualMutare)
             {
 
 
-                if (numeManager == s.Substring(s.IndexOf(',') + 1))
+                if (numeManager == s.Nume+' '+s.Prenume)
                 {
-                    idManagerFunct = Convert.ToInt32(s.Substring(0, s.IndexOf(',')));
+                    idManagerFunct=s.Id;
                 }
 
             }
-            string angajatiDep = "select id,nume,prenume from angajat where managerId=" + idManagerFunct.ToString();
-            FunctAngaj = datePersoana(angajatiDep, cnx);
+           
+            List<Angajat> FunctAngaj = GetManagerEmployee(idManagerFunct);
 
             FunctieAngajat.Items.Clear();
-            foreach (string p in FunctAngaj)
+            foreach (Angajat a in FunctAngaj)
             {
-                FunctieAngajat.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                FunctieAngajat.Items.Add(a.Nume+' '+a.Prenume);
             }
-            string getFct = "select id,Denumire from Functie";
-            List<string> functii = fctDep(getFct, cnx);
+          
+            List<Functie> functii = GetFunctie();
             Functiefunctie.Items.Clear();
-            foreach (string p in functii)
+            foreach (Functie f in functii)
             {
-                Functiefunctie.Items.Add(p.Substring(p.IndexOf(',') + 1));
+                Functiefunctie.Items.Add(f.Denumire);
             }
-            foreach (string p in functii)
+            foreach (Functie f in functii)
             {
-                if (p.Substring(p.IndexOf(',') + 1) == Functiefunctie.Text)
-                    idFunctie = Convert.ToInt32(p.Substring(0, p.IndexOf(',')));
+                if (f.Denumire == Functiefunctie.Text)
+                    idFunctie = f.Id;
             }
+            
 
         }
 
@@ -591,5 +667,13 @@ namespace ConcediuAngajati
         {
 
         }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
+ 
+
+
 }

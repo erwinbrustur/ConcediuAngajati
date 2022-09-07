@@ -64,7 +64,15 @@ namespace ConcediuAngajati
                             item.SubItems.Add("Nu are adresa de email");
                         }
                         item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager
-                        item.SubItems.Add(a.Departament.Denumire);//Departament
+                        if(a.Departament != null)
+                        {
+                            item.SubItems.Add(a.Departament.Denumire);//Departament
+                        }
+                        else
+                        {
+                            item.SubItems.Add("Administrator");//Departament
+                        }
+                        
 
                         listView1.Items.Add(item);
                     }
