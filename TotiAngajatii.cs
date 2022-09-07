@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient.Memcached;
+﻿using ConcediuAngajati.Utils;
+using MySql.Data.MySqlClient.Memcached;
 using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
@@ -36,7 +37,7 @@ namespace ConcediuAngajati
 
         public async Task ExtragereAngajatAsync(Angajat ang)
         {
-            HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TotiAngajatii");
+            HttpResponseMessage response = await client.GetAsync(String.Format("{0}Orice/TotiAngajatii", Globals.apiUrl));
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
 
