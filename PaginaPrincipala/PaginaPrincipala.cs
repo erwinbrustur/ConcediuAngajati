@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ProiectASP.Models;
+using System;
 using System.Data.SqlClient;
 
 namespace ConcediuAngajati.PaginaPrincipala
@@ -14,6 +15,7 @@ namespace ConcediuAngajati.PaginaPrincipala
             angajat = a;
             MemoryStream ms = new MemoryStream(a.Poza);
             pictureBox1.Image = Image.FromStream(ms);
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -23,9 +25,9 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void Concedii_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
-        
+
         private bool esteInchis1;
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -33,13 +35,14 @@ namespace ConcediuAngajati.PaginaPrincipala
             if (esteInchis1)
             {
                 DropDown.Height += 10;
-                if(DropDown.Size == DropDown.MaximumSize)
+                if (DropDown.Size == DropDown.MaximumSize)
                 {
                     timer1.Stop();
                     esteInchis1 = false;
                 }
 
-            }else
+            }
+            else
             {
                 DropDown.Height -= 10;
                 if (DropDown.Size == DropDown.MinimumSize)
@@ -102,12 +105,12 @@ namespace ConcediuAngajati.PaginaPrincipala
             this.Close();
             PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
-            
+
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -135,16 +138,41 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             //acest buton o sa fie vizibil pentru manager si admin
             timer4.Start();
-                
+
         }
 
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
+            if(angajat.ManagerId == 26)
+            {
+                CereriConcediBut.Show();
+                DropConcedii.Show();
+                //break;
+            }
+            else
+            {
+                CereriConcediBut.Hide();
+                DropConcedii.Hide();
+            }
 
+            //GetAllManagerId();
 
-         
+            /*foreach (Angajat a in GetAllManagerId())
+            {
 
-
+                if (a.ManagerId == 26)
+                {
+                    CereriConcediBut.Show();
+                    DropConcedii.Show();
+                    break;
+                }
+                else
+                {
+                    CereriConcediBut.Hide();
+                    DropConcedii.Hide();
+                }
+*/
+            //}
             /*while (reader.Read())
             {
                 iduri.Add(reader[0].ToString());
@@ -166,14 +194,14 @@ namespace ConcediuAngajati.PaginaPrincipala
                 }
                 cnx.Close();
             }*/
-            
+
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             AdministrareAngajati admn = new AdministrareAngajati(angajat);
             admn.Show();
-            
+
         }
         private bool esteInchis4;
         private void timer4_Tick(object sender, EventArgs e)
@@ -246,7 +274,7 @@ namespace ConcediuAngajati.PaginaPrincipala
             toti.Show();
         }
 
-        public async Task GetAllManagerId()
+        public async Task GetAllManagerId(Angajat a)
         {
             HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TotiAngajatii");
             response.EnsureSuccessStatusCode();
@@ -257,6 +285,22 @@ namespace ConcediuAngajati.PaginaPrincipala
             List<Angajat> listamanagerId = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
 
 
+           foreach (Angajat ang in listamanagerId)
+            {
+
+                if (ang.ManagerId == 26)
+                {
+                    CereriConcediBut.Show();
+                    DropConcedii.Show();
+                    break;
+                }
+                else
+                {
+                    CereriConcediBut.Hide();
+                    DropConcedii.Hide();
+                }
+
+            }
         }
     }
 }
