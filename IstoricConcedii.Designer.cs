@@ -110,7 +110,7 @@
             // 
             this.lblIstoric.BackColor = System.Drawing.Color.Transparent;
             this.lblIstoric.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblIstoric.ForeColor = System.Drawing.Color.White;
+            this.lblIstoric.ForeColor = System.Drawing.Color.Black;
             this.lblIstoric.Location = new System.Drawing.Point(263, 7);
             this.lblIstoric.Name = "lblIstoric";
             this.lblIstoric.Size = new System.Drawing.Size(175, 38);
