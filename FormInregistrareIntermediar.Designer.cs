@@ -37,9 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tbNumar = new System.Windows.Forms.TextBox();
             this.pbImagineProfil = new System.Windows.Forms.PictureBox();
-            this.btnAdaugaPoza = new System.Windows.Forms.Button();
             this.btnInregistrare = new System.Windows.Forms.Button();
-            this.btnAdaugaImagine = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
@@ -135,21 +133,6 @@
             this.pbImagineProfil.TabStop = false;
             this.pbImagineProfil.Click += new System.EventHandler(this.pbImagineProfil_Click);
             // 
-            // btnAdaugaPoza
-            // 
-            this.btnAdaugaPoza.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdaugaPoza.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdaugaPoza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdaugaPoza.ForeColor = System.Drawing.Color.White;
-            this.btnAdaugaPoza.Location = new System.Drawing.Point(28, 158);
-            this.btnAdaugaPoza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdaugaPoza.Name = "btnAdaugaPoza";
-            this.btnAdaugaPoza.Size = new System.Drawing.Size(138, 26);
-            this.btnAdaugaPoza.TabIndex = 7;
-            this.btnAdaugaPoza.Text = "Adauga imagine";
-            this.btnAdaugaPoza.UseVisualStyleBackColor = false;
-            this.btnAdaugaPoza.Click += new System.EventHandler(this.btnAdaugaPoza_Click);
-            // 
             // btnInregistrare
             // 
             this.btnInregistrare.BackColor = System.Drawing.Color.Transparent;
@@ -164,20 +147,6 @@
             this.btnInregistrare.Text = "Inregistrare";
             this.btnInregistrare.UseVisualStyleBackColor = false;
             this.btnInregistrare.Click += new System.EventHandler(this.btnInregistrare_Click);
-            // 
-            // btnAdaugaImagine
-            // 
-            this.btnAdaugaImagine.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdaugaImagine.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAdaugaImagine.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAdaugaImagine.ForeColor = System.Drawing.Color.Gray;
-            this.btnAdaugaImagine.Location = new System.Drawing.Point(12, 4);
-            this.btnAdaugaImagine.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdaugaImagine.Name = "btnAdaugaImagine";
-            this.btnAdaugaImagine.Size = new System.Drawing.Size(37, 26);
-            this.btnAdaugaImagine.TabIndex = 10;
-            this.btnAdaugaImagine.UseVisualStyleBackColor = false;
-            this.btnAdaugaImagine.Click += new System.EventHandler(this.btnAdaugaPoza_Click);
             // 
             // btnX
             // 
@@ -205,9 +174,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(746, 254);
             this.Controls.Add(this.btnX);
-            this.Controls.Add(this.btnAdaugaImagine);
             this.Controls.Add(this.btnInregistrare);
-            this.Controls.Add(this.btnAdaugaPoza);
             this.Controls.Add(this.pbImagineProfil);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -237,9 +204,7 @@
         private Label label3;
         private TextBox tbNumar;
         private PictureBox pbImagineProfil;
-        private Button btnAdaugaPoza;
         private Button btnInregistrare;
-        private Button btnAdaugaImagine;
         private Button btnX;
         private ErrorProvider errorProvider1;
     }
