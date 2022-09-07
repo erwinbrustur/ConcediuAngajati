@@ -86,7 +86,7 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllTipConcediu");
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/TipConcediu/GetAllTipConcediu");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
