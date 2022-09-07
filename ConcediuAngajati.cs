@@ -33,7 +33,7 @@ namespace ConcediuAngajati
             extragereStareConcediuDB();
 
 
-            //listaStare = extragereStareConcediuDB();
+            listaStare = new List<string>();
 
             //foreach (string s in listaStare)
             //{
@@ -76,21 +76,33 @@ namespace ConcediuAngajati
 
 
                 (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
-                //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).DisplayMember =
+                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
+                (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).ValueMember = "Id";
+
+                foreach (StareConcediu sc in listaStareConcedii)
+                {
+                    if (!sc.Nume.Equals("In asteptare"))
+                    {
+                        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(new {Text = sc.Nume, Value = sc});
+                        cbStareConcediu.Items.Add(sc.Nume);
+                        listaStare.Add(sc.Id + ", " + sc.Nume);
+
+                    }
+                }
 
                 //foreach (StareConcediu sc in listaStareConcedii)
                 //{
                 //    if (!sc.Nume.Equals("In asteptare"))
                 //    {
-
-                //        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(sc);
+                //        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(new {Text = sc.Nume, Value = sc});
+                //        (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(sc.Nume);
 
                 //    }
                 //}
-                ComboBox cb = new ComboBox();
-                cbStareConcediu.DisplayMember = "name";
+                //ComboBox cb = new ComboBox();
+                //cbStareConcediu.Select
                 //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).
-                    //.DisplayMember = listaStareConcedii.ToString();
+                //.DisplayMember = listaStareConcedii.ToString();
             }
             catch (HttpRequestException ex)
             {
@@ -126,6 +138,7 @@ namespace ConcediuAngajati
 
                         row.Cells[3].Value = c.Inlocuitor.Nume + " " + c.Inlocuitor.Prenume;
                         row.Cells[4].Value = c.Comentarii;
+                        (row.Cells[5] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
                         row.Tag = c.Id;
                         dgvConcedii.Rows.Add(row);
                     }
@@ -213,57 +226,61 @@ namespace ConcediuAngajati
 
         private void dgvConcedii_SelectionChanged(object sender, EventArgs e)
         {
-            //foreach (DataGridViewRow row in dgvConcedii.SelectedRows)
-            //{
-            //    string nume_prenume = row.Cells[0].ToString();
-            //    idConcediu = Convert.ToInt32(row.Tag);
-
-            //    foreach (string s in angajatistring)
-            //    {
-            //        string[] t = s.Split(',');
-            //        if (nume_prenume.Equals(t[1]))
-            //        {
-            //            idAngajatSelectat = Convert.ToInt32(t[0]);
-            //        }
-            //    }
-
-            //}
 
             if(dgvConcedii.SelectedCells.Count > 0)
             {
                 int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
                 DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
-                DataGridViewComboBoxColumn comboStareConcediu = selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
+                //MessageBox.Show(selectedRow.Tag.ToString()+"tg");
+                // DataGridViewComboBoxColumn comboStareConcediu = selectedRow.Cells[5].Value as DataGridViewComboBoxColumn;
                 //DataGridViewColumnButton 
+                //Console.WriteLine(selectedRowIndex);
                 
-                dgvConcedii.CellClick += CellButton_click;
+                //dgvConcedii.CellClick += CellButton_click;
 
-
-                //MessageBox.Show("kk");
                 
 
             }
 
         }
 
+        //public async void updateConcediu()
+        //{
+        //    HttpResponseMessage response = await client.GetAsync("http://localhost:5096/PutConcediu?idConcediu=" + idConcediu +"&idStareConcediu=1");
+        //    response.EnsureSuccessStatusCode();
+        //    string responseBody = await response.Content.ReadAsStringAsync();
+
+        //    List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
+
+        //    //
+        //}
+
         public void CellButton_click(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
+            //MessageBox.Show("tyuio");
 
-            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
-            {
-                int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+            //if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            //{
+            //    int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
+            //    DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+            //    MessageBox.Show(selectedRowIndex.ToString());
 
-                //MessageBox.Show("hh");
+            //    //HttpResponseMessage response = await client.GetAsync("http://localhost:5096/PutConcediu?idConcediu=" + selectedRow.Tag + "&idStareConcediu=" + );
+            //    //response.EnsureSuccessStatusCode();
+            //    //string responseBody = await response.Content.ReadAsStringAsync();
+
+            //    //List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
 
 
 
-            }
-            else
-            {
-                return;
-            }
+
+
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
 
         public List<string> extragereAngajatiDB()
@@ -302,20 +319,40 @@ namespace ConcediuAngajati
 
         }
 
-        private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
 
         private void btnX_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void dgvConcedii_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
+
+        private async void dgvConcedii_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //e.Row.Cells[5].Value = "In asteptare";
-            //MessageBox.Show("hmm");
+
+            //var grid = (DataGridView)sender;
+            ////MessageBox.Show("tyuio");
+
+            //if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            //{
+            //    int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
+            //    DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+            //    DataGridViewComboBoxCell combobox = dgvConcedii.Rows[selectedRowIndex].Cells[5] as DataGridViewComboBoxCell;
+
+            //    int stareConcediuId = Convert.ToInt32((selectedRow.Cells[5] as DataGridViewComboBoxCell).Value);
+            //    int idConcediu = Convert.ToInt32(selectedRow.Tag);
+
+            //    //MessageBox.Show(stareConcediuId + " " + idConcediu);
+
+            //    //HttpResponseMessage response = await client.GetAsync("http://localhost:5096/PutConcediu?idConcediu=" + idConcediu + "&idStareConcediu=" + stareConcediuId);
+            //    //response.EnsureSuccessStatusCode();
+            //    //string responseBody = await response.Content.ReadAsStringAsync();
+
+            //    //MessageBox.Show(responseBody);
+            //}
+            //else
+            //{
+            //    return;
+            //}
         }
     }
 
