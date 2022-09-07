@@ -1,4 +1,5 @@
-﻿using ProiectASP.Models;
+﻿using Newtonsoft.Json;
+using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,7 @@ namespace ConcediuAngajati
 {
     public partial class FormInregistrareIntermediar : Form
     {
+        static readonly HttpClient client = new HttpClient();
         public string connectionString;
         Angajat angajat;
         public FormInregistrareIntermediar(Angajat a)
@@ -132,8 +134,12 @@ namespace ConcediuAngajati
             }
 
             MessageBox.Show(dataNastere);
-            
-           
+
+            HttpResponseMessage response =  client.GetAsync("http://localhost:5096/PutNewAngajat").Result;
+            response.EnsureSuccessStatusCode();
+            //string responseBody = response.Content.ReadAsString;
+
+            //List<Angajat> listaAngjatiNoi = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
 
             SqlConnection conexiune = new SqlConnection(connectionString);
             string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza,managerId) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza,30)";
