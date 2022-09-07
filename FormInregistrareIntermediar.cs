@@ -156,6 +156,10 @@ namespace ConcediuAngajati
             {
                 conexiune.Close();
             }
+
+            this.Close();
+            LoginPhase lg = new LoginPhase();
+            lg.Show();
         }
 
         private void btnInapoi_Click(object sender, EventArgs e)

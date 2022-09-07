@@ -708,9 +708,9 @@
             this.BtnEchipaNoua.FlatAppearance.BorderSize = 0;
             this.BtnEchipaNoua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEchipaNoua.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnEchipaNoua.Location = new System.Drawing.Point(231, 54);
+            this.BtnEchipaNoua.Location = new System.Drawing.Point(243, 54);
             this.BtnEchipaNoua.Name = "BtnEchipaNoua";
-            this.BtnEchipaNoua.Size = new System.Drawing.Size(135, 38);
+            this.BtnEchipaNoua.Size = new System.Drawing.Size(123, 38);
             this.BtnEchipaNoua.TabIndex = 7;
             this.BtnEchipaNoua.Text = "Echipa noua";
             this.BtnEchipaNoua.UseVisualStyleBackColor = false;
@@ -994,6 +994,7 @@
             this.Controls.Add(this.buttonAdaugareAngajat);
             this.Controls.Add(this.BtnPaginaPrincipala);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdministrareAngajati";
             this.Text = "AdministrareAngajati";
             this.Load += new System.EventHandler(this.AdministrareAngajati_Load);

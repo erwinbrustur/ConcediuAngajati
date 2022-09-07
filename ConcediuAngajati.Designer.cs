@@ -91,7 +91,7 @@
             this.dgvConcedii.RowTemplate.Height = 25;
             this.dgvConcedii.Size = new System.Drawing.Size(935, 360);
             this.dgvConcedii.TabIndex = 2;
-            this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick);
+           // this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick);
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
             this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
             // 
