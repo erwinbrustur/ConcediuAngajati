@@ -164,7 +164,7 @@ namespace ConcediuAngajati
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
 
-                MessageBox.Show(idConcediu.ToString() + ' ' + stareConcediuId.ToString());
+               
 
                 string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
 
@@ -175,7 +175,7 @@ namespace ConcediuAngajati
                     queryUpdate.Connection = conexiune;
                     queryUpdate.Parameters.AddWithValue("@stareConcediuId", stareConcediuId);
                     queryUpdate.ExecuteNonQuery();
-                    MessageBox.Show("da");
+         
 
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }
@@ -211,7 +211,7 @@ namespace ConcediuAngajati
 
                 }
 
-                MessageBox.Show(extrageAngajati[1].ToString());
+        
                 return extrageAngajati;
             }
             catch (Exception ex)

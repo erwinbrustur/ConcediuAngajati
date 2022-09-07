@@ -1,4 +1,5 @@
 ﻿using ConcediuAngajati.PaginaPrincipala;
+using ConcediuAngajati.Utils;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using ProiectASP.Models;
@@ -9,7 +10,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ObjectiveC;
 using System.Security.Cryptography;
@@ -44,7 +44,19 @@ namespace ConcediuAngajati
 
             // cbTipConcediu.SelectedIndex = 0;
 
-            extragereInlocuitoriAsyncEchipaDB();    
+            //listaInlocuitori = extragereInlocuitoriEchipaDB();
+            //foreach(string inlocuitor in listaInlocuitori)
+            //{
+            //    string[] str = inlocuitor.Split(',');
+            //    cbInlocuitor.Items.Add(str[1]);
+
+            //}
+
+            //cbInlocuitor.SelectedIndex = 0;
+
+            extragereInlocuitorAsyncDB();
+
+          
 
         }
 
@@ -86,7 +98,7 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllTipConcediu");
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}TipConcediu/GetAllTipConcediu", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -106,12 +118,33 @@ namespace ConcediuAngajati
 
             }
         }
+
+        public async void extragereInlocuitorAsyncDB()
+        {
+            try
+            {
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Angajat/GetInlocuitori?idAngajat={1}&idManager={2}", Globals.apiUrl, userCurent.Id, userCurent.ManagerId));
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+                List<Angajat> listaInlocuitori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+                foreach (Angajat a in listaInlocuitori)
+                {
+                    cbInlocuitor.Items.Add(a.Nume + " " + a.Prenume);
+                }
+            }
+            catch (HttpRequestException ex)
+            {
+                MessageBox.Show(ex.Message);
+
+            }
+        }
         //public List<string> extragereInlocuitoriEchipaDB()
         //{
         //    List<string> strings = new List<string>();
-        //    MessageBox.Show(userCurent.ManagerId.ToString());
+          
         //    string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
-        //    MessageBox.Show(userCurent.ManagerId + "Vacanta");
+           
         //    SqlConnection conexiune = new SqlConnection(connectionString);
         //    SqlCommand querySelect = new SqlCommand(selectSQL);
         //    try
@@ -142,32 +175,6 @@ namespace ConcediuAngajati
         //    }
 
         //}
-
-        public async void extragereInlocuitoriAsyncEchipaDB()
-        {
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetInlocuitori?idAngajat=" + userCurent.Id + "&idManager=" + userCurent.ManagerId);
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-
-                List<Angajat> listaInlocuitori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
-                foreach (Angajat a in listaInlocuitori)
-                {
-                    cbInlocuitor.Items.Add(a.Nume + " " + a.Prenume);
-                }
-
-            }
-            catch (HttpRequestException ex)
-            {
-                MessageBox.Show(ex.Message);
-
-
-            }
-
-
-        }
 
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -243,10 +250,6 @@ namespace ConcediuAngajati
         }
 
 
-
-
- 
-
         private void PaginaMea_Click_1(object sender, EventArgs e)
         {
             
@@ -292,7 +295,7 @@ namespace ConcediuAngajati
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
-                MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
+            
                 string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId, ZileConcediu) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ", " + Convert.ToInt32(textBox1.Text) + ")";  
 
                 SqlCommand queryInsert = new SqlCommand(insertSQL);
@@ -302,7 +305,7 @@ namespace ConcediuAngajati
                     queryInsert.Connection = conexiune;
                     
                     queryInsert.ExecuteNonQuery();
-                    MessageBox.Show("da");
+               
 
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }

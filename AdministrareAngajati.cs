@@ -46,13 +46,13 @@ namespace ConcediuAngajati
         {
             List<Functie> Functii = new List<Functie>();
             GetFuncts();
-            MessageBox.Show("Urmeaza sa schimbati functia angajatului selectat");
+
             async Task GetFuncts()
             {
 
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllFuncties");
+                HttpResponseMessage response =  client.GetAsync("http://localhost:5096/GetAllFuncties").Result;
                 response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
+                string responseBody = response.Content.ReadAsStringAsync().Result;
                 Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
 
             }
@@ -65,18 +65,18 @@ namespace ConcediuAngajati
         {
             List<Departament> departaments = new List<Departament>();
             GetDeparts();
-            MessageBox.Show("Urmeaza sa schimbati departamentul angajatului selectat");
+         
             async Task GetDeparts()
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllDepartaments");
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
+                HttpResponseMessage response =client.GetAsync("http://localhost:5096/GetAllDepartaments").Result;
+                 response.EnsureSuccessStatusCode();
+                string responseBody =response.Content.ReadAsStringAsync().Result;
+               departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
                 
             }
-            
-      
-            
+
+
+          
             return departaments;
         }
 
@@ -154,7 +154,7 @@ namespace ConcediuAngajati
                     string responseBody = await response.Content.ReadAsStringAsync();
                     List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
                     tempAngajatii = managerActualMutare;
-                    MessageBox.Show("TempAngajatiicount="+tempAngajatii.Count.ToString());
+                  
                
                 }
                 
@@ -341,7 +341,7 @@ namespace ConcediuAngajati
             
             if ((bool)angajatCurent.EsteAdmin)
             {
-                MessageBox.Show(managerActualMutare.Count.ToString());
+                
                 foreach (Angajat s in managerActualMutare)
                 {
                
@@ -435,7 +435,7 @@ namespace ConcediuAngajati
                 }
                 moveGetEmployee = GetManagerEmployee(idManagerEN);
                 comboBox5.Items.Clear();
-                MessageBox.Show(idManagerEN.ToString());
+            
                 foreach (Angajat p in moveGetEmployee)
                 {
 
@@ -551,12 +551,12 @@ namespace ConcediuAngajati
                 }
 
             }
-         
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand concediaza = new SqlCommand("Delete from Angajat where id=" + idAngajatConcediat.ToString(), con);
-            concediaza.ExecuteNonQuery();
-            MessageBox.Show("Angajat concediat");
+
+            string responseString = "http://localhost:5096/PutConcediat?idAngajat=" + idAngajatConcediat;
+            HttpResponseMessage response = client.GetAsync(responseString).Result;
+            response.EnsureSuccessStatusCode();
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
         }
 
         private void Stergere_Enter(object sender, EventArgs e)

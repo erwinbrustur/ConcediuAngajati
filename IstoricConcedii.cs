@@ -1,4 +1,5 @@
 ﻿using ConcediuAngajati.PaginaPrincipala;
+using ConcediuAngajati.Utils;
 using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
@@ -186,7 +187,7 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllIstoricConcedii");
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responsivebody = await response.Content.ReadAsStringAsync();
 
