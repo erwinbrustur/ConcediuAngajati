@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ObjectiveC;
 using System.Security.Cryptography;
@@ -41,21 +42,9 @@ namespace ConcediuAngajati
             extragereTipConcediuDB();
 
 
-           // cbTipConcediu.SelectedIndex = 0;
-            
-            listaInlocuitori = extragereInlocuitoriEchipaDB();
-            foreach(string inlocuitor in listaInlocuitori)
-            {
-                string[] str = inlocuitor.Split(',');
-                cbInlocuitor.Items.Add(str[1]);
+            // cbTipConcediu.SelectedIndex = 0;
 
-            }
-
-            cbInlocuitor.SelectedIndex = 0;
-
-            
-
-
+            extragereInlocuitoriAsyncEchipaDB();    
 
         }
 
@@ -117,40 +106,66 @@ namespace ConcediuAngajati
 
             }
         }
-        public List<string> extragereInlocuitoriEchipaDB()
+        //public List<string> extragereInlocuitoriEchipaDB()
+        //{
+        //    List<string> strings = new List<string>();
+        //    MessageBox.Show(userCurent.ManagerId.ToString());
+        //    string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
+        //    MessageBox.Show(userCurent.ManagerId + "Vacanta");
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
+
+        //        }
+
+
+        //        return strings;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+
+
+        //    }
+
+        //}
+
+        public async void extragereInlocuitoriAsyncEchipaDB()
         {
-            List<string> strings = new List<string>();
-            MessageBox.Show(userCurent.ManagerId.ToString());
-            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
-            MessageBox.Show(userCurent.ManagerId + "Vacanta");
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetInlocuitori?idAngajat=" + userCurent.Id + "&idManager=" + userCurent.ManagerId);
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
 
-                while (reader.Read())
+                List<Angajat> listaInlocuitori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+                foreach (Angajat a in listaInlocuitori)
                 {
-                    strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
-
+                    cbInlocuitor.Items.Add(a.Nume + " " + a.Prenume);
                 }
 
-
-                return strings;
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
                 MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
 
 
             }
+
 
         }
 
@@ -322,20 +337,20 @@ namespace ConcediuAngajati
 
         }
 
-        private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
+        //{
              
             
-            foreach(string str in listaInlocuitori)
-            {
-                 string[] s = str.Split(',');
-                if (s[1].CompareTo(cbInlocuitor.Text) == 0)
-                {
-                    idInlocuitor = Convert.ToInt32(s[0]);
+        //    foreach(string str in listaInlocuitori)
+        //    {
+        //         string[] s = str.Split(',');
+        //        if (s[1].CompareTo(cbInlocuitor.Text) == 0)
+        //        {
+        //            idInlocuitor = Convert.ToInt32(s[0]);
                    
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
