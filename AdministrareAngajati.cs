@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using Microsoft.VisualBasic;
 using ProiectASP.Models;
 using Newtonsoft.Json;
+using ConcediuAngajati.Utils;
 
 namespace ConcediuAngajati
 {
@@ -50,7 +51,7 @@ namespace ConcediuAngajati
             async Task GetFuncts()
             {
 
-                HttpResponseMessage response =  client.GetAsync("http://localhost:5096/GetAllFuncties").Result;
+                HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllFuncties",Globals.apiUrl)).Result;
                 response.EnsureSuccessStatusCode();
                 string responseBody = response.Content.ReadAsStringAsync().Result;
                 Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
@@ -68,7 +69,7 @@ namespace ConcediuAngajati
          
             async Task GetDeparts()
             {
-                HttpResponseMessage response =client.GetAsync("http://localhost:5096/GetAllDepartaments").Result;
+                HttpResponseMessage response =Globals.client.GetAsync(String.Format("{0}/DepartamentSiFunctie/GetAllDepartaments",Globals.apiUrl)).Result;
                  response.EnsureSuccessStatusCode();
                 string responseBody =response.Content.ReadAsStringAsync().Result;
                departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
@@ -83,7 +84,7 @@ namespace ConcediuAngajati
 
           public  List<Angajat> GetManagerEmployee(int idManager)
             {
-                HttpResponseMessage response = client.GetAsync(" http://localhost:5096/GetManagersAngajat?idManag=" + idManager).Result;
+                HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetManagersAngajat?idManag={1}",Globals.apiUrl,idManager)).Result;
                 response.EnsureSuccessStatusCode();
                 string responseBody = response.Content.ReadAsStringAsync().Result;
                 List<Angajat> ManagersEmployees = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
@@ -94,7 +95,7 @@ namespace ConcediuAngajati
         
         List<Angajat> EmployeesExtraction()
         {
-            HttpResponseMessage response = client.GetAsync("http://localhost:5096/GetAllManagers").Result;
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers",Globals.apiUrl)).Result;
             response.EnsureSuccessStatusCode();
             string responseBody = response.Content.ReadAsStringAsync().Result;
             List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
@@ -149,7 +150,7 @@ namespace ConcediuAngajati
                 EmployeesExtraction();
                 async Task EmployeesExtraction()
                 {
-                    HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
+                    HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers",Globals.apiUrl));
                     response.EnsureSuccessStatusCode();
                     string responseBody = await response.Content.ReadAsStringAsync();
                     List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
@@ -164,7 +165,7 @@ namespace ConcediuAngajati
             }
            
             async Task ExtragereAngajati() {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}GetAllManagers",Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
@@ -183,7 +184,7 @@ namespace ConcediuAngajati
 
         }
 
-        public List<string> datePersoana(string CmdLine, string conex)
+       /* public List<string> datePersoana(string CmdLine, string conex)
         {
             List<string> date = new List<string>();
             SqlConnection cnx = new SqlConnection(conex);
@@ -196,7 +197,7 @@ namespace ConcediuAngajati
             }
             cnx.Close();
             return date;
-        }
+        }*/
      
         public static string Hash(string Value)
         {
@@ -542,21 +543,22 @@ namespace ConcediuAngajati
         }
         private void btnConcediereAngajat_Click(object sender, EventArgs e)
         {
+            Angajat angajatulConcediat = new Angajat();
             foreach (Angajat p in angajatiiManagerului)
             {
                 if (p.Nume+' '+p.Prenume== angajatConcediat.Text)
                 {
 
-                    idAngajatConcediat = p.Id;
+                    angajatulConcediat = p;
+               
                 }
 
             }
+            string jsonString = JsonConvert.SerializeObject(angajatulConcediat);
+            StringContent stringContent = new StringContent(jsonString,Encoding.UTF8, "application/json");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostConcediat", Globals.apiUrl),stringContent).Result;
+        
 
-            string responseString = "http://localhost:5096/PutConcediat?idAngajat=" + idAngajatConcediat;
-            HttpResponseMessage response = client.GetAsync(responseString).Result;
-            response.EnsureSuccessStatusCode();
-            string responseBody = response.Content.ReadAsStringAsync().Result;
-            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
         }
 
         private void Stergere_Enter(object sender, EventArgs e)
