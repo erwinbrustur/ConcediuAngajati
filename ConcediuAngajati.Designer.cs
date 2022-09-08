@@ -58,12 +58,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.cbStareConcediu = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbNume = new System.Windows.Forms.TextBox();
+            this.tbPrenume = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnCauta = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvConcedii
@@ -85,7 +87,7 @@
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(1048, 360);
+            this.dgvConcedii.Size = new System.Drawing.Size(1062, 360);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             // 
@@ -167,7 +169,7 @@
             this.btnX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnX.BackgroundImage")));
             this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnX.Location = new System.Drawing.Point(1054, 12);
+            this.btnX.Location = new System.Drawing.Point(1099, 12);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(45, 36);
             this.btnX.TabIndex = 12;
@@ -271,7 +273,7 @@
             // cbTipConcediu
             // 
             this.cbTipConcediu.FormattingEnabled = true;
-            this.cbTipConcediu.Location = new System.Drawing.Point(921, 91);
+            this.cbTipConcediu.Location = new System.Drawing.Point(935, 95);
             this.cbTipConcediu.Name = "cbTipConcediu";
             this.cbTipConcediu.Size = new System.Drawing.Size(151, 28);
             this.cbTipConcediu.TabIndex = 15;
@@ -280,7 +282,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(788, 91);
+            this.label2.Location = new System.Drawing.Point(802, 95);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(127, 28);
             this.label2.TabIndex = 16;
@@ -290,7 +292,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(771, 54);
+            this.label3.Location = new System.Drawing.Point(785, 58);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(144, 28);
             this.label3.TabIndex = 18;
@@ -299,24 +301,24 @@
             // cbStareConcediu
             // 
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(921, 54);
+            this.cbStareConcediu.Location = new System.Drawing.Point(935, 58);
             this.cbStareConcediu.Name = "cbStareConcediu";
             this.cbStareConcediu.Size = new System.Drawing.Size(151, 28);
             this.cbStareConcediu.TabIndex = 17;
             // 
-            // textBox1
+            // tbNume
             // 
-            this.textBox1.Location = new System.Drawing.Point(105, 60);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 27);
-            this.textBox1.TabIndex = 19;
+            this.tbNume.Location = new System.Drawing.Point(105, 60);
+            this.tbNume.Name = "tbNume";
+            this.tbNume.Size = new System.Drawing.Size(208, 27);
+            this.tbNume.TabIndex = 19;
             // 
-            // textBox2
+            // tbPrenume
             // 
-            this.textBox2.Location = new System.Drawing.Point(421, 60);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(208, 27);
-            this.textBox2.TabIndex = 21;
+            this.tbPrenume.Location = new System.Drawing.Point(421, 60);
+            this.tbPrenume.Name = "tbPrenume";
+            this.tbPrenume.Size = new System.Drawing.Size(208, 27);
+            this.tbPrenume.TabIndex = 21;
             // 
             // label4
             // 
@@ -354,11 +356,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1111, 524);
+            this.ClientSize = new System.Drawing.Size(1156, 540);
             this.Controls.Add(this.btnCauta);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbPrenume);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tbNume);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.label2);
@@ -370,6 +372,7 @@
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,10 +410,11 @@
         private Label label2;
         private Label label3;
         private ComboBox cbStareConcediu;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbNume;
+        private TextBox tbPrenume;
         private Label label4;
         private Button btnCauta;
         private ImageList imageList1;
+        private BindingSource bindingSource1;
     }
 }

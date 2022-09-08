@@ -17,8 +17,8 @@ namespace ConcediuAngajati
 {
     public partial class ConcediuAngajati : Form
     {
-        int idAngajatSelectat;
         Angajat angajat;
+
         public ConcediuAngajati(Angajat a)
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace ConcediuAngajati
             extragereConcediiDBAsync();
             extragereStareConcediuDB();
 
-            DataGridViewButtonCell btn = new DataGridViewButtonCell();
+            // BindingNavigator 
         }
 
         public async void extragereAngajati()
@@ -85,9 +85,34 @@ namespace ConcediuAngajati
             }
         }
 
-        public async Task extragereConcediiDBAsync()
+        public void populareDataGridView(List<Concediu> concedii)
         {
             dgvConcedii.Rows.Clear();
+            foreach (Concediu c in concedii)
+            {
+                DataGridViewRow row = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
+                row.Cells[0].Value = c.Angajat.Nume + " " + c.Angajat.Prenume;
+
+                DateTime dataInceput = Convert.ToDateTime(c.DataInceput.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
+                string dataI = dataInceput.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                row.Cells[1].Value = dataI;
+
+                DateTime dataSfarsit = Convert.ToDateTime(c.DataSfarsit.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
+                string dataS = dataSfarsit.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                row.Cells[2].Value = dataS;
+
+                row.Cells[3].Value = c.Inlocuitor.Nume + " " + c.Inlocuitor.Prenume;
+                row.Cells[4].Value = c.TipConcediu.Nume;
+                row.Cells[5].Value = c.Comentarii;
+                (row.Cells[6] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
+                row.Tag = c.Id;
+                dgvConcedii.Rows.Add(row);
+
+            }
+        }
+        public async Task extragereConcediiDBAsync()
+        {
+            
             try
             {
                 HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetAllConcediuAngajati", Globals.apiUrl));
@@ -95,27 +120,8 @@ namespace ConcediuAngajati
                 string responseBody = await response.Content.ReadAsStringAsync();
                 List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
-                foreach (Concediu c in listaConcedii)
-                {
-                    DataGridViewRow row = (DataGridViewRow)dgvConcedii.Rows[0].Clone();
-                    row.Cells[0].Value = c.Angajat.Nume + " " + c.Angajat.Prenume;
+                populareDataGridView(listaConcedii);
 
-                    DateTime dataInceput = Convert.ToDateTime(c.DataInceput.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
-                    string dataI = dataInceput.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    row.Cells[1].Value = dataI;
-
-                    DateTime dataSfarsit = Convert.ToDateTime(c.DataSfarsit.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
-                    string dataS = dataSfarsit.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-                    row.Cells[2].Value = dataS;
-
-                    row.Cells[3].Value = c.Inlocuitor.Nume + " " + c.Inlocuitor.Prenume;
-                    row.Cells[4].Value = c.TipConcediu.Nume;
-                    row.Cells[5].Value = c.Comentarii;
-                    (row.Cells[6] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
-                    row.Tag = c.Id;
-                    dgvConcedii.Rows.Add(row);
-
-                }
             }
             catch (Exception ex)
             {
@@ -150,7 +156,6 @@ namespace ConcediuAngajati
                 if (bool.Parse(responseBody))
                 {
                     extragereConcediiDBAsync();
-                    //MessageBox.Show("Concediu actualizat!");
                 }
             }
             else
@@ -159,10 +164,41 @@ namespace ConcediuAngajati
             }
         }
 
-        private void btnCauta_Click(object sender, EventArgs e)
+        private async void btnCauta_Click(object sender, EventArgs e)
         {
+            string nume;
+            if (!tbNume.Text.Equals(""))
+            {
+                nume = tbNume.Text;
+            }
+            else
+            {
+                nume = "";
+            }
+
+            string prenume;
+            if (!tbNume.Text.Equals(""))
+            {
+                prenume = tbPrenume.Text;
+            }
+            else
+            {
+                prenume = "";
+            }
+
+            int idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
+            int idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
+
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+            MessageBox.Show(listaConcedii.Count.ToString());
+
+            populareDataGridView(listaConcedii);
 
         }
+
     }
 
 }
