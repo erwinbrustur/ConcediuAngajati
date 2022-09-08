@@ -158,6 +158,7 @@ namespace ConcediuAngajati
             angaj.ManagerId = 30;
             angaj.DepartamentId = 7 ;
             angaj.FunctieId = 5;
+            angaj.concediat = false;
             
             string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
             angaj.DataNasterii = Convert.ToDateTime(dataNormala);
