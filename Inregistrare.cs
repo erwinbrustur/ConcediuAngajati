@@ -59,6 +59,7 @@ namespace ConcediuAngajati
             {
                 MessageBox.Show("Format mail incorect");
             }
+          
             else if (!regex.IsMatch(FieldNrTel.Text))
             {
                 MessageBox.Show("Numarul de telefon contine doar cifre!");

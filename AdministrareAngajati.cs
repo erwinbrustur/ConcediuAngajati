@@ -683,7 +683,7 @@ namespace ConcediuAngajati
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
  
