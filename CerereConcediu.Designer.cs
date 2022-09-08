@@ -113,7 +113,7 @@
             this.Trimite.TabIndex = 5;
             this.Trimite.Text = "Trimite";
             this.Trimite.UseVisualStyleBackColor = false;
-            this.Trimite.Click += new System.EventHandler(this.Trimite_Click);
+            this.Trimite.Click += new System.EventHandler(this.Trimitere);
             // 
             // contextMenuStrip1
             // 
@@ -192,7 +192,6 @@
             this.cbInlocuitor.Name = "cbInlocuitor";
             this.cbInlocuitor.Size = new System.Drawing.Size(121, 23);
             this.cbInlocuitor.TabIndex = 10;
-           // this.cbInlocuitor.SelectedIndexChanged += new System.EventHandler(this.cbInlocuitor_SelectedIndexChanged);
             // 
             // label3
             // 

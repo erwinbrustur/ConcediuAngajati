@@ -114,5 +114,18 @@ namespace ConcediuAngajati
             this.Close();
             Environment.Exit(1);
         }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void textBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                extragereAngajatByUsername();
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Google.Protobuf.WellKnownTypes;
+﻿using ConcediuAngajati.Utils;
+using Google.Protobuf.WellKnownTypes;
 using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
@@ -111,7 +112,7 @@ namespace ConcediuAngajati
             }
         }
 
-        private void btnInregistrare_Click(object sender, EventArgs e)
+        private  void btnInregistrare_Click(object sender, EventArgs e)
         {
             string cnp = tbCNP.Text;
             string numar = tbNumar.Text;
@@ -153,13 +154,23 @@ namespace ConcediuAngajati
             angaj.No = tbNumar.Text;
             angaj.Email = angajat.Email;
             angaj.Parola = angajat.Parola;
+            angaj.NrTelefon = angajat.NrTelefon;
+            angaj.ManagerId = 30;
+            angaj.DepartamentId = 7 ;
+            angaj.FunctieId = 5;
+            angaj.concediat = false;
+            angaj.Poza = image_array;
+            
             string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
             angaj.DataNasterii = Convert.ToDateTime(dataNormala);
 
-            HttpClient httpClient = new HttpClient();
+            //HttpClient httpClient = new HttpClient();
             string jsonString = JsonConvert.SerializeObject(angaj);
             StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            var response = httpClient.PostAsync("http://localhost:5096/PutNewAngajat", stringContent);
+            //HttpClient client = new HttpClient();
+            string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
+            var response = Globals.client.PutAsync(linkF, stringContent).Result;
+            
 
 
 
