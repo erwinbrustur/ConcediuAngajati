@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ConcediuAngajati.Utils;
+using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
@@ -17,39 +18,24 @@ namespace ConcediuAngajati
     public partial class ConcediuManager : Form
     {
         static readonly HttpClient client = new HttpClient();
-        string connectionString;
+      
         List<string> listaStare;
-        List<string> managerstring;
         int idAngajatSelectat;
-        int stareConcediuId;
-        int idConcediu;
         Angajat angajat;
         public ConcediuManager(Angajat a)
         {
             InitializeComponent();
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
             extragereConcediiDBAsync();
             extragereStareConcediuDB();
-
-
-            listaStare = new List<string>();
-
-            //foreach (string s in listaStare)
-            //{
-            //   string[] str = s.Split(',');
-            //    cbStareConcediu.Items.Add(str[1]);
-
-            //}
-            //cbStareConcediu.SelectedIndex = 0;
-
-
-           managerstring = extragereManageriDB();
+            extragereManageri();
+            DataGridViewButtonCell btn = new DataGridViewButtonCell();
         }
 
+        
         public async Task extragereConcediiDBAsync()
         {
-
+            dgvConcediuManager.Rows.Clear();
             try
             {
                 HttpResponseMessage response = await client.GetAsync("http://localhost:5096/Concediu/GetAllConcediuManager");
@@ -73,8 +59,9 @@ namespace ConcediuAngajati
                         row.Cells[2].Value = dataS;
 
                         row.Cells[3].Value = c.Inlocuitor.Nume + " " + c.Inlocuitor.Prenume;
-                        row.Cells[4].Value = c.Comentarii;
-                        (row.Cells[5] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
+                        row.Cells[4].Value = c.TipConcediu.Nume;
+                        row.Cells[5].Value = c.Comentarii;
+                        (row.Cells[6] as DataGridViewComboBoxCell).Value = c.StareConcediu.Id;
                         row.Tag = c.Id;
                         dgvConcediuManager.Rows.Add(row);
                     }
@@ -93,41 +80,27 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllStareConcediu");
+                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/StareConcediu/GetAllStareConcediu");
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
 
 
-                (dgvConcediuManager.Columns[5] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
-                (dgvConcediuManager.Columns[5] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
-                (dgvConcediuManager.Columns[5] as DataGridViewComboBoxColumn).ValueMember = "Id";
+                (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
+                (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
+                (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
                 foreach (StareConcediu sc in listaStareConcedii)
                 {
                     if (!sc.Nume.Equals("In asteptare"))
                     {
-                        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(new {Text = sc.Nume, Value = sc});
                         cbStareConcediu.Items.Add(sc.Nume);
-                        listaStare.Add(sc.Id + ", " + sc.Nume);
-
                     }
+
                 }
 
-                //foreach (StareConcediu sc in listaStareConcedii)
-                //{
-                //    if (!sc.Nume.Equals("In asteptare"))
-                //    {
-                //        //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(new {Text = sc.Nume, Value = sc});
-                //        (dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).Items.Add(sc.Nume);
-
-                //    }
-                //}
-                //ComboBox cb = new ComboBox();
-                //cbStareConcediu.Select
-                //(dgvConcedii.Columns[5] as DataGridViewComboBoxColumn).
-                //.DisplayMember = listaStareConcedii.ToString();
+                
             }
             catch (HttpRequestException ex)
             {
@@ -136,117 +109,52 @@ namespace ConcediuAngajati
             }
         }
 
-        private void cbStareConcediu_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (string str in listaStare)
-            {
-                string[] s = str.Split(',');
-                if (s[1].CompareTo(cbStareConcediu.Text) == 0)
-                {
-                    stareConcediuId = Convert.ToInt32(s[0]);
+     
 
-                }
-            }
-        }
-
-        private void Actualizare_Click(object sender, EventArgs e)
+        public async void extragereManageri()
         {
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllAngajatiNumeConcatenat", Globals.apiUrl));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
             
-            string message = "Sigur vrei sa actualizezi lista de concedii?";
-            string title = "Actualizare stare concedii";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
-
-                string message2 = "Lista a fost actualizata";
-
-
-                SqlConnection conexiune = new SqlConnection(connectionString);
-
-               
-
-                string updateSQL = "UPDATE c SET stareConcediuId = @stareConcediuId FROM Concediu c JOIN StareConcediu sc ON sc.id = c.stareConcediuId WHERE stareConcediuId = 1 and c.id = " + idConcediu;
-
-                SqlCommand queryUpdate = new SqlCommand(updateSQL);
-                try
-                {
-                    conexiune.Open();
-                    queryUpdate.Connection = conexiune;
-                    queryUpdate.Parameters.AddWithValue("@stareConcediuId", stareConcediuId);
-                    queryUpdate.ExecuteNonQuery();
-         
-
-                    DialogResult result2 = MessageBox.Show(message2, title);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conexiune.Close();
-                }
-
-            }
 
         }
 
-        public List<string> extragereManageriDB()
+        private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            List<string> extrageAngajati = new List<string>();
-            string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
+            var grid = (DataGridView)sender;
+            
 
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
+            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
+                int selectedRowIndex = dgvConcediuManager.SelectedCells[0].RowIndex;
+                DataGridViewRow selectedRow = dgvConcediuManager.Rows[selectedRowIndex];
+                DataGridViewComboBoxCell combobox = dgvConcediuManager.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
 
-                while (reader.Read())
+                int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
+                int idConcediu = Convert.ToInt32(selectedRow.Tag);
+
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+
+
+
+                if (bool.Parse(responseBody))
                 {
-                    extrageAngajati.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-
+                    extragereConcediiDBAsync();
+                    //MessageBox.Show("Concediu actualizat!");
                 }
-
-        
-                return extrageAngajati;
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-                return null;
+                return;
             }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-
         }
-
-        private void dgvConcediuManager_SelectionChanged(object sender, EventArgs e)
-        {
-            foreach (DataGridViewRow row in dgvConcediuManager.SelectedRows)
-            {
-                string nume_prenume = row.Cells[0].ToString();
-                idConcediu = Convert.ToInt32(row.Tag);
-
-                foreach (string s in managerstring)
-                {
-                    string[] t = s.Split(',');
-                    if (nume_prenume.Equals(t[1]))
-                    {
-                        idAngajatSelectat = Convert.ToInt32(t[0]);
-                    }
-                }
-
-            }
-
-        }
+       
         private void dgvConcediuManager_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
             if (e.StateChanged != DataGridViewElementStates.Selected)
@@ -264,6 +172,11 @@ namespace ConcediuAngajati
             PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
             paginap.Show();
             this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

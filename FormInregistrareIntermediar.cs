@@ -159,6 +159,7 @@ namespace ConcediuAngajati
             angaj.DepartamentId = 7 ;
             angaj.FunctieId = 5;
             angaj.concediat = false;
+            angaj.Poza = image_array;
             
             string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
             angaj.DataNasterii = Convert.ToDateTime(dataNormala);
