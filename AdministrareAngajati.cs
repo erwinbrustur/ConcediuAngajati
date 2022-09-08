@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using Microsoft.VisualBasic;
 using ProiectASP.Models;
 using Newtonsoft.Json;
+using ConcediuAngajati.Utils;
 
 namespace ConcediuAngajati
 {
@@ -36,6 +37,9 @@ namespace ConcediuAngajati
         string numeManager;
         string cnx;
         Angajat angajatCurent;
+        List<Departament> departamente = new List<Departament>();
+        List<Angajat> departAngaj = new List<Angajat>();
+        List<Angajat> FunctAngaj = new List<Angajat>();
         List<Angajat> moveGetEmployee = new List<Angajat>();
         List<Angajat> managerActualMutare = new List<Angajat>();
         List<Angajat> angajatMutare = new List<Angajat>();
@@ -44,46 +48,27 @@ namespace ConcediuAngajati
         List<Angajat> angajatiiManagerului = new List<Angajat>();
         public List<Functie> GetFunctie()
         {
-            List<Functie> Functii = new List<Functie>();
-            GetFuncts();
 
-            async Task GetFuncts()
-            {
+                HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllFuncties",Globals.apiUrl)).Result;
+               string responseBody = response.Content.ReadAsStringAsync().Result;
+                List<Functie>Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
 
-                HttpResponseMessage response =  client.GetAsync("http://localhost:5096/GetAllFuncties").Result;
-                response.EnsureSuccessStatusCode();
-                string responseBody = response.Content.ReadAsStringAsync().Result;
-                Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
-
-            }
-       
-     
-          
             return Functii;
         }
         public List<Departament> GetDepartaments()
         {
-            List<Departament> departaments = new List<Departament>();
-            GetDeparts();
+
+                HttpResponseMessage response =Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllDepartaments", Globals.apiUrl)).Result;
+              string responseBody =response.Content.ReadAsStringAsync().Result;
+               List<Departament>departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
          
-            async Task GetDeparts()
-            {
-                HttpResponseMessage response =client.GetAsync("http://localhost:5096/GetAllDepartaments").Result;
-                 response.EnsureSuccessStatusCode();
-                string responseBody =response.Content.ReadAsStringAsync().Result;
-               departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
-                
-            }
-
-
-          
             return departaments;
         }
 
 
           public  List<Angajat> GetManagerEmployee(int idManager)
             {
-                HttpResponseMessage response = client.GetAsync(" http://localhost:5096/GetManagersAngajat?idManag=" + idManager).Result;
+                HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetManagersAngajat?idManag={1}",Globals.apiUrl,idManager)).Result;
                 response.EnsureSuccessStatusCode();
                 string responseBody = response.Content.ReadAsStringAsync().Result;
                 List<Angajat> ManagersEmployees = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
@@ -92,16 +77,7 @@ namespace ConcediuAngajati
             }
 
         
-        List<Angajat> EmployeesExtraction()
-        {
-            HttpResponseMessage response = client.GetAsync("http://localhost:5096/GetAllManagers").Result;
-            response.EnsureSuccessStatusCode();
-            string responseBody = response.Content.ReadAsStringAsync().Result;
-            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
-
-            return managerActualMutare;
-        }
+       
         public AdministrareAngajati(Angajat a)
         {
 
@@ -111,9 +87,20 @@ namespace ConcediuAngajati
             this.panelConcediere.BackColor = Color.FromArgb(99, 127, 124, 127);
           
             angajatCurent = a;
-            ExtragereAngajati();
-            managerActualMutare=EmployeesExtraction();
-         
+
+            List<Angajat> ExtragereAngajati()
+            {
+                HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers", Globals.apiUrl)).Result;
+
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+                List<Angajat> manageri = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+                return manageri;
+            }
+
+            managerActualMutare = ExtragereAngajati();
+           
 
             panelAdaugareAngajat.Hide();
             panelConcediere.Hide();
@@ -142,61 +129,25 @@ namespace ConcediuAngajati
                 Stergere.Show();
                 groupBox3.Show();
             }
-           List<Angajat> ExtragereListaAngajati()
+        
+               
+              
+            
+            
+        
+            foreach (Angajat x in managerActualMutare)
             {
-               
-                List<Angajat> tempAngajatii = new List<Angajat>();
-                EmployeesExtraction();
-                async Task EmployeesExtraction()
-                {
-                    HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-                    tempAngajatii = managerActualMutare;
-                  
-               
-                }
-                
-             
-                return tempAngajatii;
-            
-            }
-           
-            async Task ExtragereAngajati() {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllManagers");
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            
-                foreach (Angajat x in managerActualMutare)
-                {
 
-                    comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                }
+                comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
             }
-                
 
         }
 
-        public List<string> datePersoana(string CmdLine, string conex)
-        {
-            List<string> date = new List<string>();
-            SqlConnection cnx = new SqlConnection(conex);
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand(CmdLine, cnx);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                date.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-            }
-            cnx.Close();
-            return date;
-        }
+     
      
         public static string Hash(string Value)
         {
@@ -288,21 +239,40 @@ namespace ConcediuAngajati
             {
                 dataNastere = "20" + CNP.Text.Substring(1, 6);
             }
-            SqlConnection cnx = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            cnx.Open();
-            String Commandline1 = "Insert into Angajat(nume,prenume,email,parola,dataAngajare,dataNasterii,cnp,serie,no,nrTelefon,poza,managerId)";
-            String Commandline2 = " values ('" + Nume.Text + "','" + Prenume.Text + "','" + Email.Text + "@totalsoft.ro','" + Hash(Parola.Text)
-                + "',getDate(),'" + dataNastere + "','" + CNP.Text + "','" + Serie.Text + "','" + Nr.Text + "','" + NrTel.Text + "',@poza,30)";
+            Angajat AngajatNou = new Angajat();
+            AngajatNou.Nume = Nume.Text;
+            AngajatNou.Prenume = Prenume.Text;
+            String totalsoftRo = "@totalsoft.ro";
+            AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo);
+            AngajatNou.Parola = Hash(Parola.Text);
+            AngajatNou.DataAngajare = DateTime.Now;
+            string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+            AngajatNou.DataNasterii = Convert.ToDateTime(dataNormala);
+            AngajatNou.Cnp = CNP.Text;
+            AngajatNou.Serie = Serie.Text;
+            AngajatNou.No = Nr.Text;
+            AngajatNou.NrTelefon = NrTel.Text;
+            AngajatNou.ManagerId = 30;
+
             MemoryStream ms = new MemoryStream();
             Poza.Image.Save(ms, ImageFormat.Jpeg);
             byte[] image_array = new byte[ms.Length];
             ms.Position = 0;
             ms.Read(image_array, 0, image_array.Length);
-            SqlCommand queryInsert = new SqlCommand(Commandline1 + Commandline2, cnx);
-            queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-
-            queryInsert.ExecuteNonQuery();
-            cnx.Close();
+          
+ 
+            AngajatNou.Poza = image_array;
+            AngajatNou.FunctieId =5;
+            AngajatNou.DepartamentId =7;
+            AngajatNou.concediat = false;
+            
+            AngajatNou.EsteAdmin = false;
+         
+           
+            string jsonString = JsonConvert.SerializeObject(AngajatNou);
+            StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
+            var response = Globals.client.PutAsync(linkF, stringContent).Result;
             MessageBox.Show("Angajat adaugat");
             Nume.Text = "";
             Prenume.Text = "";
@@ -312,6 +282,7 @@ namespace ConcediuAngajati
             Serie.Text = "";
             Nr.Text = "";
             NrTel.Text = "";
+            if(Poza.Image!=null)
             Poza.Image.Dispose();
 
 
@@ -378,17 +349,10 @@ namespace ConcediuAngajati
 
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            string transfercmd = "update Angajat set managerId=" + idManager2 + " where id=" + idAngajat;
-
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand transfer = new SqlCommand(transfercmd, con);
-            transfer.ExecuteNonQuery();
-
-            con.Close();
-            MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
+        private void BtnTransfer_Click_2(object sender, EventArgs e)
+        { StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId={2}", Globals.apiUrl, idAngajat, idManager2),stringContent).Result;
+          MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -468,23 +432,15 @@ namespace ConcediuAngajati
         private void BtnStergere_Click(object sender, EventArgs e)
         {
 
-            string stergerecmd = "update Angajat set managerId=30 where managerId=" + idManagerSE;
-            string stergerecmd2 = "update Angajat set managerId=30 where id=" + idManagerSE;
-
-
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand stergere = new SqlCommand(stergerecmd, con);
-            SqlCommand stergere2 = new SqlCommand(stergerecmd2, con);
-            stergere.ExecuteNonQuery();
-            stergere2.ExecuteNonQuery();
-            con.Close();
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostStergereEchipa?angajatId={1}", Globals.apiUrl, idManagerSE), stringContent).Result;
             MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
         }
 
         private void BtnEchipaNoua_Click(object sender, EventArgs e)
         {
             int idVManager = 0;
+            viitorManager = GetManagerEmployee(idManagerEN);
             foreach (Angajat p in viitorManager)
             {
                 if (comboBox5.Text == p.Nume+' '+p.Prenume)
@@ -492,9 +448,9 @@ namespace ConcediuAngajati
                     idVManager = p.Id;
                 }
             }
-            string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
-            
-    
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId=26", Globals.apiUrl, idVManager), stringContent).Result;
+
             MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
         }
 
@@ -510,7 +466,7 @@ namespace ConcediuAngajati
                 panelAdaugareAngajat.Hide();
                 panelModificareManageri.Hide();
             }
-            SqlConnection con = new SqlConnection(cnx);
+            
             foreach (Angajat p in managerActualMutare)
             {
                 concediereManager.Items.Add(p.Nume+' '+p.Prenume);
@@ -542,21 +498,22 @@ namespace ConcediuAngajati
         }
         private void btnConcediereAngajat_Click(object sender, EventArgs e)
         {
+            Angajat angajatulConcediat = new Angajat();
             foreach (Angajat p in angajatiiManagerului)
             {
                 if (p.Nume+' '+p.Prenume== angajatConcediat.Text)
                 {
 
-                    idAngajatConcediat = p.Id;
+                    angajatulConcediat = p;
+               
                 }
 
             }
+            string jsonString = JsonConvert.SerializeObject(angajatulConcediat);
+            StringContent stringContent = new StringContent(jsonString,Encoding.UTF8, "application/json");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostConcediat", Globals.apiUrl),stringContent).Result;
+        
 
-            string responseString = "http://localhost:5096/PutConcediat?idAngajat=" + idAngajatConcediat;
-            HttpResponseMessage response = client.GetAsync(responseString).Result;
-            response.EnsureSuccessStatusCode();
-            string responseBody = response.Content.ReadAsStringAsync().Result;
-            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
         }
 
         private void Stergere_Enter(object sender, EventArgs e)
@@ -595,7 +552,7 @@ namespace ConcediuAngajati
 
             }
             
-            List<Angajat> departAngaj = GetManagerEmployee(idManagerDepartament);
+            departAngaj = GetManagerEmployee(idManagerDepartament);
 
             DepartamentAngajat.Items.Clear();
             foreach (Angajat a in departAngaj)
@@ -603,17 +560,13 @@ namespace ConcediuAngajati
                 DepartamentAngajat.Items.Add(a.Nume+' '+a.Prenume);
             }
 
-            List<Departament> departamente = GetDepartaments();
+                 departamente = GetDepartaments();
             DepartamentDepartament.Items.Clear();
             foreach (Departament d in departamente)
             {
                 DepartamentDepartament.Items.Add(d.Denumire);
             }
-            foreach (Departament p in departamente)
-            {
-                if (p.Denumire == DepartamentDepartament.Text)
-                    idDepartament =p.Id;
-            }
+     
         }
 
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
@@ -630,7 +583,7 @@ namespace ConcediuAngajati
 
             }
            
-            List<Angajat> FunctAngaj = GetManagerEmployee(idManagerFunct);
+             FunctAngaj = GetManagerEmployee(idManagerFunct);
 
             FunctieAngajat.Items.Clear();
             foreach (Angajat a in FunctAngaj)
@@ -660,17 +613,37 @@ namespace ConcediuAngajati
 
         private void BtnDepart_Click(object sender, EventArgs e)
         {
-  
+            Angajat angajatAlesdep=new Angajat();
+            foreach(Angajat a in departAngaj)
+            {
+                if ((a.Nume + ' ' + a.Prenume) == DepartamentAngajat.Text)
+                    angajatAlesdep = a;
+            }
+            foreach (Departament p in departamente)
+            {
+                if (p.Denumire == DepartamentDepartament.Text)
+                    idDepartament = p.Id;
+            }
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostDepartament?AngajatId={1}&DepartamentID={2}", Globals.apiUrl, angajatAlesdep.Id, idDepartament), stringContent).Result;
         }
 
         private void BtnFunct_Click(object sender, EventArgs e)
         {
+            Angajat angajatAles=new Angajat();
+            foreach (Angajat a in FunctAngaj)
+            {
+                if ((a.Nume + ' ' + a.Prenume) == FunctieAngajat.Text)
+                    angajatAles = a;
+            }
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostFunctie?AngajatId={1}&functieID={2}", Globals.apiUrl, angajatAles.Id,idFunctie), stringContent).Result;
 
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
  

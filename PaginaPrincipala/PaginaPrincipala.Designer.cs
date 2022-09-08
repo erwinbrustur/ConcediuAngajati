@@ -71,7 +71,8 @@
             // 
             // button2
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(3, 3);
@@ -84,7 +85,8 @@
             // 
             // button3
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Location = new System.Drawing.Point(3, 37);
@@ -97,7 +99,8 @@
             // 
             // button4
             // 
-            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.Location = new System.Drawing.Point(3, 71);
@@ -123,7 +126,8 @@
             // DateleMele
             // 
             this.DateleMele.BackColor = System.Drawing.Color.Transparent;
-            this.DateleMele.FlatAppearance.BorderSize = 0;
+            this.DateleMele.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.DateleMele.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.DateleMele.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DateleMele.ForeColor = System.Drawing.Color.White;
             this.DateleMele.Location = new System.Drawing.Point(121, 108);
@@ -142,7 +146,8 @@
             // 
             // button5
             // 
-            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.White;
             this.button5.Location = new System.Drawing.Point(3, 3);
@@ -167,7 +172,8 @@
             // 
             // button6
             // 
-            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.White;
             this.button6.Location = new System.Drawing.Point(3, 37);
@@ -192,7 +198,8 @@
             // 
             // CereriConcedii
             // 
-            this.CereriConcedii.FlatAppearance.BorderSize = 0;
+            this.CereriConcedii.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.CereriConcedii.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.CereriConcedii.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CereriConcedii.ForeColor = System.Drawing.Color.White;
             this.CereriConcedii.Location = new System.Drawing.Point(3, 3);
@@ -218,7 +225,8 @@
             // 
             // button1
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(3, 37);
@@ -231,7 +239,8 @@
             // 
             // button11
             // 
-            this.button11.FlatAppearance.BorderSize = 0;
+            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button11.ForeColor = System.Drawing.Color.White;
             this.button11.Location = new System.Drawing.Point(3, 71);
@@ -254,6 +263,8 @@
             this.btnInchiderePP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInchiderePP.BackgroundImage")));
             this.btnInchiderePP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInchiderePP.FlatAppearance.BorderSize = 0;
+            this.btnInchiderePP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.OrangeRed;
+            this.btnInchiderePP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.OrangeRed;
             this.btnInchiderePP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchiderePP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchiderePP.ForeColor = System.Drawing.Color.Transparent;
@@ -267,6 +278,8 @@
             // button7
             // 
             this.button7.BackColor = System.Drawing.Color.Transparent;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
             this.button7.Location = new System.Drawing.Point(745, 371);
@@ -280,7 +293,8 @@
             // Angajti
             // 
             this.Angajti.BackColor = System.Drawing.Color.Transparent;
-            this.Angajti.FlatAppearance.BorderSize = 0;
+            this.Angajti.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.Angajti.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.Angajti.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Angajti.ForeColor = System.Drawing.Color.White;
             this.Angajti.Location = new System.Drawing.Point(206, 108);

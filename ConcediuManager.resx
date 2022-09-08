@@ -66,6 +66,27 @@
   <metadata name="Inlocuitor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="TipConcediu.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Comentarii.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Raspuns.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Inceput.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Sfarsit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Inlocuitor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="TipConcediu.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Comentarii.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -76,7 +97,7 @@
   <data name="btnInchidereCM.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAksAAAJLCAYAAAD3vdICAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EAAACxABrSO9dQAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAACU7SURBVHhe7d3b
+        DAAACwwBP0AiyAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAACU7SURBVHhe7d3b
         kRvXlq7RbcI2QSbIBJogE/ZzP9GCDpogE2QCTZAJMkEOnIj9ep7UOcFKEKiaQCWAvKy15hgRXx9x9Qmp
         RSGBn7jVv/755x893y9TX9769mJfp+a/V/x9s3+eJKlev07Njw/xWJE9hmRdPq78eyr7e2tB6aE+FDfU
         /0zFje/Pqb+n9vDXVPzz4p/725QRJUnjNf/BO+7rf5+K+/24/99C/H2/T3lceaD0UOcbbdxgW/Pfqbih
@@ -242,7 +263,7 @@
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABVUAAALoCAYAAAB4aRWaAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAA/7JJREFUeF5U/XWUHdm17om6X49x7+3bfY5dLhAkMzMzMzMoOVMpSjGlUsylQrvs
+        vAAADrwBlbxySQAA/7JJREFUeF5U/XWUHdm17om6X49x7+3bfY5dLhAkMzMzMzMoOVMpSjGlUsylQrvs
         sqvKLhBLycwMYiklpTKVLCrb59zbt8/o98b7+3vzm7vSt98fa+y9Y0esWBQRa/3im3P+ytLcAhYWFjAx
         M4WptSWMLc1hYmEOCytLWNvawNTSApb2tlhnaQzPzWXYdvMa/vLTDfz4w3dobLol36/h93/6K366fQPf
         XfsWN25ewc3L1/Hjdz/h8pWb+Oanq/jLj1dw9fvLuHz5KuobmnDt2jX88M13uH37Nq7duokrV67hmuR1

@@ -30,13 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuManager));
             this.label1 = new System.Windows.Forms.Label();
-            this.Actualizeaza = new System.Windows.Forms.Button();
-            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcediuManager = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inceput = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sfarsit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inlocuitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipConcediu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comentarii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Raspuns = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -51,35 +50,12 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(325, 1);
+            this.label1.Location = new System.Drawing.Point(441, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(250, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
-            // 
-            // Actualizeaza
-            // 
-            this.Actualizeaza.BackColor = System.Drawing.Color.Transparent;
-            this.Actualizeaza.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Actualizeaza.FlatAppearance.BorderSize = 0;
-            this.Actualizeaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Actualizeaza.ForeColor = System.Drawing.Color.White;
-            this.Actualizeaza.Location = new System.Drawing.Point(715, 439);
-            this.Actualizeaza.Name = "Actualizeaza";
-            this.Actualizeaza.Size = new System.Drawing.Size(96, 39);
-            this.Actualizeaza.TabIndex = 1;
-            this.Actualizeaza.Text = "Actualizare";
-            this.Actualizeaza.UseVisualStyleBackColor = false;
-            this.Actualizeaza.Click += new System.EventHandler(this.Actualizare_Click);
-            // 
-            // cbStareConcediu
-            // 
-            this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(24, 13);
-            this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(121, 28);
-            this.cbStareConcediu.TabIndex = 2;
-            this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dgvConcediuManager
             // 
@@ -89,6 +65,7 @@
             this.Inceput,
             this.Sfarsit,
             this.Inlocuitor,
+            this.TipConcediu,
             this.Comentarii,
             this.dataGridViewComboBoxColumn1,
             this.Raspuns});
@@ -96,10 +73,10 @@
             this.dgvConcediuManager.Name = "dgvConcediuManager";
             this.dgvConcediuManager.RowHeadersWidth = 51;
             this.dgvConcediuManager.RowTemplate.Height = 25;
-            this.dgvConcediuManager.Size = new System.Drawing.Size(864, 353);
+            this.dgvConcediuManager.Size = new System.Drawing.Size(1100, 353);
             this.dgvConcediuManager.TabIndex = 3;
+            this.dgvConcediuManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
-            this.dgvConcediuManager.SelectionChanged += new System.EventHandler(this.dgvConcediuManager_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -129,6 +106,13 @@
             this.Inlocuitor.Name = "Inlocuitor";
             this.Inlocuitor.Width = 150;
             // 
+            // TipConcediu
+            // 
+            this.TipConcediu.HeaderText = "Tip Concediu";
+            this.TipConcediu.MinimumWidth = 6;
+            this.TipConcediu.Name = "TipConcediu";
+            this.TipConcediu.Width = 125;
+            // 
             // Comentarii
             // 
             this.Comentarii.HeaderText = "Comentarii";
@@ -148,7 +132,9 @@
             this.Raspuns.HeaderText = "Raspuns";
             this.Raspuns.MinimumWidth = 6;
             this.Raspuns.Name = "Raspuns";
-            this.Raspuns.Width = 80;
+            this.Raspuns.Text = "Actualizeaza";
+            this.Raspuns.UseColumnTextForButtonValue = true;
+            this.Raspuns.Width = 120;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -171,7 +157,7 @@
             this.btnInchidereCM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInchidereCM.FlatAppearance.BorderSize = 0;
             this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInchidereCM.Location = new System.Drawing.Point(846, 8);
+            this.btnInchidereCM.Location = new System.Drawing.Point(1102, 2);
             this.btnInchidereCM.Name = "btnInchidereCM";
             this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
             this.btnInchidereCM.TabIndex = 0;
@@ -184,11 +170,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(900, 481);
+            this.ClientSize = new System.Drawing.Size(1145, 481);
             this.Controls.Add(this.btnInchidereCM);
             this.Controls.Add(this.dgvConcediuManager);
-            this.Controls.Add(this.cbStareConcediu);
-            this.Controls.Add(this.Actualizeaza);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -202,8 +186,6 @@
         #endregion
 
         private Label label1;
-        private Button Actualizeaza;
-        private ComboBox cbStareConcediu;
         private DataGridView dgvConcediuManager;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Nume;
@@ -212,6 +194,7 @@
         private DataGridViewTextBoxColumn Inceput;
         private DataGridViewTextBoxColumn Sfarsit;
         private DataGridViewTextBoxColumn Inlocuitor;
+        private DataGridViewTextBoxColumn TipConcediu;
         private DataGridViewTextBoxColumn Comentarii;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private DataGridViewButtonColumn Raspuns;
