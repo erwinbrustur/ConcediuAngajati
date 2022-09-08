@@ -155,8 +155,9 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSalmon;
-            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Snow;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSalmon;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSalmon;
             resources.ApplyResources(this.button2, "button2");
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Name = "button2";
