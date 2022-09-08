@@ -13,6 +13,7 @@ using System.Drawing.Imaging;
 using Microsoft.VisualBasic;
 using ProiectASP.Models;
 using Newtonsoft.Json;
+using Google.Protobuf.WellKnownTypes;
 
 namespace ConcediuAngajati
 {
@@ -670,7 +671,7 @@ namespace ConcediuAngajati
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+           
         }
     }
  

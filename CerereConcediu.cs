@@ -104,12 +104,10 @@ namespace ConcediuAngajati
 
                 List<TipConcediu> listaTipConcedii = JsonConvert.DeserializeObject<List<TipConcediu>>(responseBody);
 
-               //MessageBox.Show(listaTipConcedii.Count.ToString());
-                foreach (TipConcediu tc in listaTipConcedii)
-                {
-                    cbTipConcediu.Items.Add(tc.Nume);
-                    
-                }
+                //MessageBox.Show(listaTipConcedii.Count.ToString());
+                cbTipConcediu.DataSource = listaTipConcedii;
+                cbTipConcediu.DisplayMember = "Nume";
+                cbTipConcediu.ValueMember = "Id";
                 
             }
             catch (HttpRequestException ex)
@@ -123,15 +121,17 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Angajat/GetInlocuitori?idAngajat={1}&idManager={2}", Globals.apiUrl, userCurent.Id, userCurent.ManagerId));
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllInlocuitoriNumeConcatenat?angajatId={1}&managerId={2}", Globals.apiUrl,userCurent.Id, userCurent.ManagerId ));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 List<Angajat> listaInlocuitori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-                foreach (Angajat a in listaInlocuitori)
-                {
-                    cbInlocuitor.Items.Add(a.Nume + " " + a.Prenume);
-                }
+
+
+                cbInlocuitor.DataSource = listaInlocuitori;
+                cbInlocuitor.DisplayMember = "Nume";
+                cbInlocuitor.ValueMember = "Id";
+               // cbInlocuitor.SelectedIndex = userCurent.Id;
             }
             catch (HttpRequestException ex)
             {
@@ -289,8 +289,8 @@ namespace ConcediuAngajati
             {
        
                 string message2 = "Cerere de concediu trimisa";
-                
-           
+
+
                 DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
 
@@ -321,6 +321,38 @@ namespace ConcediuAngajati
 
             }
          
+        }
+
+        public void Trimitere(object sender, EventArgs e)
+        {
+            string message = "Sigur vrei sa trimiti cererea de concediu?";
+            string title = "Cerere concediu";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+
+                string message2 = "Cerere de concediu trimisa";
+                DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
+                DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
+
+                Concediu con = new Concediu();
+                con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
+                con.DataInceput = dataInceput;
+                con.DataSfarsit = dataSfarsit;
+                con.InlocuitorId = (int)cbInlocuitor.SelectedValue;
+                con.Comentarii = rtbComentarii.Text;
+                con.StareConcediuId = 1;
+                con.AngajatId = userCurent.Id;
+                con.ZileConcediu = Convert.ToInt32(textBox1.Text);
+
+                string jsonString = JsonConvert.SerializeObject(con);
+                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+              
+                string linkF = String.Format("{0}Concediu/InserareConcediu", Globals.apiUrl);
+                var response = Globals.client.PutAsync(linkF, stringContent).Result;
+                DialogResult result2 = MessageBox.Show(message2, title);
+            }
         }
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
