@@ -143,10 +143,17 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void PaginaPrincipala_Load(object sender, EventArgs e)
         {
-            if(angajat.ManagerId == 26)
+            if(angajat.Id == 26)
             {
                 CereriConcediBut.Show();
                 DropConcedii.Show();
+                button11.Show();
+            }
+            else if(angajat.ManagerId == 26)
+            {
+                CereriConcediBut.Show();
+                DropConcedii.Show();
+                button11.Hide();
                 //break;
             }
             else
