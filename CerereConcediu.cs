@@ -1,4 +1,5 @@
 ﻿using ConcediuAngajati.PaginaPrincipala;
+using ConcediuAngajati.Utils;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
 using ProiectASP.Models;
@@ -41,21 +42,21 @@ namespace ConcediuAngajati
             extragereTipConcediuDB();
 
 
-           // cbTipConcediu.SelectedIndex = 0;
-            
-            listaInlocuitori = extragereInlocuitoriEchipaDB();
-            foreach(string inlocuitor in listaInlocuitori)
-            {
-                string[] str = inlocuitor.Split(',');
-                cbInlocuitor.Items.Add(str[1]);
+            // cbTipConcediu.SelectedIndex = 0;
 
-            }
+            //listaInlocuitori = extragereInlocuitoriEchipaDB();
+            //foreach(string inlocuitor in listaInlocuitori)
+            //{
+            //    string[] str = inlocuitor.Split(',');
+            //    cbInlocuitor.Items.Add(str[1]);
 
-            cbInlocuitor.SelectedIndex = 0;
+            //}
 
-            
+            //cbInlocuitor.SelectedIndex = 0;
 
+            extragereInlocuitorAsyncDB();
 
+          
 
         }
 
@@ -97,7 +98,7 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync("http://localhost:5096/GetAllTipConcediu");
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}TipConcediu/GetAllTipConcediu", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
@@ -117,42 +118,63 @@ namespace ConcediuAngajati
 
             }
         }
-        public List<string> extragereInlocuitoriEchipaDB()
+
+        public async void extragereInlocuitorAsyncDB()
         {
-            List<string> strings = new List<string>();
-            MessageBox.Show(userCurent.ManagerId.ToString());
-            string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
-            MessageBox.Show(userCurent.ManagerId + "Vacanta");
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
             try
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Angajat/GetInlocuitori?idAngajat={1}&idManager={2}", Globals.apiUrl, userCurent.Id, userCurent.ManagerId));
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
 
-                while (reader.Read())
+                List<Angajat> listaInlocuitori = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+                foreach (Angajat a in listaInlocuitori)
                 {
-                    strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
-
+                    cbInlocuitor.Items.Add(a.Nume + " " + a.Prenume);
                 }
-
-
-                return strings;
             }
-            catch (Exception ex)
+            catch (HttpRequestException ex)
             {
                 MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
 
             }
-
         }
+        //public List<string> extragereInlocuitoriEchipaDB()
+        //{
+        //    List<string> strings = new List<string>();
+          
+        //    string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
+           
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
+
+        //        }
+
+
+        //        return strings;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+
+
+        //    }
+
+        //}
 
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -228,10 +250,6 @@ namespace ConcediuAngajati
         }
 
 
-
-
- 
-
         private void PaginaMea_Click_1(object sender, EventArgs e)
         {
             
@@ -277,7 +295,7 @@ namespace ConcediuAngajati
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
 
                 SqlConnection conexiune = new SqlConnection(connectionString);
-                MessageBox.Show((cbTipConcediu.SelectedIndex + 1).ToString());
+            
                 string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId, ZileConcediu) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ", " + Convert.ToInt32(textBox1.Text) + ")";  
 
                 SqlCommand queryInsert = new SqlCommand(insertSQL);
@@ -287,7 +305,7 @@ namespace ConcediuAngajati
                     queryInsert.Connection = conexiune;
                     
                     queryInsert.ExecuteNonQuery();
-                    MessageBox.Show("da");
+               
 
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }
@@ -322,20 +340,20 @@ namespace ConcediuAngajati
 
         }
 
-        private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        //private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
+        //{
              
             
-            foreach(string str in listaInlocuitori)
-            {
-                 string[] s = str.Split(',');
-                if (s[1].CompareTo(cbInlocuitor.Text) == 0)
-                {
-                    idInlocuitor = Convert.ToInt32(s[0]);
+        //    foreach(string str in listaInlocuitori)
+        //    {
+        //         string[] s = str.Split(',');
+        //        if (s[1].CompareTo(cbInlocuitor.Text) == 0)
+        //        {
+        //            idInlocuitor = Convert.ToInt32(s[0]);
                    
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {

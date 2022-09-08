@@ -32,13 +32,6 @@
             this.Actualizare = new System.Windows.Forms.Button();
             this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcedii = new System.Windows.Forms.DataGridView();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvcStareConcediu = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dgvcRaspunc = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnInchidereCA = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,6 +41,20 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,75 +83,25 @@
             this.dgvConcedii.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvConcedii.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConcedii.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column6,
-            this.Column7,
-            this.Column8,
-            this.Column9,
             this.Column10,
-            this.dgvcStareConcediu,
-            this.dgvcRaspunc});
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column17,
+            this.Column15,
+            this.Column16});
             this.dgvConcedii.Location = new System.Drawing.Point(30, 99);
             this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(935, 360);
+            this.dgvConcedii.Size = new System.Drawing.Size(1057, 360);
             this.dgvConcedii.TabIndex = 2;
-           // this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick);
+           // this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
             this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Nume";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Data Inceput";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Data Sfarsit";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Inlocuitor";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 125;
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "Comentarii";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 125;
-            // 
-            // dgvcStareConcediu
-            // 
-            this.dgvcStareConcediu.HeaderText = "Stare concediu";
-            this.dgvcStareConcediu.MinimumWidth = 6;
-            this.dgvcStareConcediu.Name = "dgvcStareConcediu";
-            this.dgvcStareConcediu.Width = 125;
-            // 
-            // dgvcRaspunc
-            // 
-            this.dgvcRaspunc.HeaderText = "Raspuns";
-            this.dgvcRaspunc.MinimumWidth = 6;
-            this.dgvcRaspunc.Name = "dgvcRaspunc";
-            this.dgvcRaspunc.Text = "Actualizare";
-            this.dgvcRaspunc.UseColumnTextForButtonValue = true;
-            this.dgvcRaspunc.Width = 125;
             // 
             // btnInchidereCA
             // 
@@ -164,7 +121,7 @@
             this.btnX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnX.BackgroundImage")));
             this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnX.Location = new System.Drawing.Point(938, 12);
+            this.btnX.Location = new System.Drawing.Point(1065, 12);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(45, 36);
             this.btnX.TabIndex = 12;
@@ -222,11 +179,113 @@
             this.Nume.Name = "Nume";
             this.Nume.Width = 125;
             // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Nume";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 125;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Data Inceput";
+            this.Column7.MinimumWidth = 6;
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 125;
+            // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Data Sfarsit";
+            this.Column8.MinimumWidth = 6;
+            this.Column8.Name = "Column8";
+            this.Column8.Width = 125;
+            // 
+            // Column9
+            // 
+            this.Column9.HeaderText = "Inlocuitor";
+            this.Column9.MinimumWidth = 6;
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Nume";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 125;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Data Inceput";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Data Sfarsit";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 125;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Inlocuitor";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 125;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Tip Concediu";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 125;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Comentarii";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 125;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Stare Concediu";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 125;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Raspuns";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column16.Text = "Actualizare";
+            this.Column16.UseColumnTextForButtonValue = true;
+            this.Column16.Width = 125;
+            // 
             // ConcediuAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(995, 500);
+            this.ClientSize = new System.Drawing.Size(1122, 500);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.dgvConcedii);
@@ -255,14 +314,19 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Nume;
-        private DataGridViewComboBoxColumn Column11;
-        private DataGridViewButtonColumn Column12;
         private DataGridViewTextBoxColumn Column6;
         private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column9;
         private DataGridViewTextBoxColumn Column10;
-        private DataGridViewComboBoxColumn dgvcStareConcediu;
-        private DataGridViewButtonColumn dgvcRaspunc;
+        private DataGridViewTextBoxColumn Column11;
+        private DataGridViewTextBoxColumn Column12;
+        private DataGridViewTextBoxColumn Column13;
+        private DataGridViewTextBoxColumn Column14;
+        private DataGridViewComboBoxColumn Column15;
+        private DataGridViewButtonColumn Column16;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn Column17;
     }
 }

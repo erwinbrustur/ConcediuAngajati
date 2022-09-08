@@ -38,6 +38,8 @@
             this.Sfarsit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inlocuitor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comentarii = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Raspuns = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInchidereCM = new System.Windows.Forms.Button();
@@ -49,9 +51,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(284, 1);
+            this.label1.Location = new System.Drawing.Point(325, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 38);
+            this.label1.Size = new System.Drawing.Size(250, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
             // 
@@ -62,10 +64,9 @@
             this.Actualizeaza.FlatAppearance.BorderSize = 0;
             this.Actualizeaza.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Actualizeaza.ForeColor = System.Drawing.Color.White;
-            this.Actualizeaza.Location = new System.Drawing.Point(626, 329);
-            this.Actualizeaza.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Actualizeaza.Location = new System.Drawing.Point(715, 439);
             this.Actualizeaza.Name = "Actualizeaza";
-            this.Actualizeaza.Size = new System.Drawing.Size(84, 29);
+            this.Actualizeaza.Size = new System.Drawing.Size(96, 39);
             this.Actualizeaza.TabIndex = 1;
             this.Actualizeaza.Text = "Actualizare";
             this.Actualizeaza.UseVisualStyleBackColor = false;
@@ -74,10 +75,9 @@
             // cbStareConcediu
             // 
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(21, 10);
-            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbStareConcediu.Location = new System.Drawing.Point(24, 13);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(106, 23);
+            this.cbStareConcediu.Size = new System.Drawing.Size(121, 28);
             this.cbStareConcediu.TabIndex = 2;
             this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
@@ -89,13 +89,14 @@
             this.Inceput,
             this.Sfarsit,
             this.Inlocuitor,
-            this.Comentarii});
-            this.dgvConcediuManager.Location = new System.Drawing.Point(21, 52);
-            this.dgvConcediuManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Comentarii,
+            this.dataGridViewComboBoxColumn1,
+            this.Raspuns});
+            this.dgvConcediuManager.Location = new System.Drawing.Point(24, 69);
             this.dgvConcediuManager.Name = "dgvConcediuManager";
             this.dgvConcediuManager.RowHeadersWidth = 51;
             this.dgvConcediuManager.RowTemplate.Height = 25;
-            this.dgvConcediuManager.Size = new System.Drawing.Size(681, 265);
+            this.dgvConcediuManager.Size = new System.Drawing.Size(864, 353);
             this.dgvConcediuManager.TabIndex = 3;
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
             this.dgvConcediuManager.SelectionChanged += new System.EventHandler(this.dgvConcediuManager_SelectionChanged);
@@ -105,7 +106,7 @@
             this.dataGridViewTextBoxColumn2.HeaderText = "Nume";
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 125;
+            this.dataGridViewTextBoxColumn2.Width = 150;
             // 
             // Inceput
             // 
@@ -126,7 +127,7 @@
             this.Inlocuitor.HeaderText = "Inlocuitor";
             this.Inlocuitor.MinimumWidth = 6;
             this.Inlocuitor.Name = "Inlocuitor";
-            this.Inlocuitor.Width = 125;
+            this.Inlocuitor.Width = 150;
             // 
             // Comentarii
             // 
@@ -134,6 +135,20 @@
             this.Comentarii.MinimumWidth = 6;
             this.Comentarii.Name = "Comentarii";
             this.Comentarii.Width = 125;
+            // 
+            // dataGridViewComboBoxColumn1
+            // 
+            this.dataGridViewComboBoxColumn1.HeaderText = "Stare Concediu";
+            this.dataGridViewComboBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewComboBoxColumn1.Name = "dataGridViewComboBoxColumn1";
+            this.dataGridViewComboBoxColumn1.Width = 120;
+            // 
+            // Raspuns
+            // 
+            this.Raspuns.HeaderText = "Raspuns";
+            this.Raspuns.MinimumWidth = 6;
+            this.Raspuns.Name = "Raspuns";
+            this.Raspuns.Width = 80;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -156,28 +171,27 @@
             this.btnInchidereCM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInchidereCM.FlatAppearance.BorderSize = 0;
             this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInchidereCM.Location = new System.Drawing.Point(665, 7);
-            this.btnInchidereCM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInchidereCM.Location = new System.Drawing.Point(846, 8);
             this.btnInchidereCM.Name = "btnInchidereCM";
-            this.btnInchidereCM.Size = new System.Drawing.Size(37, 26);
+            this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
             this.btnInchidereCM.TabIndex = 0;
             this.btnInchidereCM.UseVisualStyleBackColor = false;
             this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
             // 
             // ConcediuManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(714, 361);
+            this.ClientSize = new System.Drawing.Size(900, 481);
             this.Controls.Add(this.btnInchidereCM);
             this.Controls.Add(this.dgvConcediuManager);
             this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.Actualizeaza);
             this.Controls.Add(this.label1);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).EndInit();
@@ -193,11 +207,13 @@
         private DataGridView dgvConcediuManager;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Nume;
+        private Button btnInchidereCM;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn Inceput;
         private DataGridViewTextBoxColumn Sfarsit;
         private DataGridViewTextBoxColumn Inlocuitor;
         private DataGridViewTextBoxColumn Comentarii;
-        private Button btnInchidereCM;
+        private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
+        private DataGridViewButtonColumn Raspuns;
     }
 }
