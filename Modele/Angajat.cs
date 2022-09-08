@@ -25,6 +25,7 @@ namespace ProiectASP.Models
         public string? NrTelefon { get; set; }
         public byte[]? Poza { get; set; }
         public bool? EsteAdmin { get; set; }
+        public bool? concediat { get; set; }
         public int? ManagerId { get; set; }
         public int? DepartamentId { get; set; }
         public int? FunctieId { get; set; }

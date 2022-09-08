@@ -50,7 +50,7 @@ namespace ConcediuAngajati
                 //MessageBox.Show(listaAngajati.Count().ToString());
                 foreach (Angajat a in listaAngajati)
                 {
-                    if ((bool)!a.EsteAdmin)
+                    if ((bool)!a.EsteAdmin && (bool)!a.concediat)
                     {
                         ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
 
@@ -73,6 +73,8 @@ namespace ConcediuAngajati
                         {
                             item.SubItems.Add("Administrator");//Departament
                         }
+                        
+                        
                         
 
                         listView1.Items.Add(item);
