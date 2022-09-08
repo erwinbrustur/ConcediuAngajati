@@ -28,10 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuAngajati));
-            this.Actualizare = new System.Windows.Forms.Button();
-            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcedii = new System.Windows.Forms.DataGridView();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnInchidereCA = new System.Windows.Forms.Button();
             this.btnX = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,36 +54,17 @@
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column16 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.cbTipConcediu = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnCauta = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Actualizare
-            // 
-            this.Actualizare.Location = new System.Drawing.Point(646, 44);
-            this.Actualizare.Name = "Actualizare";
-            this.Actualizare.Size = new System.Drawing.Size(122, 31);
-            this.Actualizare.TabIndex = 0;
-            this.Actualizare.Text = "Actualizare";
-            this.Actualizare.UseVisualStyleBackColor = false;
-            this.Actualizare.Click += new System.EventHandler(this.Actualizare_Click);
-            // 
-            // cbStareConcediu
-            // 
-            this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(146, 29);
-            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(138, 28);
-            this.cbStareConcediu.TabIndex = 1;
-            this.cbStareConcediu.SelectedIndexChanged += new System.EventHandler(this.cbStareConcediu_SelectedIndexChanged);
             // 
             // dgvConcedii
             // 
@@ -91,17 +79,75 @@
             this.Column17,
             this.Column15,
             this.Column16});
-            this.dgvConcedii.Location = new System.Drawing.Point(30, 99);
+            this.dgvConcedii.Location = new System.Drawing.Point(24, 142);
             this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(1057, 360);
+            this.dgvConcedii.Size = new System.Drawing.Size(1048, 360);
             this.dgvConcedii.TabIndex = 2;
-           // this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
-            this.dgvConcedii.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcedii_RowStateChanged);
-            this.dgvConcedii.SelectionChanged += new System.EventHandler(this.dgvConcedii_SelectionChanged);
+            this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "Nume";
+            this.Column10.MinimumWidth = 6;
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 125;
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "Data Inceput";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.Width = 125;
+            // 
+            // Column12
+            // 
+            this.Column12.HeaderText = "Data Sfarsit";
+            this.Column12.MinimumWidth = 6;
+            this.Column12.Name = "Column12";
+            this.Column12.Width = 125;
+            // 
+            // Column13
+            // 
+            this.Column13.HeaderText = "Inlocuitor";
+            this.Column13.MinimumWidth = 6;
+            this.Column13.Name = "Column13";
+            this.Column13.Width = 125;
+            // 
+            // Column14
+            // 
+            this.Column14.HeaderText = "Tip Concediu";
+            this.Column14.MinimumWidth = 6;
+            this.Column14.Name = "Column14";
+            this.Column14.Width = 125;
+            // 
+            // Column17
+            // 
+            this.Column17.HeaderText = "Comentarii";
+            this.Column17.MinimumWidth = 6;
+            this.Column17.Name = "Column17";
+            this.Column17.Width = 125;
+            // 
+            // Column15
+            // 
+            this.Column15.HeaderText = "Stare Concediu";
+            this.Column15.MinimumWidth = 6;
+            this.Column15.Name = "Column15";
+            this.Column15.Width = 125;
+            // 
+            // Column16
+            // 
+            this.Column16.HeaderText = "Raspuns";
+            this.Column16.MinimumWidth = 6;
+            this.Column16.Name = "Column16";
+            this.Column16.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column16.Text = "Actualizare";
+            this.Column16.UseColumnTextForButtonValue = true;
+            this.Column16.Width = 125;
             // 
             // btnInchidereCA
             // 
@@ -121,7 +167,7 @@
             this.btnX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnX.BackgroundImage")));
             this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnX.Location = new System.Drawing.Point(1065, 12);
+            this.btnX.Location = new System.Drawing.Point(1054, 12);
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(45, 36);
             this.btnX.TabIndex = 12;
@@ -131,11 +177,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 32);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(30, 59);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 20);
+            this.label1.Size = new System.Drawing.Size(69, 28);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Stare concediu:";
+            this.label1.Text = "Nume:";
             // 
             // Column1
             // 
@@ -221,76 +268,104 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.Width = 125;
             // 
-            // Column10
+            // cbTipConcediu
             // 
-            this.Column10.HeaderText = "Nume";
-            this.Column10.MinimumWidth = 6;
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 125;
+            this.cbTipConcediu.FormattingEnabled = true;
+            this.cbTipConcediu.Location = new System.Drawing.Point(921, 91);
+            this.cbTipConcediu.Name = "cbTipConcediu";
+            this.cbTipConcediu.Size = new System.Drawing.Size(151, 28);
+            this.cbTipConcediu.TabIndex = 15;
             // 
-            // Column11
+            // label2
             // 
-            this.Column11.HeaderText = "Data Inceput";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.Width = 125;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(788, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 28);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Tip concediu:";
             // 
-            // Column12
+            // label3
             // 
-            this.Column12.HeaderText = "Data Sfarsit";
-            this.Column12.MinimumWidth = 6;
-            this.Column12.Name = "Column12";
-            this.Column12.Width = 125;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(771, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(144, 28);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Stare concediu:";
             // 
-            // Column13
+            // cbStareConcediu
             // 
-            this.Column13.HeaderText = "Inlocuitor";
-            this.Column13.MinimumWidth = 6;
-            this.Column13.Name = "Column13";
-            this.Column13.Width = 125;
+            this.cbStareConcediu.FormattingEnabled = true;
+            this.cbStareConcediu.Location = new System.Drawing.Point(921, 54);
+            this.cbStareConcediu.Name = "cbStareConcediu";
+            this.cbStareConcediu.Size = new System.Drawing.Size(151, 28);
+            this.cbStareConcediu.TabIndex = 17;
             // 
-            // Column14
+            // textBox1
             // 
-            this.Column14.HeaderText = "Tip Concediu";
-            this.Column14.MinimumWidth = 6;
-            this.Column14.Name = "Column14";
-            this.Column14.Width = 125;
+            this.textBox1.Location = new System.Drawing.Point(105, 60);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(208, 27);
+            this.textBox1.TabIndex = 19;
             // 
-            // Column17
+            // textBox2
             // 
-            this.Column17.HeaderText = "Comentarii";
-            this.Column17.MinimumWidth = 6;
-            this.Column17.Name = "Column17";
-            this.Column17.Width = 125;
+            this.textBox2.Location = new System.Drawing.Point(421, 60);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(208, 27);
+            this.textBox2.TabIndex = 21;
             // 
-            // Column15
+            // label4
             // 
-            this.Column15.HeaderText = "Stare Concediu";
-            this.Column15.MinimumWidth = 6;
-            this.Column15.Name = "Column15";
-            this.Column15.Width = 125;
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(331, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(93, 28);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Prenume:";
             // 
-            // Column16
+            // btnCauta
             // 
-            this.Column16.HeaderText = "Raspuns";
-            this.Column16.MinimumWidth = 6;
-            this.Column16.Name = "Column16";
-            this.Column16.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column16.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column16.Text = "Actualizare";
-            this.Column16.UseColumnTextForButtonValue = true;
-            this.Column16.Width = 125;
+            this.btnCauta.BackColor = System.Drawing.Color.Transparent;
+            this.btnCauta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCauta.BackgroundImage")));
+            this.btnCauta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnCauta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCauta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCauta.ImageList = this.imageList1;
+            this.btnCauta.Location = new System.Drawing.Point(646, 55);
+            this.btnCauta.Name = "btnCauta";
+            this.btnCauta.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnCauta.Size = new System.Drawing.Size(39, 32);
+            this.btnCauta.TabIndex = 22;
+            this.btnCauta.UseVisualStyleBackColor = false;
+            this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // ConcediuAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1122, 500);
+            this.ClientSize = new System.Drawing.Size(1111, 524);
+            this.Controls.Add(this.btnCauta);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbStareConcediu);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbTipConcediu);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.dgvConcedii);
-            this.Controls.Add(this.cbStareConcediu);
-            this.Controls.Add(this.Actualizare);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
@@ -303,7 +378,7 @@
         #endregion
 
         private Button Actualizare;
-        private ComboBox cbStareConcediu;
+        //private ComboBox cbStareConcediu;
         private DataGridView dgvConcedii;
         private Button btnInchidereCA;
         private Button btnX;
@@ -328,5 +403,14 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn Column17;
+        private ComboBox cbTipConcediu;
+        private Label label2;
+        private Label label3;
+        private ComboBox cbStareConcediu;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label4;
+        private Button btnCauta;
+        private ImageList imageList1;
     }
 }
