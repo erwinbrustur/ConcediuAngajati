@@ -30,11 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuManager));
             this.label1 = new System.Windows.Forms.Label();
-            this.cbStareConcediu = new System.Windows.Forms.ComboBox();
             this.dgvConcediuManager = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnInchidereCM = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inceput = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sfarsit = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +39,9 @@
             this.Comentarii = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewComboBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.Raspuns = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnInchidereCM = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +56,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Concediu Manager";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // cbStareConcediu
-            // 
-            this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(24, 13);
-            this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(121, 28);
-            this.cbStareConcediu.TabIndex = 2;
             // 
             // dgvConcediuManager
             // 
@@ -86,34 +77,6 @@
             this.dgvConcediuManager.TabIndex = 3;
             this.dgvConcediuManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Nume";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 125;
-            // 
-            // Nume
-            // 
-            this.Nume.HeaderText = "Nume";
-            this.Nume.MinimumWidth = 6;
-            this.Nume.Name = "Nume";
-            this.Nume.Width = 125;
-            // 
-            // btnInchidereCM
-            // 
-            this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
-            this.btnInchidereCM.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInchidereCM.BackgroundImage")));
-            this.btnInchidereCM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnInchidereCM.FlatAppearance.BorderSize = 0;
-            this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInchidereCM.Location = new System.Drawing.Point(1102, 2);
-            this.btnInchidereCM.Name = "btnInchidereCM";
-            this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
-            this.btnInchidereCM.TabIndex = 0;
-            this.btnInchidereCM.UseVisualStyleBackColor = false;
-            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -173,6 +136,34 @@
             this.Raspuns.UseColumnTextForButtonValue = true;
             this.Raspuns.Width = 120;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Nume";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // Nume
+            // 
+            this.Nume.HeaderText = "Nume";
+            this.Nume.MinimumWidth = 6;
+            this.Nume.Name = "Nume";
+            this.Nume.Width = 125;
+            // 
+            // btnInchidereCM
+            // 
+            this.btnInchidereCM.BackColor = System.Drawing.Color.Transparent;
+            this.btnInchidereCM.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInchidereCM.BackgroundImage")));
+            this.btnInchidereCM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnInchidereCM.FlatAppearance.BorderSize = 0;
+            this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInchidereCM.Location = new System.Drawing.Point(1102, 2);
+            this.btnInchidereCM.Name = "btnInchidereCM";
+            this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
+            this.btnInchidereCM.TabIndex = 0;
+            this.btnInchidereCM.UseVisualStyleBackColor = false;
+            this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
+            // 
             // ConcediuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -182,7 +173,6 @@
             this.ClientSize = new System.Drawing.Size(1145, 481);
             this.Controls.Add(this.btnInchidereCM);
             this.Controls.Add(this.dgvConcediuManager);
-            this.Controls.Add(this.cbStareConcediu);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -196,7 +186,6 @@
         #endregion
 
         private Label label1;
-        private ComboBox cbStareConcediu;
         private DataGridView dgvConcediuManager;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Nume;

@@ -91,14 +91,7 @@ namespace ConcediuAngajati
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
-                foreach (StareConcediu sc in listaStareConcedii)
-                {
-                    if (!sc.Nume.Equals("In asteptare"))
-                    {
-                        cbStareConcediu.Items.Add(sc.Nume);
-                    }
-
-                }
+               
 
                 
             }
@@ -178,5 +171,7 @@ namespace ConcediuAngajati
         {
 
         }
+
+        
     }
 }
