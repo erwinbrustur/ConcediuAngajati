@@ -289,21 +289,32 @@ namespace ConcediuAngajati
             {
                 dataNastere = "20" + CNP.Text.Substring(1, 6);
             }
-            SqlConnection cnx = new SqlConnection(@"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int");
-            cnx.Open();
-            String Commandline1 = "Insert into Angajat(nume,prenume,email,parola,dataAngajare,dataNasterii,cnp,serie,no,nrTelefon,poza,managerId)";
-            String Commandline2 = " values ('" + Nume.Text + "','" + Prenume.Text + "','" + Email.Text + "@totalsoft.ro','" + Hash(Parola.Text)
-                + "',getDate(),'" + dataNastere + "','" + CNP.Text + "','" + Serie.Text + "','" + Nr.Text + "','" + NrTel.Text + "',@poza,30)";
+            Angajat AngajatNou = new Angajat();
+            AngajatNou.Nume = Nume.Text;
+            AngajatNou.Prenume = Prenume.Text;
+            String totalsoftRo = "@totalsoft.ro";
+            AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo);
+            AngajatNou.Parola = Hash(Parola.Text);
+            AngajatNou.DataAngajare = DateTime.Now;
+            string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+            AngajatNou.DataNasterii = Convert.ToDateTime(dataNormala);
+            AngajatNou.Cnp = CNP.Text;
+            AngajatNou.Serie = Serie.Text;
+            AngajatNou.No = Nr.Text;
+            AngajatNou.NrTelefon = NrTel.Text;
+            AngajatNou.ManagerId = 30;
             MemoryStream ms = new MemoryStream();
             Poza.Image.Save(ms, ImageFormat.Jpeg);
             byte[] image_array = new byte[ms.Length];
-            ms.Position = 0;
-            ms.Read(image_array, 0, image_array.Length);
-            SqlCommand queryInsert = new SqlCommand(Commandline1 + Commandline2, cnx);
-            queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-
-            queryInsert.ExecuteNonQuery();
-            cnx.Close();
+            AngajatNou.Poza = image_array;
+            AngajatNou.FunctieId =5;
+            AngajatNou.DepartamentId =7;
+            AngajatNou.concediat = false;
+            string jsonString = JsonConvert.SerializeObject(AngajatNou);
+            StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            //HttpClient client = new HttpClient();
+            string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
+            var response = Globals.client.PutAsync(linkF, stringContent).Result;
             MessageBox.Show("Angajat adaugat");
             Nume.Text = "";
             Prenume.Text = "";
