@@ -74,6 +74,7 @@ namespace ConcediuAngajati
                             item.SubItems.Add("Administrator");//Departament
                         }
                         
+                        
 
                         listView1.Items.Add(item);
                     }
