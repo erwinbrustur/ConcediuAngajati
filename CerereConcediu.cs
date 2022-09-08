@@ -279,49 +279,49 @@ namespace ConcediuAngajati
 
         }
 
-        private void Trimite_Click(object sender, EventArgs e)
-        {
-            string message = "Sigur vrei sa trimiti cererea de concediu?";
-            string title = "Cerere concediu";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
+        //private void Trimite_Click(object sender, EventArgs e)
+        //{
+        //    string message = "Sigur vrei sa trimiti cererea de concediu?";
+        //    string title = "Cerere concediu";
+        //    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+        //    DialogResult result = MessageBox.Show(message, title, buttons);
+        //    if (result == DialogResult.Yes)
+        //    {
        
-                string message2 = "Cerere de concediu trimisa";
+        //        string message2 = "Cerere de concediu trimisa";
 
 
-                DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
-                DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
+        //        DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
+        //        DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
 
-                SqlConnection conexiune = new SqlConnection(connectionString);
+        //        SqlConnection conexiune = new SqlConnection(connectionString);
             
-                string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId, ZileConcediu) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ", " + Convert.ToInt32(textBox1.Text) + ")";  
+        //        string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId, ZileConcediu) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ", " + Convert.ToInt32(textBox1.Text) + ")";  
 
-                SqlCommand queryInsert = new SqlCommand(insertSQL);
-                try
-                {
-                    conexiune.Open();
-                    queryInsert.Connection = conexiune;
+        //        SqlCommand queryInsert = new SqlCommand(insertSQL);
+        //        try
+        //        {
+        //            conexiune.Open();
+        //            queryInsert.Connection = conexiune;
                     
-                    queryInsert.ExecuteNonQuery();
+        //            queryInsert.ExecuteNonQuery();
                
 
-                    DialogResult result2 = MessageBox.Show(message2, title);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conexiune.Close();
-                }
+        //            DialogResult result2 = MessageBox.Show(message2, title);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            conexiune.Close();
+        //        }
               
 
-            }
+        //    }
          
-        }
+        //}
 
         public void Trimitere(object sender, EventArgs e)
         {

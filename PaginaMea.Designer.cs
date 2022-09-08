@@ -80,6 +80,7 @@
             // tbEmail
             // 
             this.tbEmail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbEmail.Enabled = false;
             this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbEmail.Location = new System.Drawing.Point(243, 141);
             this.tbEmail.Name = "tbEmail";
@@ -90,6 +91,7 @@
             // tbCNP
             // 
             this.tbCNP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbCNP.Enabled = false;
             this.tbCNP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbCNP.Location = new System.Drawing.Point(24, 234);
             this.tbCNP.Name = "tbCNP";
@@ -104,7 +106,6 @@
             this.tbNrTelefon.Location = new System.Drawing.Point(615, 234);
             this.tbNrTelefon.MaxLength = 10;
             this.tbNrTelefon.Name = "tbNrTelefon";
-            this.tbNrTelefon.ReadOnly = true;
             this.tbNrTelefon.Size = new System.Drawing.Size(202, 29);
             this.tbNrTelefon.TabIndex = 8;
             this.tbNrTelefon.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNrTelefon_KeyPress);
@@ -113,6 +114,7 @@
             // tbDataNastere
             // 
             this.tbDataNastere.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDataNastere.Enabled = false;
             this.tbDataNastere.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbDataNastere.Location = new System.Drawing.Point(540, 141);
             this.tbDataNastere.Name = "tbDataNastere";
@@ -123,6 +125,7 @@
             // tbPrenume
             // 
             this.tbPrenume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPrenume.Enabled = false;
             this.tbPrenume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbPrenume.Location = new System.Drawing.Point(540, 75);
             this.tbPrenume.Margin = new System.Windows.Forms.Padding(0);
@@ -134,6 +137,7 @@
             // tbSerie
             // 
             this.tbSerie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbSerie.Enabled = false;
             this.tbSerie.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbSerie.Location = new System.Drawing.Point(321, 234);
             this.tbSerie.Name = "tbSerie";
@@ -145,6 +149,7 @@
             // 
             this.tbNume.BackColor = System.Drawing.SystemColors.Control;
             this.tbNume.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbNume.Enabled = false;
             this.tbNume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbNume.Location = new System.Drawing.Point(244, 75);
             this.tbNume.Margin = new System.Windows.Forms.Padding(0);
@@ -156,6 +161,7 @@
             // tbDataAngajare
             // 
             this.tbDataAngajare.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDataAngajare.Enabled = false;
             this.tbDataAngajare.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbDataAngajare.Location = new System.Drawing.Point(615, 304);
             this.tbDataAngajare.Name = "tbDataAngajare";
@@ -322,7 +328,7 @@
             this.btnActualizareDate.TabIndex = 26;
             this.btnActualizareDate.Text = "Actualizare date";
             this.btnActualizareDate.UseVisualStyleBackColor = false;
-            this.btnActualizareDate.Click += new System.EventHandler(this.btnActualizareDate_Click);
+            this.btnActualizareDate.Click += new System.EventHandler(this.ActualizeazaDate);
             // 
             // label9
             // 
@@ -339,6 +345,7 @@
             // tbNumar
             // 
             this.tbNumar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbNumar.Enabled = false;
             this.tbNumar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbNumar.Location = new System.Drawing.Point(398, 234);
             this.tbNumar.Name = "tbNumar";
@@ -361,6 +368,7 @@
             // tbGen
             // 
             this.tbGen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbGen.Enabled = false;
             this.tbGen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbGen.Location = new System.Drawing.Point(540, 234);
             this.tbGen.Name = "tbGen";
@@ -383,6 +391,7 @@
             // tbFunctie
             // 
             this.tbFunctie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFunctie.Enabled = false;
             this.tbFunctie.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbFunctie.Location = new System.Drawing.Point(24, 304);
             this.tbFunctie.Name = "tbFunctie";
@@ -405,6 +414,7 @@
             // tbDepartament
             // 
             this.tbDepartament.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbDepartament.Enabled = false;
             this.tbDepartament.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbDepartament.Location = new System.Drawing.Point(321, 304);
             this.tbDepartament.Name = "tbDepartament";

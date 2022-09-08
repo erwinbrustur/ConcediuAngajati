@@ -45,18 +45,13 @@ namespace ConcediuAngajati
         List<Angajat> angajatiiManagerului = new List<Angajat>();
         public List<Functie> GetFunctie()
         {
-            List<Functie> Functii = new List<Functie>();
-            GetFuncts();
-
-            async Task GetFuncts()
-            {
 
                 HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllFuncties",Globals.apiUrl)).Result;
-                response.EnsureSuccessStatusCode();
+            
                 string responseBody = response.Content.ReadAsStringAsync().Result;
-                Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
+                List<Functie>Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
 
-            }
+            
        
      
           
@@ -65,16 +60,13 @@ namespace ConcediuAngajati
         public List<Departament> GetDepartaments()
         {
             List<Departament> departaments = new List<Departament>();
-            GetDeparts();
-         
-            async Task GetDeparts()
-            {
+            
                 HttpResponseMessage response =Globals.client.GetAsync(String.Format("{0}/DepartamentSiFunctie/GetAllDepartaments",Globals.apiUrl)).Result;
-                 response.EnsureSuccessStatusCode();
+               
                 string responseBody =response.Content.ReadAsStringAsync().Result;
                departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
                 
-            }
+            
 
 
           
@@ -93,16 +85,7 @@ namespace ConcediuAngajati
             }
 
         
-        List<Angajat> EmployeesExtraction()
-        {
-            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers",Globals.apiUrl)).Result;
-            response.EnsureSuccessStatusCode();
-            string responseBody = response.Content.ReadAsStringAsync().Result;
-            List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
-
-            return managerActualMutare;
-        }
+       
         public AdministrareAngajati(Angajat a)
         {
 
@@ -112,9 +95,20 @@ namespace ConcediuAngajati
             this.panelConcediere.BackColor = Color.FromArgb(99, 127, 124, 127);
           
             angajatCurent = a;
-            ExtragereAngajati();
-            managerActualMutare=EmployeesExtraction();
-         
+
+            List<Angajat> ExtragereAngajati()
+            {
+                HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers", Globals.apiUrl)).Result;
+
+                string responseBody = response.Content.ReadAsStringAsync().Result;
+                List<Angajat> manageri = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+                return manageri;
+            }
+
+            managerActualMutare = ExtragereAngajati();
+           
 
             panelAdaugareAngajat.Hide();
             panelConcediere.Hide();
@@ -143,61 +137,25 @@ namespace ConcediuAngajati
                 Stergere.Show();
                 groupBox3.Show();
             }
-           List<Angajat> ExtragereListaAngajati()
+        
+               
+              
+            
+            
+        
+            foreach (Angajat x in managerActualMutare)
             {
-               
-                List<Angajat> tempAngajatii = new List<Angajat>();
-                EmployeesExtraction();
-                async Task EmployeesExtraction()
-                {
-                    HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers",Globals.apiUrl));
-                    response.EnsureSuccessStatusCode();
-                    string responseBody = await response.Content.ReadAsStringAsync();
-                    List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-                    tempAngajatii = managerActualMutare;
-                  
-               
-                }
-                
-             
-                return tempAngajatii;
-            
-            }
-           
-            async Task ExtragereAngajati() {
-                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}GetAllManagers",Globals.apiUrl));
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                List<Angajat> managerActualMutare = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-            
-                foreach (Angajat x in managerActualMutare)
-                {
 
-                    comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                    FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
-                }
+                comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
             }
-                
 
         }
 
-       /* public List<string> datePersoana(string CmdLine, string conex)
-        {
-            List<string> date = new List<string>();
-            SqlConnection cnx = new SqlConnection(conex);
-            cnx.Open();
-            SqlCommand cmd = new SqlCommand(CmdLine, cnx);
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                date.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-            }
-            cnx.Close();
-            return date;
-        }*/
+     
      
         public static string Hash(string Value)
         {
@@ -303,16 +261,24 @@ namespace ConcediuAngajati
             AngajatNou.No = Nr.Text;
             AngajatNou.NrTelefon = NrTel.Text;
             AngajatNou.ManagerId = 30;
+
             MemoryStream ms = new MemoryStream();
             Poza.Image.Save(ms, ImageFormat.Jpeg);
             byte[] image_array = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(image_array, 0, image_array.Length);
+          
+ 
             AngajatNou.Poza = image_array;
             AngajatNou.FunctieId =5;
             AngajatNou.DepartamentId =7;
             AngajatNou.concediat = false;
+            
+            AngajatNou.EsteAdmin = false;
+         
+           
             string jsonString = JsonConvert.SerializeObject(AngajatNou);
             StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            //HttpClient client = new HttpClient();
             string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
             var response = Globals.client.PutAsync(linkF, stringContent).Result;
             MessageBox.Show("Angajat adaugat");
@@ -324,6 +290,7 @@ namespace ConcediuAngajati
             Serie.Text = "";
             Nr.Text = "";
             NrTel.Text = "";
+            if(Poza.Image!=null)
             Poza.Image.Dispose();
 
 
@@ -390,17 +357,10 @@ namespace ConcediuAngajati
 
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            string transfercmd = "update Angajat set managerId=" + idManager2 + " where id=" + idAngajat;
-
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand transfer = new SqlCommand(transfercmd, con);
-            transfer.ExecuteNonQuery();
-
-            con.Close();
-            MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
+        private void BtnTransfer_Click_2(object sender, EventArgs e)
+        { StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId={2}", Globals.apiUrl, idAngajat, idManager2),stringContent).Result;
+          MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -480,23 +440,15 @@ namespace ConcediuAngajati
         private void BtnStergere_Click(object sender, EventArgs e)
         {
 
-            string stergerecmd = "update Angajat set managerId=30 where managerId=" + idManagerSE;
-            string stergerecmd2 = "update Angajat set managerId=30 where id=" + idManagerSE;
-
-
-            SqlConnection con = new SqlConnection(cnx);
-            con.Open();
-            SqlCommand stergere = new SqlCommand(stergerecmd, con);
-            SqlCommand stergere2 = new SqlCommand(stergerecmd2, con);
-            stergere.ExecuteNonQuery();
-            stergere2.ExecuteNonQuery();
-            con.Close();
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostStergereEchipa?angajatId={1}", Globals.apiUrl, idManagerSE), stringContent).Result;
             MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
         }
 
         private void BtnEchipaNoua_Click(object sender, EventArgs e)
         {
             int idVManager = 0;
+            viitorManager = GetManagerEmployee(idManagerEN);
             foreach (Angajat p in viitorManager)
             {
                 if (comboBox5.Text == p.Nume+' '+p.Prenume)
@@ -504,9 +456,9 @@ namespace ConcediuAngajati
                     idVManager = p.Id;
                 }
             }
-            string echipaNoua = "update Angajat set managerId=" + 26 + " where id=" + idVManager;
-            
-    
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId=26", Globals.apiUrl, idVManager), stringContent).Result;
+
             MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
         }
 
@@ -522,7 +474,7 @@ namespace ConcediuAngajati
                 panelAdaugareAngajat.Hide();
                 panelModificareManageri.Hide();
             }
-            SqlConnection con = new SqlConnection(cnx);
+            
             foreach (Angajat p in managerActualMutare)
             {
                 concediereManager.Items.Add(p.Nume+' '+p.Prenume);
