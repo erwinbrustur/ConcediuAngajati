@@ -41,7 +41,8 @@ namespace ConcediuAngajati
         public void button2_Click(object sender, EventArgs e)
         {
             string strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
-            Regex regex = new Regex(strRegex);
+            string nrtlfRegex = "^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$";
+            Regex regex = new Regex(nrtlfRegex);
             if (FieldPass.Text == "")
             {
                 MessageBox.Show("Parola este obligatorie!");

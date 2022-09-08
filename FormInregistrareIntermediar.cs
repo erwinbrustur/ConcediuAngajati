@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Google.Protobuf.WellKnownTypes;
+using Newtonsoft.Json;
 using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
@@ -135,33 +136,56 @@ namespace ConcediuAngajati
 
             MessageBox.Show(dataNastere);
 
-            HttpResponseMessage response =  client.GetAsync("http://localhost:5096/PutNewAngajat").Result;
-            response.EnsureSuccessStatusCode();
+            
+
+            //response.EnsureSuccessStatusCode();
             //string responseBody = response.Content.ReadAsString;
 
             //List<Angajat> listaAngjatiNoi = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
 
-            SqlConnection conexiune = new SqlConnection(connectionString);
+
+            Angajat angaj = new Angajat();
+            angaj.DataAngajare = DateTime.Now;
+            angaj.Nume = angajat.Nume;
+            angaj.Prenume = angajat.Prenume;
+            angaj.Cnp = tbCNP.Text;
+            angaj.Serie = tbSerie.Text;
+            angaj.No = tbNumar.Text;
+            angaj.Email = angajat.Email;
+            angaj.Parola = angajat.Parola;
+            string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+            angaj.DataNasterii = Convert.ToDateTime(dataNormala);
+
+            HttpClient httpClient = new HttpClient();
+            string jsonString = JsonConvert.SerializeObject(angaj);
+            StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+            var response = httpClient.PostAsync("http://localhost:5096/PutNewAngajat", stringContent);
+
+
+
+            
+
+            /*SqlConnection conexiune = new SqlConnection(connectionString);
             string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza,managerId) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza,30)";
-            SqlCommand queryInsert = new SqlCommand(insertSQL);
-            try
-            {
-                conexiune.Open();
-                queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-                queryInsert.Connection = conexiune;
-                queryInsert.ExecuteNonQuery();
+            SqlCommand queryInsert = new SqlCommand(insertSQL);*/
+            /*  try
+              {
+                  conexiune.Open();
+                  queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
+                  queryInsert.Connection = conexiune;
+                  queryInsert.ExecuteNonQuery();
 
 
-                MessageBox.Show("Inserare realizata cu succes!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conexiune.Close();
-            }
+                  MessageBox.Show("Inserare realizata cu succes!");
+              }
+              catch (Exception ex)
+              {
+                  MessageBox.Show(ex.Message);
+              }
+              finally
+              {
+                  conexiune.Close();
+              }*/
 
             this.Close();
             LoginPhase lg = new LoginPhase();
