@@ -37,6 +37,9 @@ namespace ConcediuAngajati
         string numeManager;
         string cnx;
         Angajat angajatCurent;
+        List<Departament> departamente = new List<Departament>();
+        List<Angajat> departAngaj = new List<Angajat>();
+        List<Angajat> FunctAngaj = new List<Angajat>();
         List<Angajat> moveGetEmployee = new List<Angajat>();
         List<Angajat> managerActualMutare = new List<Angajat>();
         List<Angajat> angajatMutare = new List<Angajat>();
@@ -47,29 +50,18 @@ namespace ConcediuAngajati
         {
 
                 HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllFuncties",Globals.apiUrl)).Result;
-            
-                string responseBody = response.Content.ReadAsStringAsync().Result;
+               string responseBody = response.Content.ReadAsStringAsync().Result;
                 List<Functie>Functii = JsonConvert.DeserializeObject<List<Functie>>(responseBody);
 
-            
-       
-     
-          
             return Functii;
         }
         public List<Departament> GetDepartaments()
         {
-            List<Departament> departaments = new List<Departament>();
-            
-                HttpResponseMessage response =Globals.client.GetAsync(String.Format("{0}/DepartamentSiFunctie/GetAllDepartaments",Globals.apiUrl)).Result;
-               
-                string responseBody =response.Content.ReadAsStringAsync().Result;
-               departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
-                
-            
 
-
-          
+                HttpResponseMessage response =Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllDepartaments", Globals.apiUrl)).Result;
+              string responseBody =response.Content.ReadAsStringAsync().Result;
+               List<Departament>departaments = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
+         
             return departaments;
         }
 
@@ -560,7 +552,7 @@ namespace ConcediuAngajati
 
             }
             
-            List<Angajat> departAngaj = GetManagerEmployee(idManagerDepartament);
+            departAngaj = GetManagerEmployee(idManagerDepartament);
 
             DepartamentAngajat.Items.Clear();
             foreach (Angajat a in departAngaj)
@@ -568,17 +560,13 @@ namespace ConcediuAngajati
                 DepartamentAngajat.Items.Add(a.Nume+' '+a.Prenume);
             }
 
-            List<Departament> departamente = GetDepartaments();
+                 departamente = GetDepartaments();
             DepartamentDepartament.Items.Clear();
             foreach (Departament d in departamente)
             {
                 DepartamentDepartament.Items.Add(d.Denumire);
             }
-            foreach (Departament p in departamente)
-            {
-                if (p.Denumire == DepartamentDepartament.Text)
-                    idDepartament =p.Id;
-            }
+     
         }
 
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
@@ -595,7 +583,7 @@ namespace ConcediuAngajati
 
             }
            
-            List<Angajat> FunctAngaj = GetManagerEmployee(idManagerFunct);
+             FunctAngaj = GetManagerEmployee(idManagerFunct);
 
             FunctieAngajat.Items.Clear();
             foreach (Angajat a in FunctAngaj)
@@ -625,11 +613,31 @@ namespace ConcediuAngajati
 
         private void BtnDepart_Click(object sender, EventArgs e)
         {
-  
+            Angajat angajatAlesdep=new Angajat();
+            foreach(Angajat a in departAngaj)
+            {
+                if ((a.Nume + ' ' + a.Prenume) == DepartamentAngajat.Text)
+                    angajatAlesdep = a;
+            }
+            foreach (Departament p in departamente)
+            {
+                if (p.Denumire == DepartamentDepartament.Text)
+                    idDepartament = p.Id;
+            }
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostDepartament?AngajatId={1}&DepartamentID={2}", Globals.apiUrl, angajatAlesdep.Id, idDepartament), stringContent).Result;
         }
 
         private void BtnFunct_Click(object sender, EventArgs e)
         {
+            Angajat angajatAles=new Angajat();
+            foreach (Angajat a in FunctAngaj)
+            {
+                if ((a.Nume + ' ' + a.Prenume) == FunctieAngajat.Text)
+                    angajatAles = a;
+            }
+            StringContent stringContent = new StringContent(" ");
+            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostFunctie?AngajatId={1}&functieID={2}", Globals.apiUrl, angajatAles.Id,idFunctie), stringContent).Result;
 
         }
 
