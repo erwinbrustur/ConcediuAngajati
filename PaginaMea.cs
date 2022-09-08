@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing.Imaging;
 using System.Globalization;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ConcediuAngajati
@@ -17,7 +18,7 @@ namespace ConcediuAngajati
         Angajat angajat;
         string connectionString;
         string numeComplet;
-        bool isReadOnly = true;
+        
         public PaginaMea(Angajat a)
         {
             InitializeComponent();
@@ -139,55 +140,91 @@ namespace ConcediuAngajati
             this.Close();
         }
 
-        private void btnActualizareDate_Click(object sender, EventArgs e)
+        //private void btnActualizareDate_Click(object sender, EventArgs e)
+        //{
+        //    if (!isReadOnly && btnActualizareDate.Text.Equals("Actualizeaza")){
+        //        string nrTel = tbNrTelefon.Text;
+
+        //        MemoryStream ms = new MemoryStream();
+        //        pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
+        //        byte[] image_array = new byte[ms.Length];
+        //        ms.Position = 0;
+        //        ms.Read(image_array, 0, image_array.Length);
+
+        //        SqlConnection conexiune = new SqlConnection(connectionString);
+        //        string updateSQL = "UPDATE Angajat SET nrTelefon = '" + nrTel + "', poza = @poza WHERE id = " + angajat.Id;
+
+        //        SqlCommand queryUpdate = new SqlCommand(updateSQL, conexiune);
+        //        try
+        //        {
+        //            conexiune.Open();
+        //            queryUpdate.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
+        //            queryUpdate.ExecuteNonQuery();
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            MessageBox.Show(ex.Message);
+        //        }
+        //        finally
+        //        {
+        //            conexiune.Close();
+        //            MessageBox.Show("Actualizare realizata cu succes!");
+        //            btnActualizareDate.Text = "Actualizare date";
+        //            tbNrTelefon.ReadOnly = true;
+        //            isReadOnly = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        tbNrTelefon.ReadOnly = false;
+        //        isReadOnly = false;
+        //        btnActualizareDate.Text = "Actualizeaza";
+        //    }
+
+        //}
+
+        private void ActualizeazaDate(object sender, EventArgs e)
         {
-            if (!isReadOnly && btnActualizareDate.Text.Equals("Actualizeaza")){
-                string nrTel = tbNrTelefon.Text;
+               
+            string nrTel = tbNrTelefon.Text;
 
-                MemoryStream ms = new MemoryStream();
-                pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
-                byte[] image_array = new byte[ms.Length];
-                ms.Position = 0;
-                ms.Read(image_array, 0, image_array.Length);
+            MemoryStream ms = new MemoryStream();
+            pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
+            byte[] image_array = new byte[ms.Length];
+            ms.Position = 0;
+            ms.Read(image_array, 0, image_array.Length);
 
-                SqlConnection conexiune = new SqlConnection(connectionString);
-                string updateSQL = "UPDATE Angajat SET nrTelefon = '" + nrTel + "', poza = @poza WHERE id = " + angajat.Id;
-
-                SqlCommand queryUpdate = new SqlCommand(updateSQL, conexiune);
-                try
-                {
-                    conexiune.Open();
-                    queryUpdate.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-                    queryUpdate.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    conexiune.Close();
-                    MessageBox.Show("Actualizare realizata cu succes!");
-                    btnActualizareDate.Text = "Actualizare date";
-                    tbNrTelefon.ReadOnly = true;
-                    isReadOnly = true;
-                }
-            }
-            else
+            angajat.Poza = image_array;
+            angajat.NrTelefon = nrTel;
+            try
             {
-                tbNrTelefon.ReadOnly = false;
-                isReadOnly = false;
-                btnActualizareDate.Text = "Actualizeaza";
+                string message = "Sigur vrei sa iti actualizezi datele?";
+                string message2 = "Datele au fost actualizate";
+                string title = "Actualizare date";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
+                if (result == DialogResult.Yes)
+                {
+                       
+                    string jsonString = JsonConvert.SerializeObject(angajat);
+                    StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                    var response = Globals.client.PutAsync(String.Format("{0}Angajat/UpdateDateleMele", Globals.apiUrl), stringContent).Result;
+                    MessageBox.Show(message2, title);
+                }
+             
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+                
+            
+            
         }
 
         private void pbImagineProfil_Click(object sender, EventArgs e)
         {
-            if (isReadOnly)
-            {
-                return;
-            }
+            
             string message = "Doriti sa modificati imaginea de profil?";
             string title = "Close Window";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
