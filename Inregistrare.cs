@@ -12,6 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using ProiectASP.Models;
 using System.Text.RegularExpressions;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ConcediuAngajati
 {
@@ -42,25 +43,26 @@ namespace ConcediuAngajati
         {
             string strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
             string nrtlfRegex = "^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$";
-            Regex regex = new Regex(nrtlfRegex);
+            Regex regexTlf = new Regex(nrtlfRegex);
+            Regex regexCNP = new Regex(strRegex);
             if (FieldPass.Text == "")
             {
                 MessageBox.Show("Parola este obligatorie!");
             }
             else if (FieldPass.TextLength < 8)
             {
-                MessageBox.Show("Parola este prea scurta");
+                MessageBox.Show("Parola este prea scurta!");
             }
             else if (FieldEmail.Text == "")
             {
-                MessageBox.Show("Mailul este obligatoriu!");
+                MessageBox.Show("Emailul este obligatoriu!");
             }
-            else if (FieldEmail.Text.IndexOf("@totalsoft.ro")==-1 )
+            else if (FieldEmail.Text.IndexOf("@totalsoft.ro") == -1)
             {
-                MessageBox.Show("Format mail incorect");
+                MessageBox.Show("Email invalid!");
             }
-          
-            else if (!regex.IsMatch(FieldNrTel.Text))
+
+            else if (!regexTlf.IsMatch(FieldNrTel.Text))
             {
                 MessageBox.Show("Numarul de telefon contine doar cifre!");
             }
@@ -70,9 +72,9 @@ namespace ConcediuAngajati
                 
                 MessageBox.Show("Numarul de telefon este obligatoriu");
             }
-            else if (FieldNrTel.TextLength != 10)
+            else if (FieldNrTel.Text.Length != 10)
             {
-                MessageBox.Show("Numarul de telefon trebuie sa aiba 10 cifre");
+                MessageBox.Show("Numarul de telefon trebuie sa aiba 10 cifre dar are doar "+FieldNrTel.Text.Length+" cifre!");
             }
             else if (FieldNume.Text == "")
             {
