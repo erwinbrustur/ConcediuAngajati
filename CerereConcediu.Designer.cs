@@ -50,6 +50,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
             this.btnInchidereCC = new System.Windows.Forms.Button();
+            this.textBoxZileRamase = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,6 +159,8 @@
             this.cbTipConcediu.Size = new System.Drawing.Size(121, 23);
             this.cbTipConcediu.TabIndex = 7;
             this.cbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbTipConcediu.SelectionChangeCommitted += new System.EventHandler(this.cbTipConcediu_SelectionChangeCommitted);
+            this.cbTipConcediu.SelectedValueChanged += new System.EventHandler(this.cbTipConcediu_SelectedValueChanged);
             // 
             // textBox1
             // 
@@ -275,6 +279,23 @@
             this.btnInchidereCC.UseVisualStyleBackColor = false;
             this.btnInchidereCC.Click += new System.EventHandler(this.btnInchidereCC_Click);
             // 
+            // textBoxZileRamase
+            // 
+            this.textBoxZileRamase.Location = new System.Drawing.Point(29, 146);
+            this.textBoxZileRamase.Name = "textBoxZileRamase";
+            this.textBoxZileRamase.Size = new System.Drawing.Size(121, 23);
+            this.textBoxZileRamase.TabIndex = 18;
+            this.textBoxZileRamase.TextChanged += new System.EventHandler(this.textBoxZileRamase_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(29, 113);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(130, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Zile Concediu Ramase: ";
+            // 
             // CerereConcediu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -282,6 +303,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(817, 426);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxZileRamase);
             this.Controls.Add(this.btnInchidereCC);
             this.Controls.Add(this.dateTimePicker3);
             this.Controls.Add(this.label6);
@@ -330,5 +353,7 @@
         private Label label6;
         private DateTimePicker dateTimePicker3;
         private Button btnInchidereCC;
+        private TextBox textBoxZileRamase;
+        private Label label7;
     }
 }

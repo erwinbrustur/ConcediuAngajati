@@ -2,6 +2,7 @@
 using ConcediuAngajati.Utils;
 using Microsoft.VisualBasic;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Asn1.Ocsp;
 using ProiectASP.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace ConcediuAngajati
         List<string> listaInlocuitori;
         int idInlocuitor;
         Angajat userCurent;
+        TipConcediu tpc;
         
         public CerereConcediu(Angajat a)
         {
@@ -337,6 +339,7 @@ namespace ConcediuAngajati
                 DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
                 string message3 = "Ai deja o cerere de concediu in asteptare/acceptata in acea perioada";
+                string message4 = "Inlocuitor ocupat in aceasta perioada";
 
                 Concediu con = new Concediu();
                 con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
@@ -348,35 +351,79 @@ namespace ConcediuAngajati
                 con.AngajatId = userCurent.Id;
                 con.ZileConcediu = Convert.ToInt32(textBox1.Text);
 
-                HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii?angajatId={1}", Globals.apiUrl, userCurent.Id));
+                HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcediiVerificareDate?angajatId={1}", Globals.apiUrl, userCurent.Id));
                 responseDate.EnsureSuccessStatusCode();
                 string responsivebody = await responseDate.Content.ReadAsStringAsync();
 
                 List<Concediu> concedii = JsonConvert.DeserializeObject<List<Concediu>>(responsivebody);
                 bool mergeInserat = true;
                 bool esteInTrecut = false;
-                if (DateTime.Now > con.DataInceput)
+                if (DateTime.Now.Date > con.DataInceput.Date)
                 {
                     MessageBox.Show("Nu poti sa iti iei concediu in trecut");
                     esteInTrecut = true;
                 }
-                while (mergeInserat == true)
-                {
-                    foreach (Concediu concediu in concedii)
-                    {
 
-                        if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataInceput)//Data inceput in interval
-                            mergeInserat = false;
-                        else if (concediu.DataInceput >= con.DataInceput && concediu.DataSfarsit <= con.DataSfarsit)//In afara interval
-                            mergeInserat = false;
-                        else if (concediu.DataInceput > con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval
-                            mergeInserat = false;
-                        else if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
-                            mergeInserat = false;
+                foreach (Concediu concediu in concedii)
+                {
+
+                    if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataInceput)
+                    { //Data inceput in interval sfarsit in afara
+                        mergeInserat = false;
+                        break;
+                    }
+                    else if (concediu.DataInceput >= con.DataInceput && concediu.DataSfarsit <= con.DataSfarsit)//In afara interval
+                    {
+                        mergeInserat = false;
+                        break;
+                    }
+                    else if (concediu.DataInceput > con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval si inceput in afara intervalului
+                    {
+                        mergeInserat = false;
+                        break;
+                    }
+                    else if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
+                    {
+                        mergeInserat = false;
+                        break;
                     }
                 }
 
-                if (mergeInserat == true)
+                bool InlocuitorNeocupat = true;
+                HttpResponseMessage responseDate2 = await client.GetAsync(String.Format("{0}Concediu/GetConcediiInlocuitori?angajatId={1}", Globals.apiUrl, userCurent.Id));
+                responseDate.EnsureSuccessStatusCode();
+                string responsivebody2 = await responseDate2.Content.ReadAsStringAsync();
+
+                List<Concediu> concediiInlocuitori = JsonConvert.DeserializeObject<List<Concediu>>(responsivebody2);
+                foreach (Concediu coninloc in concediiInlocuitori)
+                {
+                    if (cbInlocuitor.SelectedValue.Equals(coninloc.Angajat.Id))
+                    {
+                        if (coninloc.DataInceput <= con.DataInceput && coninloc.DataSfarsit >= con.DataInceput)
+                        { //Data inceput in interval
+                            InlocuitorNeocupat = false;
+                            break;
+                        }
+                        else if (coninloc.DataInceput >= con.DataInceput && coninloc.DataSfarsit <= con.DataSfarsit)//In afara interval
+                        {
+                            InlocuitorNeocupat = false;
+                            break;
+                        }
+                        else if (coninloc.DataInceput > con.DataInceput && coninloc.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval
+                        {
+                            InlocuitorNeocupat = false;
+                            break;
+                        }
+                        else if (coninloc.DataInceput <= con.DataInceput && coninloc.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
+                        {
+                            InlocuitorNeocupat = false;
+                            break;
+                        }
+                    }
+                }
+
+
+                if (mergeInserat == true && InlocuitorNeocupat == true)
                 { 
                     string jsonString = JsonConvert.SerializeObject(con);
                     StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -385,11 +432,18 @@ namespace ConcediuAngajati
                     var response = Globals.client.PutAsync(linkF, stringContent).Result;
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }
-                else
+                else if(mergeInserat == false && InlocuitorNeocupat == true)
                 {
                     if (esteInTrecut == false)
                     {
                         DialogResult result2 = MessageBox.Show(message3, title);
+                    }
+                }
+                else if (mergeInserat == true && InlocuitorNeocupat == false)
+                {
+                    if (esteInTrecut == false)
+                    {
+                        DialogResult result2 = MessageBox.Show(message4, title);
                     }
                 }
             }
@@ -454,6 +508,29 @@ namespace ConcediuAngajati
             PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(userCurent);
             paginap.Show();
             this.Close();
+        }
+
+        private void textBoxZileRamase_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        
+        private async void cbTipConcediu_SelectedValueChanged(object sender, EventArgs e)
+        {
+          
+           
+        }
+
+        private async void cbTipConcediu_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            int tipConcediuId = Convert.ToInt32(cbTipConcediu.SelectedValue);
+            HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetNumarZileConcediuRamase?tipConcediuId={1}&angajatId={2}", Globals.apiUrl, tipConcediuId, userCurent.Id));
+            responseDate.EnsureSuccessStatusCode();
+            string responsivebody = await responseDate.Content.ReadAsStringAsync();
+
+
+            textBoxZileRamase.Text = responsivebody;
         }
     }
 }
