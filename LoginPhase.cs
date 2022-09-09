@@ -13,17 +13,25 @@ using System.Reflection.Metadata;
 using ProiectASP.Models;
 using Newtonsoft.Json;
 using ConcediuAngajati.Utils;
+using System.Net.Mail;
+using System.Net;
 
 namespace ConcediuAngajati
 {
     public partial class LoginPhase : Form
     {
+
+
+        Angajat angajat;
+        int GeneratedCode;
+        string AuthCode;
         static readonly HttpClient client = new HttpClient();
         public LoginPhase()
         {
             InitializeComponent();
+           panel2FA.Hide();
+       
            
-
 
         }
 
@@ -51,14 +59,47 @@ namespace ConcediuAngajati
                 HttpResponseMessage response = await client.GetAsync(String.Format("{0}Angajat/GetAngajatByUsername?username={1}@totalsoft.ro&parola={2}", Globals.apiUrl, textBox1.Text, Hash(textBox2.Text)));
                 response.EnsureSuccessStatusCode();
                 string responsivebody = await response.Content.ReadAsStringAsync();
-
-                Angajat angajat = JsonConvert.DeserializeObject<Angajat>(responsivebody);
+                angajat = JsonConvert.DeserializeObject<Angajat>(responsivebody);
 
                 if (angajat != null)
                 {
+                    //Comenteaza urmatoarele 3 randuri cand activezi 2Fa
                     PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
                     ppg.Show();
                     this.Hide();
+
+                  /*  GeneratedCode=0;
+                     int CodeLength = 4;
+
+                     string[] digit = new string[CodeLength];
+
+                     for(int i = 0; i <CodeLength; i++)
+                     {
+                         Random rnd = new Random();
+                         GeneratedCode=rnd.Next(10) ;
+                         digit[i] = GeneratedCode.ToString();
+                     }
+                     for(int i = 0; i <CodeLength; i++)
+                     {
+                         AuthCode = AuthCode + digit[i];
+                     }
+                     MailMessage message = new MailMessage();
+                     SmtpClient smtp = new SmtpClient();
+                     message.From = new MailAddress("sebastian.andrei@totalsoft.ro");
+                     message.To.Add(new MailAddress("sebastian.andrei@totalsoft.ro"));
+                     message.Subject = "Cod de Autentificare StrangerThings Hr";
+                     message.Body = String.Format("Codul dumneavoastra de acces este: {0} ",AuthCode);
+                     smtp.Port = 587;
+                     smtp.Host = "mailer14.totalsoft.local";
+                     smtp.EnableSsl = true;
+                     smtp.UseDefaultCredentials = false;
+                     smtp.Credentials = new NetworkCredential("sebastian.andrei@totalsoft.ro", "STats123rm");
+                     smtp.Send(message);
+                     panel2FA.Show();
+                    button1.Hide();
+                    button2.Hide();
+                    textBox1.Hide();
+                    textBox2.Hide();*/
                 }
                 else
                 {
@@ -127,5 +168,19 @@ namespace ConcediuAngajati
                 extragereAngajatByUsername();
             }
         }
+
+        private void Btn2FA_Click(object sender, EventArgs e)
+        {
+            if (Cod2FA.Text == AuthCode)
+            {
+               /*PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+                ppg.Show();
+                this.Hide();*/
+            }
+            else
+            {
+                MessageBox.Show("Eroare: Cod Gresit!");
+            }
+            }
     }
 }
