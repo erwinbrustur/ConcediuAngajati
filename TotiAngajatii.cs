@@ -50,8 +50,7 @@ namespace ConcediuAngajati
                 //MessageBox.Show(listaAngajati.Count().ToString());
                 foreach (Angajat a in listaAngajati)
                 {
-                    if ((bool)!a.EsteAdmin && (bool)!a.concediat)
-                    {
+                    
                         ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
 
                         //MessageBox.Show(a.Nume);
@@ -64,21 +63,14 @@ namespace ConcediuAngajati
                         {
                             item.SubItems.Add("Nu are adresa de email");
                         }
-                        item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager
-                        if(a.Departament != null)
-                        {
-                            item.SubItems.Add(a.Departament.Denumire);//Departament
-                        }
-                        else
-                        {
-                            item.SubItems.Add("Administrator");//Departament
-                        }
+                        item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager                                             
+                        item.SubItems.Add(a.Departament.Denumire);//Departament
                         
+                       
+                                  
                         
-                        
-
                         listView1.Items.Add(item);
-                    }
+                    
                 }
 
 
