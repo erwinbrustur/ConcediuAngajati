@@ -18,6 +18,8 @@ namespace ConcediuAngajati
     public partial class ConcediuAngajati : Form
     {
         Angajat angajat;
+        int nrConcediiDeAfisate = 10;
+        int nrTotalInregistrari;
 
         public ConcediuAngajati(Angajat a)
         {
@@ -28,12 +30,36 @@ namespace ConcediuAngajati
 
         }
 
-        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu)
+        private void obtinerePagini(int nrTotalPagini)
         {
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu));
+            int x = 10;
+            for(int i = 0; i < nrTotalPagini; i++)
+            {
+                Button btn = new Button();
+                btn.Text = (i + 1).ToString();
+                btn.Location = new Point(x + 5);
+                btn.Width = 30;
+                btn.Height = 30;
+                btn.Click += btn_click;
+                panel1.Controls.Add(btn);
+                x += 40;
+            }
+        }
+
+        private void btn_click(object sender, EventArgs e)
+        {
+            int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisate.ToString()));
+
+        }
+
+        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int nrInceputInregistrari, int nrTotalDeAfisat)
+        {
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat));
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+
+            nrTotalInregistrari = listaConcedii.Count;
 
             populareDataGridView(listaConcedii);
 
@@ -41,7 +67,7 @@ namespace ConcediuAngajati
 
         private void ConcediuAngajati_Load(object sender, EventArgs e)
         {
-            extragereConcedii(null, null, null, null);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisate);
         }
 
 
@@ -139,7 +165,7 @@ namespace ConcediuAngajati
                 if (bool.Parse(responseBody))
                 {
 
-                    extragereConcedii(null, null, null, null);
+                    extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisate);
                 }
             }
             else
@@ -171,11 +197,27 @@ namespace ConcediuAngajati
                 prenume = null;
             }
 
-            //if(idTipConcediuSelectat)
-            int idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
-            int idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
+            int? idTipConcediuSelectat;
+            if (cbTipConcediu.SelectedValue != null)
+            {
+                idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
+            }
+            else
+            {
+                idTipConcediuSelectat = null;
+            }
 
-            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
+            int? idStareConcediuSelectat;
+            if (cbStareConcediu.SelectedValue != null)
+            {
+                idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
+            }
+            else
+            {
+                idStareConcediuSelectat = null;
+            }
+
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrTotalInregistrari);
 
         }
 
