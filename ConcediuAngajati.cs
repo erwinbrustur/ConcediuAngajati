@@ -18,8 +18,9 @@ namespace ConcediuAngajati
     public partial class ConcediuAngajati : Form
     {
         Angajat angajat;
-        int nrConcediiDeAfisate = 10;
+        int nrConcediiDeAfisare = 10;
         int nrTotalInregistrari;
+        List<Concediu> listaConcedii;
 
         public ConcediuAngajati(Angajat a)
         {
@@ -27,47 +28,131 @@ namespace ConcediuAngajati
             angajat = a;
             extragereTipConcediu();
             extragereStareConcediuDB();
+            
+        }
 
+        private void ReIncaracareDGV(int paginaselectata = 0)
+        {
+
+            extragereConcedii(null, null, null, null, paginaselectata * nrConcediiDeAfisare, nrConcediiDeAfisare);
+            //int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisate.ToString()));
+            //obtinerePagini(totalPagini);
+
+        }
+        private void ConcediuAngajati_Load(object sender, EventArgs e)
+        {
+            extragereCountInregistrari(null, null, null,null);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+            //ReIncaracareDGV();
         }
 
         private void obtinerePagini(int nrTotalPagini)
         {
             int x = 10;
-            for(int i = 0; i < nrTotalPagini; i++)
+            //Button btnInapoi = new Button();
+            //btnInapoi.Text = "<";
+            //btnInapoi.Location = new Point(x + 5);
+            //btnInapoi.Width = 30;
+            //btnInapoi.Height = 30;
+            //btnInapoi.Click += btnInapoi_click;
+            //panel1.Controls.Add(btnInapoi);
+            panel1.Controls.Clear();
+
+            for (int i = 0; i < nrTotalPagini; i++)
             {
                 Button btn = new Button();
                 btn.Text = (i + 1).ToString();
-                btn.Location = new Point(x + 5);
+                btn.Location = new Point(x + 50);
                 btn.Width = 30;
                 btn.Height = 30;
                 btn.Click += btn_click;
                 panel1.Controls.Add(btn);
-                x += 40;
+                x += 30;
             }
         }
 
+        private void btnInainte_click(object sender, EventArgs e)
+        {
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+        }
+
+        private void btnInapoi_click(object sender, EventArgs e)
+        {
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+        }
         private void btn_click(object sender, EventArgs e)
         {
-            int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisate.ToString()));
+            int paginaS = Convert.ToInt32(((Button)sender).Text);
+            // ReIncaracareDGV(paginaS - 1);
+            string nume;
+            if (!tbNume.Text.Equals(""))
+            {
+                nume = tbNume.Text;
+            }
+            else
+            {
+                nume = null;
+            }
+
+            string prenume;
+            if (!tbPrenume.Text.Equals(""))
+            {
+                prenume = tbPrenume.Text;
+            }
+            else
+            {
+                prenume = null;
+            }
+
+            int? idTipConcediuSelectat;
+            if (cbTipConcediu.SelectedValue != null)
+            {
+                idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
+            }
+            else
+            {
+                idTipConcediuSelectat = null;
+            }
+
+            int? idStareConcediuSelectat;
+            if (cbStareConcediu.SelectedValue != null)
+            {
+                idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
+            }
+            else
+            {
+                idStareConcediuSelectat = null;
+            }
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare);
+        }
+
+        private void getNrTotalConcedii()
+        {
 
         }
 
-        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int nrInceputInregistrari, int nrTotalDeAfisat)
+        private  void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu)
+        {
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu)).Result;
+           
+            string responseBody2 =  response.Content.ReadAsStringAsync().Result;
+            nrTotalInregistrari = JsonConvert.DeserializeObject<int>(responseBody2);
+
+            int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisare.ToString()));
+            obtinerePagini(totalPagini);
+
+        }
+
+        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int? nrInceputInregistrari, int? nrTotalDeAfisat)
         {
             HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat));
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
-            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+            listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
-            nrTotalInregistrari = listaConcedii.Count;
 
-            populareDataGridView(listaConcedii);
+           populareDataGridView(listaConcedii);
 
-        }
-
-        private void ConcediuAngajati_Load(object sender, EventArgs e)
-        {
-            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisate);
         }
 
 
@@ -82,6 +167,7 @@ namespace ConcediuAngajati
             cbTipConcediu.DataSource = listaTipConcediu;
             cbTipConcediu.DisplayMember = "Nume";
             cbTipConcediu.ValueMember = "Id";
+            cbTipConcediu.SelectedItem = null;
 
         }
 
@@ -102,6 +188,7 @@ namespace ConcediuAngajati
                 cbStareConcediu.DataSource = listaStareConcedii;
                 cbStareConcediu.DisplayMember = "Nume";
                 cbStareConcediu.ValueMember = "Id";
+                cbStareConcediu.SelectedItem = null;
 
             }
             catch (HttpRequestException ex) 
@@ -162,11 +249,11 @@ namespace ConcediuAngajati
 
                 
 
-                if (bool.Parse(responseBody))
-                {
+                //if (bool.Parse(responseBody))
+                //{
 
-                    extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisate);
-                }
+                //    extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+                //}
             }
             else
             {
@@ -216,12 +303,55 @@ namespace ConcediuAngajati
             {
                 idStareConcediuSelectat = null;
             }
-
-            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrTotalInregistrari);
+            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare);
 
         }
 
+        private void btnInapoi_Click(object sender, EventArgs e)
+        {
+            string nume;
+            if (!tbNume.Text.Equals(""))
+            {
+                nume = tbNume.Text;
+            }
+            else
+            {
+                nume = null;
+            }
 
+            string prenume;
+            if (!tbPrenume.Text.Equals(""))
+            {
+                prenume = tbPrenume.Text;
+            }
+            else
+            {
+                prenume = null;
+            }
+
+            int? idTipConcediuSelectat;
+            if (cbTipConcediu.SelectedValue != null)
+            {
+                idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
+            }
+            else
+            {
+                idTipConcediuSelectat = null;
+            }
+
+            int? idStareConcediuSelectat;
+            if (cbStareConcediu.SelectedValue != null)
+            {
+                idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
+            }
+            else
+            {
+                idStareConcediuSelectat = null;
+            }
+            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare);
+        }
     }
 
 }

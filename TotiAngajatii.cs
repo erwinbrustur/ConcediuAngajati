@@ -182,7 +182,7 @@ namespace ConcediuAngajati
             string responseBody = response.Content.ReadAsStringAsync().Result;
             List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
             listView1.Items.Clear();
-            MessageBox.Show(listaAngajati.Count().ToString());
+            //MessageBox.Show(listaAngajati.Count().ToString());
             foreach (Angajat a in listaAngajati)
             {
                 ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
