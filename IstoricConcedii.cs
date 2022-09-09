@@ -187,7 +187,7 @@ namespace ConcediuAngajati
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii", Globals.apiUrl));
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii?angajatId={1}", Globals.apiUrl, angajat.Id));
                 response.EnsureSuccessStatusCode();
                 string responsivebody = await response.Content.ReadAsStringAsync();
 

@@ -243,7 +243,8 @@ namespace ConcediuAngajati
             foreach(DateTime bankHoliday in holidays)
             {
                 DateTime bh = bankHoliday.Date;
-                if (firstDay <= bh && bh <= lastDay)
+                var bhString = bh;
+                if (firstDay <= bh && bh <= lastDay && (bhString.DayOfWeek != DayOfWeek.Sunday && bhString.DayOfWeek != DayOfWeek.Saturday))
                     zileConcediu--;
             }
             return zileConcediu;
@@ -323,7 +324,7 @@ namespace ConcediuAngajati
          
         //}
 
-        public void Trimitere(object sender, EventArgs e)
+        public async void Trimitere(object sender, EventArgs e)
         {
             string message = "Sigur vrei sa trimiti cererea de concediu?";
             string title = "Cerere concediu";
@@ -335,6 +336,7 @@ namespace ConcediuAngajati
                 string message2 = "Cerere de concediu trimisa";
                 DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
+                string message3 = "Ai deja o cerere de concediu in asteptare/acceptata in acea perioada";
 
                 Concediu con = new Concediu();
                 con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
@@ -346,12 +348,50 @@ namespace ConcediuAngajati
                 con.AngajatId = userCurent.Id;
                 con.ZileConcediu = Convert.ToInt32(textBox1.Text);
 
-                string jsonString = JsonConvert.SerializeObject(con);
-                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-              
-                string linkF = String.Format("{0}Concediu/InserareConcediu", Globals.apiUrl);
-                var response = Globals.client.PutAsync(linkF, stringContent).Result;
-                DialogResult result2 = MessageBox.Show(message2, title);
+                HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii?angajatId={1}", Globals.apiUrl, userCurent.Id));
+                responseDate.EnsureSuccessStatusCode();
+                string responsivebody = await responseDate.Content.ReadAsStringAsync();
+
+                List<Concediu> concedii = JsonConvert.DeserializeObject<List<Concediu>>(responsivebody);
+                bool mergeInserat = true;
+                bool esteInTrecut = false;
+                if (DateTime.Now > con.DataInceput)
+                {
+                    MessageBox.Show("Nu poti sa iti iei concediu in trecut");
+                    esteInTrecut = true;
+                }
+                while (mergeInserat == true)
+                {
+                    foreach (Concediu concediu in concedii)
+                    {
+
+                        if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataInceput)//Data inceput in interval
+                            mergeInserat = false;
+                        else if (concediu.DataInceput >= con.DataInceput && concediu.DataSfarsit <= con.DataSfarsit)//In afara interval
+                            mergeInserat = false;
+                        else if (concediu.DataInceput > con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval
+                            mergeInserat = false;
+                        else if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
+                            mergeInserat = false;
+                    }
+                }
+
+                if (mergeInserat == true)
+                { 
+                    string jsonString = JsonConvert.SerializeObject(con);
+                    StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+
+                    string linkF = String.Format("{0}Concediu/InserareConcediu", Globals.apiUrl);
+                    var response = Globals.client.PutAsync(linkF, stringContent).Result;
+                    DialogResult result2 = MessageBox.Show(message2, title);
+                }
+                else
+                {
+                    if (esteInTrecut == false)
+                    {
+                        DialogResult result2 = MessageBox.Show(message3, title);
+                    }
+                }
             }
         }
 
