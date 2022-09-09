@@ -31,11 +31,11 @@ namespace ConcediuAngajati
         {
             InitializeComponent();
             angajat = a;
-            ExtragereAngajatAsync(a);
+            //ExtragereAngajatAsync(a);
            
         }
 
-        public async Task ExtragereAngajatAsync(Angajat ang)
+       /* public async Task ExtragereAngajatAsync(Angajat ang)
         {
             HttpResponseMessage response = await client.GetAsync(String.Format("{0}Orice/TotiAngajatii", Globals.apiUrl));
             response.EnsureSuccessStatusCode();
@@ -75,15 +75,15 @@ namespace ConcediuAngajati
 
 
 
-            }
-            catch (Exception ex)
+            }*/
+         /*   catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
 
             }
             
 
-        }
+        }*/
         
         
 
@@ -138,7 +138,7 @@ namespace ConcediuAngajati
             }
             else
             {
-                nume = "";
+                nume = null;
             }
 
             string prenume;
@@ -148,16 +148,55 @@ namespace ConcediuAngajati
             }
             else
             {
-                prenume = "";
+                prenume = null;
             }
 
-            int IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
-            int IdDepartamentSelectat = Convert.ToInt32(CBDepartament.SelectedValue);
+            int? IdManagerSelectat;
+            if(CBManager.SelectedValue == null)
+            {
+                IdManagerSelectat = null;
+            }
+            else
+            {
+                IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
+            }
+            int? IdDepartamentSelectat;
+            if (CBDepartament.SelectedValue == null)
+            {
+                IdDepartamentSelectat = null;
+            }
+            else
+            {
+                IdDepartamentSelectat = Convert.ToInt32(CBDepartament.SelectedValue);
+            }
 
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Orice/GetAngajatiFiltrat?nume={1}&prenume={2}&IdDepartamentSelectat={3}&IdManagerSelectat={4}", Globals.apiUrl, nume, prenume, IdDepartamentSelectat, IdManagerSelectat));
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Orice/GetAngajatiFiltrat?nume={1}&prenume={2}&IdDepartamentSelectat={3}&IdManagerSelectat={4}", Globals.apiUrl, nume, prenume, IdDepartamentSelectat, IdManagerSelectat)).Result;
+            string responseBody =  response.Content.ReadAsStringAsync().Result;
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            
+            foreach(Angajat a in listaAngajati)
+            {
+                ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
+
+                //MessageBox.Show(a.Nume);
+                item.SubItems.Add(a.Prenume.ToString());//Prenume
+                if (a.Email != null)
+                {
+                    item.SubItems.Add(a.Email.ToString());//Email
+                }
+                else
+                {
+                    item.SubItems.Add("Nu are adresa de email");
+                }
+                item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager                                             
+                item.SubItems.Add(a.Departament.Denumire);//Departament
+
+
+
+
+                listView1.Items.Add(item);
+            }
+           
 
         }
     }
