@@ -14,6 +14,7 @@ using Microsoft.VisualBasic;
 using ProiectASP.Models;
 using Newtonsoft.Json;
 using ConcediuAngajati.Utils;
+using System.Text.RegularExpressions;
 
 namespace ConcediuAngajati
 {
@@ -238,69 +239,122 @@ namespace ConcediuAngajati
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-
-            string dataNastere;
-            if (CNP.Text.IndexOf('1') == 0 || CNP.Text.IndexOf('2') == 0)
+            string strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+            string nrtlfRegex = "^(\\+4|)?(07[0-8]{1}[0-9]{1}|02[0-9]{2}|03[0-9]{2}){1}?(\\s|\\.|\\-)?([0-9]{3}(\\s|\\.|\\-|)){2}$";
+            Regex regexTlf = new Regex(nrtlfRegex);
+            Regex regexCNP = new Regex(strRegex);
+            if (Nume.Text == "")
             {
-                dataNastere = "19" + CNP.Text.Substring(1, 6);
+                MessageBox.Show("Numele este obligatoriu!");
             }
-            else
+            else if (Prenume.Text =="")
             {
-                dataNastere = "20" + CNP.Text.Substring(1, 6);
+                MessageBox.Show("Prenumele este obligatoriu!");
             }
-            Angajat AngajatNou = new Angajat();
-            AngajatNou.Nume = Nume.Text;
-            AngajatNou.Prenume = Prenume.Text;
-            String totalsoftRo = "@totalsoft.ro";
-            AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo);
-            AngajatNou.Parola = Hash(Parola.Text);
-            AngajatNou.DataAngajare = DateTime.Now;
-            string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
-            AngajatNou.DataNasterii = Convert.ToDateTime(dataNormala);
-            AngajatNou.Cnp = CNP.Text;
-            AngajatNou.Serie = Serie.Text;
-            AngajatNou.No = Nr.Text;
-            AngajatNou.NrTelefon = NrTel.Text;
-            if ((bool)angajatCurent.EsteAdmin)
+            else if (Email.Text == "")
             {
-                AngajatNou.ManagerId = 30;
+                MessageBox.Show("Numele de utilizator este obligatoriu!");
             }
-            else
-            {
-                AngajatNou.ManagerId = angajatCurent.Id;
-            }
-
-            MemoryStream ms = new MemoryStream();
-            Poza.Image.Save(ms, ImageFormat.Jpeg);
-            byte[] image_array = new byte[ms.Length];
-            ms.Position = 0;
-            ms.Read(image_array, 0, image_array.Length);
-          
- 
-            AngajatNou.Poza = image_array;
-            AngajatNou.FunctieId =5;
-            AngajatNou.DepartamentId =7;
-            AngajatNou.concediat = false;
-            
-            AngajatNou.EsteAdmin = false;
          
-           
-            string jsonString = JsonConvert.SerializeObject(AngajatNou);
-            StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
-            var response = Globals.client.PutAsync(linkF, stringContent).Result;
-            MessageBox.Show("Angajat adaugat");
-            Nume.Text = "";
-            Prenume.Text = "";
-            Email.Text = "";
-            Parola.Text = "";
-            CNP.Text = "";
-            Serie.Text = "";
-            Nr.Text = "";
-            NrTel.Text = "";
-            if(Poza.Image!=null)
-            Poza.Image.Dispose();
+            else if (Parola.Text == "")
+            {
+                MessageBox.Show("Parola este obligatorie!");
+            }
+            else if (Parola.Text.Length <= 8)
+            {
+                MessageBox.Show("Parola este prea scurta!");
+            }
+            else if (CNP.Text.Length !=13)
+            {
+                MessageBox.Show("Cnp-ul trebuie sa aiba 13 cifre dar are " + CNP.Text.Length.ToString() + " cifre!");
+            }
+            else if (!regexCNP.IsMatch(CNP.Text))
+            {
+                MessageBox.Show("CNP invalid");
+            }
+            else if(NrTel.Text.Length != 10)
+            {
+                MessageBox.Show("Numarul de telefon trebuie sa aiba 10 cifre dar are " + NrTel.Text.Length + " cifre!");
+            }
+            else if (!regexTlf.IsMatch(NrTel.Text))
+            {
+                MessageBox.Show("Numar de telefon invalid");
+            }
+            else if(Serie.Text.Length != 2)
+            {
+                MessageBox.Show("Seria trebuie sa aiba 2 caractere!");
+            }
+            else if (Nr.Text.Length != 6)
+            {
+                MessageBox.Show("Numarul CI trebuie sa aiba 6 caractere!");
+            }
+            else if (Parola.Text != ConfParola.Text)
+            {
+                MessageBox.Show("Parolele trebuie sa fie identice!");
+            }
+            else {
+                string dataNastere;
+                if (CNP.Text.IndexOf('1') == 0 || CNP.Text.IndexOf('2') == 0)
+                {
+                    dataNastere = "19" + CNP.Text.Substring(1, 6);
+                }
+                else
+                {
+                    dataNastere = "20" + CNP.Text.Substring(1, 6);
+                }
+                Angajat AngajatNou = new Angajat();
+                AngajatNou.Nume = Nume.Text;
+                AngajatNou.Prenume = Prenume.Text;
+                String totalsoftRo = "@totalsoft.ro";
+                AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo);
+                AngajatNou.Parola = Hash(Parola.Text);
+                AngajatNou.DataAngajare = DateTime.Now;
+                string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+                AngajatNou.DataNasterii = Convert.ToDateTime(dataNormala);
+                AngajatNou.Cnp = CNP.Text;
+                AngajatNou.Serie = Serie.Text;
+                AngajatNou.No = Nr.Text;
+                AngajatNou.NrTelefon = NrTel.Text;
+                if ((bool)angajatCurent.EsteAdmin)
+                {
+                    AngajatNou.ManagerId = 30;
+                }
+                else
+                {
+                    AngajatNou.ManagerId = angajatCurent.Id;
+                }
 
+                MemoryStream ms = new MemoryStream();
+                Poza.Image.Save(ms, ImageFormat.Jpeg);
+                byte[] image_array = new byte[ms.Length];
+                ms.Position = 0;
+                ms.Read(image_array, 0, image_array.Length);
+
+
+                AngajatNou.Poza = image_array;
+                AngajatNou.FunctieId = 5;
+                AngajatNou.DepartamentId = 7;
+                AngajatNou.concediat = false;
+
+                AngajatNou.EsteAdmin = false;
+
+
+                string jsonString = JsonConvert.SerializeObject(AngajatNou);
+                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
+                var response = Globals.client.PutAsync(linkF, stringContent).Result;
+                MessageBox.Show("Angajat adaugat");
+                Nume.Text = "";
+                Prenume.Text = "";
+                Email.Text = "";
+                Parola.Text = "";
+                CNP.Text = "";
+                Serie.Text = "";
+                Nr.Text = "";
+                NrTel.Text = "";
+                if (Poza.Image != null)
+                    Poza.Image.Dispose();
+            }
 
         }
 
@@ -351,14 +405,16 @@ namespace ConcediuAngajati
         
             foreach (Angajat p in angajatMutare)
             {
-                comboBox2.Items.Add(p.Nume+' '+p.Prenume);
+                if (!(bool)p.concediat)
+                {
+                    comboBox2.Items.Add(p.Nume + ' ' + p.Prenume);
+                }
 
             }
 
             comboBox3.Items.Clear();
             foreach ( Angajat s in managerActualMutare)
-            {
-                if (comboBox1.Text != s.Nume+' '+s.Prenume)
+            {   if (!(bool)s.EsteAdmin && comboBox1.Text != s.Nume+' '+s.Prenume)
                     comboBox3.Items.Add(s.Nume+' '+s.Prenume);
 
             }

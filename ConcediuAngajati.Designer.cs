@@ -64,8 +64,11 @@
             this.btnCauta = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnInainte = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvConcedii
@@ -81,13 +84,13 @@
             this.Column17,
             this.Column15,
             this.Column16});
-            this.dgvConcedii.Location = new System.Drawing.Point(24, 142);
+            this.dgvConcedii.Location = new System.Drawing.Point(30, 142);
             this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(1062, 360);
+            this.dgvConcedii.Size = new System.Drawing.Size(1062, 309);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             // 
@@ -352,11 +355,29 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
+            // btnInainte
+            // 
+            this.btnInainte.Location = new System.Drawing.Point(1024, 16);
+            this.btnInainte.Name = "btnInainte";
+            this.btnInainte.Size = new System.Drawing.Size(32, 29);
+            this.btnInainte.TabIndex = 24;
+            this.btnInainte.Text = ">";
+            this.btnInainte.UseVisualStyleBackColor = true;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnInainte);
+            this.panel1.Location = new System.Drawing.Point(30, 458);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1062, 57);
+            this.panel1.TabIndex = 26;
+            // 
             // ConcediuAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1156, 540);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCauta);
             this.Controls.Add(this.tbPrenume);
             this.Controls.Add(this.label4);
@@ -374,6 +395,7 @@
             this.Load += new System.EventHandler(this.ConcediuAngajati_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +439,8 @@
         private Button btnCauta;
         private ImageList imageList1;
         private BindingSource bindingSource1;
+        private Button btnInainte;
+        private Label lbPageNumar;
+        private Panel panel1;
     }
 }

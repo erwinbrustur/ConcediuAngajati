@@ -31,11 +31,12 @@ namespace ConcediuAngajati
         {
             InitializeComponent();
             angajat = a;
-            ExtragereAngajatAsync(a);
-           
+            //ExtragereAngajatAsync(a);
+            extragereIdDepartament();
+            extragereIdManager();
         }
 
-        public async Task ExtragereAngajatAsync(Angajat ang)
+       /* public async Task ExtragereAngajatAsync(Angajat ang)
         {
             HttpResponseMessage response = await client.GetAsync(String.Format("{0}Orice/TotiAngajatii", Globals.apiUrl));
             response.EnsureSuccessStatusCode();
@@ -75,15 +76,15 @@ namespace ConcediuAngajati
 
 
 
-            }
-            catch (Exception ex)
+            }*/
+         /*   catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
 
             }
             
 
-        }
+        }*/
         
         
 
@@ -115,50 +116,100 @@ namespace ConcediuAngajati
             CBManager.DataSource = ListaManageri;
             CBManager.DisplayMember = "Nume";
             CBManager.ValueMember = "Id";
+            CBManager.SelectedItem = null;
         }
-        public async void extragereIdDepartament()
+        public  void extragereIdDepartament()
         {
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllDepartaments", Globals.apiUrl));
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllDepartaments", Globals.apiUrl)).Result;
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Departament> ListaDepartament = JsonConvert.DeserializeObject<List<Departament>>(responseBody);
 
-            List<Angajat> ListaDepartament = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
+            
+      
             CBDepartament.DataSource = ListaDepartament;
-            CBDepartament.DisplayMember = "Nume";
+            CBDepartament.DisplayMember = "Denumire";
             CBDepartament.ValueMember = "Id";
+            CBDepartament.SelectedItem = null;
         }
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            string nume;
+            string? nume;
             if (!TBNume.Text.Equals(""))
             {
                 nume = TBNume.Text;
             }
             else
             {
-                nume = "";
+                nume = null;
             }
 
-            string prenume;
+            string? prenume;
             if (!TBPrenume.Text.Equals(""))
             {
                 prenume = TBPrenume.Text;
             }
             else
             {
-                prenume = "";
+                prenume = null;
             }
 
-            int IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
-            int IdDepartamentSelectat = Convert.ToInt32(CBDepartament.SelectedValue);
+            int? IdManagerSelectat;
+            if(CBManager.SelectedValue == null)
+            {
+                IdManagerSelectat = null;
+            }
+            else
+            {
+                IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
+            }
+            int? IdDepartamentSelectat;
+            if (CBDepartament.SelectedValue == null)
+            {
+                IdDepartamentSelectat = null;
+            }
+            else
+            {
+                IdDepartamentSelectat = Convert.ToInt32(CBDepartament.SelectedValue);
+            }
 
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Orice/GetAngajatiFiltrat?nume={1}&prenume={2}&IdDepartamentSelectat={3}&IdManagerSelectat={4}", Globals.apiUrl, nume, prenume, IdDepartamentSelectat, IdManagerSelectat));
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+            AfisareAngajati(nume,prenume,IdDepartamentSelectat,IdManagerSelectat);
+        }
 
+        public void AfisareAngajati(string? nume, string? prenume, int? IdDepartamentSelectat, int? IdManagerSelectat)
+        {
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Orice/GetAngajatiFiltrat?nume={1}&prenume={2}&IdDepartamentSelectat={3}&IdManagerSelectat={4}", Globals.apiUrl, nume, prenume, IdDepartamentSelectat, IdManagerSelectat)).Result;
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+            listView1.Items.Clear();
+            //MessageBox.Show(listaAngajati.Count().ToString());
+            foreach (Angajat a in listaAngajati)
+            {
+                ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
+
+                //MessageBox.Show(a.Nume);
+                item.SubItems.Add(a.Prenume.ToString());//Prenume
+                if (a.Email != null)
+                {
+                    item.SubItems.Add(a.Email.ToString());//Email
+                }
+                else
+                {
+                    item.SubItems.Add("Nu are adresa de email");
+                }
+                item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager                                             
+                item.SubItems.Add(a.Departament.Denumire);//Departament
+
+
+
+
+                listView1.Items.Add(item);
+            }
+        }
+
+        private void TotiAngajatii_Load(object sender, EventArgs e)
+        {
+            AfisareAngajati(null, null, null, null);
         }
     }
 }
