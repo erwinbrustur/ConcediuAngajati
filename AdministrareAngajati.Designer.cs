@@ -881,7 +881,7 @@
             this.panelConcediere.Controls.Add(this.groupBox5);
             this.panelConcediere.Location = new System.Drawing.Point(-5, 115);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(811, 272);
+            this.panelConcediere.Size = new System.Drawing.Size(811, 382);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
