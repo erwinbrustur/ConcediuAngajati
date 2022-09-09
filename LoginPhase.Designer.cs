@@ -35,7 +35,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInchidereLP = new System.Windows.Forms.Button();
+            this.panel2FA = new System.Windows.Forms.Panel();
+            this.Cod2FA = new System.Windows.Forms.TextBox();
+            this.Btn2FA = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel2FA.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
@@ -118,6 +124,64 @@
             this.btnInchidereLP.UseVisualStyleBackColor = false;
             this.btnInchidereLP.Click += new System.EventHandler(this.btnInchidereLP_Click);
             // 
+            // panel2FA
+            // 
+            this.panel2FA.BackColor = System.Drawing.Color.Transparent;
+            this.panel2FA.Controls.Add(this.label2);
+            this.panel2FA.Controls.Add(this.label1);
+            this.panel2FA.Controls.Add(this.Cod2FA);
+            this.panel2FA.Controls.Add(this.Btn2FA);
+            this.panel2FA.Location = new System.Drawing.Point(702, 353);
+            this.panel2FA.Name = "panel2FA";
+            this.panel2FA.Size = new System.Drawing.Size(217, 100);
+            this.panel2FA.TabIndex = 6;
+            // 
+            // Cod2FA
+            // 
+            this.Cod2FA.BackColor = System.Drawing.Color.SeaShell;
+            this.Cod2FA.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Cod2FA.Location = new System.Drawing.Point(15, 58);
+            this.Cod2FA.Name = "Cod2FA";
+            this.Cod2FA.PlaceholderText = "Cod";
+            this.Cod2FA.Size = new System.Drawing.Size(100, 27);
+            this.Cod2FA.TabIndex = 3;
+            this.Cod2FA.Tag = "";
+            this.Cod2FA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // Btn2FA
+            // 
+            this.Btn2FA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn2FA.ForeColor = System.Drawing.Color.SeaShell;
+            this.Btn2FA.Location = new System.Drawing.Point(121, 58);
+            this.Btn2FA.Name = "Btn2FA";
+            this.Btn2FA.Size = new System.Drawing.Size(72, 27);
+            this.Btn2FA.TabIndex = 1;
+            this.Btn2FA.Text = "OK";
+            this.Btn2FA.UseVisualStyleBackColor = true;
+            this.Btn2FA.Click += new System.EventHandler(this.Btn2FA_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.SeaShell;
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Introduceti codul de autentificare";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.SeaShell;
+            this.label2.Location = new System.Drawing.Point(10, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(192, 19);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "format din 4 cifre primit pe email";
+            // 
             // LoginPhase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -125,6 +189,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(931, 480);
+            this.Controls.Add(this.panel2FA);
             this.Controls.Add(this.btnInchidereLP);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
@@ -136,6 +201,8 @@
             this.Text = "LoginPhase";
             this.Load += new System.EventHandler(this.LoginPhase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel2FA.ResumeLayout(false);
+            this.panel2FA.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -149,5 +216,10 @@
         private Button button2;
         private PictureBox pictureBox1;
         private Button btnInchidereLP;
+        private Panel panel2FA;
+        private Button Btn2FA;
+        private TextBox Cod2FA;
+        private Label label2;
+        private Label label1;
     }
 }
