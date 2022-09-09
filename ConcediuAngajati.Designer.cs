@@ -64,9 +64,7 @@
             this.btnCauta = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnInapoi = new System.Windows.Forms.Button();
             this.btnInainte = new System.Windows.Forms.Button();
-            this.lbPageNumar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
@@ -357,41 +355,21 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // btnInapoi
-            // 
-            this.btnInapoi.Location = new System.Drawing.Point(196, 24);
-            this.btnInapoi.Name = "btnInapoi";
-            this.btnInapoi.Size = new System.Drawing.Size(94, 29);
-            this.btnInapoi.TabIndex = 23;
-            this.btnInapoi.Text = "<";
-            this.btnInapoi.UseVisualStyleBackColor = true;
-            // 
             // btnInainte
             // 
-            this.btnInainte.Location = new System.Drawing.Point(419, 24);
+            this.btnInainte.Location = new System.Drawing.Point(1024, 16);
             this.btnInainte.Name = "btnInainte";
-            this.btnInainte.Size = new System.Drawing.Size(94, 29);
+            this.btnInainte.Size = new System.Drawing.Size(32, 29);
             this.btnInainte.TabIndex = 24;
             this.btnInainte.Text = ">";
             this.btnInainte.UseVisualStyleBackColor = true;
             // 
-            // lbPageNumar
-            // 
-            this.lbPageNumar.AutoSize = true;
-            this.lbPageNumar.Location = new System.Drawing.Point(332, 28);
-            this.lbPageNumar.Name = "lbPageNumar";
-            this.lbPageNumar.Size = new System.Drawing.Size(50, 20);
-            this.lbPageNumar.TabIndex = 25;
-            this.lbPageNumar.Text = "label5";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnInainte);
-            this.panel1.Controls.Add(this.lbPageNumar);
-            this.panel1.Controls.Add(this.btnInapoi);
-            this.panel1.Location = new System.Drawing.Point(227, 458);
+            this.panel1.Location = new System.Drawing.Point(30, 458);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(702, 69);
+            this.panel1.Size = new System.Drawing.Size(1062, 57);
             this.panel1.TabIndex = 26;
             // 
             // ConcediuAngajati
@@ -418,7 +396,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,7 +439,6 @@
         private Button btnCauta;
         private ImageList imageList1;
         private BindingSource bindingSource1;
-        private Button btnInapoi;
         private Button btnInainte;
         private Label lbPageNumar;
         private Panel panel1;
