@@ -34,7 +34,7 @@
             this.Prenume = new System.Windows.Forms.ColumnHeader();
             this.Email = new System.Windows.Forms.ColumnHeader();
             this.Manager = new System.Windows.Forms.ColumnHeader();
-            this.Echipa = new System.Windows.Forms.ColumnHeader();
+            this.Departament = new System.Windows.Forms.ColumnHeader();
             this.button1 = new System.Windows.Forms.Button();
             this.TBNume = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,11 +56,11 @@
             this.Prenume,
             this.Email,
             this.Manager,
-            this.Echipa});
+            this.Departament});
             this.listView1.GridLines = true;
             this.listView1.Location = new System.Drawing.Point(12, 83);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(643, 355);
+            this.listView1.Size = new System.Drawing.Size(606, 355);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -87,10 +87,10 @@
             this.Manager.Text = "Manager";
             this.Manager.Width = 100;
             // 
-            // Echipa
+            // Departament
             // 
-            this.Echipa.Text = "Departament";
-            this.Echipa.Width = 150;
+            this.Departament.Text = "Departament";
+            this.Departament.Width = 100;
             // 
             // button1
             // 
@@ -110,9 +110,9 @@
             // 
             // TBNume
             // 
-            this.TBNume.Location = new System.Drawing.Point(12, 37);
+            this.TBNume.Location = new System.Drawing.Point(12, 44);
             this.TBNume.Name = "TBNume";
-            this.TBNume.Size = new System.Drawing.Size(101, 23);
+            this.TBNume.Size = new System.Drawing.Size(121, 23);
             this.TBNume.TabIndex = 2;
             // 
             // label1
@@ -122,7 +122,7 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(24, 12);
+            this.label1.Location = new System.Drawing.Point(24, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 25);
             this.label1.TabIndex = 3;
@@ -134,7 +134,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(117, 12);
+            this.label2.Location = new System.Drawing.Point(155, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 25);
             this.label2.TabIndex = 4;
@@ -142,27 +142,29 @@
             // 
             // TBPrenume
             // 
-            this.TBPrenume.Location = new System.Drawing.Point(119, 37);
+            this.TBPrenume.Location = new System.Drawing.Point(157, 44);
             this.TBPrenume.Name = "TBPrenume";
-            this.TBPrenume.Size = new System.Drawing.Size(99, 23);
+            this.TBPrenume.Size = new System.Drawing.Size(121, 23);
             this.TBPrenume.TabIndex = 5;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(580, 53);
+            this.button2.Location = new System.Drawing.Point(572, 29);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(43, 38);
             this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CBManager
             // 
             this.CBManager.FormattingEnabled = true;
-            this.CBManager.Location = new System.Drawing.Point(239, 37);
+            this.CBManager.Location = new System.Drawing.Point(303, 44);
             this.CBManager.Name = "CBManager";
             this.CBManager.Size = new System.Drawing.Size(121, 23);
             this.CBManager.TabIndex = 7;
@@ -170,7 +172,7 @@
             // CBDepartament
             // 
             this.CBDepartament.FormattingEnabled = true;
-            this.CBDepartament.Location = new System.Drawing.Point(369, 37);
+            this.CBDepartament.Location = new System.Drawing.Point(447, 44);
             this.CBDepartament.Name = "CBDepartament";
             this.CBDepartament.Size = new System.Drawing.Size(121, 23);
             this.CBDepartament.TabIndex = 8;
@@ -181,7 +183,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(239, 13);
+            this.label3.Location = new System.Drawing.Point(303, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 25);
             this.label3.TabIndex = 9;
@@ -192,7 +194,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(369, 12);
+            this.label4.Location = new System.Drawing.Point(447, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 25);
             this.label4.TabIndex = 10;
@@ -205,11 +207,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(681, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CBDepartament);
             this.Controls.Add(this.CBManager);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.TBPrenume);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -234,7 +236,7 @@
         private ColumnHeader Prenume;
         private ColumnHeader Email;
         private ColumnHeader Manager;
-        private ColumnHeader Echipa;
+        private ColumnHeader Departament;
         private Button button1;
         private TextBox TBNume;
         private Label label1;
