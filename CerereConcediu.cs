@@ -354,6 +354,12 @@ namespace ConcediuAngajati
 
                 List<Concediu> concedii = JsonConvert.DeserializeObject<List<Concediu>>(responsivebody);
                 bool mergeInserat = true;
+                bool esteInTrecut = false;
+                if (DateTime.Now > con.DataInceput)
+                {
+                    MessageBox.Show("Nu poti sa iti iei concediu in trecut");
+                    esteInTrecut = true;
+                }
                 while (mergeInserat == true)
                 {
                     foreach (Concediu concediu in concedii)
@@ -381,7 +387,10 @@ namespace ConcediuAngajati
                 }
                 else
                 {
-                    DialogResult result2 = MessageBox.Show(message3, title);
+                    if (esteInTrecut == false)
+                    {
+                        DialogResult result2 = MessageBox.Show(message3, title);
+                    }
                 }
             }
         }
