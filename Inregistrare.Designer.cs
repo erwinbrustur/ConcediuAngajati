@@ -94,7 +94,7 @@
             // 
             // FieldNume
             // 
-            this.FieldNume.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldNume.BackColor = System.Drawing.Color.SeaShell;
             this.FieldNume.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldNume.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldNume, "FieldNume");
@@ -103,7 +103,7 @@
             // 
             // FieldPrenume
             // 
-            this.FieldPrenume.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldPrenume.BackColor = System.Drawing.Color.SeaShell;
             this.FieldPrenume.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldPrenume.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldPrenume, "FieldPrenume");
@@ -112,7 +112,7 @@
             // 
             // FieldNrTel
             // 
-            this.FieldNrTel.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldNrTel.BackColor = System.Drawing.Color.SeaShell;
             this.FieldNrTel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldNrTel.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldNrTel, "FieldNrTel");
@@ -120,7 +120,7 @@
             // 
             // FieldPass
             // 
-            this.FieldPass.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldPass.BackColor = System.Drawing.Color.SeaShell;
             this.FieldPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldPass.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldPass, "FieldPass");
@@ -128,7 +128,7 @@
             // 
             // FieldConfirmPass
             // 
-            this.FieldConfirmPass.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldConfirmPass.BackColor = System.Drawing.Color.SeaShell;
             this.FieldConfirmPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldConfirmPass.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldConfirmPass, "FieldConfirmPass");
@@ -136,7 +136,7 @@
             // 
             // FieldEmail
             // 
-            this.FieldEmail.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FieldEmail.BackColor = System.Drawing.Color.SeaShell;
             this.FieldEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.FieldEmail.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldEmail, "FieldEmail");
@@ -146,7 +146,8 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(this.button1, "button1");
-            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = false;
@@ -156,8 +157,8 @@
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Snow;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkSalmon;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkSalmon;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             resources.ApplyResources(this.button2, "button2");
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Name = "button2";
@@ -172,6 +173,7 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.FieldNrTel);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
@@ -196,7 +198,6 @@
             this.Controls.Add(this.FieldEmail);
             this.Controls.Add(this.FieldConfirmPass);
             this.Controls.Add(this.FieldPass);
-            this.Controls.Add(this.FieldNrTel);
             this.Controls.Add(this.FieldPrenume);
             this.Controls.Add(this.FieldNume);
             this.Controls.Add(this.panel2);

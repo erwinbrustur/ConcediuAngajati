@@ -116,7 +116,8 @@
             // BtnPaginaPrincipala
             // 
             this.BtnPaginaPrincipala.BackColor = System.Drawing.Color.Transparent;
-            this.BtnPaginaPrincipala.FlatAppearance.BorderSize = 0;
+            this.BtnPaginaPrincipala.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.BtnPaginaPrincipala.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.BtnPaginaPrincipala.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPaginaPrincipala.ForeColor = System.Drawing.Color.White;
             this.BtnPaginaPrincipala.Location = new System.Drawing.Point(12, 12);
@@ -130,9 +131,8 @@
             // buttonAdaugareAngajat
             // 
             this.buttonAdaugareAngajat.BackColor = System.Drawing.Color.Transparent;
-            this.buttonAdaugareAngajat.FlatAppearance.BorderSize = 0;
-            this.buttonAdaugareAngajat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Maroon;
-            this.buttonAdaugareAngajat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.buttonAdaugareAngajat.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.buttonAdaugareAngajat.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.buttonAdaugareAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdaugareAngajat.ForeColor = System.Drawing.Color.White;
             this.buttonAdaugareAngajat.Location = new System.Drawing.Point(12, 78);
@@ -146,12 +146,14 @@
             // buttonModificareManageri
             // 
             this.buttonModificareManageri.BackColor = System.Drawing.Color.Transparent;
-            this.buttonModificareManageri.FlatAppearance.BorderSize = 0;
+            this.buttonModificareManageri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.buttonModificareManageri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.buttonModificareManageri.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonModificareManageri.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonModificareManageri.ForeColor = System.Drawing.Color.White;
             this.buttonModificareManageri.Location = new System.Drawing.Point(274, 78);
             this.buttonModificareManageri.Name = "buttonModificareManageri";
-            this.buttonModificareManageri.Size = new System.Drawing.Size(125, 31);
+            this.buttonModificareManageri.Size = new System.Drawing.Size(149, 31);
             this.buttonModificareManageri.TabIndex = 2;
             this.buttonModificareManageri.Text = "Modificare manageri";
             this.buttonModificareManageri.UseVisualStyleBackColor = false;
@@ -175,15 +177,16 @@
             this.panelAdaugareAngajat.Controls.Add(this.LblPrenume);
             this.panelAdaugareAngajat.Controls.Add(this.Nume);
             this.panelAdaugareAngajat.Controls.Add(this.LblNume);
+            this.panelAdaugareAngajat.ForeColor = System.Drawing.Color.SeaShell;
             this.panelAdaugareAngajat.Location = new System.Drawing.Point(0, 115);
             this.panelAdaugareAngajat.Name = "panelAdaugareAngajat";
-            this.panelAdaugareAngajat.Size = new System.Drawing.Size(803, 382);
+            this.panelAdaugareAngajat.Size = new System.Drawing.Size(803, 430);
             this.panelAdaugareAngajat.TabIndex = 3;
             this.panelAdaugareAngajat.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAdaugareAngajat_Paint);
             // 
             // ConfParola
             // 
-            this.ConfParola.BackColor = System.Drawing.Color.DarkSalmon;
+            this.ConfParola.BackColor = System.Drawing.Color.SeaShell;
             this.ConfParola.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ConfParola.ForeColor = System.Drawing.Color.Maroon;
             this.ConfParola.Location = new System.Drawing.Point(349, 249);
@@ -195,7 +198,7 @@
             // 
             // Parola
             // 
-            this.Parola.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Parola.BackColor = System.Drawing.Color.SeaShell;
             this.Parola.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Parola.ForeColor = System.Drawing.Color.Maroon;
             this.Parola.Location = new System.Drawing.Point(94, 249);
@@ -207,7 +210,7 @@
             // 
             // BtnAdaugareAngajat
             // 
-            this.BtnAdaugareAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnAdaugareAngajat.BackColor = System.Drawing.Color.SeaShell;
             this.BtnAdaugareAngajat.FlatAppearance.BorderSize = 0;
             this.BtnAdaugareAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnAdaugareAngajat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -237,7 +240,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.ForeColor = System.Drawing.Color.Maroon;
+            this.label7.ForeColor = System.Drawing.Color.SeaShell;
             this.label7.Location = new System.Drawing.Point(243, 252);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 15);
@@ -248,7 +251,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.ForeColor = System.Drawing.Color.Maroon;
+            this.label6.ForeColor = System.Drawing.Color.SeaShell;
             this.label6.Location = new System.Drawing.Point(48, 252);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 15);
@@ -257,7 +260,7 @@
             // 
             // NrTel
             // 
-            this.NrTel.BackColor = System.Drawing.Color.DarkSalmon;
+            this.NrTel.BackColor = System.Drawing.Color.SeaShell;
             this.NrTel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NrTel.ForeColor = System.Drawing.Color.Maroon;
             this.NrTel.Location = new System.Drawing.Point(360, 91);
@@ -270,7 +273,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.ForeColor = System.Drawing.Color.Maroon;
+            this.label5.ForeColor = System.Drawing.Color.SeaShell;
             this.label5.Location = new System.Drawing.Point(254, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 15);
@@ -287,7 +290,7 @@
             this.groupBox1.Controls.Add(this.Serie);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBox1.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox1.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox1.Location = new System.Drawing.Point(48, 131);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(455, 93);
@@ -300,7 +303,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Maroon;
+            this.label4.ForeColor = System.Drawing.Color.SeaShell;
             this.label4.Location = new System.Drawing.Point(8, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 15);
@@ -309,7 +312,7 @@
             // 
             // CNP
             // 
-            this.CNP.BackColor = System.Drawing.Color.DarkSalmon;
+            this.CNP.BackColor = System.Drawing.Color.SeaShell;
             this.CNP.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CNP.ForeColor = System.Drawing.Color.Maroon;
             this.CNP.Location = new System.Drawing.Point(46, 59);
@@ -320,7 +323,7 @@
             // 
             // Nr
             // 
-            this.Nr.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Nr.BackColor = System.Drawing.Color.SeaShell;
             this.Nr.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nr.ForeColor = System.Drawing.Color.Maroon;
             this.Nr.Location = new System.Drawing.Point(301, 19);
@@ -333,7 +336,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
+            this.label1.ForeColor = System.Drawing.Color.SeaShell;
             this.label1.Location = new System.Drawing.Point(11, 62);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 15);
@@ -342,7 +345,7 @@
             // 
             // Serie
             // 
-            this.Serie.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Serie.BackColor = System.Drawing.Color.SeaShell;
             this.Serie.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Serie.ForeColor = System.Drawing.Color.Maroon;
             this.Serie.Location = new System.Drawing.Point(46, 19);
@@ -355,7 +358,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.Maroon;
+            this.label3.ForeColor = System.Drawing.Color.SeaShell;
             this.label3.Location = new System.Drawing.Point(251, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 15);
@@ -364,7 +367,7 @@
             // 
             // Email
             // 
-            this.Email.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Email.BackColor = System.Drawing.Color.SeaShell;
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Email.ForeColor = System.Drawing.Color.Maroon;
             this.Email.Location = new System.Drawing.Point(360, 42);
@@ -377,7 +380,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.ForeColor = System.Drawing.Color.Maroon;
+            this.label2.ForeColor = System.Drawing.Color.SeaShell;
             this.label2.Location = new System.Drawing.Point(249, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 15);
@@ -387,7 +390,7 @@
             // 
             // Prenume
             // 
-            this.Prenume.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Prenume.BackColor = System.Drawing.Color.SeaShell;
             this.Prenume.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Prenume.ForeColor = System.Drawing.Color.Maroon;
             this.Prenume.Location = new System.Drawing.Point(94, 88);
@@ -401,7 +404,7 @@
             // 
             this.LblPrenume.AutoSize = true;
             this.LblPrenume.BackColor = System.Drawing.Color.Transparent;
-            this.LblPrenume.ForeColor = System.Drawing.Color.Maroon;
+            this.LblPrenume.ForeColor = System.Drawing.Color.SeaShell;
             this.LblPrenume.Location = new System.Drawing.Point(33, 91);
             this.LblPrenume.Name = "LblPrenume";
             this.LblPrenume.Size = new System.Drawing.Size(55, 15);
@@ -411,7 +414,7 @@
             // 
             // Nume
             // 
-            this.Nume.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Nume.BackColor = System.Drawing.Color.SeaShell;
             this.Nume.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Nume.ForeColor = System.Drawing.Color.Maroon;
             this.Nume.Location = new System.Drawing.Point(94, 42);
@@ -425,7 +428,7 @@
             // 
             this.LblNume.AutoSize = true;
             this.LblNume.BackColor = System.Drawing.Color.Transparent;
-            this.LblNume.ForeColor = System.Drawing.Color.Maroon;
+            this.LblNume.ForeColor = System.Drawing.Color.SeaShell;
             this.LblNume.Location = new System.Drawing.Point(48, 45);
             this.LblNume.Name = "LblNume";
             this.LblNume.Size = new System.Drawing.Size(40, 15);
@@ -443,7 +446,7 @@
             this.panelModificareManageri.Controls.Add(this.groupBox2);
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
-            this.panelModificareManageri.Size = new System.Drawing.Size(803, 382);
+            this.panelModificareManageri.Size = new System.Drawing.Size(803, 381);
             this.panelModificareManageri.TabIndex = 4;
             this.panelModificareManageri.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModificareManageri_Paint);
             // 
@@ -457,7 +460,7 @@
             this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.FunctieAngajat);
             this.groupBox6.Controls.Add(this.Functiefunctie);
-            this.groupBox6.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox6.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox6.Location = new System.Drawing.Point(418, 264);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(370, 118);
@@ -467,11 +470,11 @@
             // 
             // BtnFunct
             // 
-            this.BtnFunct.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnFunct.BackColor = System.Drawing.Color.SeaShell;
             this.BtnFunct.FlatAppearance.BorderSize = 0;
             this.BtnFunct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnFunct.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnFunct.Location = new System.Drawing.Point(235, 48);
+            this.BtnFunct.Location = new System.Drawing.Point(235, 80);
             this.BtnFunct.Name = "BtnFunct";
             this.BtnFunct.Size = new System.Drawing.Size(135, 38);
             this.BtnFunct.TabIndex = 6;
@@ -482,6 +485,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.ForeColor = System.Drawing.Color.SeaShell;
             this.label22.Location = new System.Drawing.Point(41, 31);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(54, 15);
@@ -491,6 +495,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.Color.SeaShell;
             this.label23.Location = new System.Drawing.Point(47, 89);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(46, 15);
@@ -499,7 +504,7 @@
             // 
             // FunctieManager
             // 
-            this.FunctieManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FunctieManager.BackColor = System.Drawing.Color.SeaShell;
             this.FunctieManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FunctieManager.ForeColor = System.Drawing.Color.Maroon;
             this.FunctieManager.FormattingEnabled = true;
@@ -512,6 +517,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.ForeColor = System.Drawing.Color.SeaShell;
             this.label24.Location = new System.Drawing.Point(47, 60);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(48, 15);
@@ -520,7 +526,7 @@
             // 
             // FunctieAngajat
             // 
-            this.FunctieAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.FunctieAngajat.BackColor = System.Drawing.Color.SeaShell;
             this.FunctieAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FunctieAngajat.ForeColor = System.Drawing.Color.Maroon;
             this.FunctieAngajat.FormattingEnabled = true;
@@ -531,7 +537,7 @@
             // 
             // Functiefunctie
             // 
-            this.Functiefunctie.BackColor = System.Drawing.Color.DarkSalmon;
+            this.Functiefunctie.BackColor = System.Drawing.Color.SeaShell;
             this.Functiefunctie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Functiefunctie.ForeColor = System.Drawing.Color.Maroon;
             this.Functiefunctie.FormattingEnabled = true;
@@ -551,7 +557,7 @@
             this.groupBox4.Controls.Add(this.label21);
             this.groupBox4.Controls.Add(this.DepartamentAngajat);
             this.groupBox4.Controls.Add(this.DepartamentDepartament);
-            this.groupBox4.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox4.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox4.Location = new System.Drawing.Point(33, 264);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(370, 118);
@@ -562,11 +568,11 @@
             // 
             // BtnDepart
             // 
-            this.BtnDepart.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnDepart.BackColor = System.Drawing.Color.SeaShell;
             this.BtnDepart.FlatAppearance.BorderSize = 0;
             this.BtnDepart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDepart.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnDepart.Location = new System.Drawing.Point(235, 48);
+            this.BtnDepart.Location = new System.Drawing.Point(235, 80);
             this.BtnDepart.Name = "BtnDepart";
             this.BtnDepart.Size = new System.Drawing.Size(135, 38);
             this.BtnDepart.TabIndex = 6;
@@ -577,6 +583,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
+            this.label16.ForeColor = System.Drawing.Color.SeaShell;
             this.label16.Location = new System.Drawing.Point(47, 28);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(54, 15);
@@ -586,6 +593,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.SeaShell;
             this.label19.Location = new System.Drawing.Point(17, 90);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(76, 15);
@@ -594,7 +602,7 @@
             // 
             // DepartamentManager
             // 
-            this.DepartamentManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentManager.BackColor = System.Drawing.Color.SeaShell;
             this.DepartamentManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentManager.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentManager.FormattingEnabled = true;
@@ -607,6 +615,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.ForeColor = System.Drawing.Color.SeaShell;
             this.label21.Location = new System.Drawing.Point(47, 60);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(48, 15);
@@ -615,7 +624,7 @@
             // 
             // DepartamentAngajat
             // 
-            this.DepartamentAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentAngajat.BackColor = System.Drawing.Color.SeaShell;
             this.DepartamentAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentAngajat.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentAngajat.FormattingEnabled = true;
@@ -626,7 +635,7 @@
             // 
             // DepartamentDepartament
             // 
-            this.DepartamentDepartament.BackColor = System.Drawing.Color.DarkSalmon;
+            this.DepartamentDepartament.BackColor = System.Drawing.Color.SeaShell;
             this.DepartamentDepartament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentDepartament.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentDepartament.FormattingEnabled = true;
@@ -641,7 +650,7 @@
             this.Stergere.Controls.Add(this.comboBox6);
             this.Stergere.Controls.Add(this.BtnStergere);
             this.Stergere.Controls.Add(this.label15);
-            this.Stergere.ForeColor = System.Drawing.Color.Maroon;
+            this.Stergere.ForeColor = System.Drawing.Color.SeaShell;
             this.Stergere.Location = new System.Drawing.Point(452, 25);
             this.Stergere.Name = "Stergere";
             this.Stergere.Size = new System.Drawing.Size(323, 100);
@@ -652,7 +661,7 @@
             // 
             // comboBox6
             // 
-            this.comboBox6.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox6.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox6.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox6.FormattingEnabled = true;
@@ -664,11 +673,11 @@
             // 
             // BtnStergere
             // 
-            this.BtnStergere.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnStergere.BackColor = System.Drawing.Color.SeaShell;
             this.BtnStergere.FlatAppearance.BorderSize = 0;
             this.BtnStergere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnStergere.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnStergere.Location = new System.Drawing.Point(99, 55);
+            this.BtnStergere.Location = new System.Drawing.Point(188, 60);
             this.BtnStergere.Name = "BtnStergere";
             this.BtnStergere.Size = new System.Drawing.Size(135, 38);
             this.BtnStergere.TabIndex = 7;
@@ -679,6 +688,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
+            this.label15.ForeColor = System.Drawing.Color.SeaShell;
             this.label15.Location = new System.Drawing.Point(84, 25);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(54, 15);
@@ -695,10 +705,10 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.comboBox4);
             this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox3.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox3.Location = new System.Drawing.Point(33, 16);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(366, 117);
+            this.groupBox3.Size = new System.Drawing.Size(366, 109);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Echipa noua";
@@ -706,11 +716,11 @@
             // 
             // BtnEchipaNoua
             // 
-            this.BtnEchipaNoua.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnEchipaNoua.BackColor = System.Drawing.Color.SeaShell;
             this.BtnEchipaNoua.FlatAppearance.BorderSize = 0;
             this.BtnEchipaNoua.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEchipaNoua.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnEchipaNoua.Location = new System.Drawing.Point(243, 54);
+            this.BtnEchipaNoua.Location = new System.Drawing.Point(243, 69);
             this.BtnEchipaNoua.Name = "BtnEchipaNoua";
             this.BtnEchipaNoua.Size = new System.Drawing.Size(123, 38);
             this.BtnEchipaNoua.TabIndex = 7;
@@ -720,7 +730,7 @@
             // 
             // comboBox5
             // 
-            this.comboBox5.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox5.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox5.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox5.FormattingEnabled = true;
@@ -733,7 +743,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Maroon;
+            this.label14.ForeColor = System.Drawing.Color.SeaShell;
             this.label14.Location = new System.Drawing.Point(31, 81);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 15);
@@ -751,7 +761,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.ForeColor = System.Drawing.Color.Maroon;
+            this.label12.ForeColor = System.Drawing.Color.SeaShell;
             this.label12.Location = new System.Drawing.Point(25, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 15);
@@ -760,7 +770,7 @@
             // 
             // comboBox4
             // 
-            this.comboBox4.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox4.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox4.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox4.FormattingEnabled = true;
@@ -773,7 +783,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Maroon;
+            this.label11.ForeColor = System.Drawing.Color.SeaShell;
             this.label11.Location = new System.Drawing.Point(31, 49);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 15);
@@ -790,7 +800,7 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.comboBox2);
             this.groupBox2.Controls.Add(this.comboBox3);
-            this.groupBox2.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox2.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox2.Location = new System.Drawing.Point(29, 139);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(370, 118);
@@ -800,11 +810,11 @@
             // 
             // BtnTransfer
             // 
-            this.BtnTransfer.BackColor = System.Drawing.Color.DarkSalmon;
+            this.BtnTransfer.BackColor = System.Drawing.Color.SeaShell;
             this.BtnTransfer.FlatAppearance.BorderSize = 0;
             this.BtnTransfer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnTransfer.ForeColor = System.Drawing.Color.Maroon;
-            this.BtnTransfer.Location = new System.Drawing.Point(235, 71);
+            this.BtnTransfer.Location = new System.Drawing.Point(235, 78);
             this.BtnTransfer.Name = "BtnTransfer";
             this.BtnTransfer.Size = new System.Drawing.Size(135, 38);
             this.BtnTransfer.TabIndex = 6;
@@ -815,6 +825,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.SeaShell;
             this.label8.Location = new System.Drawing.Point(6, 31);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 15);
@@ -824,6 +835,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.SeaShell;
             this.label10.Location = new System.Drawing.Point(17, 90);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 15);
@@ -832,7 +844,7 @@
             // 
             // comboBox1
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox1.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox1.FormattingEnabled = true;
@@ -845,6 +857,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.SeaShell;
             this.label9.Location = new System.Drawing.Point(47, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 15);
@@ -853,7 +866,7 @@
             // 
             // comboBox2
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox2.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox2.FormattingEnabled = true;
@@ -865,7 +878,7 @@
             // 
             // comboBox3
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.DarkSalmon;
+            this.comboBox3.BackColor = System.Drawing.Color.SeaShell;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox3.FormattingEnabled = true;
@@ -881,7 +894,7 @@
             this.panelConcediere.Controls.Add(this.groupBox5);
             this.panelConcediere.Location = new System.Drawing.Point(-5, 115);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(811, 382);
+            this.panelConcediere.Size = new System.Drawing.Size(805, 381);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
@@ -893,7 +906,7 @@
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.concediereManager);
             this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.ForeColor = System.Drawing.Color.Maroon;
+            this.groupBox5.ForeColor = System.Drawing.Color.SeaShell;
             this.groupBox5.Location = new System.Drawing.Point(52, 112);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(420, 117);
@@ -903,11 +916,11 @@
             // 
             // btnConcediereAngajat
             // 
-            this.btnConcediereAngajat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.btnConcediereAngajat.BackColor = System.Drawing.Color.SeaShell;
             this.btnConcediereAngajat.FlatAppearance.BorderSize = 0;
             this.btnConcediereAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConcediereAngajat.ForeColor = System.Drawing.Color.Maroon;
-            this.btnConcediereAngajat.Location = new System.Drawing.Point(249, 38);
+            this.btnConcediereAngajat.Location = new System.Drawing.Point(285, 79);
             this.btnConcediereAngajat.Name = "btnConcediereAngajat";
             this.btnConcediereAngajat.Size = new System.Drawing.Size(135, 38);
             this.btnConcediereAngajat.TabIndex = 7;
@@ -917,7 +930,7 @@
             // 
             // angajatConcediat
             // 
-            this.angajatConcediat.BackColor = System.Drawing.Color.DarkSalmon;
+            this.angajatConcediat.BackColor = System.Drawing.Color.SeaShell;
             this.angajatConcediat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.angajatConcediat.ForeColor = System.Drawing.Color.Maroon;
             this.angajatConcediat.FormattingEnabled = true;
@@ -929,7 +942,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Maroon;
+            this.label17.ForeColor = System.Drawing.Color.SeaShell;
             this.label17.Location = new System.Drawing.Point(62, 64);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(48, 15);
@@ -946,7 +959,7 @@
             // 
             // concediereManager
             // 
-            this.concediereManager.BackColor = System.Drawing.Color.DarkSalmon;
+            this.concediereManager.BackColor = System.Drawing.Color.SeaShell;
             this.concediereManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.concediereManager.ForeColor = System.Drawing.Color.Maroon;
             this.concediereManager.FormattingEnabled = true;
@@ -959,7 +972,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Maroon;
+            this.label20.ForeColor = System.Drawing.Color.SeaShell;
             this.label20.Location = new System.Drawing.Point(31, 33);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(79, 15);
@@ -970,7 +983,8 @@
             // btnConcedPanel
             // 
             this.btnConcedPanel.BackColor = System.Drawing.Color.Transparent;
-            this.btnConcedPanel.FlatAppearance.BorderSize = 0;
+            this.btnConcedPanel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Firebrick;
+            this.btnConcedPanel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.btnConcedPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConcedPanel.ForeColor = System.Drawing.Color.White;
             this.btnConcedPanel.Location = new System.Drawing.Point(143, 78);
