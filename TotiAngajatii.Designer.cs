@@ -221,6 +221,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TotiAngajatii";
             this.Text = "TotiAngajatii";
+            this.Load += new System.EventHandler(this.TotiAngajatii_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
