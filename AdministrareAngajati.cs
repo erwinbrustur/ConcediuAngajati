@@ -414,8 +414,7 @@ namespace ConcediuAngajati
 
             comboBox3.Items.Clear();
             foreach ( Angajat s in managerActualMutare)
-            {
-                if (comboBox1.Text != s.Nume+' '+s.Prenume)
+            {   if (!(bool)s.EsteAdmin && comboBox1.Text != s.Nume+' '+s.Prenume)
                     comboBox3.Items.Add(s.Nume+' '+s.Prenume);
 
             }
