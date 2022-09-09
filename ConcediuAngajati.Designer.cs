@@ -371,6 +371,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
+            this.Load += new System.EventHandler(this.ConcediuAngajati_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcedii)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
