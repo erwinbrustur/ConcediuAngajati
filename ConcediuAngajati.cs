@@ -23,28 +23,27 @@ namespace ConcediuAngajati
         {
             InitializeComponent();
             angajat = a;
-            extragereAngajati();
             extragereTipConcediu();
-            extragereConcediiDBAsync();
             extragereStareConcediuDB();
 
-            // BindingNavigator 
         }
 
-        public async void extragereAngajati()
+        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu)
         {
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllAngajatiNumeConcatenat", Globals.apiUrl));
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu));
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
+            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
-            List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
-            //cbAngajati.DataSource = listaAngajati;
-            //cbAngajati.DisplayMember = "Nume";
-            //cbAngajati.ValueMember = "Id";
-            //cbAngajati.SelectedIndex = angajat.Id;
+            populareDataGridView(listaConcedii);
 
         }
+
+        private void ConcediuAngajati_Load(object sender, EventArgs e)
+        {
+            extragereConcedii(null, null, null, null);
+        }
+
 
         public async void extragereTipConcediu()
         {
@@ -110,24 +109,7 @@ namespace ConcediuAngajati
 
             }
         }
-        public async Task extragereConcediiDBAsync()
-        {
-            
-            try
-            {
-                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetAllConcediuAngajati", Globals.apiUrl));
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
-                List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
-                populareDataGridView(listaConcedii);
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
         private void btnX_Click(object sender, EventArgs e)
         {
@@ -147,6 +129,7 @@ namespace ConcediuAngajati
                 int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
                 int idConcediu = Convert.ToInt32(selectedRow.Tag);
 
+
                 HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
@@ -155,7 +138,8 @@ namespace ConcediuAngajati
 
                 if (bool.Parse(responseBody))
                 {
-                    extragereConcediiDBAsync();
+
+                    extragereConcedii(null, null, null, null);
                 }
             }
             else
@@ -163,6 +147,7 @@ namespace ConcediuAngajati
                 return;
             }
         }
+
 
         private async void btnCauta_Click(object sender, EventArgs e)
         {
@@ -173,31 +158,27 @@ namespace ConcediuAngajati
             }
             else
             {
-                nume = "";
+                nume = null;
             }
 
             string prenume;
-            if (!tbNume.Text.Equals(""))
+            if (!tbPrenume.Text.Equals(""))
             {
                 prenume = tbPrenume.Text;
             }
             else
             {
-                prenume = "";
+                prenume = null;
             }
 
+            //if(idTipConcediuSelectat)
             int idTipConcediuSelectat = Convert.ToInt32(cbTipConcediu.SelectedValue);
             int idStareConcediuSelectat = Convert.ToInt32(cbStareConcediu.SelectedValue);
 
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat));
-            response.EnsureSuccessStatusCode();
-            string responseBody = await response.Content.ReadAsStringAsync();
-            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
-            MessageBox.Show(listaConcedii.Count.ToString());
-
-            populareDataGridView(listaConcedii);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
 
         }
+
 
     }
 

@@ -98,5 +98,67 @@ namespace ConcediuAngajati
             this.Close();
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public async void extragereIdManager()
+        {
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers", Globals.apiUrl));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            List<Angajat> ListaManageri = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+            CBManager.DataSource = ListaManageri;
+            CBManager.DisplayMember = "Nume";
+            CBManager.ValueMember = "Id";
+        }
+        public async void extragereIdDepartament()
+        {
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetAllDepartaments", Globals.apiUrl));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            List<Angajat> ListaDepartament = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+            CBDepartament.DataSource = ListaDepartament;
+            CBDepartament.DisplayMember = "Nume";
+            CBDepartament.ValueMember = "Id";
+        }
+
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            string nume;
+            if (!TBNume.Text.Equals(""))
+            {
+                nume = TBNume.Text;
+            }
+            else
+            {
+                nume = "";
+            }
+
+            string prenume;
+            if (!TBPrenume.Text.Equals(""))
+            {
+                prenume = TBPrenume.Text;
+            }
+            else
+            {
+                prenume = "";
+            }
+
+            int IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
+            int IdDepartamentSelectat = Convert.ToInt32(CBDepartament.SelectedValue);
+
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Orice/GetAngajatiFiltrat?nume={1}&prenume={2}&IdDepartamentSelectat={3}&IdManagerSelectat={4}", Globals.apiUrl, nume, prenume, IdDepartamentSelectat, IdManagerSelectat));
+            response.EnsureSuccessStatusCode();
+            string responseBody = await response.Content.ReadAsStringAsync();
+            List<Concediu> listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
+
+        }
     }
 }

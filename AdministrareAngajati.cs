@@ -37,6 +37,8 @@ namespace ConcediuAngajati
         string numeManager;
         string cnx;
         Angajat angajatCurent;
+        List<Angajat> managerActualMutare2 = new List<Angajat>();
+     
         List<Departament> departamente = new List<Departament>();
         List<Angajat> departAngaj = new List<Angajat>();
         List<Angajat> FunctAngaj = new List<Angajat>();
@@ -46,6 +48,7 @@ namespace ConcediuAngajati
         List<Angajat> managerNouMutare = new List<Angajat>();
         List<Angajat> viitorManager = new List<Angajat>();
         List<Angajat> angajatiiManagerului = new List<Angajat>();
+
         public List<Functie> GetFunctie()
         {
 
@@ -76,8 +79,17 @@ namespace ConcediuAngajati
 
             }
 
-        
-       
+        public List<Angajat> ExtragereAngajati()
+                    {
+                        HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers", Globals.apiUrl)).Result;
+
+                        string responseBody = response.Content.ReadAsStringAsync().Result;
+                        List<Angajat> manageri = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
+
+
+                        return manageri;
+                    }
+
         public AdministrareAngajati(Angajat a)
         {
 
@@ -88,16 +100,7 @@ namespace ConcediuAngajati
           
             angajatCurent = a;
 
-            List<Angajat> ExtragereAngajati()
-            {
-                HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Angajat/GetAllManagers", Globals.apiUrl)).Result;
-
-                string responseBody = response.Content.ReadAsStringAsync().Result;
-                List<Angajat> manageri = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
-
-                return manageri;
-            }
+          
 
             managerActualMutare = ExtragereAngajati();
            
@@ -141,6 +144,12 @@ namespace ConcediuAngajati
                 comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
                 comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
                 comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+            
+            }
+            managerActualMutare2 = managerActualMutare;
+            managerActualMutare2.Add(angajatCurent);
+            foreach (Angajat x in managerActualMutare2)
+            {
                 DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
                 FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
             }
@@ -252,7 +261,14 @@ namespace ConcediuAngajati
             AngajatNou.Serie = Serie.Text;
             AngajatNou.No = Nr.Text;
             AngajatNou.NrTelefon = NrTel.Text;
-            AngajatNou.ManagerId = 30;
+            if ((bool)angajatCurent.EsteAdmin)
+            {
+                AngajatNou.ManagerId = 30;
+            }
+            else
+            {
+                AngajatNou.ManagerId = angajatCurent.Id;
+            }
 
             MemoryStream ms = new MemoryStream();
             Poza.Image.Save(ms, ImageFormat.Jpeg);
@@ -435,6 +451,30 @@ namespace ConcediuAngajati
             StringContent stringContent = new StringContent(" ");
             var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostStergereEchipa?angajatId={1}", Globals.apiUrl, idManagerSE), stringContent).Result;
             MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
+
+            managerActualMutare = ExtragereAngajati();
+            comboBox1.Items.Clear();
+            comboBox4.Items.Clear();
+            comboBox6.Items.Clear();
+            DepartamentManager.Items.Clear();
+            FunctieManager.Items.Clear();
+            foreach (Angajat x in managerActualMutare)
+            {
+
+                comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+           
+                
+            }
+            managerActualMutare2 = managerActualMutare;
+            managerActualMutare2.Add(angajatCurent);
+            foreach (Angajat x in managerActualMutare2)
+            {
+                DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+            }
+
         }
 
         private void BtnEchipaNoua_Click(object sender, EventArgs e)
@@ -452,6 +492,30 @@ namespace ConcediuAngajati
             var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId=26", Globals.apiUrl, idVManager), stringContent).Result;
 
             MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
+
+            managerActualMutare = ExtragereAngajati();
+            comboBox1.Items.Clear();
+            comboBox4.Items.Clear();
+            comboBox6.Items.Clear();
+            DepartamentManager.Items.Clear();
+            FunctieManager.Items.Clear();
+
+            foreach (Angajat x in managerActualMutare)
+            {
+
+                comboBox1.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox4.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                comboBox6.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+             
+            }
+            managerActualMutare2 = managerActualMutare;
+            managerActualMutare2.Add(angajatCurent);
+            foreach(Angajat x in managerActualMutare2)
+            {
+                DepartamentManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+                FunctieManager.Items.Add(x.Nume.ToString() + ' ' + x.Prenume.ToString());
+            }
+
         }
 
         private void btnConcedPanel_Click(object sender, EventArgs e)
@@ -541,7 +605,8 @@ namespace ConcediuAngajati
         private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
             numeManager = DepartamentManager.Text;
-            foreach (Angajat s in managerActualMutare)
+            
+            foreach (Angajat s in managerActualMutare2)
             {
 
 
@@ -572,7 +637,8 @@ namespace ConcediuAngajati
         private void comboBox10_SelectedIndexChanged(object sender, EventArgs e)
         {
             numeManager = FunctieManager.Text;
-            foreach (Angajat s in managerActualMutare)
+           
+            foreach (Angajat s in managerActualMutare2)
             {
 
 
@@ -582,6 +648,7 @@ namespace ConcediuAngajati
                 }
 
             }
+
            
              FunctAngaj = GetManagerEmployee(idManagerFunct);
 
