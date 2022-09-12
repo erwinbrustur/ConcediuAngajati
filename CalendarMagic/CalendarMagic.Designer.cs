@@ -81,6 +81,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.lunaAfis = new System.Windows.Forms.Label();
+            this.panel43 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel44 = new System.Windows.Forms.Panel();
+            this.panel45 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.zi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -518,7 +525,7 @@
             // 
             this.Back.BackColor = System.Drawing.SystemColors.Control;
             this.Back.ForeColor = System.Drawing.Color.Black;
-            this.Back.Location = new System.Drawing.Point(918, 368);
+            this.Back.Location = new System.Drawing.Point(286, 45);
             this.Back.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Back.Name = "Back";
             this.Back.Size = new System.Drawing.Size(51, 27);
@@ -531,7 +538,7 @@
             // 
             this.Next.BackColor = System.Drawing.SystemColors.Control;
             this.Next.ForeColor = System.Drawing.Color.Black;
-            this.Next.Location = new System.Drawing.Point(918, 327);
+            this.Next.Location = new System.Drawing.Point(633, 45);
             this.Next.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Next.Name = "Next";
             this.Next.Size = new System.Drawing.Size(51, 27);
@@ -636,13 +643,80 @@
             this.lunaAfis.BackColor = System.Drawing.SystemColors.Control;
             this.lunaAfis.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lunaAfis.ForeColor = System.Drawing.Color.Black;
-            this.lunaAfis.Location = new System.Drawing.Point(235, 33);
+            this.lunaAfis.Location = new System.Drawing.Point(345, 33);
             this.lunaAfis.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lunaAfis.Name = "lunaAfis";
-            this.lunaAfis.Size = new System.Drawing.Size(390, 43);
+            this.lunaAfis.Size = new System.Drawing.Size(280, 43);
             this.lunaAfis.TabIndex = 10;
             this.lunaAfis.Text = "Luna An";
             this.lunaAfis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel43
+            // 
+            this.panel43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(219)))), ((int)(((byte)(3)))));
+            this.panel43.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel43.ForeColor = System.Drawing.Color.Transparent;
+            this.panel43.Location = new System.Drawing.Point(780, 35);
+            this.panel43.Name = "panel43";
+            this.panel43.Size = new System.Drawing.Size(16, 15);
+            this.panel43.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(781, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Legenda";
+            // 
+            // panel44
+            // 
+            this.panel44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(32)))), ((int)(((byte)(4)))));
+            this.panel44.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel44.Location = new System.Drawing.Point(780, 68);
+            this.panel44.Name = "panel44";
+            this.panel44.Size = new System.Drawing.Size(16, 15);
+            this.panel44.TabIndex = 12;
+            // 
+            // panel45
+            // 
+            this.panel45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(184)))), ((int)(((byte)(19)))));
+            this.panel45.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel45.ForeColor = System.Drawing.Color.Transparent;
+            this.panel45.Location = new System.Drawing.Point(780, 52);
+            this.panel45.Name = "panel45";
+            this.panel45.Size = new System.Drawing.Size(16, 15);
+            this.panel45.TabIndex = 14;
+            this.panel45.Paint += new System.Windows.Forms.PaintEventHandler(this.panel45_Paint);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(802, 30);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 15);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "-Pana in 3 concedii";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(801, 48);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(113, 15);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "-Intre 4 si 6 concedii";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(802, 67);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(133, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "-Mai mult de 7 concedii";
             // 
             // CalendarMagic
             // 
@@ -650,6 +724,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(972, 749);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.panel44);
+            this.Controls.Add(this.panel45);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.panel43);
             this.Controls.Add(this.lunaAfis);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label4);
@@ -728,5 +809,12 @@
         private Panel panel38;
         private Panel panel37;
         private Panel panel36;
+        private Panel panel43;
+        private Panel panel44;
+        private Label label8;
+        private Panel panel45;
+        private Label label9;
+        private Label label10;
+        private Label label11;
     }
 }

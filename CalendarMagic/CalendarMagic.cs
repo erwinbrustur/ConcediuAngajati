@@ -114,6 +114,11 @@ namespace ConcediuAngajati.CalendarMagic
             }
         }
 
+        private void panel45_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void displayDays()
         {
             DateTime now = DateTime.Now;
