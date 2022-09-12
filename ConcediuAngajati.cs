@@ -228,7 +228,7 @@ namespace ConcediuAngajati
 
         private void btnX_Click(object sender, EventArgs e)
         {
-            Close();
+            Environment.Exit(1);
         }
 
         private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)
