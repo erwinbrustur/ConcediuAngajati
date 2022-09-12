@@ -122,9 +122,7 @@ namespace ConcediuAngajati
 
         private void btnX_Click(object sender, EventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala ang = new PaginaPrincipala.PaginaPrincipala(angajat);
-            ang.Show();
-            this.Close();
+            Environment.Exit(1);
         }
 
         private void meniuToolStripMenuItemAcasa_Click(object sender, EventArgs e)

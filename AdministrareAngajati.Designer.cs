@@ -100,6 +100,7 @@
             this.concediereManager = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnConcedPanel = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelAdaugareAngajat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Poza)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -988,6 +989,20 @@
             this.btnConcedPanel.UseVisualStyleBackColor = false;
             this.btnConcedPanel.Click += new System.EventHandler(this.btnConcedPanel_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(890, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(29, 28);
+            this.button1.TabIndex = 10;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // AdministrareAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -995,6 +1010,7 @@
             this.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(931, 480);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelConcediere);
             this.Controls.Add(this.btnConcedPanel);
             this.Controls.Add(this.panelModificareManageri);
@@ -1104,5 +1120,6 @@
         private Label label21;
         private ComboBox DepartamentAngajat;
         private ComboBox DepartamentDepartament;
+        private Button button1;
     }
 }
