@@ -132,6 +132,7 @@ namespace ConcediuAngajati
                 concediereManager.Show();
                 Stergere.Show();
                 groupBox3.Show();
+                label20.Show();
             }
         
                
@@ -323,15 +324,17 @@ namespace ConcediuAngajati
                 {
                     AngajatNou.ManagerId = angajatCurent.Id;
                 }
+                if (Poza.Image != null)
+                {
+                    MemoryStream ms = new MemoryStream();
+                    Poza.Image.Save(ms, ImageFormat.Jpeg);
+                    byte[] image_array = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(image_array, 0, image_array.Length);
 
-                MemoryStream ms = new MemoryStream();
-                Poza.Image.Save(ms, ImageFormat.Jpeg);
-                byte[] image_array = new byte[ms.Length];
-                ms.Position = 0;
-                ms.Read(image_array, 0, image_array.Length);
 
-
-                AngajatNou.Poza = image_array;
+                    AngajatNou.Poza = image_array;
+                }
                 AngajatNou.FunctieId = 5;
                 AngajatNou.DepartamentId = 7;
                 AngajatNou.concediat = false;
@@ -348,6 +351,7 @@ namespace ConcediuAngajati
                 Prenume.Text = "";
                 Email.Text = "";
                 Parola.Text = "";
+                ConfParola.Text = "";
                 CNP.Text = "";
                 Serie.Text = "";
                 Nr.Text = "";
@@ -648,7 +652,8 @@ namespace ConcediuAngajati
 
         private void BtnPaginaPrincipala_Click(object sender, EventArgs e)
         {
-
+            PaginaPrincipala.PaginaPrincipala pp = new PaginaPrincipala.PaginaPrincipala(angajatCurent);
+            pp.Show();
             this.Hide();
 
         }
@@ -767,6 +772,11 @@ namespace ConcediuAngajati
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
            
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            Environment.Exit(1);
         }
     }
  

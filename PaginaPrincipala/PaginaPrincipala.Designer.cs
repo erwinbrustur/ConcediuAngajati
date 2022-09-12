@@ -268,7 +268,7 @@
             this.btnInchiderePP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchiderePP.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchiderePP.ForeColor = System.Drawing.Color.Transparent;
-            this.btnInchiderePP.Location = new System.Drawing.Point(834, 8);
+            this.btnInchiderePP.Location = new System.Drawing.Point(890, 12);
             this.btnInchiderePP.Name = "btnInchiderePP";
             this.btnInchiderePP.Size = new System.Drawing.Size(29, 28);
             this.btnInchiderePP.TabIndex = 7;
@@ -282,7 +282,7 @@
             this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(745, 371);
+            this.button7.Location = new System.Drawing.Point(803, 439);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(116, 29);
             this.button7.TabIndex = 8;
@@ -312,7 +312,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(873, 412);
+            this.ClientSize = new System.Drawing.Size(931, 480);
             this.Controls.Add(this.Angajti);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnInchiderePP);
@@ -324,6 +324,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PaginaPrincipala";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaginaPrincipala";
             this.Load += new System.EventHandler(this.PaginaPrincipala_Load);
             this.DropDown.ResumeLayout(false);

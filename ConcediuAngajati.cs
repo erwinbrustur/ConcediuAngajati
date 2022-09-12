@@ -65,6 +65,8 @@ namespace ConcediuAngajati
                 btn.Location = new Point(x + 50);
                 btn.Width = 30;
                 btn.Height = 30;
+                btn.FlatStyle = FlatStyle.Flat;
+                btn.BackColor = Color.Transparent;
                 btn.Click += btn_click;
                 panel1.Controls.Add(btn);
                 x += 30;
@@ -221,6 +223,7 @@ namespace ConcediuAngajati
                 dgvConcedii.Rows.Add(row);
 
             }
+            
         }
 
 
@@ -352,6 +355,8 @@ namespace ConcediuAngajati
             extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat,(bool)angajat.EsteAdmin,angajat.Id);
             extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
+
+       
     }
 
 }
