@@ -354,6 +354,8 @@ namespace ConcediuAngajati
             extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat,(bool)angajat.EsteAdmin,angajat.Id);
             extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
+
+       
     }
 
 }

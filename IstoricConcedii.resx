@@ -57,17 +57,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="listView1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="lblIstoric.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="btnInchidere.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAksAAAJLCAYAAAD3vdICAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        EQAACxEBf2RfkQAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAACU7SURBVHhe7d3b
+        DAAACwwBP0AiyAAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAACU7SURBVHhe7d3b
         kRvXlq7RbcI2QSbIBJogE/ZzP9GCDpogE2QCTZAJMkEOnIj9ep7UOcFKEKiaQCWAvKy15hgRXx9x9Qmp
         RSGBn7jVv/755x893y9TX9769mJfp+a/V/x9s3+eJKlev07Njw/xWJE9hmRdPq78eyr7e2tB6aE+FDfU
         /0zFje/Pqb+n9vDXVPzz4p/725QRJUnjNf/BO+7rf5+K+/24/99C/H2/T3lceaD0UOcbbdxgW/Pfqbih
@@ -230,13 +224,10 @@
         YII=
 </value>
   </data>
-  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <data name="$this.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAABAQAAAJACAYAAAAafrSvAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAA/7JJREFUeF6c/VfXWMeSJmbqrnt61L2kuRnpb83NrJm2VXUMDz1ACwIgHAkCILz3
+        vAAADrwBlbxySQAA/7JJREFUeF6c/VfXWMeSJmbqrnt61L2kuRnpb83NrJm2VXUMDz1ACwIgHAkCILz3
         3nvvvfcgQdAdV6VuSa2lNWv+wp54Mr8X3yYKp/rUXMTK3GkiI11kRKTZ/93Te2eGZ/fPDlzw7cPzwzcP
         zg3PH134hfvw1omX39K8eHLpZXruk7unW/zjO6de4vMNrp7bM1w5u7uFPbh5vLnfPb7Y/EAekDxwPbp9
         8mV54hLOFZfy0cVVJlyhMzhCy6v1Uj4cXCBcWmUFz+Uzu1r4D8+uNFzfP738sv7Jxw+UJ5146b57fLlw

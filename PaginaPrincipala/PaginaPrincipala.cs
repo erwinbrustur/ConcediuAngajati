@@ -208,6 +208,7 @@ namespace ConcediuAngajati.PaginaPrincipala
         {
             AdministrareAngajati admn = new AdministrareAngajati(angajat);
             admn.Show();
+            this.Hide();
 
         }
         private bool esteInchis4;

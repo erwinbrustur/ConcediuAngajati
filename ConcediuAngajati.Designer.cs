@@ -171,10 +171,10 @@
             this.btnX.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnX.BackgroundImage")));
             this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnX.Location = new System.Drawing.Point(973, 7);
+            this.btnX.Location = new System.Drawing.Point(962, 9);
             this.btnX.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnX.Name = "btnX";
-            this.btnX.Size = new System.Drawing.Size(32, 27);
+            this.btnX.Size = new System.Drawing.Size(39, 27);
             this.btnX.TabIndex = 12;
             this.btnX.UseVisualStyleBackColor = false;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
@@ -182,9 +182,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label1.Location = new System.Drawing.Point(26, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 21);
@@ -287,9 +285,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label2.Location = new System.Drawing.Point(702, 71);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 21);
@@ -299,9 +295,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label3.Location = new System.Drawing.Point(687, 44);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 21);
@@ -319,7 +313,6 @@
             // 
             // tbNume
             // 
-            this.tbNume.BackColor = System.Drawing.Color.White;
             this.tbNume.Location = new System.Drawing.Point(92, 45);
             this.tbNume.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbNume.Name = "tbNume";
@@ -337,9 +330,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.label4.Location = new System.Drawing.Point(290, 44);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 21);
@@ -351,15 +342,14 @@
             this.btnCauta.BackColor = System.Drawing.Color.Transparent;
             this.btnCauta.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCauta.BackgroundImage")));
             this.btnCauta.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCauta.FlatAppearance.BorderSize = 0;
             this.btnCauta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCauta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCauta.ImageList = this.imageList1;
-            this.btnCauta.Location = new System.Drawing.Point(555, 40);
+            this.btnCauta.Location = new System.Drawing.Point(565, 41);
             this.btnCauta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCauta.Name = "btnCauta";
             this.btnCauta.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCauta.Size = new System.Drawing.Size(26, 28);
+            this.btnCauta.Size = new System.Drawing.Size(34, 24);
             this.btnCauta.TabIndex = 22;
             this.btnCauta.UseVisualStyleBackColor = false;
             this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
@@ -382,20 +372,18 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnInainte);
             this.panel1.Location = new System.Drawing.Point(26, 344);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(929, 43);
             this.panel1.TabIndex = 26;
+            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // ConcediuAngajati
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1012, 405);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCauta);

@@ -8,11 +8,14 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace ConcediuAngajati
 {
@@ -28,17 +31,26 @@ namespace ConcediuAngajati
         int stareConcediuId;
         int idConcediu;
         Angajat angajat;
+        int nrConcediiDeAfisare = 10;
+        int nrTotalInregistrari;
         public IstoricConcedii(Angajat a)
         {
             InitializeComponent();
             connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
             //listaStare = extragereStareConcediuDB();
+            
 
-            extragereConcediiAsyncDB();
+
 
 
             //angajatistring = extragereAngajatiDB();
+        }
+
+        private void IstoricConcedii_Load(object sender, EventArgs e)
+        {
+            extragereCountInregistrari(null);
+            extragereConcediiAsyncDB(0, nrConcediiDeAfisare);
         }
 
         //public void extragereConcediiDB()
@@ -99,6 +111,53 @@ namespace ConcediuAngajati
         //}
 
 
+
+
+
+        private void obtinerePagini(int nrTotalPagini)
+        {
+            int x = 10;
+            //Button btnInapoi = new Button();
+            //btnInapoi.Text = "<";
+            //btnInapoi.Location = new Point(x + 5);
+            //btnInapoi.Width = 30;
+            //btnInapoi.Height = 30;
+            //btnInapoi.Click += btnInapoi_click;
+            //panel1.Controls.Add(btnInapoi);
+            panel1.Controls.Clear();
+
+            for (int i = 0; i < nrTotalPagini; i++)
+            {
+                Button btn = new Button();
+                btn.Text = (i + 1).ToString();
+                btn.Location = new Point(x + 50);
+                btn.Width = 30;
+                btn.Height = 30;
+                btn.Click += btn_click;
+                panel1.Controls.Add(btn);
+                x += 30;
+            }
+        }
+
+        private void btn_click(object sender, EventArgs e)
+        {
+            int paginaS = Convert.ToInt32(((Button)sender).Text);
+            // ReIncaracareDGV(paginaS - 1);
+   
+            extragereConcediiAsyncDB( (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare);
+        }
+        private void extragereCountInregistrari(int? idAngajati)
+        {
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalIstoricConcedii?idAngajat={1}", Globals.apiUrl, angajat.Id)).Result;
+
+            string responseBody2 = response.Content.ReadAsStringAsync().Result;
+            nrTotalInregistrari = JsonConvert.DeserializeObject<int>(responseBody2);
+
+            int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisare.ToString()));
+            obtinerePagini(totalPagini);
+
+        }
+
         private void btnInchidere_Click(object sender, EventArgs e)
         {
             PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
@@ -113,86 +172,87 @@ namespace ConcediuAngajati
 
 
 
-        public List<string> extragereAngajatiDB()
-        {
-            List<string> extrageAngajati = new List<string>();
-            string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
+        //public List<string> extragereAngajatiDB()
+        //{
+        //    List<string> extrageAngajati = new List<string>();
+        //    string selectSQL = "SELECT id, nume, prenume FROM Angajat ";
 
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            extrageAngajati.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
+
+        //        }
+
+
+        //        return extrageAngajati;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+
+
+        //    }
+        //}
+
+        //public List<string> extragereStareConcediuDB()
+        //{
+        //    List<string> stareConcediu = new List<string>();
+        //    string selectSQL = "SELECT * from StareConcediu";
+        //    SqlConnection conexiune = new SqlConnection(connectionString);
+        //    SqlCommand querySelect = new SqlCommand(selectSQL);
+        //    try
+        //    {
+        //        conexiune.Open();
+        //        querySelect.Connection = conexiune;
+        //        SqlDataReader reader = querySelect.ExecuteReader();
+
+        //        while (reader.Read())
+        //        {
+        //            stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
+
+        //        }
+
+
+        //        return stareConcediu;
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return null;
+        //    }
+        //    finally
+        //    {
+        //        conexiune.Close();
+
+
+        //    }
+
+        //}
+
+        public async void extragereConcediiAsyncDB(int? nrInceputInregistrari, int? nrTotalDeAfisat)
+        {
             try
             {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    extrageAngajati.Add(reader[0].ToString() + ", " + reader[1].ToString() + " " + reader[2].ToString());
-
-                }
-
-
-                return extrageAngajati;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-        }
-
-        public List<string> extragereStareConcediuDB()
-        {
-            List<string> stareConcediu = new List<string>();
-            string selectSQL = "SELECT * from StareConcediu";
-            SqlConnection conexiune = new SqlConnection(connectionString);
-            SqlCommand querySelect = new SqlCommand(selectSQL);
-            try
-            {
-                conexiune.Open();
-                querySelect.Connection = conexiune;
-                SqlDataReader reader = querySelect.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    stareConcediu.Add(reader[0] + ", " + reader[1].ToString());
-
-                }
-
-
-                return stareConcediu;
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                conexiune.Close();
-
-
-            }
-
-        }
-
-        public async void extragereConcediiAsyncDB()
-        {
-            try
-            {
-                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii?angajatId={1}", Globals.apiUrl, angajat.Id));
+                HttpResponseMessage response = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcedii?angajatId={1}&nrInceputInregistrari={2}&nrTotalInregistrariDeAdus={3}", Globals.apiUrl, angajat.Id, nrInceputInregistrari, nrTotalDeAfisat));
                 response.EnsureSuccessStatusCode();
                 string responsivebody = await response.Content.ReadAsStringAsync();
 
                 List<Concediu> concedii = JsonConvert.DeserializeObject<List<Concediu>>(responsivebody);
 
+                listView1.Items.Clear();
                 foreach(Concediu c in concedii)
                 {
                     ListViewItem item = new ListViewItem(c.Angajat.Nume + " " + c.Angajat.Prenume);
@@ -222,5 +282,7 @@ namespace ConcediuAngajati
         {
 
         }
+
+       
     }
 }
