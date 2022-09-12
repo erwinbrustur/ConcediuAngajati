@@ -324,6 +324,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PaginaPrincipala";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PaginaPrincipala";
             this.Load += new System.EventHandler(this.PaginaPrincipala_Load);
             this.DropDown.ResumeLayout(false);
