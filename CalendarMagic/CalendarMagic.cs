@@ -149,15 +149,15 @@ namespace ConcediuAngajati.CalendarMagic
 
                 if (concediiAzi > 0 && concediiAzi <= 3)
                 {
-                    ucDays.BackColor = Color.Green;
+                    ucDays.BackColor = Color.FromArgb(1, 23, 219, 3);
                 }
                 else if (3 < concediiAzi && concediiAzi <= 6)
                 {
-                    ucDays.BackColor = Color.Yellow;
+                    ucDays.BackColor = Color.FromArgb(1, 248, 184, 19);
                 }
                 else if (concediiAzi >= 7)
                 {
-                    ucDays.BackColor = Color.Red;
+                    ucDays.BackColor = Color.FromArgb(1, 199, 32, 4);
                 }
                 zi.Controls.Add(ucDays);
             }
