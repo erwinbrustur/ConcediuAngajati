@@ -130,7 +130,8 @@ namespace ConcediuAngajati
         private void meniuToolStripMenuItemAcasa_Click(object sender, EventArgs e)
         {
             PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(angajat);
-            pagprin.ShowDialog();
+            pagprin.Show();
+            this.Close();
         }
 
         private void concediileMeleToolStripMenuItem_Click(object sender, EventArgs e)

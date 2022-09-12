@@ -40,8 +40,9 @@ namespace ConcediuAngajati
         private void button2_Click(object sender, EventArgs e)
         {
             Inregistrare ing = new Inregistrare();
-            ing.Show();
+       
             this.Hide();
+            ing.Show();
         }
         public static string Hash(string Value)
         {
