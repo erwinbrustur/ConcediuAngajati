@@ -34,15 +34,15 @@ namespace ConcediuAngajati
         private void ReIncaracareDGV(int paginaselectata = 0)
         {
 
-            extragereConcedii(null, null, null, null, paginaselectata * nrConcediiDeAfisare, nrConcediiDeAfisare);
+            extragereConcedii(null, null, null, null, paginaselectata * nrConcediiDeAfisare, nrConcediiDeAfisare,(bool)angajat.EsteAdmin,(int)angajat.Id);
             //int totalPagini = (int)Math.Ceiling(decimal.Parse(nrTotalInregistrari.ToString()) / decimal.Parse(nrConcediiDeAfisate.ToString()));
             //obtinerePagini(totalPagini);
 
         }
         private void ConcediuAngajati_Load(object sender, EventArgs e)
         {
-            extragereCountInregistrari(null, null, null,null);
-            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+            extragereCountInregistrari(null, null, null,null,(bool)angajat.EsteAdmin,angajat.Id);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare,(bool)angajat.EsteAdmin,(int)angajat.Id);
             //ReIncaracareDGV();
         }
 
@@ -73,12 +73,12 @@ namespace ConcediuAngajati
 
         private void btnInainte_click(object sender, EventArgs e)
         {
-            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare,(bool)angajat.EsteAdmin,angajat.Id);
         }
 
         private void btnInapoi_click(object sender, EventArgs e)
         {
-            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
         private void btn_click(object sender, EventArgs e)
         {
@@ -123,7 +123,7 @@ namespace ConcediuAngajati
             {
                 idStareConcediuSelectat = null;
             }
-            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
 
         private void getNrTotalConcedii()
@@ -131,9 +131,9 @@ namespace ConcediuAngajati
 
         }
 
-        private  void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu)
+        private  void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu,bool EsteAdmin, int idManager)
         {
-            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu)).Result;
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&EsteAdmin={5}&idManager={6}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu,EsteAdmin,idManager)).Result;
            
             string responseBody2 =  response.Content.ReadAsStringAsync().Result;
             nrTotalInregistrari = JsonConvert.DeserializeObject<int>(responseBody2);
@@ -143,9 +143,9 @@ namespace ConcediuAngajati
 
         }
 
-        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int? nrInceputInregistrari, int? nrTotalDeAfisat)
+        private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int? nrInceputInregistrari, int? nrTotalDeAfisat,bool EsteAdmin, int idManager)
         {
-            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat));
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}&EsteAdmin={7}&idManager={8}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat,EsteAdmin,idManager));
             response.EnsureSuccessStatusCode();
             string responseBody = await response.Content.ReadAsStringAsync();
             listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
@@ -303,8 +303,8 @@ namespace ConcediuAngajati
             {
                 idStareConcediuSelectat = null;
             }
-            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
-            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare);
+            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat,(bool)angajat.EsteAdmin,angajat.Id);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
 
         }
 
@@ -349,8 +349,8 @@ namespace ConcediuAngajati
             {
                 idStareConcediuSelectat = null;
             }
-            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
-            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare);
+            extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat,(bool)angajat.EsteAdmin,angajat.Id);
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
     }
 
