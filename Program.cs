@@ -1,4 +1,5 @@
 
+
 namespace ConcediuAngajati
 {
     internal static class Program

@@ -122,9 +122,7 @@ namespace ConcediuAngajati
 
         private void btnX_Click(object sender, EventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala ang = new PaginaPrincipala.PaginaPrincipala(angajat);
-            ang.Show();
-            this.Close();
+            Environment.Exit(1);
         }
 
         private void meniuToolStripMenuItemAcasa_Click(object sender, EventArgs e)
@@ -197,30 +195,40 @@ namespace ConcediuAngajati
 
             angajat.Poza = image_array;
             angajat.NrTelefon = nrTel;
-            try
+            if (tbNrTelefon.Text.Length == 10)
             {
-                string message = "Sigur vrei sa iti actualizezi datele?";
-                string message2 = "Datele au fost actualizate";
-                string title = "Actualizare date";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                DialogResult result = MessageBox.Show(message, title, buttons);
-                if (result == DialogResult.Yes)
+
+
+                try
                 {
-                       
-                    string jsonString = JsonConvert.SerializeObject(angajat);
-                    StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-                    var response = Globals.client.PutAsync(String.Format("{0}Angajat/UpdateDateleMele", Globals.apiUrl), stringContent).Result;
-                    MessageBox.Show(message2, title);
+                    string message = "Sigur vrei sa iti actualizezi datele?";
+                    string message2 = "Datele au fost actualizate";
+                    string title = "Actualizare date";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result = MessageBox.Show(message, title, buttons);
+                    if (result == DialogResult.Yes)
+                    {
+
+                        string jsonString = JsonConvert.SerializeObject(angajat);
+                        StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                        var response = Globals.client.PutAsync(String.Format("{0}Angajat/UpdateDateleMele", Globals.apiUrl), stringContent).Result;
+                        MessageBox.Show(message2, title);
+                    }
+
                 }
-             
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
+
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                errorProvider1.SetError(tbNrTelefon, "Numar de telefon invalid! Numarul de telefon trebuie sa contina 10 cifre!");
+                MessageBox.Show("Numarul nu are 10 cifre");
             }
-                
-            
-            
         }
 
         private void pbImagineProfil_Click(object sender, EventArgs e)

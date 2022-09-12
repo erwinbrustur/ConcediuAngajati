@@ -223,6 +223,7 @@ namespace ConcediuAngajati
                 dgvConcedii.Rows.Add(row);
 
             }
+            
         }
 
 
