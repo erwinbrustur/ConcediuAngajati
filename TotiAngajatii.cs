@@ -170,7 +170,7 @@ namespace ConcediuAngajati
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(1);
 
         }
 
@@ -293,6 +293,13 @@ namespace ConcediuAngajati
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Inapoi_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            PaginaPrincipala.PaginaPrincipala pg = new PaginaPrincipala.PaginaPrincipala(angajat);
+            pg.Show();
         }
     }
 }

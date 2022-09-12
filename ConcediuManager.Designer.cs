@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConcediuManager));
-            this.label1 = new System.Windows.Forms.Label();
             this.dgvConcediuManager = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inceput = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,20 +41,18 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInchidereCM = new System.Windows.Forms.Button();
+            this.lblNume = new System.Windows.Forms.Label();
+            this.tbNume = new System.Windows.Forms.TextBox();
+            this.lblPrenume = new System.Windows.Forms.Label();
+            this.tbPrenume = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblStare = new System.Windows.Forms.Label();
+            this.lblTipConcediu = new System.Windows.Forms.Label();
+            this.cbStare = new System.Windows.Forms.ComboBox();
+            this.cbTip = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(441, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(250, 51);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Concediu Manager";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dgvConcediuManager
             // 
@@ -69,11 +66,11 @@
             this.Comentarii,
             this.dataGridViewComboBoxColumn1,
             this.Raspuns});
-            this.dgvConcediuManager.Location = new System.Drawing.Point(24, 69);
+            this.dgvConcediuManager.Location = new System.Drawing.Point(24, 113);
             this.dgvConcediuManager.Name = "dgvConcediuManager";
             this.dgvConcediuManager.RowHeadersWidth = 51;
             this.dgvConcediuManager.RowTemplate.Height = 25;
-            this.dgvConcediuManager.Size = new System.Drawing.Size(1100, 353);
+            this.dgvConcediuManager.Size = new System.Drawing.Size(1100, 309);
             this.dgvConcediuManager.TabIndex = 3;
             this.dgvConcediuManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
@@ -164,6 +161,94 @@
             this.btnInchidereCM.UseVisualStyleBackColor = false;
             this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
             // 
+            // lblNume
+            // 
+            this.lblNume.AutoSize = true;
+            this.lblNume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblNume.Location = new System.Drawing.Point(43, 25);
+            this.lblNume.Name = "lblNume";
+            this.lblNume.Size = new System.Drawing.Size(69, 28);
+            this.lblNume.TabIndex = 4;
+            this.lblNume.Text = "Nume:";
+            this.lblNume.Click += new System.EventHandler(this.lblNume_Click);
+            // 
+            // tbNume
+            // 
+            this.tbNume.Location = new System.Drawing.Point(118, 26);
+            this.tbNume.Name = "tbNume";
+            this.tbNume.Size = new System.Drawing.Size(208, 27);
+            this.tbNume.TabIndex = 5;
+            // 
+            // lblPrenume
+            // 
+            this.lblPrenume.AutoSize = true;
+            this.lblPrenume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPrenume.Location = new System.Drawing.Point(369, 26);
+            this.lblPrenume.Name = "lblPrenume";
+            this.lblPrenume.Size = new System.Drawing.Size(93, 28);
+            this.lblPrenume.TabIndex = 6;
+            this.lblPrenume.Text = "Prenume:";
+            // 
+            // tbPrenume
+            // 
+            this.tbPrenume.Location = new System.Drawing.Point(468, 26);
+            this.tbPrenume.Name = "tbPrenume";
+            this.tbPrenume.Size = new System.Drawing.Size(208, 27);
+            this.tbPrenume.TabIndex = 7;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(701, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(39, 32);
+            this.button1.TabIndex = 8;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // lblStare
+            // 
+            this.lblStare.AutoSize = true;
+            this.lblStare.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblStare.Location = new System.Drawing.Point(791, 26);
+            this.lblStare.Name = "lblStare";
+            this.lblStare.Size = new System.Drawing.Size(143, 28);
+            this.lblStare.TabIndex = 9;
+            this.lblStare.Text = "Stare Concediu";
+            // 
+            // lblTipConcediu
+            // 
+            this.lblTipConcediu.AutoSize = true;
+            this.lblTipConcediu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTipConcediu.Location = new System.Drawing.Point(808, 73);
+            this.lblTipConcediu.Name = "lblTipConcediu";
+            this.lblTipConcediu.Size = new System.Drawing.Size(126, 28);
+            this.lblTipConcediu.TabIndex = 10;
+            this.lblTipConcediu.Text = "Tip Concediu";
+            // 
+            // cbStare
+            // 
+            this.cbStare.FormattingEnabled = true;
+            this.cbStare.Location = new System.Drawing.Point(940, 26);
+            this.cbStare.Name = "cbStare";
+            this.cbStare.Size = new System.Drawing.Size(151, 28);
+            this.cbStare.TabIndex = 11;
+            // 
+            // cbTip
+            // 
+            this.cbTip.FormattingEnabled = true;
+            this.cbTip.Location = new System.Drawing.Point(940, 73);
+            this.cbTip.Name = "cbTip";
+            this.cbTip.Size = new System.Drawing.Size(151, 28);
+            this.cbTip.TabIndex = 12;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(24, 428);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1100, 41);
+            this.panel1.TabIndex = 13;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
             // ConcediuManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -171,21 +256,30 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1145, 481);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.cbTip);
+            this.Controls.Add(this.cbStare);
+            this.Controls.Add(this.lblTipConcediu);
+            this.Controls.Add(this.lblStare);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tbPrenume);
+            this.Controls.Add(this.lblPrenume);
+            this.Controls.Add(this.tbNume);
+            this.Controls.Add(this.lblNume);
             this.Controls.Add(this.btnInchidereCM);
             this.Controls.Add(this.dgvConcediuManager);
-            this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
+            this.Load += new System.EventHandler(this.ConcediuAngajati_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private Label label1;
         private DataGridView dgvConcediuManager;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn Nume;
@@ -198,5 +292,15 @@
         private DataGridViewTextBoxColumn Comentarii;
         private DataGridViewComboBoxColumn dataGridViewComboBoxColumn1;
         private DataGridViewButtonColumn Raspuns;
+        private Label lblNume;
+        private TextBox tbNume;
+        private Label lblPrenume;
+        private TextBox tbPrenume;
+        private Button button1;
+        private Label lblStare;
+        private Label lblTipConcediu;
+        private ComboBox cbStare;
+        private ComboBox cbTip;
+        private Panel panel1;
     }
 }

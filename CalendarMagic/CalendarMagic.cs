@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ConcediuAngajati.Utils;
+using Newtonsoft.Json;
+using ProiectASP.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +16,7 @@ namespace ConcediuAngajati.CalendarMagic
 {
     public partial class CalendarMagic : Form
     {
+        List<Concediu> listaConcedii;
         int luna, an;
         public CalendarMagic()
         {
@@ -22,6 +26,10 @@ namespace ConcediuAngajati.CalendarMagic
         private void CalendarMagic_Load(object sender, EventArgs e)
         {
             displayDays();
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetAllConcediuAngajati", Globals.apiUrl)).Result;
+            response.EnsureSuccessStatusCode();
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+             listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
         }
 
         private void Back_Click(object sender, EventArgs e)
@@ -65,6 +73,26 @@ namespace ConcediuAngajati.CalendarMagic
             for (int i = 1; i <= days; i++)
             {
                 UserControlDays ucDays = new UserControlDays();
+                int concediiAzi = 0;
+                foreach(Concediu c in listaConcedii)
+                {
+                    DateTime ziCurenta = new DateTime(an, luna, i);
+                    if (c.DataInceput <= ziCurenta && ziCurenta <= c.DataSfarsit)
+                        concediiAzi++;
+                }
+               
+                if (concediiAzi>0 &&concediiAzi <=3)
+                {
+                    ucDays.BackColor = Color.Green;
+                }
+                else if(3<concediiAzi&& concediiAzi<= 6)
+                {
+                    ucDays.BackColor = Color.Yellow;
+                }
+                else if(concediiAzi>=7)
+                {
+                    ucDays.BackColor = Color.Red;
+                }
                 ucDays.days(i);
                 zi.Controls.Add(ucDays);
             }
@@ -109,7 +137,28 @@ namespace ConcediuAngajati.CalendarMagic
             for (int i = 1; i <= days; i++)
             {
                 UserControlDays ucDays = new UserControlDays();
+                
                 ucDays.days(i);
+                int concediiAzi = 0;
+                foreach (Concediu c in listaConcedii)
+                {
+                    DateTime ziCurenta = new DateTime(an, luna, i);
+                    if (c.DataInceput <= ziCurenta && ziCurenta <= c.DataSfarsit)
+                        concediiAzi++;
+                }
+
+                if (concediiAzi > 0 && concediiAzi <= 3)
+                {
+                    ucDays.BackColor = Color.Green;
+                }
+                else if (3 < concediiAzi && concediiAzi <= 6)
+                {
+                    ucDays.BackColor = Color.Yellow;
+                }
+                else if (concediiAzi >= 7)
+                {
+                    ucDays.BackColor = Color.Red;
+                }
                 zi.Controls.Add(ucDays);
             }
         }
@@ -139,6 +188,7 @@ namespace ConcediuAngajati.CalendarMagic
             for (int i = 1; i < dayoftheweek; i++)
             {
                 UserControl1 user1 = new UserControl1();
+           
                 zi.Controls.Add(user1);
 
             }
@@ -148,8 +198,10 @@ namespace ConcediuAngajati.CalendarMagic
             for (int i = 1; i <= days; i++)
             {
                 UserControlDays ucDays = new UserControlDays();
+               
                 ucDays.days(i);
                 zi.Controls.Add(ucDays);
+                
             }
 
 
