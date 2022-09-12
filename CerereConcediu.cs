@@ -144,9 +144,9 @@ namespace ConcediuAngajati
         //public List<string> extragereInlocuitoriEchipaDB()
         //{
         //    List<string> strings = new List<string>();
-          
+
         //    string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
-           
+
         //    SqlConnection conexiune = new SqlConnection(connectionString);
         //    SqlCommand querySelect = new SqlCommand(selectSQL);
         //    try
@@ -178,7 +178,7 @@ namespace ConcediuAngajati
 
         //}
 
-
+        int zileNegative = 0;
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
@@ -188,6 +188,7 @@ namespace ConcediuAngajati
             {
                 textBox1.Text = "0";
                 MessageBox.Show("zile de concediu negative");
+              
 
             }
             else
@@ -341,6 +342,8 @@ namespace ConcediuAngajati
                 string message3 = "Ai deja o cerere de concediu in asteptare/acceptata in acea perioada";
                 string message4 = "Inlocuitor ocupat in aceasta perioada";
                 string message5 = "Nu ai suficiente zile pentru a-ti lua concediu";
+                string message6 = "Zile de concediu negative";
+                string message7 = "Concediu in trecut";
 
                 Concediu con = new Concediu();
                 con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
@@ -364,30 +367,27 @@ namespace ConcediuAngajati
                     MessageBox.Show("Nu poti sa iti iei concediu in trecut");
                     esteInTrecut = true;
                 }
+                
 
                 foreach (Concediu concediu in concedii)
                 {
 
-                    if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataInceput)
+                    if (concediu.DataInceput.Date <= con.DataInceput.Date && concediu.DataSfarsit.Date >= con.DataInceput.Date)
                     { //Data inceput in interval sfarsit in afara
                         mergeInserat = false;
                         break;
                     }
-                    else if (concediu.DataInceput >= con.DataInceput && concediu.DataSfarsit <= con.DataSfarsit)//In afara interval
+                    else if (concediu.DataInceput.Date >= con.DataInceput.Date && concediu.DataSfarsit.Date <= con.DataSfarsit.Date)//In afara interval
                     {
                         mergeInserat = false;
                         break;
                     }
-                    else if (concediu.DataInceput > con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval si inceput in afara intervalului
+                    else if (concediu.DataSfarsit.Date >= con.DataSfarsit && concediu.DataInceput.Date <= con.DataSfarsit.Date)//Data sfarsit in interval si inceput in afara intervalului
                     {
                         mergeInserat = false;
                         break;
                     }
-                    else if (concediu.DataInceput <= con.DataInceput && concediu.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
-                    {
-                        mergeInserat = false;
-                        break;
-                    }
+                 
                 }
 
                 bool InlocuitorNeocupat = true;
@@ -400,35 +400,33 @@ namespace ConcediuAngajati
                 {
                     if (cbInlocuitor.SelectedValue.Equals(coninloc.Angajat.Id))
                     {
-                        if (coninloc.DataInceput <= con.DataInceput && coninloc.DataSfarsit >= con.DataInceput)
-                        { //Data inceput in interval
+                        if (coninloc.DataInceput.Date <= con.DataInceput.Date && coninloc.DataSfarsit.Date >= con.DataInceput.Date)
+                        { //Data inceput in interval sfarsit in afara
                             InlocuitorNeocupat = false;
                             break;
                         }
-                        else if (coninloc.DataInceput >= con.DataInceput && coninloc.DataSfarsit <= con.DataSfarsit)//In afara interval
+                        else if (coninloc.DataInceput.Date >= con.DataInceput.Date && coninloc.DataSfarsit.Date <= con.DataSfarsit.Date)//In afara interval
                         {
                             InlocuitorNeocupat = false;
                             break;
                         }
-                        else if (coninloc.DataInceput > con.DataInceput && coninloc.DataSfarsit >= con.DataSfarsit)//Data sfarsit in interval
+                        else if (coninloc.DataSfarsit.Date >= con.DataSfarsit && coninloc.DataInceput.Date <= con.DataSfarsit.Date)//Data sfarsit in interval si inceput in afara intervalului
                         {
                             InlocuitorNeocupat = false;
                             break;
                         }
-                        else if (coninloc.DataInceput <= con.DataInceput && coninloc.DataSfarsit >= con.DataSfarsit) // Ambele date in interval
-                        {
-                            InlocuitorNeocupat = false;
-                            break;
-                        }
+
                     }
                 }
 
+                bool zileNegative = false;
                 bool zileRamase = true;   
                 if (Convert.ToInt32(textBoxZileRamase.Text) < Convert.ToInt32(textBox1.Text))
                     zileRamase = false;
+                if (Convert.ToInt32(textBox1.Text) == 0)
+                    zileNegative = true;
 
-
-                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true)
+                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true && esteInTrecut == false && zileNegative == false)
                 { 
                     string jsonString = JsonConvert.SerializeObject(con);
                     StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -439,26 +437,29 @@ namespace ConcediuAngajati
                 }
                 else if(mergeInserat == false)
                 {
-                    if (esteInTrecut == false)
-                    {
+                    
                         DialogResult result2 = MessageBox.Show(message3, title);
-                    }
+                    
                 }
                 else if (InlocuitorNeocupat == false)
                 {
-                    if (esteInTrecut == false)
-                    {
+                    
                         DialogResult result3 = MessageBox.Show(message4, title);
-                    }
+                    
                 }
 
                 else if (zileRamase == false)
                 {
-                    if (esteInTrecut == false)
-                    {
-                        DialogResult result3 = MessageBox.Show(message4, title);
-                    }
+                 
                     DialogResult result4 = MessageBox.Show(message5, title);
+                }
+                else if(zileNegative == true)
+                {
+                    DialogResult result5 = MessageBox.Show(message6, title);
+                }
+                else if (esteInTrecut == true)
+                {
+                    DialogResult result6 = MessageBox.Show(message7, title);
                 }
             }
         }
