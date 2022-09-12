@@ -352,6 +352,8 @@ namespace ConcediuAngajati
             extragereCountInregistrari(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat);
             extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare);
         }
+
+       
     }
 
 }
