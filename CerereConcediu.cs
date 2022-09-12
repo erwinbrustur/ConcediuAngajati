@@ -340,6 +340,7 @@ namespace ConcediuAngajati
                 DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
                 string message3 = "Ai deja o cerere de concediu in asteptare/acceptata in acea perioada";
                 string message4 = "Inlocuitor ocupat in aceasta perioada";
+                string message5 = "Nu ai suficiente zile pentru a-ti lua concediu";
 
                 Concediu con = new Concediu();
                 con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
@@ -422,8 +423,12 @@ namespace ConcediuAngajati
                     }
                 }
 
+                bool zileRamase = true;   
+                if (Convert.ToInt32(textBoxZileRamase.Text) < Convert.ToInt32(textBox1.Text))
+                    zileRamase = false;
 
-                if (mergeInserat == true && InlocuitorNeocupat == true)
+
+                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true)
                 { 
                     string jsonString = JsonConvert.SerializeObject(con);
                     StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -432,19 +437,28 @@ namespace ConcediuAngajati
                     var response = Globals.client.PutAsync(linkF, stringContent).Result;
                     DialogResult result2 = MessageBox.Show(message2, title);
                 }
-                else if(mergeInserat == false && InlocuitorNeocupat == true)
+                else if(mergeInserat == false)
                 {
                     if (esteInTrecut == false)
                     {
                         DialogResult result2 = MessageBox.Show(message3, title);
                     }
                 }
-                else if (mergeInserat == true && InlocuitorNeocupat == false)
+                else if (InlocuitorNeocupat == false)
                 {
                     if (esteInTrecut == false)
                     {
-                        DialogResult result2 = MessageBox.Show(message4, title);
+                        DialogResult result3 = MessageBox.Show(message4, title);
                     }
+                }
+
+                else if (zileRamase == false)
+                {
+                    if (esteInTrecut == false)
+                    {
+                        DialogResult result3 = MessageBox.Show(message4, title);
+                    }
+                    DialogResult result4 = MessageBox.Show(message5, title);
                 }
             }
         }
@@ -530,7 +544,8 @@ namespace ConcediuAngajati
             string responsivebody = await responseDate.Content.ReadAsStringAsync();
 
 
-            textBoxZileRamase.Text = responsivebody;
+            textBoxZileRamase.Text = responsivebody;     
+
         }
     }
 }

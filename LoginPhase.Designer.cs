@@ -36,10 +36,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnInchidereLP = new System.Windows.Forms.Button();
             this.panel2FA = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.Cod2FA = new System.Windows.Forms.TextBox();
             this.Btn2FA = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2FA.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +136,28 @@
             this.panel2FA.Size = new System.Drawing.Size(217, 100);
             this.panel2FA.TabIndex = 6;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.SeaShell;
+            this.label2.Location = new System.Drawing.Point(10, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(192, 19);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "format din 4 cifre primit pe email";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.SeaShell;
+            this.label1.Location = new System.Drawing.Point(10, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(189, 19);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Introduceti codul de autentificare";
+            // 
             // Cod2FA
             // 
             this.Cod2FA.BackColor = System.Drawing.Color.SeaShell;
@@ -160,28 +182,6 @@
             this.Btn2FA.UseVisualStyleBackColor = true;
             this.Btn2FA.Click += new System.EventHandler(this.Btn2FA_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.SeaShell;
-            this.label1.Location = new System.Drawing.Point(10, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 19);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Introduceti codul de autentificare";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Sitka Display", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.SeaShell;
-            this.label2.Location = new System.Drawing.Point(10, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 19);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "format din 4 cifre primit pe email";
-            // 
             // LoginPhase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -198,6 +198,7 @@
             this.Controls.Add(this.textBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginPhase";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginPhase";
             this.Load += new System.EventHandler(this.LoginPhase_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
