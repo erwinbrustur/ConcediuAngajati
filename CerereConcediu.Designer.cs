@@ -58,7 +58,6 @@
             // PaginaMea
             // 
             this.PaginaMea.BackColor = System.Drawing.Color.Transparent;
-            this.PaginaMea.FlatAppearance.BorderSize = 0;
             this.PaginaMea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaginaMea.ForeColor = System.Drawing.Color.White;
             this.PaginaMea.Location = new System.Drawing.Point(29, 11);
@@ -105,7 +104,6 @@
             // Trimite
             // 
             this.Trimite.BackColor = System.Drawing.Color.Transparent;
-            this.Trimite.FlatAppearance.BorderSize = 0;
             this.Trimite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Trimite.ForeColor = System.Drawing.Color.White;
             this.Trimite.Location = new System.Drawing.Point(638, 300);
@@ -210,7 +208,7 @@
             // 
             // rtbComentarii
             // 
-            this.rtbComentarii.BackColor = System.Drawing.Color.DarkSalmon;
+            this.rtbComentarii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
             this.rtbComentarii.ForeColor = System.Drawing.Color.White;
             this.rtbComentarii.Location = new System.Drawing.Point(3, 213);
             this.rtbComentarii.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -281,6 +279,7 @@
             // 
             // textBoxZileRamase
             // 
+            this.textBoxZileRamase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
             this.textBoxZileRamase.Location = new System.Drawing.Point(29, 146);
             this.textBoxZileRamase.Name = "textBoxZileRamase";
             this.textBoxZileRamase.Size = new System.Drawing.Size(121, 23);
@@ -290,6 +289,8 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(29, 113);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(130, 15);
