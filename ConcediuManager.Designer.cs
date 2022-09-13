@@ -52,6 +52,9 @@
             this.cbTip = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvConcediuManager)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,12 +70,11 @@
             this.Comentarii,
             this.dataGridViewComboBoxColumn1,
             this.Raspuns});
-            this.dgvConcediuManager.Location = new System.Drawing.Point(21, 85);
-            this.dgvConcediuManager.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvConcediuManager.Location = new System.Drawing.Point(24, 113);
             this.dgvConcediuManager.Name = "dgvConcediuManager";
             this.dgvConcediuManager.RowHeadersWidth = 51;
             this.dgvConcediuManager.RowTemplate.Height = 25;
-            this.dgvConcediuManager.Size = new System.Drawing.Size(962, 232);
+            this.dgvConcediuManager.Size = new System.Drawing.Size(1099, 309);
             this.dgvConcediuManager.TabIndex = 3;
             this.dgvConcediuManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
@@ -156,10 +158,9 @@
             this.btnInchidereCM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnInchidereCM.FlatAppearance.BorderSize = 0;
             this.btnInchidereCM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInchidereCM.Location = new System.Drawing.Point(964, 2);
-            this.btnInchidereCM.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInchidereCM.Location = new System.Drawing.Point(1102, 3);
             this.btnInchidereCM.Name = "btnInchidereCM";
-            this.btnInchidereCM.Size = new System.Drawing.Size(37, 26);
+            this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
             this.btnInchidereCM.TabIndex = 0;
             this.btnInchidereCM.UseVisualStyleBackColor = false;
             this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
@@ -170,19 +171,18 @@
             this.lblNume.BackColor = System.Drawing.Color.Transparent;
             this.lblNume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblNume.ForeColor = System.Drawing.Color.White;
-            this.lblNume.Location = new System.Drawing.Point(51, 53);
+            this.lblNume.Location = new System.Drawing.Point(58, 71);
             this.lblNume.Name = "lblNume";
-            this.lblNume.Size = new System.Drawing.Size(56, 21);
+            this.lblNume.Size = new System.Drawing.Size(69, 28);
             this.lblNume.TabIndex = 4;
             this.lblNume.Text = "Nume:";
             this.lblNume.Click += new System.EventHandler(this.lblNume_Click);
             // 
             // tbNume
             // 
-            this.tbNume.Location = new System.Drawing.Point(116, 54);
-            this.tbNume.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbNume.Location = new System.Drawing.Point(133, 72);
             this.tbNume.Name = "tbNume";
-            this.tbNume.Size = new System.Drawing.Size(182, 23);
+            this.tbNume.Size = new System.Drawing.Size(207, 27);
             this.tbNume.TabIndex = 5;
             // 
             // lblPrenume
@@ -191,26 +191,26 @@
             this.lblPrenume.BackColor = System.Drawing.Color.Transparent;
             this.lblPrenume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPrenume.ForeColor = System.Drawing.Color.White;
-            this.lblPrenume.Location = new System.Drawing.Point(336, 54);
+            this.lblPrenume.Location = new System.Drawing.Point(384, 72);
             this.lblPrenume.Name = "lblPrenume";
-            this.lblPrenume.Size = new System.Drawing.Size(76, 21);
+            this.lblPrenume.Size = new System.Drawing.Size(93, 28);
             this.lblPrenume.TabIndex = 6;
             this.lblPrenume.Text = "Prenume:";
             // 
             // tbPrenume
             // 
-            this.tbPrenume.Location = new System.Drawing.Point(423, 54);
-            this.tbPrenume.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPrenume.Location = new System.Drawing.Point(483, 72);
             this.tbPrenume.Name = "tbPrenume";
-            this.tbPrenume.Size = new System.Drawing.Size(182, 23);
+            this.tbPrenume.Size = new System.Drawing.Size(207, 27);
             this.tbPrenume.TabIndex = 7;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(624, 53);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.BackgroundImage = global::ConcediuAngajati.Properties.Resources.search;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Location = new System.Drawing.Point(713, 71);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 24);
+            this.button1.Size = new System.Drawing.Size(39, 32);
             this.button1.TabIndex = 8;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -221,9 +221,9 @@
             this.lblStare.BackColor = System.Drawing.Color.Transparent;
             this.lblStare.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblStare.ForeColor = System.Drawing.Color.White;
-            this.lblStare.Location = new System.Drawing.Point(692, 20);
+            this.lblStare.Location = new System.Drawing.Point(791, 27);
             this.lblStare.Name = "lblStare";
-            this.lblStare.Size = new System.Drawing.Size(114, 21);
+            this.lblStare.Size = new System.Drawing.Size(143, 28);
             this.lblStare.TabIndex = 9;
             this.lblStare.Text = "Stare Concediu";
             // 
@@ -233,36 +233,33 @@
             this.lblTipConcediu.BackColor = System.Drawing.Color.Transparent;
             this.lblTipConcediu.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblTipConcediu.ForeColor = System.Drawing.Color.White;
-            this.lblTipConcediu.Location = new System.Drawing.Point(707, 55);
+            this.lblTipConcediu.Location = new System.Drawing.Point(808, 73);
             this.lblTipConcediu.Name = "lblTipConcediu";
-            this.lblTipConcediu.Size = new System.Drawing.Size(100, 21);
+            this.lblTipConcediu.Size = new System.Drawing.Size(126, 28);
             this.lblTipConcediu.TabIndex = 10;
             this.lblTipConcediu.Text = "Tip Concediu";
             // 
             // cbStare
             // 
             this.cbStare.FormattingEnabled = true;
-            this.cbStare.Location = new System.Drawing.Point(822, 20);
-            this.cbStare.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbStare.Location = new System.Drawing.Point(939, 27);
             this.cbStare.Name = "cbStare";
-            this.cbStare.Size = new System.Drawing.Size(133, 23);
+            this.cbStare.Size = new System.Drawing.Size(151, 28);
             this.cbStare.TabIndex = 11;
             // 
             // cbTip
             // 
             this.cbTip.FormattingEnabled = true;
-            this.cbTip.Location = new System.Drawing.Point(822, 55);
-            this.cbTip.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTip.Location = new System.Drawing.Point(939, 73);
             this.cbTip.Name = "cbTip";
-            this.cbTip.Size = new System.Drawing.Size(133, 23);
+            this.cbTip.Size = new System.Drawing.Size(151, 28);
             this.cbTip.TabIndex = 12;
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(21, 321);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(24, 428);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(962, 31);
+            this.panel1.Size = new System.Drawing.Size(1099, 41);
             this.panel1.TabIndex = 13;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -272,21 +269,57 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(38, 2);
+            this.button2.Location = new System.Drawing.Point(43, 3);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 25);
+            this.button2.Size = new System.Drawing.Size(86, 33);
             this.button2.TabIndex = 14;
             this.button2.Text = "Inapoi";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(686, 24);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(0, 0);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackgroundImage = global::ConcediuAngajati.Properties.Resources.refresh;
+            this.btnRefresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRefresh.Location = new System.Drawing.Point(713, 24);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(39, 32);
+            this.btnRefresh.TabIndex = 16;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(220, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(270, 41);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Concediu Manager";
+            // 
             // ConcediuManager
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1002, 361);
+            this.ClientSize = new System.Drawing.Size(1145, 481);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cbTip);
@@ -302,7 +335,6 @@
             this.Controls.Add(this.dgvConcediuManager);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConcediuManager";
             this.Text = "ConcediuManager";
             this.Load += new System.EventHandler(this.ConcediuAngajati_Load);
@@ -336,5 +368,8 @@
         private ComboBox cbTip;
         private Panel panel1;
         private Button button2;
+        private Button button3;
+        private Button btnRefresh;
+        private Label label1;
     }
 }
