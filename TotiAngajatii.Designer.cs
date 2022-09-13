@@ -69,6 +69,7 @@
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1001, 417);
             this.listView1.TabIndex = 0;
+            this.listView1.TabStop = false;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged_1);
@@ -113,6 +114,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(26, 28);
             this.button1.TabIndex = 1;
+            this.button1.TabStop = false;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -164,25 +166,29 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(458, 107);
+            this.button2.Location = new System.Drawing.Point(458, 101);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(45, 31);
+            this.button2.Size = new System.Drawing.Size(33, 39);
             this.button2.TabIndex = 6;
+            this.button2.TabStop = false;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CBManager
             // 
+            this.CBManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBManager.FormattingEnabled = true;
             this.CBManager.Location = new System.Drawing.Point(837, 175);
             this.CBManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBManager.Name = "CBManager";
             this.CBManager.Size = new System.Drawing.Size(202, 28);
             this.CBManager.TabIndex = 7;
+            this.CBManager.TabStop = false;
             // 
             // CBDepartament
             // 
+            this.CBDepartament.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBDepartament.FormattingEnabled = true;
             this.CBDepartament.Location = new System.Drawing.Point(837, 107);
             this.CBDepartament.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -207,7 +213,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(837, 74);
+            this.label4.Location = new System.Drawing.Point(837, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 28);
             this.label4.TabIndex = 10;
@@ -231,6 +237,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(31, 31);
             this.button3.TabIndex = 0;
+            this.button3.TabStop = false;
             this.button3.Text = ">";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -244,6 +251,7 @@
             this.Inapoi.Name = "Inapoi";
             this.Inapoi.Size = new System.Drawing.Size(86, 33);
             this.Inapoi.TabIndex = 12;
+            this.Inapoi.TabStop = false;
             this.Inapoi.Text = "Inapoi";
             this.Inapoi.UseVisualStyleBackColor = false;
             this.Inapoi.Click += new System.EventHandler(this.Inapoi_Click);
@@ -254,7 +262,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1081, 710);
+            this.ClientSize = new System.Drawing.Size(1081, 709);
             this.Controls.Add(this.Inapoi);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button2);

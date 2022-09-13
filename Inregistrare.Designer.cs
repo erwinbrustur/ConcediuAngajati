@@ -96,28 +96,30 @@
             // 
             this.FieldNume.BackColor = System.Drawing.Color.SeaShell;
             this.FieldNume.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldNume.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldNume, "FieldNume");
+            this.FieldNume.ForeColor = System.Drawing.Color.Maroon;
             this.FieldNume.Name = "FieldNume";
             this.FieldNume.TextChanged += new System.EventHandler(this.FieldNume_TextChanged);
+            this.FieldNume.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FieldNume_KeyDown);
             this.FieldNume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldNume_KeyPress);
             // 
             // FieldPrenume
             // 
             this.FieldPrenume.BackColor = System.Drawing.Color.SeaShell;
             this.FieldPrenume.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldPrenume.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldPrenume, "FieldPrenume");
+            this.FieldPrenume.ForeColor = System.Drawing.Color.Maroon;
             this.FieldPrenume.Name = "FieldPrenume";
             this.FieldPrenume.TextChanged += new System.EventHandler(this.FieldPrenume_TextChanged);
+            this.FieldPrenume.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FieldPrenume_KeyDown);
             this.FieldPrenume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldPrenume_KeyPress);
             // 
             // FieldNrTel
             // 
             this.FieldNrTel.BackColor = System.Drawing.Color.SeaShell;
             this.FieldNrTel.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldNrTel.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldNrTel, "FieldNrTel");
+            this.FieldNrTel.ForeColor = System.Drawing.Color.Maroon;
             this.FieldNrTel.Name = "FieldNrTel";
             this.FieldNrTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldNrTel_KeyPress);
             // 
@@ -125,25 +127,31 @@
             // 
             this.FieldPass.BackColor = System.Drawing.Color.SeaShell;
             this.FieldPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldPass.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldPass, "FieldPass");
+            this.FieldPass.ForeColor = System.Drawing.Color.Maroon;
             this.FieldPass.Name = "FieldPass";
+            this.FieldPass.UseSystemPasswordChar = true;
+            this.FieldPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FieldPass_KeyDown);
             // 
             // FieldConfirmPass
             // 
             this.FieldConfirmPass.BackColor = System.Drawing.Color.SeaShell;
             this.FieldConfirmPass.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldConfirmPass.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldConfirmPass, "FieldConfirmPass");
+            this.FieldConfirmPass.ForeColor = System.Drawing.Color.Maroon;
             this.FieldConfirmPass.Name = "FieldConfirmPass";
+            this.FieldConfirmPass.TextChanged += new System.EventHandler(this.FieldConfirmPass_TextChanged);
+            this.FieldConfirmPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FieldConfirmPass_KeyDown);
             // 
             // FieldEmail
             // 
             this.FieldEmail.BackColor = System.Drawing.Color.SeaShell;
             this.FieldEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.FieldEmail.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldEmail, "FieldEmail");
+            this.FieldEmail.ForeColor = System.Drawing.Color.Maroon;
             this.FieldEmail.Name = "FieldEmail";
+            this.FieldEmail.TextChanged += new System.EventHandler(this.FieldEmail_TextChanged);
+            this.FieldEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FieldEmail_KeyDown);
             // 
             // button1
             // 
@@ -153,6 +161,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Firebrick;
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Name = "button1";
+            this.button1.TabStop = false;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -165,6 +174,7 @@
             resources.ApplyResources(this.button2, "button2");
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Name = "button2";
+            this.button2.TabStop = false;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -211,6 +221,7 @@
             this.Name = "Inregistrare";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Inregistrare_KeyDown);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

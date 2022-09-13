@@ -93,6 +93,7 @@
             this.dgvConcedii.RowTemplate.Height = 25;
             this.dgvConcedii.Size = new System.Drawing.Size(1062, 309);
             this.dgvConcedii.TabIndex = 2;
+            this.dgvConcedii.TabStop = false;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             // 
@@ -180,6 +181,7 @@
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(37, 37);
             this.btnX.TabIndex = 12;
+            this.btnX.TabStop = false;
             this.btnX.UseVisualStyleBackColor = false;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
             // 
@@ -281,6 +283,7 @@
             // 
             // cbTipConcediu
             // 
+            this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FormattingEnabled = true;
             this.cbTipConcediu.Location = new System.Drawing.Point(935, 95);
             this.cbTipConcediu.Name = "cbTipConcediu";
@@ -313,6 +316,7 @@
             // 
             // cbStareConcediu
             // 
+            this.cbStareConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStareConcediu.FormattingEnabled = true;
             this.cbStareConcediu.Location = new System.Drawing.Point(935, 59);
             this.cbStareConcediu.Name = "cbStareConcediu";
@@ -361,6 +365,7 @@
             this.btnCauta.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnCauta.Size = new System.Drawing.Size(32, 39);
             this.btnCauta.TabIndex = 22;
+            this.btnCauta.TabStop = false;
             this.btnCauta.UseVisualStyleBackColor = false;
             this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
             // 
@@ -376,6 +381,7 @@
             this.btnInainte.Name = "btnInainte";
             this.btnInainte.Size = new System.Drawing.Size(32, 29);
             this.btnInainte.TabIndex = 24;
+            this.btnInainte.TabStop = false;
             this.btnInainte.Text = ">";
             this.btnInainte.UseVisualStyleBackColor = true;
             this.btnInainte.Click += new System.EventHandler(this.btnInainte_Click_1);
@@ -399,6 +405,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 32);
             this.button1.TabIndex = 27;
+            this.button1.TabStop = false;
             this.button1.Text = "Inapoi";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
