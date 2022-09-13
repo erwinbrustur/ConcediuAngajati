@@ -269,7 +269,7 @@ namespace ConcediuAngajati
             {
                 MessageBox.Show("Cnp-ul trebuie sa aiba 13 cifre dar are " + CNP.Text.Length.ToString() + " cifre!");
             }
-            else if (!regexCNP.IsMatch(CNP.Text)||Convert.ToInt32(CNP.Text.Substring(5,2))>=12||Convert.ToInt32(CNP.Text.Substring(7,2))>=31)
+            else if (!regexCNP.IsMatch(CNP.Text)||Convert.ToInt32(CNP.Text.Substring(5,2))>12||Convert.ToInt32(CNP.Text.Substring(7,2))>31)
             {
                 MessageBox.Show("CNP invalid");
             }
@@ -304,10 +304,10 @@ namespace ConcediuAngajati
                     dataNastere = "20" + CNP.Text.Substring(1, 6);
                 }
                 Angajat AngajatNou = new Angajat();
-                AngajatNou.Nume = Nume.Text;
-                AngajatNou.Prenume = Prenume.Text;
+                AngajatNou.Nume = Nume.Text.Trim();
+                AngajatNou.Prenume = Prenume.Text.Trim();
                 String totalsoftRo = "@totalsoft.ro";
-                AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo);
+                AngajatNou.Email = String.Format("{0}{1}", Email.Text, totalsoftRo).Trim();
                 AngajatNou.Parola = Hash(Parola.Text);
                 AngajatNou.DataAngajare = DateTime.Now;
                 string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));

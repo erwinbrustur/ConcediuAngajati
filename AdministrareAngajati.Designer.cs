@@ -125,6 +125,7 @@
             this.BtnPaginaPrincipala.Name = "BtnPaginaPrincipala";
             this.BtnPaginaPrincipala.Size = new System.Drawing.Size(164, 34);
             this.BtnPaginaPrincipala.TabIndex = 0;
+            this.BtnPaginaPrincipala.TabStop = false;
             this.BtnPaginaPrincipala.Text = "Inapoi la pagina principala";
             this.BtnPaginaPrincipala.UseVisualStyleBackColor = false;
             this.BtnPaginaPrincipala.Click += new System.EventHandler(this.BtnPaginaPrincipala_Click);
@@ -140,6 +141,7 @@
             this.buttonAdaugareAngajat.Name = "buttonAdaugareAngajat";
             this.buttonAdaugareAngajat.Size = new System.Drawing.Size(125, 31);
             this.buttonAdaugareAngajat.TabIndex = 1;
+            this.buttonAdaugareAngajat.TabStop = false;
             this.buttonAdaugareAngajat.Text = "Adaugare angajat";
             this.buttonAdaugareAngajat.UseVisualStyleBackColor = false;
             this.buttonAdaugareAngajat.Click += new System.EventHandler(this.button1_Click);
@@ -156,6 +158,7 @@
             this.buttonModificareManageri.Name = "buttonModificareManageri";
             this.buttonModificareManageri.Size = new System.Drawing.Size(149, 31);
             this.buttonModificareManageri.TabIndex = 2;
+            this.buttonModificareManageri.TabStop = false;
             this.buttonModificareManageri.Text = "Modificare manageri";
             this.buttonModificareManageri.UseVisualStyleBackColor = false;
             this.buttonModificareManageri.Click += new System.EventHandler(this.buttonModificareManageri_Click);
@@ -189,24 +192,24 @@
             // 
             this.ConfParola.BackColor = System.Drawing.Color.SeaShell;
             this.ConfParola.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ConfParola.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ConfParola.ForeColor = System.Drawing.Color.Maroon;
             this.ConfParola.Location = new System.Drawing.Point(373, 249);
-            this.ConfParola.Multiline = true;
             this.ConfParola.Name = "ConfParola";
             this.ConfParola.PasswordChar = '•';
-            this.ConfParola.Size = new System.Drawing.Size(143, 23);
+            this.ConfParola.Size = new System.Drawing.Size(143, 22);
             this.ConfParola.TabIndex = 9;
             // 
             // Parola
             // 
             this.Parola.BackColor = System.Drawing.Color.SeaShell;
             this.Parola.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Parola.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Parola.ForeColor = System.Drawing.Color.Maroon;
             this.Parola.Location = new System.Drawing.Point(94, 249);
-            this.Parola.Multiline = true;
             this.Parola.Name = "Parola";
             this.Parola.PasswordChar = '•';
-            this.Parola.Size = new System.Drawing.Size(143, 23);
+            this.Parola.Size = new System.Drawing.Size(143, 22);
             this.Parola.TabIndex = 8;
             // 
             // BtnAdaugareAngajat
@@ -262,11 +265,11 @@
             // 
             this.NrTel.BackColor = System.Drawing.Color.SeaShell;
             this.NrTel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NrTel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.NrTel.ForeColor = System.Drawing.Color.Maroon;
             this.NrTel.Location = new System.Drawing.Point(373, 88);
-            this.NrTel.Multiline = true;
             this.NrTel.Name = "NrTel";
-            this.NrTel.Size = new System.Drawing.Size(143, 23);
+            this.NrTel.Size = new System.Drawing.Size(143, 22);
             this.NrTel.TabIndex = 4;
             // 
             // label5
@@ -314,22 +317,22 @@
             // 
             this.CNP.BackColor = System.Drawing.Color.SeaShell;
             this.CNP.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CNP.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CNP.ForeColor = System.Drawing.Color.Maroon;
             this.CNP.Location = new System.Drawing.Point(46, 59);
-            this.CNP.Multiline = true;
             this.CNP.Name = "CNP";
-            this.CNP.Size = new System.Drawing.Size(143, 23);
+            this.CNP.Size = new System.Drawing.Size(143, 22);
             this.CNP.TabIndex = 7;
             // 
             // Nr
             // 
             this.Nr.BackColor = System.Drawing.Color.SeaShell;
             this.Nr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Nr.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Nr.ForeColor = System.Drawing.Color.Maroon;
             this.Nr.Location = new System.Drawing.Point(325, 21);
-            this.Nr.Multiline = true;
             this.Nr.Name = "Nr";
-            this.Nr.Size = new System.Drawing.Size(143, 23);
+            this.Nr.Size = new System.Drawing.Size(143, 22);
             this.Nr.TabIndex = 6;
             // 
             // label1
@@ -347,11 +350,11 @@
             // 
             this.Serie.BackColor = System.Drawing.Color.SeaShell;
             this.Serie.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Serie.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Serie.ForeColor = System.Drawing.Color.Maroon;
             this.Serie.Location = new System.Drawing.Point(46, 19);
-            this.Serie.Multiline = true;
             this.Serie.Name = "Serie";
-            this.Serie.Size = new System.Drawing.Size(143, 23);
+            this.Serie.Size = new System.Drawing.Size(143, 22);
             this.Serie.TabIndex = 5;
             // 
             // label3
@@ -369,11 +372,11 @@
             // 
             this.Email.BackColor = System.Drawing.Color.SeaShell;
             this.Email.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Email.ForeColor = System.Drawing.Color.Maroon;
             this.Email.Location = new System.Drawing.Point(373, 42);
-            this.Email.Multiline = true;
             this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(143, 23);
+            this.Email.Size = new System.Drawing.Size(143, 22);
             this.Email.TabIndex = 3;
             // 
             // label2
@@ -392,11 +395,11 @@
             // 
             this.Prenume.BackColor = System.Drawing.Color.SeaShell;
             this.Prenume.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Prenume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Prenume.ForeColor = System.Drawing.Color.Maroon;
             this.Prenume.Location = new System.Drawing.Point(94, 88);
-            this.Prenume.Multiline = true;
             this.Prenume.Name = "Prenume";
-            this.Prenume.Size = new System.Drawing.Size(143, 23);
+            this.Prenume.Size = new System.Drawing.Size(143, 22);
             this.Prenume.TabIndex = 2;
             this.Prenume.TextChanged += new System.EventHandler(this.Prenume_TextChanged);
             // 
@@ -416,11 +419,11 @@
             // 
             this.Nume.BackColor = System.Drawing.Color.SeaShell;
             this.Nume.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Nume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Nume.ForeColor = System.Drawing.Color.Maroon;
             this.Nume.Location = new System.Drawing.Point(94, 42);
-            this.Nume.Multiline = true;
             this.Nume.Name = "Nume";
-            this.Nume.Size = new System.Drawing.Size(143, 23);
+            this.Nume.Size = new System.Drawing.Size(143, 22);
             this.Nume.TabIndex = 1;
             this.Nume.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -446,7 +449,7 @@
             this.panelModificareManageri.Controls.Add(this.groupBox2);
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 115);
             this.panelModificareManageri.Name = "panelModificareManageri";
-            this.panelModificareManageri.Size = new System.Drawing.Size(936, 365);
+            this.panelModificareManageri.Size = new System.Drawing.Size(936, 370);
             this.panelModificareManageri.TabIndex = 4;
             this.panelModificareManageri.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModificareManageri_Paint);
             // 
@@ -901,7 +904,7 @@
             this.panelConcediere.Controls.Add(this.groupBox5);
             this.panelConcediere.Location = new System.Drawing.Point(0, 115);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(939, 15);
+            this.panelConcediere.Size = new System.Drawing.Size(939, 364);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
@@ -999,6 +1002,7 @@
             this.btnConcedPanel.Name = "btnConcedPanel";
             this.btnConcedPanel.Size = new System.Drawing.Size(125, 31);
             this.btnConcedPanel.TabIndex = 5;
+            this.btnConcedPanel.TabStop = false;
             this.btnConcedPanel.Text = "Concediere Angajat";
             this.btnConcedPanel.UseVisualStyleBackColor = false;
             this.btnConcedPanel.Click += new System.EventHandler(this.btnConcedPanel_Click);
