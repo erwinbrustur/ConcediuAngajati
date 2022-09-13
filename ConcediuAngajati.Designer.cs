@@ -281,6 +281,7 @@
             // 
             // cbTipConcediu
             // 
+            this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FormattingEnabled = true;
             this.cbTipConcediu.Location = new System.Drawing.Point(935, 95);
             this.cbTipConcediu.Name = "cbTipConcediu";
@@ -313,6 +314,7 @@
             // 
             // cbStareConcediu
             // 
+            this.cbStareConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStareConcediu.FormattingEnabled = true;
             this.cbStareConcediu.Location = new System.Drawing.Point(935, 59);
             this.cbStareConcediu.Name = "cbStareConcediu";

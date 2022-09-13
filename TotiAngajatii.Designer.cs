@@ -174,15 +174,18 @@
             // 
             // CBManager
             // 
+            this.CBManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBManager.FormattingEnabled = true;
             this.CBManager.Location = new System.Drawing.Point(837, 175);
             this.CBManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBManager.Name = "CBManager";
             this.CBManager.Size = new System.Drawing.Size(202, 28);
             this.CBManager.TabIndex = 7;
+            this.CBManager.TabStop = false;
             // 
             // CBDepartament
             // 
+            this.CBDepartament.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CBDepartament.FormattingEnabled = true;
             this.CBDepartament.Location = new System.Drawing.Point(837, 107);
             this.CBDepartament.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
