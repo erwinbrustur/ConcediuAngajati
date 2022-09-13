@@ -569,7 +569,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(507, 92);
+            this.label2.Location = new System.Drawing.Point(507, 89);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 20);
@@ -587,7 +587,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Marti";
+            this.label3.Text = "Marți";
             // 
             // label4
             // 
@@ -613,7 +613,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
             this.label5.TabIndex = 7;
-            this.label5.Text = "Duminica";
+            this.label5.Text = "Duminică";
             // 
             // label6
             // 
@@ -621,12 +621,12 @@
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(607, 92);
+            this.label6.Location = new System.Drawing.Point(607, 89);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 20);
             this.label6.TabIndex = 6;
-            this.label6.Text = "Sambata";
+            this.label6.Text = "Sâmbătă";
             // 
             // label7
             // 
@@ -634,7 +634,7 @@
             this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(407, 92);
+            this.label7.Location = new System.Drawing.Point(407, 89);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 20);
@@ -653,6 +653,7 @@
             this.lunaAfis.TabIndex = 10;
             this.lunaAfis.Text = "Luna An";
             this.lunaAfis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lunaAfis.Click += new System.EventHandler(this.lunaAfis_Click);
             // 
             // panel43
             // 
@@ -672,7 +673,8 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 15);
             this.label8.TabIndex = 12;
-            this.label8.Text = "Legenda";
+            this.label8.Text = "Legendă";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // panel44
             // 
@@ -701,7 +703,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 15);
             this.label9.TabIndex = 15;
-            this.label9.Text = "-Pana in 3 concedii";
+            this.label9.Text = "-Până în 3 concedii";
             // 
             // label10
             // 
@@ -710,7 +712,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(113, 15);
             this.label10.TabIndex = 16;
-            this.label10.Text = "-Intre 4 si 6 concedii";
+            this.label10.Text = "-Între 4 și 6 concedii";
             // 
             // label11
             // 
@@ -759,7 +761,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "CalendarMagic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Calendar";
             this.Load += new System.EventHandler(this.CalendarMagic_Load);
             this.zi.ResumeLayout(false);
             this.ResumeLayout(false);
