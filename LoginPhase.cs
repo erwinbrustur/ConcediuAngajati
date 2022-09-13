@@ -67,21 +67,6 @@ namespace ConcediuAngajati
                   //  ppg.Show();
                    // this.Hide();
 
-                    GeneratedCode=0;
-                     int CodeLength = 4;
-
-                     string[] digit = new string[CodeLength];
-
-                     for(int i = 0; i <CodeLength; i++)
-                     {
-                         Random rnd = new Random();
-                         GeneratedCode=rnd.Next(10) ;
-                         digit[i] = GeneratedCode.ToString();
-                     }
-                     for(int i = 0; i <CodeLength; i++)
-                     {
-                         AuthCode = AuthCode + digit[i];
-                     }
                      MailMessage message = new MailMessage();
                      SmtpClient smtp = new SmtpClient();
                      message.From = new MailAddress("sebastian.andrei@totalsoft.ro");
@@ -147,6 +132,21 @@ namespace ConcediuAngajati
         private void LoginPhase_Load(object sender, EventArgs e)
         {
 
+            GeneratedCode = 0;
+            int CodeLength = 4;
+
+            string[] digit = new string[CodeLength];
+
+            for (int i = 0; i < CodeLength; i++)
+            {
+                Random rnd = new Random();
+                GeneratedCode = rnd.Next(10);
+                digit[i] = GeneratedCode.ToString();
+            }
+            for (int i = 0; i < CodeLength; i++)
+            {
+                AuthCode = AuthCode + digit[i];
+            }
         }
 
         private void btnInchidereLP_Click(object sender, EventArgs e)
