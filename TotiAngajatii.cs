@@ -176,10 +176,6 @@ namespace ConcediuAngajati
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         public async void extragereIdManager()
         {
@@ -238,7 +234,6 @@ namespace ConcediuAngajati
             }
             else
             {
-                IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
                 IdManagerSelectat = Convert.ToInt32(CBManager.SelectedValue);
             }
             int? IdDepartamentSelectat;
