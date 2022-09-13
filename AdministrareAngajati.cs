@@ -269,7 +269,7 @@ namespace ConcediuAngajati
             {
                 MessageBox.Show("Cnp-ul trebuie sa aiba 13 cifre dar are " + CNP.Text.Length.ToString() + " cifre!");
             }
-            else if (!regexCNP.IsMatch(CNP.Text))
+            else if (!regexCNP.IsMatch(CNP.Text)||Convert.ToInt32(CNP.Text.Substring(5,2))>=12||Convert.ToInt32(CNP.Text.Substring(7,2))>=31)
             {
                 MessageBox.Show("CNP invalid");
             }
@@ -426,10 +426,15 @@ namespace ConcediuAngajati
         }
 
         private void BtnTransfer_Click_2(object sender, EventArgs e)
-        { StringContent stringContent = new StringContent(" ");
-            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId={2}", Globals.apiUrl, idAngajat, idManager2),stringContent).Result;
-          MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
-        }
+
+        {
+            if (idAngajat != 0 && idManager2 != 0)
+            {
+                StringContent stringContent = new StringContent(" ");
+                var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId={2}", Globals.apiUrl, idAngajat, idManager2), stringContent).Result;
+                MessageBox.Show(comboBox2.Text + " a fost transferat in echipa lui " + comboBox3.Text + "!");
+            }
+            }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -507,11 +512,12 @@ namespace ConcediuAngajati
 
         private void BtnStergere_Click(object sender, EventArgs e)
         {
-
-            StringContent stringContent = new StringContent(" ");
-            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostStergereEchipa?angajatId={1}", Globals.apiUrl, idManagerSE), stringContent).Result;
-            MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
-
+            if (idManagerSE != 0)
+            {
+                StringContent stringContent = new StringContent(" ");
+                var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostStergereEchipa?angajatId={1}", Globals.apiUrl, idManagerSE), stringContent).Result;
+                MessageBox.Show("Echipa lui " + comboBox6.Text + " a fost stearsa!");
+            }
             managerActualMutare = ExtragereAngajati();
             comboBox1.Items.Clear();
             comboBox4.Items.Clear();
@@ -548,11 +554,13 @@ namespace ConcediuAngajati
                     idVManager = p.Id;
                 }
             }
-            StringContent stringContent = new StringContent(" ");
-            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId=26", Globals.apiUrl, idVManager), stringContent).Result;
+            if (idVManager != 0)
+            {
+                StringContent stringContent = new StringContent(" ");
+                var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostTransfer?AngajatId={1}&managerId=26", Globals.apiUrl, idVManager), stringContent).Result;
 
-            MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
-
+                MessageBox.Show("Ati creat o noua echipa manageriata de " + comboBox5.Text + "!");
+            }
             managerActualMutare = ExtragereAngajati();
             comboBox1.Items.Clear();
             comboBox4.Items.Clear();
@@ -622,6 +630,7 @@ namespace ConcediuAngajati
         }
         private void btnConcediereAngajat_Click(object sender, EventArgs e)
         {
+            
             Angajat angajatulConcediat = new Angajat();
             foreach (Angajat p in angajatiiManagerului)
             {
@@ -633,10 +642,12 @@ namespace ConcediuAngajati
                 }
 
             }
-            string jsonString = JsonConvert.SerializeObject(angajatulConcediat);
-            StringContent stringContent = new StringContent(jsonString,Encoding.UTF8, "application/json");
-            var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostConcediat", Globals.apiUrl),stringContent).Result;
-        
+            if (angajatulConcediat != null)
+            {
+                string jsonString = JsonConvert.SerializeObject(angajatulConcediat);
+                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                var response = Globals.client.PostAsync(String.Format("{0}Angajat/PostConcediat", Globals.apiUrl), stringContent).Result;
+            }
 
         }
 
@@ -747,14 +758,18 @@ namespace ConcediuAngajati
                 if ((a.Nume + ' ' + a.Prenume) == DepartamentAngajat.Text)
                     angajatAlesdep = a;
             }
+            idDepartament = 0;
             foreach (Departament p in departamente)
             {
                 if (p.Denumire == DepartamentDepartament.Text)
                     idDepartament = p.Id;
             }
-            StringContent stringContent = new StringContent(" ");
-            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostDepartament?AngajatId={1}&DepartamentID={2}", Globals.apiUrl, angajatAlesdep.Id, idDepartament), stringContent).Result;
-        }
+            if (departAngaj != null && idDepartament != 0)
+            {
+                StringContent stringContent = new StringContent(" ");
+                var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostDepartament?AngajatId={1}&DepartamentID={2}", Globals.apiUrl, angajatAlesdep.Id, idDepartament), stringContent).Result;
+            }
+            }
 
         private void BtnFunct_Click(object sender, EventArgs e)
         {
@@ -764,9 +779,11 @@ namespace ConcediuAngajati
                 if ((a.Nume + ' ' + a.Prenume) == FunctieAngajat.Text)
                     angajatAles = a;
             }
-            StringContent stringContent = new StringContent(" ");
-            var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostFunctie?AngajatId={1}&functieID={2}", Globals.apiUrl, angajatAles.Id,idFunctie), stringContent).Result;
-
+            if (angajatAles != null && idFunctie != 0)
+            {
+                StringContent stringContent = new StringContent(" ");
+                var response = Globals.client.PostAsync(String.Format("{0}DepartamentSiFunctie/PostFunctie?AngajatId={1}&functieID={2}", Globals.apiUrl, angajatAles.Id, idFunctie), stringContent).Result;
+            }
         }
 
         private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)

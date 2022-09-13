@@ -17,13 +17,15 @@ namespace ConcediuAngajati
         Angajat angajat;
         string numeComplet;
         Angajat angajatSelectat;
+        string NumarSalvat;
 
 
         public PaginaMea(Angajat a, int? idAngajatSelectat)
         {
             InitializeComponent();
-
+           
             angajat = a;
+            NumarSalvat = angajat.NrTelefon;
             extragereFunctieAsyncDB();
             if(idAngajatSelectat != null)
             {
@@ -177,9 +179,10 @@ namespace ConcediuAngajati
                         var response = Globals.client.PutAsync(String.Format("{0}Angajat/UpdateDateleMele", Globals.apiUrl), stringContent).Result;
                         MessageBox.Show(message2, title);
                     }
-                    else
+                    if (result == DialogResult.No)
                     {
-                        MessageBox.Show("hehe");
+                        angajat.NrTelefon = NumarSalvat;
+                        tbNrTelefon.Text = NumarSalvat;
                     }
 
                 }
@@ -237,6 +240,11 @@ namespace ConcediuAngajati
             {
                 errorProvider1.Clear();
             }
+        }
+
+        private void tbNrTelefon_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
