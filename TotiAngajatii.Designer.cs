@@ -175,6 +175,7 @@
             this.CBManager.Name = "CBManager";
             this.CBManager.Size = new System.Drawing.Size(177, 23);
             this.CBManager.TabIndex = 7;
+            this.CBManager.TabStop = false;
             // 
             // CBDepartament
             // 

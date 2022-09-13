@@ -241,6 +241,7 @@
             // 
             // cbStare
             // 
+            this.cbStare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStare.FormattingEnabled = true;
             this.cbStare.Location = new System.Drawing.Point(939, 27);
             this.cbStare.Name = "cbStare";
@@ -250,6 +251,7 @@
             // 
             // cbTip
             // 
+            this.cbTip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTip.FormattingEnabled = true;
             this.cbTip.Location = new System.Drawing.Point(939, 73);
             this.cbTip.Name = "cbTip";
