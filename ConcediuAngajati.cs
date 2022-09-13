@@ -359,7 +359,7 @@ namespace ConcediuAngajati
             this.Close();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void btnInainte_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -61,10 +61,13 @@
             this.Email,
             this.Manager,
             this.Departament});
+            this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(99, 83);
+            this.listView1.Location = new System.Drawing.Point(38, 223);
+            this.listView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(606, 355);
+            this.listView1.Size = new System.Drawing.Size(1001, 417);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -73,13 +76,13 @@
             // Nume
             // 
             this.Nume.Text = "Nume";
-            this.Nume.Width = 100;
+            this.Nume.Width = 200;
             // 
             // Prenume
             // 
             this.Prenume.Tag = "Prenume";
             this.Prenume.Text = "Prenume";
-            this.Prenume.Width = 100;
+            this.Prenume.Width = 200;
             // 
             // Email
             // 
@@ -89,12 +92,12 @@
             // Manager
             // 
             this.Manager.Text = "Manager";
-            this.Manager.Width = 100;
+            this.Manager.Width = 200;
             // 
             // Departament
             // 
             this.Departament.Text = "Departament";
-            this.Departament.Width = 100;
+            this.Departament.Width = 200;
             // 
             // button1
             // 
@@ -105,18 +108,20 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(733, 5);
+            this.button1.Location = new System.Drawing.Point(1043, 12);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 21);
+            this.button1.Size = new System.Drawing.Size(26, 28);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // TBNume
             // 
-            this.TBNume.Location = new System.Drawing.Point(99, 44);
+            this.TBNume.Location = new System.Drawing.Point(42, 107);
+            this.TBNume.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TBNume.Name = "TBNume";
-            this.TBNume.Size = new System.Drawing.Size(121, 23);
+            this.TBNume.Size = new System.Drawing.Size(202, 27);
             this.TBNume.TabIndex = 2;
             // 
             // label1
@@ -124,31 +129,32 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Snow;
-            this.label1.Location = new System.Drawing.Point(111, 19);
+            this.label1.Location = new System.Drawing.Point(42, 71);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 25);
+            this.label1.Size = new System.Drawing.Size(69, 28);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Nume :";
+            this.label1.Text = "Nume:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Snow;
-            this.label2.Location = new System.Drawing.Point(242, 19);
+            this.label2.Location = new System.Drawing.Point(250, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 25);
+            this.label2.Size = new System.Drawing.Size(93, 28);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Prenume :";
+            this.label2.Text = "Prenume:";
             // 
             // TBPrenume
             // 
-            this.TBPrenume.Location = new System.Drawing.Point(244, 44);
+            this.TBPrenume.Location = new System.Drawing.Point(250, 107);
+            this.TBPrenume.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TBPrenume.Name = "TBPrenume";
-            this.TBPrenume.Size = new System.Drawing.Size(121, 23);
+            this.TBPrenume.Size = new System.Drawing.Size(202, 27);
             this.TBPrenume.TabIndex = 5;
             // 
             // button2
@@ -158,9 +164,10 @@
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(659, 29);
+            this.button2.Location = new System.Drawing.Point(458, 107);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(43, 38);
+            this.button2.Size = new System.Drawing.Size(45, 31);
             this.button2.TabIndex = 6;
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -168,57 +175,61 @@
             // CBManager
             // 
             this.CBManager.FormattingEnabled = true;
-            this.CBManager.Location = new System.Drawing.Point(390, 44);
+            this.CBManager.Location = new System.Drawing.Point(837, 175);
+            this.CBManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBManager.Name = "CBManager";
-            this.CBManager.Size = new System.Drawing.Size(121, 23);
+            this.CBManager.Size = new System.Drawing.Size(202, 28);
             this.CBManager.TabIndex = 7;
             // 
             // CBDepartament
             // 
             this.CBDepartament.FormattingEnabled = true;
-            this.CBDepartament.Location = new System.Drawing.Point(534, 44);
+            this.CBDepartament.Location = new System.Drawing.Point(837, 107);
+            this.CBDepartament.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBDepartament.Name = "CBDepartament";
-            this.CBDepartament.Size = new System.Drawing.Size(121, 23);
+            this.CBDepartament.Size = new System.Drawing.Size(202, 28);
             this.CBDepartament.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Snow;
-            this.label3.Location = new System.Drawing.Point(390, 20);
+            this.label3.Location = new System.Drawing.Point(837, 139);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 25);
+            this.label3.Size = new System.Drawing.Size(94, 28);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Manager";
+            this.label3.Text = "Manager:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(534, 19);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(837, 74);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 25);
+            this.label4.Size = new System.Drawing.Size(131, 28);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Departament";
+            this.label4.Text = "Departament:";
             // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.flowLayoutPanel1.Controls.Add(this.button3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(99, 444);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(38, 648);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(606, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1001, 49);
             this.flowLayoutPanel1.TabIndex = 11;
             // 
             // button3
             // 
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(3, 3);
+            this.button3.Location = new System.Drawing.Point(3, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(27, 23);
+            this.button3.Size = new System.Drawing.Size(31, 31);
             this.button3.TabIndex = 0;
             this.button3.Text = ">";
             this.button3.UseVisualStyleBackColor = true;
@@ -228,9 +239,10 @@
             // 
             this.Inapoi.BackColor = System.Drawing.Color.Transparent;
             this.Inapoi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Inapoi.Location = new System.Drawing.Point(12, 5);
+            this.Inapoi.Location = new System.Drawing.Point(14, 7);
+            this.Inapoi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Inapoi.Name = "Inapoi";
-            this.Inapoi.Size = new System.Drawing.Size(75, 25);
+            this.Inapoi.Size = new System.Drawing.Size(86, 33);
             this.Inapoi.TabIndex = 12;
             this.Inapoi.Text = "Inapoi";
             this.Inapoi.UseVisualStyleBackColor = false;
@@ -238,11 +250,11 @@
             // 
             // TotiAngajatii
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(757, 503);
+            this.ClientSize = new System.Drawing.Size(1081, 710);
             this.Controls.Add(this.Inapoi);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.button2);
@@ -259,7 +271,9 @@
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Transparent;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TotiAngajatii";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TotiAngajatii";
             this.Load += new System.EventHandler(this.TotiAngajatii_Load);
             this.flowLayoutPanel1.ResumeLayout(false);

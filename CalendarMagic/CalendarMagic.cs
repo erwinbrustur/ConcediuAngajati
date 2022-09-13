@@ -102,32 +102,45 @@ namespace ConcediuAngajati.CalendarMagic
 
                 ucDays.days(i);
                 int concediiAzi = 0;
+                bool Acceptate = false;
                 foreach (Concediu c in listaConcedii)
                 {
                     DateTime ziCurenta = new DateTime(an, luna, i);
                     if (c.DataInceput <= ziCurenta && ziCurenta <= c.DataSfarsit)
                     {
-                        if (c.TipConcediuId != 3)
+                        if (c.StareConcediu.Id != 3)
                         { 
                             concediiAzi++;
                         }
+                        if (c.StareConcediu.Id == 2)
+                        {
+                            Acceptate = true;
+                        }
                     }
                 }
-                if (concediiAzi ==0 )
+                if (concediiAzi == 0)
                 {
                     ucDays.BackColor = Color.LightGray;
                 }
-                else if (concediiAzi > 0 && concediiAzi <= 3)
+                else if (Acceptate)
                 {
-                    ucDays.BackColor = Color.FromArgb(23, 219, 3);
+                   
+                     if (concediiAzi > 0 && concediiAzi <= 3)
+                    {
+                        ucDays.BackColor = Color.FromArgb(23, 219, 3);
+                    }
+                    else if (3 < concediiAzi && concediiAzi <= 6)
+                    {
+                        ucDays.BackColor = Color.FromArgb(248, 184, 19);
+                    }
+                    else if (concediiAzi >= 7)
+                    {
+                        ucDays.BackColor = Color.FromArgb(199, 32, 4);
+                    }
                 }
-                else if (3 < concediiAzi && concediiAzi <= 6)
+                else if (concediiAzi != 0)
                 {
-                    ucDays.BackColor = Color.FromArgb(248, 184, 19);
-                }
-                else if (concediiAzi >= 7)
-                {
-                    ucDays.BackColor = Color.FromArgb(199, 32, 4);
+                    ucDays.BackColor = Color.LightBlue;
                 }
                 zi.Controls.Add(ucDays);
             }
@@ -196,12 +209,15 @@ namespace ConcediuAngajati.CalendarMagic
                 
                 ucDays.days(i);
                 int concediiAzi = 0;
+                bool Acceptate = false;
+                DateTime ziCurenta = new DateTime(an, luna, i);
                 foreach (Concediu c in listaConcedii)
                 {
-                    DateTime ziCurenta = new DateTime(an, luna, i);
+                    
                     if (c.DataInceput <= ziCurenta && ziCurenta <= c.DataSfarsit)
                     {
-                        if (c.TipConcediuId != 3) { concediiAzi++; }
+                        if (c.StareConcediu.Id != 3) { concediiAzi++; }
+                        if (c.StareConcediu.Id == 2) { Acceptate = true; }
                     }
                 }
 
@@ -209,18 +225,27 @@ namespace ConcediuAngajati.CalendarMagic
                 {
                     ucDays.BackColor = Color.LightGray;
                 }
-                else if(concediiAzi > 0 && concediiAzi <= 3)
+                else if (Acceptate)
                 {
-                    ucDays.BackColor = Color.FromArgb(23, 219, 3);
+                  
+                   if (concediiAzi > 0 && concediiAzi <= 3)
+                    {
+                        ucDays.BackColor = Color.FromArgb(23, 219, 3);
+                    }
+                    else if (3 < concediiAzi && concediiAzi <= 6)
+                    {
+                        ucDays.BackColor = Color.FromArgb(248, 184, 19);
+                    }
+                    else if (concediiAzi >= 7)
+                    {
+                        ucDays.BackColor = Color.FromArgb(199, 32, 4);
+                    }
                 }
-                else if (3 < concediiAzi && concediiAzi <= 6)
+                else if (concediiAzi != 0)
                 {
-                    ucDays.BackColor = Color.FromArgb(248, 184, 19);
+                    ucDays.BackColor = Color.LightBlue;
                 }
-                else if (concediiAzi >= 7)
-                {
-                    ucDays.BackColor = Color.FromArgb(199, 32, 4);
-                }
+
                 zi.Controls.Add(ucDays);
             }
         }
@@ -381,14 +406,20 @@ namespace ConcediuAngajati.CalendarMagic
 
                 ucDays.days(i);
                 int concediiAzi = 0;
+                bool Acceptate = false;
+                DateTime ziCurenta = new DateTime(an, luna, i);
                 foreach (Concediu c in listaConcedii)
                 {
-                    DateTime ziCurenta = new DateTime(an, luna, i);
+                  
                     if (c.DataInceput <= ziCurenta && ziCurenta <= c.DataSfarsit)
                     {
-                        if (c.TipConcediuId != 3)
+                        if (c.StareConcediu.Id != 3)
                         {
                             concediiAzi++;
+                        }
+                        if(c.StareConcediu.Id == 2)
+                        {
+                            Acceptate = true;
                         }
                     }
                 }
@@ -396,18 +427,27 @@ namespace ConcediuAngajati.CalendarMagic
                 {
                     ucDays.BackColor = Color.LightGray;
                 }
-                else if (concediiAzi > 0 && concediiAzi <= 3)
+                else if (Acceptate )
                 {
-                    ucDays.BackColor = Color.FromArgb(23, 219, 3);
+
+                   if (concediiAzi > 0 && concediiAzi <= 3)
+                    {
+                        ucDays.BackColor = Color.FromArgb(23, 219, 3);
+                    }
+                    else if (3 < concediiAzi && concediiAzi <= 6)
+                    {
+                        ucDays.BackColor = Color.FromArgb(248, 184, 19);
+                    }
+                    else if (concediiAzi >= 7)
+                    {
+                        ucDays.BackColor = Color.FromArgb(199, 32, 4);
+                    }
                 }
-                else if (3 < concediiAzi && concediiAzi <= 6)
+                else if(concediiAzi!=0)
                 {
-                    ucDays.BackColor = Color.FromArgb(248, 184, 19);
+                    ucDays.BackColor = Color.LightBlue;
                 }
-                else if (concediiAzi >= 7)
-                {
-                    ucDays.BackColor = Color.FromArgb(199, 32, 4);
-                }
+
                 zi.Controls.Add(ucDays);
             }
 

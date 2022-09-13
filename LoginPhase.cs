@@ -31,8 +31,6 @@ namespace ConcediuAngajati
             InitializeComponent();
            panel2FA.Hide();
        
-           
-
         }
 
 
