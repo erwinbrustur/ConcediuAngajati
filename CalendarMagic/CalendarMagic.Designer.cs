@@ -90,6 +90,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel46 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
             this.zi.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,7 +141,7 @@
             this.zi.Controls.Add(this.panel37);
             this.zi.Controls.Add(this.panel36);
             this.zi.ForeColor = System.Drawing.Color.Black;
-            this.zi.Location = new System.Drawing.Point(4, 112);
+            this.zi.Location = new System.Drawing.Point(4, 130);
             this.zi.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.zi.Name = "zi";
             this.zi.Size = new System.Drawing.Size(726, 481);
@@ -557,7 +559,7 @@
             this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(107, 89);
+            this.label1.Location = new System.Drawing.Point(107, 107);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 20);
@@ -570,7 +572,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(507, 89);
+            this.label2.Location = new System.Drawing.Point(507, 107);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 20);
@@ -583,7 +585,7 @@
             this.label3.BackColor = System.Drawing.SystemColors.Control;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(207, 89);
+            this.label3.Location = new System.Drawing.Point(207, 107);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 20);
@@ -596,7 +598,7 @@
             this.label4.BackColor = System.Drawing.SystemColors.Control;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(307, 89);
+            this.label4.Location = new System.Drawing.Point(307, 107);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 20);
@@ -609,7 +611,7 @@
             this.label5.BackColor = System.Drawing.SystemColors.Control;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(4, 89);
+            this.label5.Location = new System.Drawing.Point(4, 107);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 20);
@@ -622,7 +624,7 @@
             this.label6.BackColor = System.Drawing.SystemColors.Control;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(607, 89);
+            this.label6.Location = new System.Drawing.Point(607, 107);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(74, 20);
@@ -635,7 +637,7 @@
             this.label7.BackColor = System.Drawing.SystemColors.Control;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(407, 89);
+            this.label7.Location = new System.Drawing.Point(407, 107);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 20);
@@ -727,18 +729,38 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(19, 595);
+            this.label12.Location = new System.Drawing.Point(12, 628);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(357, 15);
             this.label12.TabIndex = 18;
             this.label12.Text = "*În acest tabel sunt afișate concediile în așteptare și cele acceptate!";
+            // 
+            // panel46
+            // 
+            this.panel46.BackColor = System.Drawing.Color.LightBlue;
+            this.panel46.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel46.Location = new System.Drawing.Point(565, 86);
+            this.panel46.Name = "panel46";
+            this.panel46.Size = new System.Drawing.Size(16, 15);
+            this.panel46.TabIndex = 13;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(586, 86);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(123, 15);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "-Concedii în așteptare";
             // 
             // CalendarMagic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(744, 615);
+            this.ClientSize = new System.Drawing.Size(744, 652);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.panel46);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -834,5 +856,7 @@
         private Label label10;
         private Label label11;
         private Label label12;
+        private Panel panel46;
+        private Label label13;
     }
 }
