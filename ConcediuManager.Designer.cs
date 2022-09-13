@@ -246,6 +246,7 @@
             this.cbStare.Name = "cbStare";
             this.cbStare.Size = new System.Drawing.Size(151, 28);
             this.cbStare.TabIndex = 11;
+            this.cbStare.SelectedIndexChanged += new System.EventHandler(this.cbStare_SelectedIndexChanged);
             // 
             // cbTip
             // 

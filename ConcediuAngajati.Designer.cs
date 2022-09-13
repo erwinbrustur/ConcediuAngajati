@@ -94,6 +94,7 @@
             this.dgvConcedii.Size = new System.Drawing.Size(1062, 309);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
+            this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             // 
             // Column10
             // 
