@@ -181,5 +181,10 @@ namespace ConcediuAngajati
                 MessageBox.Show("Eroare: Cod Gresit!");
             }
             }
+
+        private void LoginPhase_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }
