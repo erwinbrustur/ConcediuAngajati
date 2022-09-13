@@ -225,28 +225,30 @@ namespace ConcediuAngajati
         private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
-            
 
-            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            if (e.ColumnIndex > 0)
             {
-                int selectedRowIndex = dgvConcediuManager.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvConcediuManager.Rows[selectedRowIndex];
-                DataGridViewComboBoxCell combobox = dgvConcediuManager.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
+                if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+                {
+                    int selectedRowIndex = dgvConcediuManager.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgvConcediuManager.Rows[selectedRowIndex];
+                    DataGridViewComboBoxCell combobox = dgvConcediuManager.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
 
-                int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
-                int idConcediu = Convert.ToInt32(selectedRow.Tag);
+                    int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
+                    int idConcediu = Convert.ToInt32(selectedRow.Tag);
 
-                HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId)).Result;
-                response.EnsureSuccessStatusCode();
-                string responseBody =  response.Content.ReadAsStringAsync().Result;
+                    HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId)).Result;
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = response.Content.ReadAsStringAsync().Result;
 
 
 
-                
-            }
-            else
-            {
-                return;
+
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 

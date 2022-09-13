@@ -231,32 +231,34 @@ namespace ConcediuAngajati
         private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var grid = (DataGridView)sender;
-
-            if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+            if (e.ColumnIndex > 0)
             {
-                int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
-                DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
-                DataGridViewComboBoxCell combobox = dgvConcedii.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
+                if (grid[e.ColumnIndex, e.RowIndex] is DataGridViewButtonCell)
+                {
+                    int selectedRowIndex = dgvConcedii.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = dgvConcedii.Rows[selectedRowIndex];
+                    DataGridViewComboBoxCell combobox = dgvConcedii.Rows[selectedRowIndex].Cells[6] as DataGridViewComboBoxCell;
 
-                int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
-                int idConcediu = Convert.ToInt32(selectedRow.Tag);
+                    int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
+                    int idConcediu = Convert.ToInt32(selectedRow.Tag);
 
 
-                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
-                response.EnsureSuccessStatusCode();
-                string responseBody = await response.Content.ReadAsStringAsync();
+                    HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
+                    response.EnsureSuccessStatusCode();
+                    string responseBody = await response.Content.ReadAsStringAsync();
 
-                
 
-                //if (bool.Parse(responseBody))
-                //{
 
-                //    extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
-                //}
-            }
-            else
-            {
-                return;
+                    //if (bool.Parse(responseBody))
+                    //{
+
+                    //    extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare);
+                    //}
+                }
+                else
+                {
+                    return;
+                }
             }
         }
 
