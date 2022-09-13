@@ -61,10 +61,56 @@ namespace ConcediuAngajati
                 btn.Location = new Point(x + 50);
                 btn.Width = 30;
                 btn.Height = 30;
-                btn.Click += button1_Click;
+                btn.Click += btn_click;
                 panel1.Controls.Add(btn);
                 x += 30;
             }
+        }
+
+        private void btn_click(object sender, EventArgs e)
+        {
+            int paginaS = Convert.ToInt32(((Button)sender).Text);
+            // ReIncaracareDGV(paginaS - 1);
+            string nume;
+            if (!tbNume.Text.Equals(""))
+            {
+                nume = tbNume.Text;
+            }
+            else
+            {
+                nume = null;
+            }
+
+            string prenume;
+            if (!tbPrenume.Text.Equals(""))
+            {
+                prenume = tbPrenume.Text;
+            }
+            else
+            {
+                prenume = null;
+            }
+
+            int? idTipConcediuSelectat;
+            if (cbTip.SelectedValue != null)
+            {
+                idTipConcediuSelectat = Convert.ToInt32(cbTip.SelectedValue);
+            }
+            else
+            {
+                idTipConcediuSelectat = null;
+            }
+
+            int? idStareConcediuSelectat;
+            if (cbStare.SelectedValue != null)
+            {
+                idStareConcediuSelectat = Convert.ToInt32(cbStare.SelectedValue);
+            }
+            else
+            {
+                idStareConcediuSelectat = null;
+            }
+            extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
 
         public void populareDataGridView(List<Concediu> concedii)
@@ -95,7 +141,7 @@ namespace ConcediuAngajati
 
         private void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, bool EsteAdmin, int idManager)
         {
-            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&EsteAdmin={5}&idManager={6}", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, EsteAdmin, idManager)).Result;
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&EsteAdmin=false&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, EsteAdmin, idManager)).Result;
 
             string responseBody2 = response.Content.ReadAsStringAsync().Result;
             nrTotalInregistrari = JsonConvert.DeserializeObject<int>(responseBody2);
@@ -147,9 +193,13 @@ namespace ConcediuAngajati
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
-               
 
-                
+                cbStare.DataSource = listaStareConcedii;
+                cbStare.DisplayMember = "Nume";
+                cbStare.ValueMember = "Id";
+                cbStare.SelectedItem = null;
+
+
             }
             catch (HttpRequestException ex)
             {
@@ -286,6 +336,16 @@ namespace ConcediuAngajati
             PaginaPrincipala.PaginaPrincipala pp = new PaginaPrincipala.PaginaPrincipala(angajat);
             pp.Show();
             this.Close();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            extragereCountInregistrari(null, null, null, null, (bool)angajat.EsteAdmin, angajat.Id);
+            extragereConcedii(null, null, null, null, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, (int)angajat.Id);
+            tbNume.Clear();
+            tbPrenume.Clear();
+            cbTip.SelectedItem = null;
+            cbStare.SelectedItem = null;
         }
     }
 
