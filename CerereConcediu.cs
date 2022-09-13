@@ -186,6 +186,23 @@ namespace ConcediuAngajati
                 string message6 = "Zile de concediu negative";
                 string message7 = "Concediu in trecut";
 
+
+                bool tipSelectat = true;
+                if (cbTipConcediu.SelectedItem == null)
+                {
+                    MessageBox.Show("Selectati un tip de concediu");
+                    tipSelectat = false;
+                    textBoxZileRamase.Text = "";
+                    return;
+                }
+                bool inlocuitorSelectat = true;
+                if (cbInlocuitor.SelectedItem == null)
+                {
+                    MessageBox.Show("Selectati un inlocuitor");
+                    inlocuitorSelectat = false;
+                    return;
+                }
+
                 Concediu con = new Concediu();
                 con.TipConcediuId = (int)cbTipConcediu.SelectedValue;
                 con.DataInceput = dataInceput;
@@ -208,7 +225,8 @@ namespace ConcediuAngajati
                     MessageBox.Show("Nu poti sa iti iei concediu in trecut");
                     esteInTrecut = true;
                 }
-                
+
+
 
                 foreach (Concediu concediu in concedii)
                 {
@@ -267,7 +285,7 @@ namespace ConcediuAngajati
                 if (Convert.ToInt32(textBox1.Text) == 0)
                     zileNegative = true;
 
-                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true && esteInTrecut == false && zileNegative == false)
+                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true && esteInTrecut == false && zileNegative == false && tipSelectat == true && inlocuitorSelectat == false)
                 { 
                     string jsonString = JsonConvert.SerializeObject(con);
                     StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
@@ -300,6 +318,8 @@ namespace ConcediuAngajati
                 {
                     DialogResult result6 = MessageBox.Show(message7, title);
                 }
+
+               
             }
         }
 
@@ -336,13 +356,11 @@ namespace ConcediuAngajati
 
         private async void cbTipConcediu_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //MessageBox.Show("cbTipConcediu");
             int tipConcediuId = Convert.ToInt32(cbTipConcediu.SelectedValue);
             HttpResponseMessage responseDate = await Globals.client.GetAsync(String.Format("{0}Concediu/GetNumarZileConcediuRamase?tipConcediuId={1}&angajatId={2}", Globals.apiUrl, tipConcediuId, userCurent.Id));
             responseDate.EnsureSuccessStatusCode();
             string responsivebody = await responseDate.Content.ReadAsStringAsync();
-
-            //MessageBox.Show(responsivebody);
+           
             textBoxZileRamase.Text = responsivebody;     
 
         }
