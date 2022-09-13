@@ -241,10 +241,11 @@ namespace ConcediuAngajati
                 int stareConcediuId = Convert.ToInt32((selectedRow.Cells[6] as DataGridViewComboBoxCell).Value);
                 int idConcediu = Convert.ToInt32(selectedRow.Tag);
 
-
+           
                 HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
+                
 
                 
 
