@@ -141,7 +141,7 @@ namespace ConcediuAngajati
 
         private void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, bool EsteAdmin, int idManager)
         {
-            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&EsteAdmin=false&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, EsteAdmin, idManager)).Result;
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetNrTotalConcedii?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, EsteAdmin, idManager)).Result;
 
             string responseBody2 = response.Content.ReadAsStringAsync().Result;
             nrTotalInregistrari = JsonConvert.DeserializeObject<int>(responseBody2);
@@ -153,7 +153,7 @@ namespace ConcediuAngajati
 
         private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int? nrInceputInregistrari, int? nrTotalDeAfisat, bool EsteAdmin, int idManager)
         {
-            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiAngajatiFiltrati?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}&EsteAdmin=false&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat)).Result;
+            HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiManager?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat)).Result;
             response.EnsureSuccessStatusCode();
             string responseBody =  response.Content.ReadAsStringAsync().Result;
             listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
