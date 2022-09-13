@@ -178,12 +178,13 @@ namespace ConcediuAngajati
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
+                List<StareConcediu> listaStareConcedii2 = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
 
                 (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
                 (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
                 (dgvConcedii.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
-                cbStareConcediu.DataSource = listaStareConcedii;
+                cbStareConcediu.DataSource = listaStareConcedii2;
                 cbStareConcediu.DisplayMember = "Nume";
                 cbStareConcediu.ValueMember = "Id";
                 cbStareConcediu.SelectedItem = null;
@@ -245,9 +246,10 @@ namespace ConcediuAngajati
                 HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
-                
-
-                
+                if (stareConcediuId != 1)
+                {
+                    MessageBox.Show("Cererea a fost actualizata");
+                }
 
                 //if (bool.Parse(responseBody))
                 //{
@@ -361,6 +363,11 @@ namespace ConcediuAngajati
         }
 
         private void btnInainte_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvConcedii_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

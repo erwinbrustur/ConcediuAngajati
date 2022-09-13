@@ -241,14 +241,17 @@
             // 
             // cbStare
             // 
+            this.cbStare.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStare.FormattingEnabled = true;
             this.cbStare.Location = new System.Drawing.Point(939, 27);
             this.cbStare.Name = "cbStare";
             this.cbStare.Size = new System.Drawing.Size(151, 28);
             this.cbStare.TabIndex = 11;
+            this.cbStare.SelectedIndexChanged += new System.EventHandler(this.cbStare_SelectedIndexChanged);
             // 
             // cbTip
             // 
+            this.cbTip.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTip.FormattingEnabled = true;
             this.cbTip.Location = new System.Drawing.Point(939, 73);
             this.cbTip.Name = "cbTip";

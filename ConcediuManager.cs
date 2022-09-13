@@ -20,11 +20,13 @@ namespace ConcediuAngajati
         static readonly HttpClient client = new HttpClient();
       
         List<string> listaStare;
+     
         int idAngajatSelectat;
         Angajat angajat;
         int nrTotalInregistrari;
         int nrConcediiDeAfisare = 10;
         List<Concediu> listaConcedii;
+    
         public ConcediuManager(Angajat a)
         {
             InitializeComponent();
@@ -157,7 +159,7 @@ namespace ConcediuAngajati
             response.EnsureSuccessStatusCode();
             string responseBody =  response.Content.ReadAsStringAsync().Result;
             listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
-
+           
 
             populareDataGridView(listaConcedii);
 
@@ -187,9 +189,9 @@ namespace ConcediuAngajati
                 string responseBody =  response.Content.ReadAsStringAsync().Result;
 
                 List<StareConcediu> listaStareConcedii = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
+                List<StareConcediu> listaStareConcedii2 = JsonConvert.DeserializeObject<List<StareConcediu>>(responseBody);
 
-
-                (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii;
+                (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DataSource = listaStareConcedii2;
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).DisplayMember = "Nume";
                 (dgvConcediuManager.Columns[6] as DataGridViewComboBoxColumn).ValueMember = "Id";
 
@@ -239,6 +241,7 @@ namespace ConcediuAngajati
                 HttpResponseMessage response =  Globals.client.GetAsync(String.Format("{0}Concediu/UpdateStareConcediu?idConcediu={1}&idStareConcediu={2}", Globals.apiUrl, idConcediu, stareConcediuId)).Result;
                 response.EnsureSuccessStatusCode();
                 string responseBody =  response.Content.ReadAsStringAsync().Result;
+                MessageBox.Show("Cererea a fost actualizata");
 
 
 
@@ -346,6 +349,11 @@ namespace ConcediuAngajati
             tbPrenume.Clear();
             cbTip.SelectedItem = null;
             cbStare.SelectedItem = null;
+        }
+
+        private void cbStare_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

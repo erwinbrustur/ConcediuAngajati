@@ -93,6 +93,7 @@
             this.dgvConcedii.Size = new System.Drawing.Size(929, 232);
             this.dgvConcedii.TabIndex = 2;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
+            this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             // 
             // Column10
             // 
@@ -278,6 +279,7 @@
             // 
             // cbTipConcediu
             // 
+            this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FormattingEnabled = true;
             this.cbTipConcediu.Location = new System.Drawing.Point(818, 71);
             this.cbTipConcediu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -311,6 +313,7 @@
             // 
             // cbStareConcediu
             // 
+            this.cbStareConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStareConcediu.FormattingEnabled = true;
             this.cbStareConcediu.Location = new System.Drawing.Point(818, 44);
             this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
