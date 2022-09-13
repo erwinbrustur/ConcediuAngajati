@@ -324,7 +324,7 @@ namespace ConcediuAngajati
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {    
-            cbTipConcediu.DropDownStyle = ComboBoxStyle.DropDown;
+            
             //MessageBox.Show("cbTipConcediu selected index changed");
         }
 

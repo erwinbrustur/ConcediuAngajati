@@ -48,7 +48,7 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Window;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(717, 353);
+            this.textBox1.Location = new System.Drawing.Point(717, 368);
             this.textBox1.Name = "textBox1";
             this.textBox1.PlaceholderText = "Utilizator";
             this.textBox1.Size = new System.Drawing.Size(185, 23);
@@ -58,7 +58,7 @@
             // textBox2
             // 
             this.textBox2.AcceptsReturn = true;
-            this.textBox2.Location = new System.Drawing.Point(717, 382);
+            this.textBox2.Location = new System.Drawing.Point(717, 397);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '•';
             this.textBox2.PlaceholderText = "Parola";
@@ -75,7 +75,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.SystemColors.Window;
-            this.button1.Location = new System.Drawing.Point(717, 424);
+            this.button1.Location = new System.Drawing.Point(717, 439);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 26);
             this.button1.TabIndex = 2;
@@ -91,7 +91,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.Window;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button2.Location = new System.Drawing.Point(798, 424);
+            this.button2.Location = new System.Drawing.Point(798, 439);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 26);
             this.button2.TabIndex = 3;
@@ -131,7 +131,7 @@
             this.panel2FA.Controls.Add(this.label1);
             this.panel2FA.Controls.Add(this.Cod2FA);
             this.panel2FA.Controls.Add(this.Btn2FA);
-            this.panel2FA.Location = new System.Drawing.Point(702, 353);
+            this.panel2FA.Location = new System.Drawing.Point(702, 368);
             this.panel2FA.Name = "panel2FA";
             this.panel2FA.Size = new System.Drawing.Size(217, 100);
             this.panel2FA.TabIndex = 6;
@@ -201,6 +201,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginPhase";
             this.Load += new System.EventHandler(this.LoginPhase_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginPhase_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2FA.ResumeLayout(false);
             this.panel2FA.PerformLayout();

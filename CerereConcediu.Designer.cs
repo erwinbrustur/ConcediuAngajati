@@ -188,6 +188,7 @@
             // cbInlocuitor
             // 
             this.cbInlocuitor.BackColor = System.Drawing.Color.White;
+            this.cbInlocuitor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbInlocuitor.ForeColor = System.Drawing.Color.Black;
             this.cbInlocuitor.FormattingEnabled = true;
             this.cbInlocuitor.Location = new System.Drawing.Point(637, 106);
