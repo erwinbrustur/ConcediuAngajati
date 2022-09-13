@@ -184,7 +184,10 @@ namespace ConcediuAngajati
 
         private void LoginPhase_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                extragereAngajatByUsername();
+            }
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
