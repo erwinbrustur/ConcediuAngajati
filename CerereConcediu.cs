@@ -96,7 +96,7 @@ namespace ConcediuAngajati
             if (inTime > outTime)
             {
                 textBox1.Text = "0";
-                MessageBox.Show("zile de concediu negative");
+                
             }
             else
             {
@@ -336,7 +336,7 @@ namespace ConcediuAngajati
             if (inTime > outTime)
             {
                 textBox1.Text = "0";
-                MessageBox.Show("zile de concediu negative");
+               
 
             }
             else
