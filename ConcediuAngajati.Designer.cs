@@ -377,6 +377,7 @@
             this.btnInainte.TabIndex = 24;
             this.btnInainte.Text = ">";
             this.btnInainte.UseVisualStyleBackColor = true;
+            this.btnInainte.Click += new System.EventHandler(this.btnInainte_Click_1);
             // 
             // panel1
             // 

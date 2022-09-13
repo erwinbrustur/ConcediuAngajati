@@ -14,20 +14,41 @@ namespace ConcediuAngajati
 {
     public partial class PaginaMea : Form
     {
-        static readonly HttpClient client = new HttpClient();
         Angajat angajat;
         string numeComplet;
-        
-        public PaginaMea(Angajat a)
+        Angajat angajatSelectat;
+
+
+        public PaginaMea(Angajat a, int? idAngajatSelectat)
         {
             InitializeComponent();
 
             angajat = a;
             extragereFunctieAsyncDB();
-            pupulareControale(angajat);
+            if(idAngajatSelectat != null)
+            {
+                extragereAngajatSelectat(idAngajatSelectat);
+                
+            }
+            else
+            {
+                populareControale(angajat);
+            }
+            
         }
 
-        private void pupulareControale(Angajat a)
+        private async void extragereAngajatSelectat(int? id)
+        {
+            MessageBox.Show(id.ToString());
+            HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAngajatById?id={1}", Globals.apiUrl, id));
+            response.EnsureSuccessStatusCode();
+            string responsivebody = await response.Content.ReadAsStringAsync();
+            angajatSelectat = JsonConvert.DeserializeObject<Angajat>(responsivebody);
+
+            populareControale(angajatSelectat);
+        } 
+
+        private void populareControale(Angajat a)
         {
             tbNume.Text = a.Nume;
             tbPrenume.Text = a.Prenume;
@@ -39,6 +60,8 @@ namespace ConcediuAngajati
             tbCNP.Text = a.Cnp;
             tbSerie.Text = a.Serie;
             tbNumar.Text = a.No;
+
+            MessageBox.Show(a.Cnp+ a.Email);
 
             if (a.Cnp.IndexOf('1') == 0 || a.Cnp.IndexOf('5') == 0)
             {
@@ -72,7 +95,7 @@ namespace ConcediuAngajati
                 try
                 {
 
-                    HttpResponseMessage response = await client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetFunctieDepartament?angajatId={1}", Globals.apiUrl, angajat.Id));
+                    HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetFunctieDepartament?angajatId={1}", Globals.apiUrl, angajat.Id));
                     response.EnsureSuccessStatusCode();
                     string responsivebody = await response.Content.ReadAsStringAsync();
 

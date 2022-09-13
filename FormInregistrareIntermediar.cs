@@ -141,9 +141,9 @@ namespace ConcediuAngajati
             angaj.Email = angajat.Email;
             angaj.Parola = angajat.Parola;
             angaj.NrTelefon = angajat.NrTelefon;
-            angaj.ManagerId = 1;
-            //angaj.DepartamentId = 7 ;
-            //angaj.FunctieId = 5;
+            angaj.ManagerId = 30;
+            angaj.DepartamentId = 7;
+            angaj.FunctieId = 5;
             angaj.concediat = false;
             angaj.Poza = image_array;
             angaj.EsteAdmin = false;
