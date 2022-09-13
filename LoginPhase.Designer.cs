@@ -54,6 +54,7 @@
             this.textBox1.Size = new System.Drawing.Size(185, 23);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // textBox2
             // 
@@ -131,7 +132,7 @@
             this.panel2FA.Controls.Add(this.label1);
             this.panel2FA.Controls.Add(this.Cod2FA);
             this.panel2FA.Controls.Add(this.Btn2FA);
-            this.panel2FA.Location = new System.Drawing.Point(702, 368);
+            this.panel2FA.Location = new System.Drawing.Point(466, 368);
             this.panel2FA.Name = "panel2FA";
             this.panel2FA.Size = new System.Drawing.Size(217, 100);
             this.panel2FA.TabIndex = 6;
