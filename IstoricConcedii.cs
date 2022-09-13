@@ -160,9 +160,7 @@ namespace ConcediuAngajati
 
         private void btnInchidere_Click(object sender, EventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
-            paginap.Show();
-            this.Close();
+            Environment.Exit(1);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -283,6 +281,11 @@ namespace ConcediuAngajati
 
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
+            paginap.Show();
+            this.Close();
+        }
     }
 }
