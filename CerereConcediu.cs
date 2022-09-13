@@ -160,20 +160,12 @@ namespace ConcediuAngajati
         private void PaginaMea_Click_1(object sender, EventArgs e)
         {
             
-            string message = "Do you want to close this window?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
+         
                 this.Close();
                 PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(userCurent);
                 pagprin.ShowDialog();
-            }
-            else
-            {
-                // Do something  
-            }
+           
+         
         }
 
         public async void Trimitere(object sender, EventArgs e)

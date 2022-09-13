@@ -218,9 +218,7 @@ namespace ConcediuAngajati
 
         private void btnInchidereCM_Click_1(object sender, EventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(angajat);
-            paginap.Show();
-            this.Close();
+            Environment.Exit(1);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -281,6 +279,13 @@ namespace ConcediuAngajati
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala pp = new PaginaPrincipala.PaginaPrincipala(angajat);
+            pp.Show();
+            this.Close();
         }
     }
 

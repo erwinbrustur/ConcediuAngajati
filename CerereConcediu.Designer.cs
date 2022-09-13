@@ -65,7 +65,7 @@
             this.PaginaMea.Name = "PaginaMea";
             this.PaginaMea.Size = new System.Drawing.Size(101, 31);
             this.PaginaMea.TabIndex = 0;
-            this.PaginaMea.Text = "Pagina mea";
+            this.PaginaMea.Text = "Inapoi";
             this.PaginaMea.UseVisualStyleBackColor = false;
             this.PaginaMea.Click += new System.EventHandler(this.PaginaMea_Click_1);
             // 
