@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -124,7 +125,8 @@ namespace ConcediuAngajati
             else
             {
                 cnp = tbCNP.Text;
-                var strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+                var strRegex = "^[1-9]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+                    //"^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
                 Regex regex = new Regex(strRegex);
                 if (!regex.IsMatch(cnp))
                 {
@@ -168,23 +170,70 @@ namespace ConcediuAngajati
                             if (cnp.IndexOf('1') == 0 || cnp.IndexOf('2') == 0)
                             {
                                 dataNastere = "19" + cnp.Substring(1, 6);
+                                
                             }
                             else if (cnp.IndexOf('5') == 0 || cnp.IndexOf('6') == 0)
                             {
                                 dataNastere = "20" + cnp.Substring(1, 6);
+                                //DateTime dataInceput = Convert.ToDateTime(c.DataInceput.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
+                                //string dataI = dataInceput.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+
+                                if (Convert.ToDateTime(dataNormala) > DateTime.Now)
+                                {
+                                    errorProvider1.SetError(tbCNP, "Cnp invalid! Data invalida!");
+                                }
                             }
-                            //else if (cnp.IndexOf('3') == 0 || cnp.IndexOf('4') == 0)
-                            //{
-                            //    dataNastere = "18" + cnp.Substring(1, 6);
-                            //}
+                            else if (cnp.IndexOf('3') == 0 || cnp.IndexOf('4') == 0)
+                            {
+                                dataNastere = "18" + cnp.Substring(1, 6);
+                            }
                             else
                             {
                                 errorProvider1.SetError(tbCNP, "Cnp invalid! Prima cifra din cnp invalida!");
                             }
 
-                            if(errorProvider1.GetError == null)
+                            bool judet = false;
+                            if (Convert.ToInt32(cnp.Substring(7, 2)) == 51 || Convert.ToInt32(cnp.Substring(7, 2)) == 52)
                             {
-                                MessageBox.Show("aici");
+                                judet = true;
+                            }
+                            for (int i = 0; i < 47; i++)
+                            {
+                                if (Convert.ToInt32(cnp.Substring(7, 2)) == i)
+                                {
+                                    judet = true;
+                                    break;
+                                }
+                            }
+                            if (judet == false)
+                            {
+                                errorProvider1.SetError(tbCNP, "Cnp invalid! Judet invalid!");
+                            }
+                            //TODO: CNP unic!!!!!!!!!!!
+                            //int cif9 = Convert.ToInt32(cnp.Substring(9, 1));
+                            //int cif10 = Convert.ToInt32(cnp.Substring(10, 1));
+                            //int cif11 = Convert.ToInt32(cnp.Substring(11, 1));
+                            //int sum = cif9 + cif10 + cif11;
+                            //while (sum > 9)
+                            //{
+                            //    int sumCif = 0;
+                            //    do
+                            //    {
+                            //        int c = sum % 10;
+                            //        sumCif = sumCif + c;
+                            //        sum = sum / 10;
+                            //    } while (sum != 0);
+                            //    sum = sumCif;
+                            //}
+
+                            //if(Convert.ToInt32(cnp.Substring(12,1)) != sum)
+                            //{
+                            //    errorProvider1.SetError(tbCNP, "CNP invalid! Cifra de control incorecta");
+                            //}
+
+                            if (errorProvider1.GetError(tbCNP).Equals(""))
+                            {
                                 Angajat angaj = new Angajat();
                                 angaj.DataAngajare = DateTime.Now;
                                 angaj.Nume = angajat.Nume;

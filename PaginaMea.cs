@@ -177,6 +177,10 @@ namespace ConcediuAngajati
                         var response = Globals.client.PutAsync(String.Format("{0}Angajat/UpdateDateleMele", Globals.apiUrl), stringContent).Result;
                         MessageBox.Show(message2, title);
                     }
+                    else
+                    {
+                        MessageBox.Show("hehe");
+                    }
 
                 }
                 catch (Exception ex)

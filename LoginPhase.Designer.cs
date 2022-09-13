@@ -54,7 +54,7 @@
             this.textBox1.Size = new System.Drawing.Size(185, 23);
             this.textBox1.TabIndex = 0;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            //this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // textBox2
             // 
@@ -204,7 +204,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginPhase";
             this.Load += new System.EventHandler(this.LoginPhase_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginPhase_KeyDown);
+            //this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LoginPhase_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2FA.ResumeLayout(false);
             this.panel2FA.PerformLayout();
