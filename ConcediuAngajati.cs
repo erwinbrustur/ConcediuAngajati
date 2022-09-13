@@ -356,7 +356,12 @@ namespace ConcediuAngajati
             extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, 0, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PaginaPrincipala.PaginaPrincipala pp = new PaginaPrincipala.PaginaPrincipala(angajat);
+            pp.Show();
+            this.Close();
+        }
     }
 
 }

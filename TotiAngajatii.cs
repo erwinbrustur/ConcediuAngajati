@@ -298,8 +298,7 @@ namespace ConcediuAngajati
         private void Inapoi_Click(object sender, EventArgs e)
         {
             this.Close();
-            PaginaPrincipala.PaginaPrincipala pg = new PaginaPrincipala.PaginaPrincipala(angajat);
-            pg.Show();
+ 
         }
     }
 }
