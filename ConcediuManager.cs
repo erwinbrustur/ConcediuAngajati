@@ -154,7 +154,7 @@ namespace ConcediuAngajati
         private async void extragereConcedii(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu, int? nrInceputInregistrari, int? nrTotalDeAfisat, bool EsteAdmin, int idManager)
         {
             HttpResponseMessage response = Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiManager?nume={1}&prenume={2}&idTipConcediu={3}&idStareConcediu={4}&nrInceputInregistrari={5}&nrTotalInregistrariDeAdus={6}&idManager=26", Globals.apiUrl, nume, prenume, idTipConcediu, idStareConcediu, nrInceputInregistrari, nrTotalDeAfisat)).Result;
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
             string responseBody =  response.Content.ReadAsStringAsync().Result;
             listaConcedii = JsonConvert.DeserializeObject<List<Concediu>>(responseBody);
 
