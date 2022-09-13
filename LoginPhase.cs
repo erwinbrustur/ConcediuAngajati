@@ -63,11 +63,11 @@ namespace ConcediuAngajati
                 if (angajat != null && angajat.concediat == false)
                 {
                     //Comenteaza urmatoarele 3 randuri cand activezi 2Fa
-                    PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
-                    ppg.Show();
-                    this.Hide();
+                   // PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+                  //  ppg.Show();
+                   // this.Hide();
 
-                  /*  GeneratedCode=0;
+                    GeneratedCode=0;
                      int CodeLength = 4;
 
                      string[] digit = new string[CodeLength];
@@ -98,7 +98,7 @@ namespace ConcediuAngajati
                     button1.Hide();
                     button2.Hide();
                     textBox1.Hide();
-                    textBox2.Hide();*/
+                    textBox2.Hide();
                 }
                 else
                 {
@@ -172,9 +172,9 @@ namespace ConcediuAngajati
         {
             if (Cod2FA.Text == AuthCode)
             {
-               /*PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+               PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
                 ppg.Show();
-                this.Hide();*/
+                this.Hide();
             }
             else
             {

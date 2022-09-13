@@ -28,18 +28,24 @@ namespace ConcediuAngajati
             if(idAngajatSelectat != null)
             {
                 extragereAngajatSelectat(idAngajatSelectat);
-                
             }
             else
             {
                 populareControale(angajat);
+            }
+
+            if(idAngajatSelectat != null)
+            {
+                concediileMeleToolStripMenuItem.Visible = false;
+                btnActualizareDate.Hide();
+                tbNrTelefon.Enabled = false;
+               
             }
             
         }
 
         private async void extragereAngajatSelectat(int? id)
         {
-            MessageBox.Show(id.ToString());
             HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}Angajat/GetAngajatById?id={1}", Globals.apiUrl, id));
             response.EnsureSuccessStatusCode();
             string responsivebody = await response.Content.ReadAsStringAsync();
@@ -60,8 +66,6 @@ namespace ConcediuAngajati
             tbCNP.Text = a.Cnp;
             tbSerie.Text = a.Serie;
             tbNumar.Text = a.No;
-
-            MessageBox.Show(a.Cnp+ a.Email);
 
             if (a.Cnp.IndexOf('1') == 0 || a.Cnp.IndexOf('5') == 0)
             {
@@ -97,7 +101,8 @@ namespace ConcediuAngajati
 
         private async void extragereFunctieAsyncDB()
         {
-            if (angajat.Functie != null && angajat.Departament != null)
+            //MessageBox.Show(angajat.DepartamentId.ToString());
+            if (angajat.FunctieId != null && angajat.DepartamentId != null)
             {
                 try
                 {
@@ -107,6 +112,7 @@ namespace ConcediuAngajati
                     string responsivebody = await response.Content.ReadAsStringAsync();
 
                     List<Angajat> angajatul = JsonConvert.DeserializeObject<List<Angajat>>(responsivebody);
+                    
                     foreach (Angajat a in angajatul)
                     {
                         tbDepartament.Text = a.Departament.Denumire;
@@ -130,8 +136,6 @@ namespace ConcediuAngajati
 
         private void meniuToolStripMenuItemAcasa_Click(object sender, EventArgs e)
         {
-            PaginaPrincipala.PaginaPrincipala pagprin = new PaginaPrincipala.PaginaPrincipala(angajat);
-            pagprin.Show();
             this.Close();
         }
 
@@ -189,22 +193,25 @@ namespace ConcediuAngajati
 
         private void pbImagineProfil_Click(object sender, EventArgs e)
         {
-            
-            string message = "Doriti sa modificati imaginea de profil?";
-            string title = "Close Window";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show(message, title, buttons);
-            
-            if(result == DialogResult.Yes)
+            if(angajatSelectat == null)
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG, *.JPEG)| *.BMP; *.JPG; *.PNG, *.JPEG | All files(*.*) | *.*";
+                string message = "Doriti sa modificati imaginea de profil?";
+                string title = "Close Window";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result = MessageBox.Show(message, title, buttons);
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                if (result == DialogResult.Yes)
                 {
-                    pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
+                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                    openFileDialog.Filter = "Image Files(*.BMP; *.JPG; *.PNG, *.JPEG)| *.BMP; *.JPG; *.PNG, *.JPEG | All files(*.*) | *.*";
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
+                    }
                 }
-            }  
+            }
+           
         }
 
         private void tbNrTelefon_KeyPress(object sender, KeyPressEventArgs e)
