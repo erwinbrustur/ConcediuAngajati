@@ -284,7 +284,7 @@ namespace ConcediuAngajati
                 if (Convert.ToInt32(textBox1.Text) == 0)
                     zileNegative = true;
 
-                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true && esteInTrecut == false && zileNegative == false && tipSelectat == true && inlocuitorSelectat == false)
+                if (mergeInserat == true && InlocuitorNeocupat == true && zileRamase == true && esteInTrecut == false && zileNegative == false && tipSelectat == true && inlocuitorSelectat == true)
                 { 
                     string jsonString = JsonConvert.SerializeObject(con);
                     StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
