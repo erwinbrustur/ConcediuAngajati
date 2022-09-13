@@ -48,7 +48,7 @@
             this.Controls.Add(this.zi);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "UserControlDays";
-            this.Size = new System.Drawing.Size(123, 100);
+            this.Size = new System.Drawing.Size(94, 72);
             this.ResumeLayout(false);
             this.PerformLayout();
 

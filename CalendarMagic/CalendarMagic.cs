@@ -51,7 +51,30 @@ namespace ConcediuAngajati.CalendarMagic
 
 
             String numeLuna = DateTimeFormatInfo.CurrentInfo.GetMonthName(luna);
-            lunaAfis.Text = numeLuna + " " + an;
+            if (numeLuna == "January")
+                lunaAfis.Text = "Ianuarie" + " " + an;
+            else if (numeLuna == "February")
+                lunaAfis.Text = "Februarie" + " " + an;
+            else if (numeLuna == "March")
+                lunaAfis.Text = "Martie" + " " + an;
+            else if (numeLuna == "April")
+                lunaAfis.Text = "Aprilie" + " " + an;
+            else if (numeLuna == "May")
+                lunaAfis.Text = "Mai" + " " + an;
+            else if (numeLuna == "June")
+                lunaAfis.Text = "Iunie" + " " + an;
+            else if (numeLuna == "July")
+                lunaAfis.Text = "Iulie" + " " + an;
+            else if (numeLuna == "August")
+                lunaAfis.Text = "August" + " " + an;
+            else if (numeLuna == "September")
+                lunaAfis.Text = "Septembrie" + " " + an;
+            else if (numeLuna == "October")
+                lunaAfis.Text = "Octombrie" + " " + an;
+            else if (numeLuna == "November")
+                lunaAfis.Text = "Noiembrie" + " " + an;
+            else if (numeLuna == "December")
+                lunaAfis.Text = "Decembrie" + " " + an;
 
             DateTime ineputLuna = new DateTime(an, luna, 1);
 
@@ -124,9 +147,30 @@ namespace ConcediuAngajati.CalendarMagic
             }
 
             String numeLuna = DateTimeFormatInfo.CurrentInfo.GetMonthName(luna);
-            lunaAfis.Text = numeLuna + " " + an;
-
-
+            if(numeLuna=="January")
+            lunaAfis.Text = "Ianuarie" + " " + an;
+            else if (numeLuna == "February")
+                lunaAfis.Text = "Februarie" + " " + an;
+            else if (numeLuna == "March")
+                lunaAfis.Text = "Martie" + " " + an;
+            else if (numeLuna == "April")
+                lunaAfis.Text = "Aprilie" + " " + an;
+            else if (numeLuna == "May")
+                lunaAfis.Text = "Mai" + " " + an;
+            else if (numeLuna == "June")
+                lunaAfis.Text = "Iunie" + " " + an;
+            else if (numeLuna == "July")
+                lunaAfis.Text = "Iulie" + " " + an;
+            else if (numeLuna == "August")
+                lunaAfis.Text = "August" + " " + an;
+            else if (numeLuna == "September")
+                lunaAfis.Text = "Septembrie" + " " + an;
+            else if (numeLuna == "October")
+                lunaAfis.Text = "Octombrie" + " " + an;
+            else if (numeLuna == "November")
+                lunaAfis.Text = "Noiembrie" + " " + an;
+            else if (numeLuna == "December")
+                lunaAfis.Text = "Decembrie" + " " + an;
             DateTime ineputLuna = new DateTime(an, luna, 1);
 
             // numarul zilelor din luna
@@ -182,6 +226,26 @@ namespace ConcediuAngajati.CalendarMagic
         }
 
         private void panel45_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lunaAfis_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
@@ -263,7 +327,31 @@ namespace ConcediuAngajati.CalendarMagic
             an = now.Year;
 
             String numeLuna = DateTimeFormatInfo.CurrentInfo.GetMonthName(luna);
-            lunaAfis.Text = numeLuna + " " + an;
+            if (numeLuna == "January")
+                lunaAfis.Text = "Ianuarie" + " " + an;
+            else if (numeLuna == "February")
+                lunaAfis.Text = "Februarie" + " " + an;
+            else if (numeLuna == "March")
+                lunaAfis.Text = "Martie" + " " + an;
+            else if (numeLuna == "April")
+                lunaAfis.Text = "Aprilie" + " " + an;
+            else if (numeLuna == "May")
+                lunaAfis.Text = "Mai" + " " + an;
+            else if (numeLuna == "June")
+                lunaAfis.Text = "Iunie" + " " + an;
+            else if (numeLuna == "July")
+                lunaAfis.Text = "Iulie" + " " + an;
+            else if (numeLuna == "August")
+                lunaAfis.Text = "August" + " " + an;
+            else if (numeLuna == "September")
+                lunaAfis.Text = "Septembrie" + " " + an;
+            else if (numeLuna == "October")
+                lunaAfis.Text = "Octombrie" + " " + an;
+            else if (numeLuna == "November")
+                lunaAfis.Text = "Noiembrie" + " " + an;
+            else if (numeLuna == "December")
+                lunaAfis.Text = "Decembrie" + " " + an;
+
 
             // prima zi din luna
             DateTime ineputLuna = new DateTime(an, luna, 1);
