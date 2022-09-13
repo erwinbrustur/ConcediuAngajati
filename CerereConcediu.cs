@@ -191,8 +191,7 @@ namespace ConcediuAngajati
                 if (cbTipConcediu.SelectedItem == null)
                 {
                     MessageBox.Show("Selectati un tip de concediu");
-                    tipSelectat = false;
-                    textBoxZileRamase.Text = "";
+                    tipSelectat = false;                 
                     return;
                 }
                 bool inlocuitorSelectat = true;
@@ -363,6 +362,12 @@ namespace ConcediuAngajati
            
             textBoxZileRamase.Text = responsivebody;     
 
+        }
+
+        private void cbTipConcediu_TextChanged(object sender, EventArgs e)
+        {
+            if (cbTipConcediu.SelectedValue == null)
+                textBoxZileRamase.Text = "";
         }
     }
 }

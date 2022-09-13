@@ -157,6 +157,7 @@
             this.cbTipConcediu.TabIndex = 7;
             this.cbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cbTipConcediu.SelectionChangeCommitted += new System.EventHandler(this.cbTipConcediu_SelectionChangeCommitted);
+            this.cbTipConcediu.TextChanged += new System.EventHandler(this.cbTipConcediu_TextChanged);
             // 
             // textBox1
             // 
