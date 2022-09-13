@@ -124,9 +124,28 @@ namespace ConcediuAngajati
             
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void FieldNume_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void FieldPrenume_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void FieldNrTel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

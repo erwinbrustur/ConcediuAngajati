@@ -128,10 +128,6 @@ namespace ConcediuAngajati
             extragereConcedii(nume, prenume, idTipConcediuSelectat, idStareConcediuSelectat, (paginaS - 1) * nrConcediiDeAfisare, nrConcediiDeAfisare, (bool)angajat.EsteAdmin, angajat.Id);
         }
 
-        private void getNrTotalConcedii()
-        {
-
-        }
 
         private  void extragereCountInregistrari(string? nume, string? prenume, int? idTipConcediu, int? idStareConcediu,bool EsteAdmin, int idManager)
         {

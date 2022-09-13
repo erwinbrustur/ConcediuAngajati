@@ -100,6 +100,7 @@
             resources.ApplyResources(this.FieldNume, "FieldNume");
             this.FieldNume.Name = "FieldNume";
             this.FieldNume.TextChanged += new System.EventHandler(this.FieldNume_TextChanged);
+            this.FieldNume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldNume_KeyPress);
             // 
             // FieldPrenume
             // 
@@ -109,6 +110,7 @@
             resources.ApplyResources(this.FieldPrenume, "FieldPrenume");
             this.FieldPrenume.Name = "FieldPrenume";
             this.FieldPrenume.TextChanged += new System.EventHandler(this.FieldPrenume_TextChanged);
+            this.FieldPrenume.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldPrenume_KeyPress);
             // 
             // FieldNrTel
             // 
@@ -117,6 +119,7 @@
             this.FieldNrTel.ForeColor = System.Drawing.Color.Maroon;
             resources.ApplyResources(this.FieldNrTel, "FieldNrTel");
             this.FieldNrTel.Name = "FieldNrTel";
+            this.FieldNrTel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldNrTel_KeyPress);
             // 
             // FieldPass
             // 
@@ -170,16 +173,19 @@
             this.panel2.BackColor = System.Drawing.Color.Snow;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.FieldEmail);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.FieldPrenume);
+            this.panel2.Controls.Add(this.FieldPass);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.FieldNrTel);
+            this.panel2.Controls.Add(this.FieldNume);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             resources.ApplyResources(this.panel2, "panel2");
             this.panel2.Name = "panel2";
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // pictureBox1
             // 
@@ -195,11 +201,7 @@
             this.BackgroundImage = global::ConcediuAngajati.Properties.Resources.BackGroundLogin;
             this.ControlBox = false;
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.FieldEmail);
             this.Controls.Add(this.FieldConfirmPass);
-            this.Controls.Add(this.FieldPass);
-            this.Controls.Add(this.FieldPrenume);
-            this.Controls.Add(this.FieldNume);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

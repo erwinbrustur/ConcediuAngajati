@@ -19,18 +19,13 @@ namespace ConcediuAngajati
 {
     public partial class FormInregistrareIntermediar : Form
     {
-        static readonly HttpClient client = new HttpClient();
-        public string connectionString;
         Angajat angajat;
         public FormInregistrareIntermediar(Angajat a)
         {
             InitializeComponent();
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
             angajat = a;
 
             pbImagineProfil.BackColor = Color.FromArgb(86, 127, 124, 127);
-
-
         }
 
         private void btnX_Click(object sender, EventArgs e)
@@ -135,70 +130,35 @@ namespace ConcediuAngajati
                 dataNastere = "20" + cnp.Substring(1, 6);
             }
 
-            MessageBox.Show(dataNastere);
-
-            
-
-            //response.EnsureSuccessStatusCode();
-            //string responseBody = response.Content.ReadAsString;
-
-            //List<Angajat> listaAngjatiNoi = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
-
 
             Angajat angaj = new Angajat();
             angaj.DataAngajare = DateTime.Now;
             angaj.Nume = angajat.Nume;
             angaj.Prenume = angajat.Prenume;
-            angaj.Cnp = tbCNP.Text;
-            angaj.Serie = tbSerie.Text;
-            angaj.No = tbNumar.Text;
+            angaj.Cnp = cnp;
+            angaj.Serie = serie.ToUpper();
+            angaj.No = numar;
             angaj.Email = angajat.Email;
             angaj.Parola = angajat.Parola;
             angaj.NrTelefon = angajat.NrTelefon;
-            angaj.ManagerId = 30;
-            angaj.DepartamentId = 7 ;
-            angaj.FunctieId = 5;
+            angaj.ManagerId = 1;
+            //angaj.DepartamentId = 7 ;
+            //angaj.FunctieId = 5;
             angaj.concediat = false;
             angaj.Poza = image_array;
+            angaj.EsteAdmin = false;
            
             
             string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
             angaj.DataNasterii = Convert.ToDateTime(dataNormala);
 
-            //HttpClient httpClient = new HttpClient();
+
             string jsonString = JsonConvert.SerializeObject(angaj);
             StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            //HttpClient client = new HttpClient();
             string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
             var response = Globals.client.PutAsync(linkF, stringContent).Result;
-            
 
-
-
-            
-
-            /*SqlConnection conexiune = new SqlConnection(connectionString);
-            string insertSQL = "INSERT INTO Angajat(nume, prenume, email, parola, dataAngajare, dataNasterii, cnp, serie, no, nrTelefon, poza,managerId) VALUES ('" + angajat.Nume + "', '" + angajat.Prenume + "', '" + angajat.Email + "', '" + angajat.Parola + "', getdate(), '" + dataNastere +"', '" + cnp + "', '" +  serie + "', '" + numar + "', '" + angajat.NrTelefon + "', @poza,30)";
-            SqlCommand queryInsert = new SqlCommand(insertSQL);*/
-            /*  try
-              {
-                  conexiune.Open();
-                  queryInsert.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-                  queryInsert.Connection = conexiune;
-                  queryInsert.ExecuteNonQuery();
-
-
-                  MessageBox.Show("Inserare realizata cu succes!");
-              }
-              catch (Exception ex)
-              {
-                  MessageBox.Show(ex.Message);
-              }
-              finally
-              {
-                  conexiune.Close();
-              }*/
-
+            MessageBox.Show("Inregistrare realizata cu succes!");
             this.Close();
             LoginPhase lg = new LoginPhase();
             lg.Show();
@@ -218,6 +178,11 @@ namespace ConcediuAngajati
             {
                 pbImagineProfil.Image = new Bitmap(openFileDialog.FileName);
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

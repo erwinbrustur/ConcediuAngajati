@@ -24,9 +24,7 @@ namespace ConcediuAngajati
    
     public partial class CerereConcediu : Form
     {
-        static readonly HttpClient client = new HttpClient();
         
-        string connectionString;
         List<string> listaInlocuitori;
         int idInlocuitor;
         Angajat userCurent;
@@ -38,84 +36,31 @@ namespace ConcediuAngajati
             InitializeComponent();
             userCurent = a;
 
-           
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
-
             extragereTipConcediuDB();
-
-
-            // cbTipConcediu.SelectedIndex = 0;
-
-            //listaInlocuitori = extragereInlocuitoriEchipaDB();
-            //foreach(string inlocuitor in listaInlocuitori)
-            //{
-            //    string[] str = inlocuitor.Split(',');
-            //    cbInlocuitor.Items.Add(str[1]);
-
-            //}
-
-            //cbInlocuitor.SelectedIndex = 0;
-
-            extragereInlocuitorAsyncDB();
-
-          
+            extragereInlocuitorAsyncDB();  
 
         }
 
-        //public List<string> extragereTipConcediiDB()
-        //{
-        //    List<string> strings = new List<string>();
-        //    string selectSQL = "SELECT * from TipConcediu";
-        //    SqlConnection conexiune = new SqlConnection(connectionString);
-        //    SqlCommand querySelect = new SqlCommand(selectSQL);
-        //    try
-        //    {
-        //        conexiune.Open();
-        //        querySelect.Connection = conexiune;
-        //        SqlDataReader reader = querySelect.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            strings.Add(reader[1].ToString());
-
-        //        }
-
-
-        //        return strings;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        return null;
-        //    }
-        //    finally
-        //    {
-        //        conexiune.Close();
-
-
-        //    }
-
-        //}
         public async void extragereTipConcediuDB()
         {
             try
             {
-                HttpResponseMessage response = await client.GetAsync(String.Format("{0}TipConcediu/GetAllTipConcediu", Globals.apiUrl));
+                HttpResponseMessage response = await Globals.client.GetAsync(String.Format("{0}TipConcediu/GetAllTipConcediu", Globals.apiUrl));
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
 
                 List<TipConcediu> listaTipConcedii = JsonConvert.DeserializeObject<List<TipConcediu>>(responseBody);
 
-                //MessageBox.Show(listaTipConcedii.Count.ToString());
                 cbTipConcediu.DataSource = listaTipConcedii;
                 cbTipConcediu.DisplayMember = "Nume";
                 cbTipConcediu.ValueMember = "Id";
+
+                cbTipConcediu.SelectedItem = null;
                 
             }
             catch (HttpRequestException ex)
             {
                 MessageBox.Show(ex.Message);
-
             }
         }
 
@@ -133,7 +78,8 @@ namespace ConcediuAngajati
                 cbInlocuitor.DataSource = listaInlocuitori;
                 cbInlocuitor.DisplayMember = "Nume";
                 cbInlocuitor.ValueMember = "Id";
-               // cbInlocuitor.SelectedIndex = userCurent.Id;
+
+                cbInlocuitor.SelectedItem = null;
             }
             catch (HttpRequestException ex)
             {
@@ -141,44 +87,7 @@ namespace ConcediuAngajati
 
             }
         }
-        //public List<string> extragereInlocuitoriEchipaDB()
-        //{
-        //    List<string> strings = new List<string>();
 
-        //    string selectSQL = "SELECT * FROM Angajat WHERE managerId =  " + userCurent.ManagerId + "and id <> " + userCurent.Id;
-
-        //    SqlConnection conexiune = new SqlConnection(connectionString);
-        //    SqlCommand querySelect = new SqlCommand(selectSQL);
-        //    try
-        //    {
-        //        conexiune.Open();
-        //        querySelect.Connection = conexiune;
-        //        SqlDataReader reader = querySelect.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            strings.Add(reader[0].ToString() + ", " + reader[1].ToString() + " "  + reader[2].ToString());
-
-        //        }
-
-
-        //        return strings;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //        return null;
-        //    }
-        //    finally
-        //    {
-        //        conexiune.Close();
-
-
-        //    }
-
-        //}
-
-        int zileNegative = 0;
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime inTime = Convert.ToDateTime(dateTimePicker1.Value);
@@ -188,17 +97,11 @@ namespace ConcediuAngajati
             {
                 textBox1.Text = "0";
                 MessageBox.Show("zile de concediu negative");
-              
-
             }
             else
             {
                 textBox1.Text = ZileConcediu(inTime, outTime).ToString();
-
             }
-
-
-
         }
 
         public static int ZileConcediu(DateTime firstDay, DateTime lastDay )
@@ -273,60 +176,6 @@ namespace ConcediuAngajati
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PaginaMea_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        //private void Trimite_Click(object sender, EventArgs e)
-        //{
-        //    string message = "Sigur vrei sa trimiti cererea de concediu?";
-        //    string title = "Cerere concediu";
-        //    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-        //    DialogResult result = MessageBox.Show(message, title, buttons);
-        //    if (result == DialogResult.Yes)
-        //    {
-       
-        //        string message2 = "Cerere de concediu trimisa";
-
-
-        //        DateTime dataInceput = Convert.ToDateTime(dateTimePicker1.Value);
-        //        DateTime dataSfarsit = Convert.ToDateTime(dateTimePicker3.Value);
-
-        //        SqlConnection conexiune = new SqlConnection(connectionString);
-            
-        //        string insertSQL = "INSERT INTO Concediu(tipConcediuId, dataInceput, dataSfarsit, inlocuitorId, comentarii, stareConcediuId, angajatId, ZileConcediu) VALUES('" + (cbTipConcediu.SelectedIndex + 1) + "', '" + dataInceput + "', '" + dataSfarsit + "', '" + idInlocuitor + "', '" + rtbComentarii.Text + "', '1', " + userCurent.Id + ", " + Convert.ToInt32(textBox1.Text) + ")";  
-
-        //        SqlCommand queryInsert = new SqlCommand(insertSQL);
-        //        try
-        //        {
-        //            conexiune.Open();
-        //            queryInsert.Connection = conexiune;
-                    
-        //            queryInsert.ExecuteNonQuery();
-               
-
-        //            DialogResult result2 = MessageBox.Show(message2, title);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            conexiune.Close();
-        //        }
-              
-
-        //    }
-         
-        //}
-
         public async void Trimitere(object sender, EventArgs e)
         {
             string message = "Sigur vrei sa trimiti cererea de concediu?";
@@ -355,7 +204,7 @@ namespace ConcediuAngajati
                 con.AngajatId = userCurent.Id;
                 con.ZileConcediu = Convert.ToInt32(textBox1.Text);
 
-                HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcediiVerificareDate?angajatId={1}", Globals.apiUrl, userCurent.Id));
+                HttpResponseMessage responseDate = await Globals.client.GetAsync(String.Format("{0}Concediu/GetAllIstoricConcediiVerificareDate?angajatId={1}", Globals.apiUrl, userCurent.Id));
                 responseDate.EnsureSuccessStatusCode();
                 string responsivebody = await responseDate.Content.ReadAsStringAsync();
 
@@ -391,7 +240,7 @@ namespace ConcediuAngajati
                 }
 
                 bool InlocuitorNeocupat = true;
-                HttpResponseMessage responseDate2 = await client.GetAsync(String.Format("{0}Concediu/GetConcediiInlocuitori?angajatId={1}", Globals.apiUrl, userCurent.Id));
+                HttpResponseMessage responseDate2 = await Globals.client.GetAsync(String.Format("{0}Concediu/GetConcediiInlocuitori?angajatId={1}", Globals.apiUrl, userCurent.Id));
                 responseDate.EnsureSuccessStatusCode();
                 string responsivebody2 = await responseDate2.Content.ReadAsStringAsync();
 
@@ -438,14 +287,12 @@ namespace ConcediuAngajati
                 else if(mergeInserat == false)
                 {
                     
-                        DialogResult result2 = MessageBox.Show(message3, title);
+                    DialogResult result2 = MessageBox.Show(message3, title);
                     
                 }
                 else if (InlocuitorNeocupat == false)
                 {
-                    
-                        DialogResult result3 = MessageBox.Show(message4, title);
-                    
+                    DialogResult result3 = MessageBox.Show(message4, title);
                 }
 
                 else if (zileRamase == false)
@@ -464,37 +311,12 @@ namespace ConcediuAngajati
             }
         }
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-            
-        }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {    
             cbTipConcediu.DropDownStyle = ComboBoxStyle.DropDown;
+            //MessageBox.Show("cbTipConcediu selected index changed");
         }
 
-    
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void cbInlocuitor_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-             
-            
-        //    foreach(string str in listaInlocuitori)
-        //    {
-        //         string[] s = str.Split(',');
-        //        if (s[1].CompareTo(cbInlocuitor.Text) == 0)
-        //        {
-        //            idInlocuitor = Convert.ToInt32(s[0]);
-                   
-        //        }
-        //    }
-        //}
 
         private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
         {
@@ -513,11 +335,6 @@ namespace ConcediuAngajati
             }
         }
 
-        private void CerereConcediu_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnInchidereCC_Click(object sender, EventArgs e)
         {
             PaginaPrincipala.PaginaPrincipala paginap = new PaginaPrincipala.PaginaPrincipala(userCurent);
@@ -525,26 +342,16 @@ namespace ConcediuAngajati
             this.Close();
         }
 
-        private void textBoxZileRamase_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        
-        private async void cbTipConcediu_SelectedValueChanged(object sender, EventArgs e)
-        {
-          
-           
-        }
 
         private async void cbTipConcediu_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            //MessageBox.Show("cbTipConcediu");
             int tipConcediuId = Convert.ToInt32(cbTipConcediu.SelectedValue);
-            HttpResponseMessage responseDate = await client.GetAsync(String.Format("{0}Concediu/GetNumarZileConcediuRamase?tipConcediuId={1}&angajatId={2}", Globals.apiUrl, tipConcediuId, userCurent.Id));
+            HttpResponseMessage responseDate = await Globals.client.GetAsync(String.Format("{0}Concediu/GetNumarZileConcediuRamase?tipConcediuId={1}&angajatId={2}", Globals.apiUrl, tipConcediuId, userCurent.Id));
             responseDate.EnsureSuccessStatusCode();
             string responsivebody = await responseDate.Content.ReadAsStringAsync();
 
-
+            //MessageBox.Show(responsivebody);
             textBoxZileRamase.Text = responsivebody;     
 
         }

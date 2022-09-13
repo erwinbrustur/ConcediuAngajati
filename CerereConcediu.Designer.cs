@@ -52,6 +52,7 @@
             this.btnInchidereCC = new System.Windows.Forms.Button();
             this.textBoxZileRamase = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,24 +61,22 @@
             this.PaginaMea.BackColor = System.Drawing.Color.Transparent;
             this.PaginaMea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PaginaMea.ForeColor = System.Drawing.Color.White;
-            this.PaginaMea.Location = new System.Drawing.Point(29, 11);
-            this.PaginaMea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PaginaMea.Location = new System.Drawing.Point(33, 15);
             this.PaginaMea.Name = "PaginaMea";
-            this.PaginaMea.Size = new System.Drawing.Size(88, 23);
+            this.PaginaMea.Size = new System.Drawing.Size(101, 31);
             this.PaginaMea.TabIndex = 0;
             this.PaginaMea.Text = "Pagina mea";
             this.PaginaMea.UseVisualStyleBackColor = false;
             this.PaginaMea.Click += new System.EventHandler(this.PaginaMea_Click_1);
-            this.PaginaMea.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PaginaMea_MouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 45);
+            this.label1.Location = new System.Drawing.Point(33, 114);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 15);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tip concediu :";
             // 
@@ -88,9 +87,10 @@
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.DarkSalmon;
             this.dateTimePicker1.CalendarTitleForeColor = System.Drawing.Color.Maroon;
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.Color.DarkSalmon;
-            this.dateTimePicker1.Location = new System.Drawing.Point(175, 65);
+            this.dateTimePicker1.Location = new System.Drawing.Point(199, 141);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker1.Size = new System.Drawing.Size(228, 27);
             this.dateTimePicker1.TabIndex = 3;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
@@ -98,7 +98,7 @@
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(415, 41);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 27);
             this.dateTimePicker2.TabIndex = 4;
             // 
             // Trimite
@@ -106,10 +106,9 @@
             this.Trimite.BackColor = System.Drawing.Color.Transparent;
             this.Trimite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Trimite.ForeColor = System.Drawing.Color.White;
-            this.Trimite.Location = new System.Drawing.Point(638, 300);
-            this.Trimite.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Trimite.Location = new System.Drawing.Point(836, 502);
             this.Trimite.Name = "Trimite";
-            this.Trimite.Size = new System.Drawing.Size(75, 23);
+            this.Trimite.Size = new System.Drawing.Size(86, 31);
             this.Trimite.TabIndex = 5;
             this.Trimite.Text = "Trimite";
             this.Trimite.UseVisualStyleBackColor = false;
@@ -124,53 +123,51 @@
             this.medicalToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowCheckMargin = true;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(139, 70);
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 76);
             // 
             // odihnaToolStripMenuItem
             // 
             this.odihnaToolStripMenuItem.Name = "odihnaToolStripMenuItem";
-            this.odihnaToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.odihnaToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.odihnaToolStripMenuItem.Text = "Odihna";
             // 
             // remoteToolStripMenuItem
             // 
             this.remoteToolStripMenuItem.Name = "remoteToolStripMenuItem";
-            this.remoteToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.remoteToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.remoteToolStripMenuItem.Text = "Remote";
             // 
             // medicalToolStripMenuItem
             // 
             this.medicalToolStripMenuItem.Name = "medicalToolStripMenuItem";
-            this.medicalToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.medicalToolStripMenuItem.Size = new System.Drawing.Size(153, 24);
             this.medicalToolStripMenuItem.Text = "Medical";
             // 
             // cbTipConcediu
             // 
-            this.cbTipConcediu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
+            this.cbTipConcediu.BackColor = System.Drawing.Color.White;
             this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.cbTipConcediu.ForeColor = System.Drawing.Color.White;
+            this.cbTipConcediu.ForeColor = System.Drawing.Color.Black;
             this.cbTipConcediu.FormattingEnabled = true;
-            this.cbTipConcediu.Location = new System.Drawing.Point(29, 65);
+            this.cbTipConcediu.Location = new System.Drawing.Point(32, 141);
+            this.cbTipConcediu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbTipConcediu.Name = "cbTipConcediu";
-            this.cbTipConcediu.Size = new System.Drawing.Size(121, 23);
+            this.cbTipConcediu.Size = new System.Drawing.Size(138, 28);
             this.cbTipConcediu.TabIndex = 7;
             this.cbTipConcediu.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cbTipConcediu.SelectionChangeCommitted += new System.EventHandler(this.cbTipConcediu_SelectionChangeCommitted);
-            this.cbTipConcediu.SelectedValueChanged += new System.EventHandler(this.cbTipConcediu_SelectedValueChanged);
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
+            this.textBox1.BackColor = System.Drawing.Color.White;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(638, 146);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(728, 249);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(115, 23);
+            this.textBox1.Size = new System.Drawing.Size(131, 31);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "0";
             // 
@@ -179,20 +176,21 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(634, 116);
+            this.label2.Location = new System.Drawing.Point(724, 209);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 15);
+            this.label2.Size = new System.Drawing.Size(156, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = " Numar zile concediu :";
             // 
             // cbInlocuitor
             // 
-            this.cbInlocuitor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
-            this.cbInlocuitor.ForeColor = System.Drawing.Color.White;
+            this.cbInlocuitor.BackColor = System.Drawing.Color.White;
+            this.cbInlocuitor.ForeColor = System.Drawing.Color.Black;
             this.cbInlocuitor.FormattingEnabled = true;
-            this.cbInlocuitor.Location = new System.Drawing.Point(638, 65);
+            this.cbInlocuitor.Location = new System.Drawing.Point(728, 141);
+            this.cbInlocuitor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbInlocuitor.Name = "cbInlocuitor";
-            this.cbInlocuitor.Size = new System.Drawing.Size(121, 23);
+            this.cbInlocuitor.Size = new System.Drawing.Size(138, 28);
             this.cbInlocuitor.TabIndex = 10;
             // 
             // label3
@@ -200,32 +198,30 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(638, 44);
+            this.label3.Location = new System.Drawing.Point(728, 113);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 11;
             this.label3.Text = "Inlocuitor :";
             // 
             // rtbComentarii
             // 
-            this.rtbComentarii.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
-            this.rtbComentarii.ForeColor = System.Drawing.Color.White;
-            this.rtbComentarii.Location = new System.Drawing.Point(3, 213);
-            this.rtbComentarii.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.rtbComentarii.BackColor = System.Drawing.Color.White;
+            this.rtbComentarii.ForeColor = System.Drawing.Color.Black;
+            this.rtbComentarii.Location = new System.Drawing.Point(2, 338);
             this.rtbComentarii.Name = "rtbComentarii";
-            this.rtbComentarii.Size = new System.Drawing.Size(811, 50);
+            this.rtbComentarii.Size = new System.Drawing.Size(926, 65);
             this.rtbComentarii.TabIndex = 12;
             this.rtbComentarii.Text = "";
-            this.rtbComentarii.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(3, 181);
+            this.label4.Location = new System.Drawing.Point(2, 295);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(72, 15);
+            this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 13;
             this.label4.Text = "Comentarii :";
             // 
@@ -234,9 +230,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(175, 44);
+            this.label5.Location = new System.Drawing.Point(199, 113);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
+            this.label5.Size = new System.Drawing.Size(51, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "De la :";
             // 
@@ -245,18 +241,17 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(392, 42);
+            this.label6.Location = new System.Drawing.Point(447, 110);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 15);
+            this.label6.Size = new System.Drawing.Size(63, 20);
             this.label6.TabIndex = 15;
             this.label6.Text = "Pana la :";
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(392, 65);
-            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dateTimePicker3.Location = new System.Drawing.Point(447, 141);
             this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(200, 23);
+            this.dateTimePicker3.Size = new System.Drawing.Size(228, 27);
             this.dateTimePicker3.TabIndex = 16;
             this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
@@ -269,41 +264,53 @@
             this.btnInchidereCC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchidereCC.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchidereCC.ForeColor = System.Drawing.Color.Transparent;
-            this.btnInchidereCC.Location = new System.Drawing.Point(789, 5);
-            this.btnInchidereCC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInchidereCC.Location = new System.Drawing.Point(902, 7);
             this.btnInchidereCC.Name = "btnInchidereCC";
-            this.btnInchidereCC.Size = new System.Drawing.Size(25, 24);
+            this.btnInchidereCC.Size = new System.Drawing.Size(29, 32);
             this.btnInchidereCC.TabIndex = 17;
             this.btnInchidereCC.UseVisualStyleBackColor = false;
             this.btnInchidereCC.Click += new System.EventHandler(this.btnInchidereCC_Click);
             // 
             // textBoxZileRamase
             // 
-            this.textBoxZileRamase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(133)))), ((int)(((byte)(34)))), ((int)(((byte)(58)))));
-            this.textBoxZileRamase.Location = new System.Drawing.Point(29, 146);
+            this.textBoxZileRamase.BackColor = System.Drawing.Color.White;
+            this.textBoxZileRamase.Location = new System.Drawing.Point(32, 249);
+            this.textBoxZileRamase.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxZileRamase.Name = "textBoxZileRamase";
-            this.textBoxZileRamase.Size = new System.Drawing.Size(121, 23);
+            this.textBoxZileRamase.Size = new System.Drawing.Size(138, 27);
             this.textBoxZileRamase.TabIndex = 18;
-            this.textBoxZileRamase.TextChanged += new System.EventHandler(this.textBoxZileRamase_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(29, 113);
+            this.label7.Location = new System.Drawing.Point(32, 205);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(130, 15);
+            this.label7.Size = new System.Drawing.Size(163, 20);
             this.label7.TabIndex = 19;
             this.label7.Text = "Zile Concediu Ramase: ";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Historic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(302, 37);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(218, 38);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Creare concediu";
+            // 
             // CerereConcediu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(817, 426);
+            this.ClientSize = new System.Drawing.Size(934, 568);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxZileRamase);
             this.Controls.Add(this.btnInchidereCC);
@@ -323,9 +330,10 @@
             this.Controls.Add(this.PaginaMea);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CerereConcediu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CerereConcediu";
-            this.Load += new System.EventHandler(this.CerereConcediu_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -356,5 +364,6 @@
         private Button btnInchidereCC;
         private TextBox textBoxZileRamase;
         private Label label7;
+        private Label label8;
     }
 }

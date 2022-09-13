@@ -16,13 +16,11 @@ namespace ConcediuAngajati
     {
         static readonly HttpClient client = new HttpClient();
         Angajat angajat;
-        string connectionString;
         string numeComplet;
         
         public PaginaMea(Angajat a)
         {
             InitializeComponent();
-            connectionString = @"Data Source=ts2112\SQLEXPRESS;Initial Catalog=StrangerThings;User ID=internship2022;Password=int";
 
             angajat = a;
             extragereFunctieAsyncDB();
@@ -60,7 +58,6 @@ namespace ConcediuAngajati
             dataS = dataAngajare.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             tbDataAngajare.Text = dataS;
-            byte[] image_array = a.Poza;
 
             MemoryStream ms = new MemoryStream(a.Poza);
             pbImagineProfil.Image = Image.FromStream(ms);
@@ -68,61 +65,37 @@ namespace ConcediuAngajati
 
         }
 
-        //private void extractFunctieDepartament()
-        //{
-        //    string selectSQL = "SELECT d.Denumire AS Departament, f.Denumire AS Functie, a.departamentId, a.functieId FROM Angajat a JOIN Departament d ON d.id = a.departamentId JOIN Functie f ON f.id = a.functieId WHERE a.id = " + angajat.Id;
-        //    SqlConnection conexiune = new SqlConnection(connectionString);
-        //    SqlCommand querySelect = new SqlCommand(selectSQL);
-        //    try
-        //    {
-        //        conexiune.Open();
-        //        querySelect.Connection = conexiune;
-        //        SqlDataReader reader = querySelect.ExecuteReader();
-
-        //        while (reader.Read())
-        //        {
-        //            numeComplet = reader[0].ToString() + "," + reader[1].ToString();
-        //            angajat.DepartamentId = Convert.ToInt32(reader[2]);
-        //            angajat.FunctieId = Convert.ToInt32(reader[3]);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        conexiune.Close();
-        //    }
-        //}
-
         private async void extragereFunctieAsyncDB()
         {
-            try
+            if (angajat.Functie != null && angajat.Departament != null)
             {
-
-                HttpResponseMessage response = await client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetFunctieDepartament?angajatId={1}", Globals.apiUrl, angajat.Id));
-                response.EnsureSuccessStatusCode();
-                string responsivebody = await response.Content.ReadAsStringAsync();
-
-                List<Angajat> angajatul = JsonConvert.DeserializeObject<List<Angajat>>(responsivebody);
-                foreach (Angajat a in angajatul)
+                try
                 {
-                    tbDepartament.Text = a.Departament.Denumire;
-                    tbFunctie.Text = a.Functie.Denumire;
+
+                    HttpResponseMessage response = await client.GetAsync(String.Format("{0}DepartamentSiFunctie/GetFunctieDepartament?angajatId={1}", Globals.apiUrl, angajat.Id));
+                    response.EnsureSuccessStatusCode();
+                    string responsivebody = await response.Content.ReadAsStringAsync();
+
+                    List<Angajat> angajatul = JsonConvert.DeserializeObject<List<Angajat>>(responsivebody);
+                    foreach (Angajat a in angajatul)
+                    {
+                        tbDepartament.Text = a.Departament.Denumire;
+                        tbFunctie.Text = a.Functie.Denumire;
+                    }
+
+
                 }
-
-
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+
         }
 
         private void btnX_Click(object sender, EventArgs e)
         {
-            Environment.Exit(1);
+            this.Close();
         }
 
         private void meniuToolStripMenuItemAcasa_Click(object sender, EventArgs e)
@@ -139,49 +112,6 @@ namespace ConcediuAngajati
             this.Close();
         }
 
-        //private void btnActualizareDate_Click(object sender, EventArgs e)
-        //{
-        //    if (!isReadOnly && btnActualizareDate.Text.Equals("Actualizeaza")){
-        //        string nrTel = tbNrTelefon.Text;
-
-        //        MemoryStream ms = new MemoryStream();
-        //        pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
-        //        byte[] image_array = new byte[ms.Length];
-        //        ms.Position = 0;
-        //        ms.Read(image_array, 0, image_array.Length);
-
-        //        SqlConnection conexiune = new SqlConnection(connectionString);
-        //        string updateSQL = "UPDATE Angajat SET nrTelefon = '" + nrTel + "', poza = @poza WHERE id = " + angajat.Id;
-
-        //        SqlCommand queryUpdate = new SqlCommand(updateSQL, conexiune);
-        //        try
-        //        {
-        //            conexiune.Open();
-        //            queryUpdate.Parameters.Add("@poza", SqlDbType.VarBinary).Value = image_array;
-        //            queryUpdate.ExecuteNonQuery();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            MessageBox.Show(ex.Message);
-        //        }
-        //        finally
-        //        {
-        //            conexiune.Close();
-        //            MessageBox.Show("Actualizare realizata cu succes!");
-        //            btnActualizareDate.Text = "Actualizare date";
-        //            tbNrTelefon.ReadOnly = true;
-        //            isReadOnly = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        tbNrTelefon.ReadOnly = false;
-        //        isReadOnly = false;
-        //        btnActualizareDate.Text = "Actualizeaza";
-        //    }
-
-        //}
-
         private void ActualizeazaDate(object sender, EventArgs e)
         {
                
@@ -197,7 +127,6 @@ namespace ConcediuAngajati
             angajat.NrTelefon = nrTel;
             if (tbNrTelefon.Text.Length == 10)
             {
-
 
                 try
                 {
@@ -220,9 +149,6 @@ namespace ConcediuAngajati
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-
-
             }
             else
             {

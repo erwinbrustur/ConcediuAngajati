@@ -56,10 +56,9 @@
             this.columnHeader6});
             this.listView1.ForeColor = System.Drawing.Color.Maroon;
             this.listView1.GridLines = true;
-            this.listView1.Location = new System.Drawing.Point(18, 47);
-            this.listView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.listView1.Location = new System.Drawing.Point(21, 63);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(704, 239);
+            this.listView1.Size = new System.Drawing.Size(804, 317);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -105,9 +104,9 @@
             this.lblIstoric.BackColor = System.Drawing.Color.Transparent;
             this.lblIstoric.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblIstoric.ForeColor = System.Drawing.Color.Black;
-            this.lblIstoric.Location = new System.Drawing.Point(263, 7);
+            this.lblIstoric.Location = new System.Drawing.Point(301, 9);
             this.lblIstoric.Name = "lblIstoric";
-            this.lblIstoric.Size = new System.Drawing.Size(175, 38);
+            this.lblIstoric.Size = new System.Drawing.Size(200, 51);
             this.lblIstoric.TabIndex = 4;
             this.lblIstoric.Text = "Istoric Concedii";
             this.lblIstoric.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -122,10 +121,9 @@
             this.btnInchidere.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInchidere.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnInchidere.ForeColor = System.Drawing.Color.Transparent;
-            this.btnInchidere.Location = new System.Drawing.Point(813, 7);
-            this.btnInchidere.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInchidere.Location = new System.Drawing.Point(929, 9);
             this.btnInchidere.Name = "btnInchidere";
-            this.btnInchidere.Size = new System.Drawing.Size(25, 24);
+            this.btnInchidere.Size = new System.Drawing.Size(29, 32);
             this.btnInchidere.TabIndex = 5;
             this.btnInchidere.UseVisualStyleBackColor = false;
             this.btnInchidere.Click += new System.EventHandler(this.btnInchidere_Click);
@@ -133,27 +131,28 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Location = new System.Drawing.Point(18, 304);
+            this.panel1.Location = new System.Drawing.Point(21, 405);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(820, 55);
+            this.panel1.Size = new System.Drawing.Size(937, 73);
             this.panel1.TabIndex = 6;
             // 
             // IstoricConcedii
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(850, 371);
+            this.ClientSize = new System.Drawing.Size(971, 495);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnInchidere);
             this.Controls.Add(this.lblIstoric);
             this.Controls.Add(this.listView1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IstoricConcedii";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IstoricConcedii";
             this.Load += new System.EventHandler(this.IstoricConcedii_Load);
             this.ResumeLayout(false);

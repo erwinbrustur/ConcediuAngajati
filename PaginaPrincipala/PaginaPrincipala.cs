@@ -18,16 +18,6 @@ namespace ConcediuAngajati.PaginaPrincipala
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Concedii_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private bool esteInchis1;
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -102,7 +92,7 @@ namespace ConcediuAngajati.PaginaPrincipala
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
             PaginaMea pg = new PaginaMea(angajat);
             pg.Show();
 
