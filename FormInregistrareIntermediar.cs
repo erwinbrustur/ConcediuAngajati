@@ -20,6 +20,7 @@ namespace ConcediuAngajati
     public partial class FormInregistrareIntermediar : Form
     {
         Angajat angajat;
+        bool validari = true;
         public FormInregistrareIntermediar(Angajat a)
         {
             InitializeComponent();
@@ -68,100 +69,167 @@ namespace ConcediuAngajati
 
         private void tbCNP_Validating(object sender, CancelEventArgs e)
         {
-            string cnp = ((TextBox)sender).Text;
-            var strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
-            Regex regex = new Regex(strRegex);
-            if (!regex.IsMatch(cnp))
-            {
-                errorProvider1.SetError(tbCNP, "CNP invalid!");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
+            //string cnp = ((TextBox)sender).Text;
+            //var strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+            //Regex regex = new Regex(strRegex);
+            //if (!regex.IsMatch(cnp))
+            //{
+            //    errorProvider1.SetError(tbCNP, "CNP invalid!");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
         }
 
         private void tbSerie_Validating(object sender, CancelEventArgs e)
         {
-            string serie = ((TextBox)sender).Text;
-            if (serie.Length != 2)
-            {
-                errorProvider1.SetError(tbSerie, "Serie invalida! Seria trebuie sa contina 2 caractere!");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
+            //string serie = ((TextBox)sender).Text;
+            //if (serie.Length != 2)
+            //{
+            //    errorProvider1.SetError(tbSerie, "Serie invalida! Seria trebuie sa contina 2 caractere!");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
         }
 
         private void tbNumar_Validating(object sender, CancelEventArgs e)
         {
-            string serie = ((TextBox)sender).Text;
-            if (serie.Length != 6)
-            {
-                errorProvider1.SetError(tbNumar, "Numar invalid! Numarul trebuie sa contina 6 cifre!");
-            }
-            else
-            {
-                errorProvider1.Clear();
-            }
+            //string numar = ((TextBox)sender).Text;
+            //if (numar.Length != 6)
+            //{
+            //    errorProvider1.SetError(tbNumar, "Numar invalid! Numarul trebuie sa contina 6 cifre!");
+            //}
+            //else
+            //{
+            //    errorProvider1.Clear();
+            //}
         }
 
         private  void btnInregistrare_Click(object sender, EventArgs e)
         {
-            string cnp = tbCNP.Text;
-            string numar = tbNumar.Text;
-            string serie = tbSerie.Text;
-            string dataNastere;
+            string cnp;
+            string numar;
+            string serie;
+            string dataNastere = "";
 
-            MemoryStream ms = new MemoryStream();
-            pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
-            byte[] image_array = new byte[ms.Length];
-            ms.Position = 0;
-            ms.Read(image_array, 0, image_array.Length);
+            errorProvider1.Clear();
 
-            
-
-            if (cnp.IndexOf('1') == 0 || cnp.IndexOf('2') == 0) {
-                dataNastere = "19" + cnp.Substring(1, 6);
+            if (tbCNP.Text.Equals(""))
+            {
+                errorProvider1.SetError(tbCNP, "CNP-ul este obligatoriu!");
             }
             else
             {
-                dataNastere = "20" + cnp.Substring(1, 6);
+                cnp = tbCNP.Text;
+                var strRegex = "^[1256]\\d{2}(0[1-9]|1[0-2])(0[1-9]|[12]\\d|3[01])(0[1-9]|[1-4]\\d|5[0-2]|99)(00[1-9]|0[1-9]\\d|[1-9]\\d\\d)\\d$";
+                Regex regex = new Regex(strRegex);
+                if (!regex.IsMatch(cnp))
+                {
+                    errorProvider1.SetError(tbCNP, "CNP invalid!");
+                }
+
+                if (tbSerie.Text.Equals(""))
+                {
+                    errorProvider1.SetError(tbSerie, "Serie este obligatorie!");
+                }
+                else
+                {
+                    serie = tbSerie.Text;
+                    if (serie.Length != 2)
+                    {
+                        errorProvider1.SetError(tbSerie, "Serie invalida! Seria trebuie sa contina 2 caractere!");
+                    }
+
+
+                    if (tbNumar.Text.Equals(""))
+                    {
+                        errorProvider1.SetError(tbNumar, "Numarul este obligatoriu!");
+                    }
+                    else
+                    {
+                        numar = tbNumar.Text;
+                        if (numar.Length != 6)
+                        {
+                            errorProvider1.SetError(tbNumar, "Numar invalid! Numarul trebuie sa contina 6 cifre!");
+                        }
+                        else
+                        {
+
+                            MemoryStream ms = new MemoryStream();
+                            pbImagineProfil.Image.Save(ms, ImageFormat.Jpeg);
+                            byte[] image_array = new byte[ms.Length];
+                            ms.Position = 0;
+                            ms.Read(image_array, 0, image_array.Length);
+
+
+                            if (cnp.IndexOf('1') == 0 || cnp.IndexOf('2') == 0)
+                            {
+                                dataNastere = "19" + cnp.Substring(1, 6);
+                            }
+                            else if (cnp.IndexOf('5') == 0 || cnp.IndexOf('6') == 0)
+                            {
+                                dataNastere = "20" + cnp.Substring(1, 6);
+                            }
+                            //else if (cnp.IndexOf('3') == 0 || cnp.IndexOf('4') == 0)
+                            //{
+                            //    dataNastere = "18" + cnp.Substring(1, 6);
+                            //}
+                            else
+                            {
+                                errorProvider1.SetError(tbCNP, "Cnp invalid! Prima cifra din cnp invalida!");
+                            }
+
+                            if(errorProvider1.GetError == null)
+                            {
+                                MessageBox.Show("aici");
+                                Angajat angaj = new Angajat();
+                                angaj.DataAngajare = DateTime.Now;
+                                angaj.Nume = angajat.Nume;
+                                angaj.Prenume = angajat.Prenume;
+                                angaj.Cnp = cnp;
+                                angaj.Serie = serie.ToUpper();
+                                angaj.No = numar;
+                                angaj.Email = angajat.Email;
+                                angaj.Parola = angajat.Parola;
+                                angaj.NrTelefon = angajat.NrTelefon;
+                                angaj.ManagerId = 30;
+                                angaj.DepartamentId = 7;
+                                angaj.FunctieId = 5;
+                                angaj.concediat = false;
+                                angaj.Poza = image_array;
+                                angaj.EsteAdmin = false;
+
+
+                                string dataNormala = (dataNastere.Substring(4, 2) + "/" + dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
+                                angaj.DataNasterii = Convert.ToDateTime(dataNormala);
+
+
+                                string jsonString = JsonConvert.SerializeObject(angaj);
+                                StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
+                                string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
+                                var response = Globals.client.PutAsync(linkF, stringContent).Result;
+
+                                MessageBox.Show("Inregistrare realizata cu succes!");
+                                this.Close();
+                                LoginPhase lg = new LoginPhase();
+                                lg.Show();
+                            }
+                           
+                        }
+
+                    }
+                }
+                
             }
 
 
-            Angajat angaj = new Angajat();
-            angaj.DataAngajare = DateTime.Now;
-            angaj.Nume = angajat.Nume;
-            angaj.Prenume = angajat.Prenume;
-            angaj.Cnp = cnp;
-            angaj.Serie = serie.ToUpper();
-            angaj.No = numar;
-            angaj.Email = angajat.Email;
-            angaj.Parola = angajat.Parola;
-            angaj.NrTelefon = angajat.NrTelefon;
-            angaj.ManagerId = 30;
-            angaj.DepartamentId = 7;
-            angaj.FunctieId = 5;
-            angaj.concediat = false;
-            angaj.Poza = image_array;
-            angaj.EsteAdmin = false;
-           
-            
-            string dataNormala = (dataNastere.Substring(4, 2) + "/" +dataNastere.Substring(6, 2) + "/" + dataNastere.Substring(0, 4));
-            angaj.DataNasterii = Convert.ToDateTime(dataNormala);
 
 
-            string jsonString = JsonConvert.SerializeObject(angaj);
-            StringContent stringContent = new StringContent(jsonString, Encoding.UTF8, "application/json");
-            string linkF = String.Format("{0}Orice/PutNewAngajat", Globals.apiUrl);
-            var response = Globals.client.PutAsync(linkF, stringContent).Result;
 
-            MessageBox.Show("Inregistrare realizata cu succes!");
-            this.Close();
-            LoginPhase lg = new LoginPhase();
-            lg.Show();
+
         }
 
         private void btnInapoi_Click(object sender, EventArgs e)

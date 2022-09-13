@@ -464,7 +464,7 @@
             this.panelModificareManageri.Location = new System.Drawing.Point(0, 153);
             this.panelModificareManageri.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelModificareManageri.Name = "panelModificareManageri";
-            this.panelModificareManageri.Size = new System.Drawing.Size(1070, 487);
+            this.panelModificareManageri.Size = new System.Drawing.Size(1070, 488);
             this.panelModificareManageri.TabIndex = 4;
             this.panelModificareManageri.Paint += new System.Windows.Forms.PaintEventHandler(this.panelModificareManageri_Paint);
             // 
@@ -525,6 +525,7 @@
             // FunctieManager
             // 
             this.FunctieManager.BackColor = System.Drawing.Color.SeaShell;
+            this.FunctieManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FunctieManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FunctieManager.ForeColor = System.Drawing.Color.Maroon;
             this.FunctieManager.FormattingEnabled = true;
@@ -548,6 +549,7 @@
             // FunctieAngajat
             // 
             this.FunctieAngajat.BackColor = System.Drawing.Color.SeaShell;
+            this.FunctieAngajat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.FunctieAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.FunctieAngajat.ForeColor = System.Drawing.Color.Maroon;
             this.FunctieAngajat.FormattingEnabled = true;
@@ -560,6 +562,7 @@
             // Functiefunctie
             // 
             this.Functiefunctie.BackColor = System.Drawing.Color.SeaShell;
+            this.Functiefunctie.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Functiefunctie.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Functiefunctie.ForeColor = System.Drawing.Color.Maroon;
             this.Functiefunctie.FormattingEnabled = true;
@@ -608,6 +611,7 @@
             // comboBox5
             // 
             this.comboBox5.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox5.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox5.FormattingEnabled = true;
@@ -649,6 +653,7 @@
             // comboBox4
             // 
             this.comboBox4.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox4.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox4.FormattingEnabled = true;
@@ -727,6 +732,7 @@
             // DepartamentManager
             // 
             this.DepartamentManager.BackColor = System.Drawing.Color.SeaShell;
+            this.DepartamentManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartamentManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentManager.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentManager.FormattingEnabled = true;
@@ -750,6 +756,7 @@
             // DepartamentAngajat
             // 
             this.DepartamentAngajat.BackColor = System.Drawing.Color.SeaShell;
+            this.DepartamentAngajat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartamentAngajat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentAngajat.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentAngajat.FormattingEnabled = true;
@@ -762,6 +769,7 @@
             // DepartamentDepartament
             // 
             this.DepartamentDepartament.BackColor = System.Drawing.Color.SeaShell;
+            this.DepartamentDepartament.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DepartamentDepartament.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DepartamentDepartament.ForeColor = System.Drawing.Color.Maroon;
             this.DepartamentDepartament.FormattingEnabled = true;
@@ -791,6 +799,7 @@
             // comboBox6
             // 
             this.comboBox6.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox6.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox6.FormattingEnabled = true;
@@ -882,6 +891,7 @@
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox1.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox1.FormattingEnabled = true;
@@ -905,6 +915,7 @@
             // comboBox2
             // 
             this.comboBox2.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox2.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox2.FormattingEnabled = true;
@@ -918,6 +929,7 @@
             // comboBox3
             // 
             this.comboBox3.BackColor = System.Drawing.Color.SeaShell;
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBox3.ForeColor = System.Drawing.Color.Maroon;
             this.comboBox3.FormattingEnabled = true;
@@ -935,7 +947,7 @@
             this.panelConcediere.Location = new System.Drawing.Point(0, 153);
             this.panelConcediere.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelConcediere.Name = "panelConcediere";
-            this.panelConcediere.Size = new System.Drawing.Size(1073, 487);
+            this.panelConcediere.Size = new System.Drawing.Size(1073, 488);
             this.panelConcediere.TabIndex = 9;
             // 
             // groupBox5
@@ -974,6 +986,7 @@
             // angajatConcediat
             // 
             this.angajatConcediat.BackColor = System.Drawing.Color.SeaShell;
+            this.angajatConcediat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.angajatConcediat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.angajatConcediat.ForeColor = System.Drawing.Color.Maroon;
             this.angajatConcediat.FormattingEnabled = true;
@@ -1004,9 +1017,9 @@
             // concediereManager
             // 
             this.concediereManager.BackColor = System.Drawing.Color.SeaShell;
+            this.concediereManager.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.concediereManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.concediereManager.ForeColor = System.Drawing.Color.Maroon;
-            this.concediereManager.FormattingEnabled = true;
             this.concediereManager.Location = new System.Drawing.Point(133, 40);
             this.concediereManager.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.concediereManager.Name = "concediereManager";
