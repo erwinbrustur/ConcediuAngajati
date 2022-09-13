@@ -60,7 +60,7 @@ namespace ConcediuAngajati
                 string responsivebody = await response.Content.ReadAsStringAsync();
                 angajat = JsonConvert.DeserializeObject<Angajat>(responsivebody);
 
-                if (angajat != null)
+                if (angajat != null && angajat.concediat == false)
                 {
                     //Comenteaza urmatoarele 3 randuri cand activezi 2Fa
                     PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
