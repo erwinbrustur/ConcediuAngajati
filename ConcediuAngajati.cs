@@ -67,6 +67,7 @@ namespace ConcediuAngajati
                 btn.Height = 30;
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackColor = Color.Transparent;
+                btn.ForeColor = Color.White;
                 btn.Click += btn_click;
                 panel1.Controls.Add(btn);
                 x += 30;
@@ -357,6 +358,11 @@ namespace ConcediuAngajati
             PaginaPrincipala.PaginaPrincipala pp = new PaginaPrincipala.PaginaPrincipala(angajat);
             pp.Show();
             this.Close();
+        }
+
+        private void btnInainte_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 

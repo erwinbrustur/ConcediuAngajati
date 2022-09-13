@@ -18,15 +18,11 @@ namespace ConcediuAngajati
 {
     public partial class TotiAngajatii : Form
     {
-        static readonly HttpClient client = new HttpClient();
-        string connectionString;
-        List<string> listaStare;
-        List<string> angajatistring;
         int idAngajatSelectat;
         int stareConcediuId;
         int idConcediu;
         Angajat angajat;
-        int AngajatiAfisat = 17;
+        int AngajatiAfisat = 15;
         int NumarInregistrari;
 
         public TotiAngajatii(Angajat a)
@@ -165,7 +161,13 @@ namespace ConcediuAngajati
 
         private void listView1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            foreach(ListViewItem itm in listView1.SelectedItems)
+            {
+                idAngajatSelectat = Convert.ToInt32(itm.Tag);
+                PaginaMea formPM = new PaginaMea(angajat, idAngajatSelectat);
+                formPM.ShowDialog();
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -265,7 +267,7 @@ namespace ConcediuAngajati
                 ListViewItem item = new ListViewItem(a.Nume.ToString());//Nume
 
                 //MessageBox.Show(a.Nume);
-                item.SubItems.Add(a.Prenume.ToString());//Prenume
+                item.SubItems.Add(a.Prenume);//Prenume
                 if (a.Email != null)
                 {
                     item.SubItems.Add(a.Email.ToString());//Email
@@ -276,6 +278,7 @@ namespace ConcediuAngajati
                 }
                 item.SubItems.Add((a.Manager.Nume + ' ' + a.Manager.Prenume).ToString());//Manager                                             
                 item.SubItems.Add(a.Departament.Denumire);//Departament
+                item.Tag = a.Id;
 
 
 
