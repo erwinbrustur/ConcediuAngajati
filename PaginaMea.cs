@@ -73,9 +73,16 @@ namespace ConcediuAngajati
             }
 
             tbNrTelefon.Text = a.NrTelefon;
-            //  string[] tokens = numeComplet.Split(',');
-            //tbFunctie.Text = a.Functie.Denumire;
-            //tbDepartament.Text = a.Departament.Denumire;
+
+            if(a.Functie != null)
+            {
+                tbFunctie.Text = a.Functie.Denumire;
+            }
+            if (a.Functie != null)
+            {
+                tbDepartament.Text = a.Departament.Denumire;
+            }
+
 
             DateTime dataAngajare = Convert.ToDateTime(a.DataAngajare.ToString(), System.Globalization.CultureInfo.GetCultureInfo("en-US").DateTimeFormat);
             dataS = dataAngajare.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
