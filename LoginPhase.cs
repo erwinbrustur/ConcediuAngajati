@@ -21,7 +21,7 @@ namespace ConcediuAngajati
     public partial class LoginPhase : Form
     {
 
-
+        bool ok = false;
         Angajat angajat;
         int GeneratedCode;
         string AuthCode;
@@ -60,13 +60,13 @@ namespace ConcediuAngajati
                 string responsivebody = await response.Content.ReadAsStringAsync();
                 angajat = JsonConvert.DeserializeObject<Angajat>(responsivebody);
 
-                if (angajat != null && angajat.concediat == false)
+                if (angajat != null && angajat.concediat == false&&!ok)
                 {
                     //Comenteaza urmatoarele 3 randuri cand activezi 2Fa
-                   // PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
-                  //  ppg.Show();
-                   // this.Hide();
-
+                    // PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+                    //  ppg.Show();
+                    // this.Hide();
+                    ok = true;
                     GeneratedCode=0;
                      int CodeLength = 4;
 
@@ -181,10 +181,5 @@ namespace ConcediuAngajati
                 MessageBox.Show("Eroare: Cod Gresit!");
             }
             }
-
-        private void LoginPhase_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
     }
 }

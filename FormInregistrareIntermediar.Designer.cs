@@ -114,7 +114,7 @@
             this.tbNumar.MaxLength = 6;
             this.tbNumar.Name = "tbNumar";
             this.tbNumar.Size = new System.Drawing.Size(226, 27);
-            this.tbNumar.TabIndex = 1;
+            this.tbNumar.TabIndex = 2;
             this.tbNumar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbNumar_KeyPress);
             this.tbNumar.Validating += new System.ComponentModel.CancelEventHandler(this.tbNumar_Validating);
             // 
@@ -140,7 +140,7 @@
             this.btnInregistrare.Location = new System.Drawing.Point(729, 287);
             this.btnInregistrare.Name = "btnInregistrare";
             this.btnInregistrare.Size = new System.Drawing.Size(94, 35);
-            this.btnInregistrare.TabIndex = 9;
+            this.btnInregistrare.TabIndex = 4;
             this.btnInregistrare.Text = "Inregistrare";
             this.btnInregistrare.UseVisualStyleBackColor = false;
             this.btnInregistrare.Click += new System.EventHandler(this.btnInregistrare_Click);

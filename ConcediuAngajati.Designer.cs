@@ -85,13 +85,15 @@
             this.Column17,
             this.Column15,
             this.Column16});
-            this.dgvConcedii.Location = new System.Drawing.Point(26, 106);
+            this.dgvConcedii.Location = new System.Drawing.Point(30, 141);
+            this.dgvConcedii.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvConcedii.MultiSelect = false;
             this.dgvConcedii.Name = "dgvConcedii";
             this.dgvConcedii.RowHeadersWidth = 51;
             this.dgvConcedii.RowTemplate.Height = 25;
-            this.dgvConcedii.Size = new System.Drawing.Size(929, 232);
+            this.dgvConcedii.Size = new System.Drawing.Size(1062, 309);
             this.dgvConcedii.TabIndex = 2;
+            this.dgvConcedii.TabStop = false;
             this.dgvConcedii.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcedii.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellContentClick);
             // 
@@ -174,10 +176,12 @@
             this.btnX.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnX.FlatAppearance.BorderSize = 0;
             this.btnX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnX.Location = new System.Drawing.Point(1008, 5);
+            this.btnX.Location = new System.Drawing.Point(1152, 7);
+            this.btnX.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnX.Name = "btnX";
-            this.btnX.Size = new System.Drawing.Size(32, 28);
+            this.btnX.Size = new System.Drawing.Size(37, 37);
             this.btnX.TabIndex = 12;
+            this.btnX.TabStop = false;
             this.btnX.UseVisualStyleBackColor = false;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
             // 
@@ -187,9 +191,9 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(30, 59);
+            this.label1.Location = new System.Drawing.Point(34, 79);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 21);
+            this.label1.Size = new System.Drawing.Size(69, 28);
             this.label1.TabIndex = 13;
             this.label1.Text = "Nume:";
             // 
@@ -281,10 +285,9 @@
             // 
             this.cbTipConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipConcediu.FormattingEnabled = true;
-            this.cbTipConcediu.Location = new System.Drawing.Point(818, 71);
-            this.cbTipConcediu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbTipConcediu.Location = new System.Drawing.Point(935, 95);
             this.cbTipConcediu.Name = "cbTipConcediu";
-            this.cbTipConcediu.Size = new System.Drawing.Size(133, 23);
+            this.cbTipConcediu.Size = new System.Drawing.Size(151, 28);
             this.cbTipConcediu.TabIndex = 15;
             // 
             // label2
@@ -293,9 +296,9 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(712, 71);
+            this.label2.Location = new System.Drawing.Point(814, 95);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 21);
+            this.label2.Size = new System.Drawing.Size(127, 28);
             this.label2.TabIndex = 16;
             this.label2.Text = "Tip concediu:";
             // 
@@ -305,9 +308,9 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(695, 45);
+            this.label3.Location = new System.Drawing.Point(794, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 21);
+            this.label3.Size = new System.Drawing.Size(144, 28);
             this.label3.TabIndex = 18;
             this.label3.Text = "Stare concediu:";
             // 
@@ -315,25 +318,24 @@
             // 
             this.cbStareConcediu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStareConcediu.FormattingEnabled = true;
-            this.cbStareConcediu.Location = new System.Drawing.Point(818, 44);
-            this.cbStareConcediu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cbStareConcediu.Location = new System.Drawing.Point(935, 59);
             this.cbStareConcediu.Name = "cbStareConcediu";
-            this.cbStareConcediu.Size = new System.Drawing.Size(133, 23);
+            this.cbStareConcediu.Size = new System.Drawing.Size(151, 28);
             this.cbStareConcediu.TabIndex = 17;
             // 
             // tbNume
             // 
-            this.tbNume.Location = new System.Drawing.Point(105, 60);
+            this.tbNume.Location = new System.Drawing.Point(120, 80);
+            this.tbNume.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbNume.Name = "tbNume";
-            this.tbNume.Size = new System.Drawing.Size(182, 23);
+            this.tbNume.Size = new System.Drawing.Size(207, 27);
             this.tbNume.TabIndex = 19;
             // 
             // tbPrenume
             // 
-            this.tbPrenume.Location = new System.Drawing.Point(413, 61);
-            this.tbPrenume.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tbPrenume.Location = new System.Drawing.Point(472, 81);
             this.tbPrenume.Name = "tbPrenume";
-            this.tbPrenume.Size = new System.Drawing.Size(182, 23);
+            this.tbPrenume.Size = new System.Drawing.Size(207, 27);
             this.tbPrenume.TabIndex = 21;
             // 
             // label4
@@ -342,9 +344,9 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(331, 59);
+            this.label4.Location = new System.Drawing.Point(378, 79);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 21);
+            this.label4.Size = new System.Drawing.Size(93, 28);
             this.label4.TabIndex = 20;
             this.label4.Text = "Prenume:";
             // 
@@ -357,11 +359,13 @@
             this.btnCauta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCauta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCauta.ImageList = this.imageList1;
-            this.btnCauta.Location = new System.Drawing.Point(607, 57);
+            this.btnCauta.Location = new System.Drawing.Point(694, 76);
+            this.btnCauta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCauta.Name = "btnCauta";
             this.btnCauta.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnCauta.Size = new System.Drawing.Size(28, 29);
+            this.btnCauta.Size = new System.Drawing.Size(32, 39);
             this.btnCauta.TabIndex = 22;
+            this.btnCauta.TabStop = false;
             this.btnCauta.UseVisualStyleBackColor = false;
             this.btnCauta.Click += new System.EventHandler(this.btnCauta_Click);
             // 
@@ -373,11 +377,11 @@
             // 
             // btnInainte
             // 
-            this.btnInainte.Location = new System.Drawing.Point(896, 12);
-            this.btnInainte.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnInainte.Location = new System.Drawing.Point(1024, 16);
             this.btnInainte.Name = "btnInainte";
-            this.btnInainte.Size = new System.Drawing.Size(28, 22);
+            this.btnInainte.Size = new System.Drawing.Size(32, 29);
             this.btnInainte.TabIndex = 24;
+            this.btnInainte.TabStop = false;
             this.btnInainte.Text = ">";
             this.btnInainte.UseVisualStyleBackColor = true;
             this.btnInainte.Click += new System.EventHandler(this.btnInainte_Click_1);
@@ -386,10 +390,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.btnInainte);
-            this.panel1.Location = new System.Drawing.Point(26, 344);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(30, 459);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(929, 43);
+            this.panel1.Size = new System.Drawing.Size(1062, 57);
             this.panel1.TabIndex = 26;
             // 
             // button1
@@ -397,21 +400,23 @@
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(8, 8);
+            this.button1.Location = new System.Drawing.Point(9, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 24);
+            this.button1.Size = new System.Drawing.Size(97, 32);
             this.button1.TabIndex = 27;
+            this.button1.TabStop = false;
             this.button1.Text = "Inapoi";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // ConcediuAngajati
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1046, 445);
+            this.ClientSize = new System.Drawing.Size(1195, 593);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCauta);
@@ -426,7 +431,6 @@
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.dgvConcedii);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConcediuAngajati";
             this.Text = "ConcediuAngajati";
             this.Load += new System.EventHandler(this.ConcediuAngajati_Load);

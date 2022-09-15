@@ -76,6 +76,7 @@
             this.dgvConcediuManager.RowTemplate.Height = 25;
             this.dgvConcediuManager.Size = new System.Drawing.Size(1099, 309);
             this.dgvConcediuManager.TabIndex = 3;
+            this.dgvConcediuManager.TabStop = false;
             this.dgvConcediuManager.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvConcedii_CellClick_1);
             this.dgvConcediuManager.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dgvConcediuManager_RowStateChanged);
             // 
@@ -162,6 +163,7 @@
             this.btnInchidereCM.Name = "btnInchidereCM";
             this.btnInchidereCM.Size = new System.Drawing.Size(42, 35);
             this.btnInchidereCM.TabIndex = 0;
+            this.btnInchidereCM.TabStop = false;
             this.btnInchidereCM.UseVisualStyleBackColor = false;
             this.btnInchidereCM.Click += new System.EventHandler(this.btnInchidereCM_Click_1);
             // 
@@ -212,6 +214,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 32);
             this.button1.TabIndex = 8;
+            this.button1.TabStop = false;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -277,6 +280,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 33);
             this.button2.TabIndex = 14;
+            this.button2.TabStop = false;
             this.button2.Text = "Inapoi";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -298,6 +302,7 @@
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(39, 32);
             this.btnRefresh.TabIndex = 16;
+            this.btnRefresh.TabStop = false;
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 

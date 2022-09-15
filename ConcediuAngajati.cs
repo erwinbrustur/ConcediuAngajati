@@ -65,6 +65,7 @@ namespace ConcediuAngajati
                 btn.Location = new Point(x + 50);
                 btn.Width = 30;
                 btn.Height = 30;
+                
                 btn.FlatStyle = FlatStyle.Flat;
                 btn.BackColor = Color.Transparent;
                 btn.Click += btn_click;

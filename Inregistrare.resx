@@ -62,11 +62,14 @@
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 83</value>
+    <value>78, 57</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 20</value>
+    <value>43, 17</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -89,11 +92,14 @@
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 83</value>
+    <value>391, 57</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 20</value>
+    <value>59, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -116,11 +122,14 @@
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 130</value>
+    <value>10, 94</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 20</value>
+    <value>111, 17</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -143,11 +152,14 @@
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 130</value>
+    <value>411, 92</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
+    <value>39, 17</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -170,11 +182,14 @@
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 182</value>
+    <value>76, 131</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
+    <value>45, 17</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -197,11 +212,14 @@
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>387, 182</value>
+    <value>336, 131</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 20</value>
+    <value>114, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -221,21 +239,17 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="FieldNume.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
   <data name="FieldNume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 72</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="FieldNume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="FieldNume.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>127, 54</value>
   </data>
   <data name="FieldNume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldNume.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;FieldNume.Name" xml:space="preserve">
     <value>FieldNume</value>
@@ -249,20 +263,17 @@
   <data name="&gt;&gt;FieldNume.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="FieldPrenume.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
   <data name="FieldPrenume.Location" type="System.Drawing.Point, System.Drawing">
-    <value>521, 72</value>
-  </data>
-  <data name="FieldPrenume.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="FieldPrenume.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>456, 54</value>
   </data>
   <data name="FieldPrenume.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldPrenume.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;FieldPrenume.Name" xml:space="preserve">
     <value>FieldPrenume</value>
@@ -276,23 +287,20 @@
   <data name="&gt;&gt;FieldPrenume.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="FieldNrTel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 119</value>
+  <data name="FieldNrTel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
   </data>
-  <data name="FieldNrTel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+  <data name="FieldNrTel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 89</value>
   </data>
   <data name="FieldNrTel.MaxLength" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="FieldNrTel.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="FieldNrTel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldNrTel.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;FieldNrTel.Name" xml:space="preserve">
     <value>FieldNrTel</value>
@@ -306,23 +314,20 @@
   <data name="&gt;&gt;FieldNrTel.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="FieldPass.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
   <data name="FieldPass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>145, 171</value>
-  </data>
-  <data name="FieldPass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="FieldPass.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>127, 128</value>
   </data>
   <data name="FieldPass.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>•</value>
   </data>
   <data name="FieldPass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldPass.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>5</value>
   </data>
   <data name="&gt;&gt;FieldPass.Name" xml:space="preserve">
     <value>FieldPass</value>
@@ -336,23 +341,20 @@
   <data name="&gt;&gt;FieldPass.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="FieldConfirmPass.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
   <data name="FieldConfirmPass.Location" type="System.Drawing.Point, System.Drawing">
-    <value>652, 320</value>
-  </data>
-  <data name="FieldConfirmPass.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="FieldConfirmPass.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>570, 240</value>
   </data>
   <data name="FieldConfirmPass.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
     <value>•</value>
   </data>
   <data name="FieldConfirmPass.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldConfirmPass.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>6</value>
   </data>
   <data name="&gt;&gt;FieldConfirmPass.Name" xml:space="preserve">
     <value>FieldConfirmPass</value>
@@ -366,20 +368,17 @@
   <data name="&gt;&gt;FieldConfirmPass.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="FieldEmail.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 12pt</value>
+  </data>
   <data name="FieldEmail.Location" type="System.Drawing.Point, System.Drawing">
-    <value>521, 119</value>
-  </data>
-  <data name="FieldEmail.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="FieldEmail.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>456, 89</value>
   </data>
   <data name="FieldEmail.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 31</value>
+    <value>199, 22</value>
   </data>
   <data name="FieldEmail.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>4</value>
   </data>
   <data name="&gt;&gt;FieldEmail.Name" xml:space="preserve">
     <value>FieldEmail</value>
@@ -401,13 +400,10 @@
     <value>Flat</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 16</value>
-  </data>
-  <data name="button1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>22, 12</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 31</value>
+    <value>157, 23</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -431,13 +427,10 @@
     <value>Flat</value>
   </data>
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>610, 236</value>
-  </data>
-  <data name="button2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>534, 177</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 47</value>
+    <value>130, 35</value>
   </data>
   <data name="button2.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -457,14 +450,14 @@
   <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 147</value>
+  <data name="panel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 110</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>766, 291</value>
+    <value>671, 219</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -1285,13 +1278,10 @@
     <value>Stretch</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>328, -8</value>
-  </data>
-  <data name="pictureBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>287, -6</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 196</value>
+    <value>306, 147</value>
   </data>
   <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -1312,16 +1302,13 @@
     <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 20</value>
+    <value>7, 15</value>
   </data>
   <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Stretch</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>910, 455</value>
-  </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>796, 341</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
