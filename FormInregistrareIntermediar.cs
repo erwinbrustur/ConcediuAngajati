@@ -232,7 +232,8 @@ namespace ConcediuAngajati
                             //    errorProvider1.SetError(tbCNP, "CNP invalid! Cifra de control incorecta");
                             //}
 
-                            if (errorProvider1.GetError(tbCNP).Equals(""))
+
+                            if (errorProvider1.GetError(tbCNP).Equals("") && errorProvider1.GetError(tbSerie).Equals("") && errorProvider1.GetError(tbNumar).Equals(""))
                             {
                                 Angajat angaj = new Angajat();
                                 angaj.DataAngajare = DateTime.Now;

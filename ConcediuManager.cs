@@ -220,8 +220,7 @@ namespace ConcediuAngajati
 
             List<Angajat> listaAngajati = JsonConvert.DeserializeObject<List<Angajat>>(responseBody);
 
-            
-
+  
         }
 
         private async void dgvConcedii_CellClick_1(object sender, DataGridViewCellEventArgs e)

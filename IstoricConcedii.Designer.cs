@@ -171,6 +171,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "IstoricConcedii";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IstoricConcedii";
             this.Load += new System.EventHandler(this.IstoricConcedii_Load);
             this.ResumeLayout(false);

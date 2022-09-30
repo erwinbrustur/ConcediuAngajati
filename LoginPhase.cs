@@ -63,9 +63,9 @@ namespace ConcediuAngajati
                 if (angajat != null && angajat.concediat == false&&!ok)
                 {
                     //Comenteaza urmatoarele 3 randuri cand activezi 2Fa
-                    // PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
-                    //  ppg.Show();
-                    // this.Hide();
+                    PaginaPrincipala.PaginaPrincipala ppg = new PaginaPrincipala.PaginaPrincipala(angajat);
+                    ppg.Show();
+                    this.Hide();
                     ok = true;
                     GeneratedCode=0;
                      int CodeLength = 4;
@@ -82,23 +82,23 @@ namespace ConcediuAngajati
                      {
                          AuthCode = AuthCode + digit[i];
                      }
-                     MailMessage message = new MailMessage();
-                     SmtpClient smtp = new SmtpClient();
-                     message.From = new MailAddress("sebastian.andrei@totalsoft.ro");
-                     message.To.Add(new MailAddress("sebastian.andrei@totalsoft.ro"));
-                     message.Subject = "Cod de Autentificare StrangerThings Hr";
-                     message.Body = String.Format("Codul dumneavoastra de acces este: {0} ",AuthCode);
-                     smtp.Port = 587;
-                     smtp.Host = "mailer14.totalsoft.local";
-                     smtp.EnableSsl = true;
-                     smtp.UseDefaultCredentials = false;
-                     smtp.Credentials = new NetworkCredential("sebastian.andrei@totalsoft.ro", "STats123rm");
-                     smtp.Send(message);
-                     panel2FA.Show();
-                    button1.Hide();
-                    button2.Hide();
-                    textBox1.Hide();
-                    textBox2.Hide();
+                    // MailMessage message = new MailMessage();
+                    // SmtpClient smtp = new SmtpClient();
+                    // message.From = new MailAddress("sebastian.andrei@totalsoft.ro");
+                    // message.To.Add(new MailAddress("sebastian.andrei@totalsoft.ro"));
+                    // message.Subject = "Cod de Autentificare StrangerThings Hr";
+                    // message.Body = String.Format("Codul dumneavoastra de acces este: {0} ",AuthCode);
+                    // smtp.Port = 587;
+                    // smtp.Host = "mailer14.totalsoft.local";
+                    // smtp.EnableSsl = true;
+                    // smtp.UseDefaultCredentials = false;
+                    // smtp.Credentials = new NetworkCredential("sebastian.andrei@totalsoft.ro", "STats123rm");
+                    // smtp.Send(message);
+                    // panel2FA.Show();
+                    //button1.Hide();
+                    //button2.Hide();
+                    //textBox1.Hide();
+                    //textBox2.Hide();
                 }
                 else
                 {

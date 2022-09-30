@@ -41,7 +41,6 @@
             this.btnX = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label4 = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagineProfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -176,18 +175,6 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "*Adaugati o fotografie";
             // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBack.BackgroundImage")));
-            this.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBack.Location = new System.Drawing.Point(12, 12);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(51, 28);
-            this.btnBack.TabIndex = 13;
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // FormInregistrareIntermediar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -195,7 +182,6 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(853, 339);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnX);
             this.Controls.Add(this.btnInregistrare);
@@ -231,6 +217,5 @@
         private Button btnX;
         private ErrorProvider errorProvider1;
         private Label label4;
-        private Button btnBack;
     }
 }

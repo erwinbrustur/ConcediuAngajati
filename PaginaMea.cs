@@ -23,7 +23,8 @@ namespace ConcediuAngajati
         public PaginaMea(Angajat a, int? idAngajatSelectat)
         {
             InitializeComponent();
-           
+            //label1.outli
+
             angajat = a;
             NumarSalvat = angajat.NrTelefon;
             extragereFunctieAsyncDB();
@@ -95,10 +96,12 @@ namespace ConcediuAngajati
 
             tbDataAngajare.Text = dataS;
 
-            MemoryStream ms = new MemoryStream(a.Poza);
-            pbImagineProfil.Image = Image.FromStream(ms);
-
-
+            if (a.Poza != null)
+            {
+                MemoryStream ms = new MemoryStream(a.Poza);
+                pbImagineProfil.Image = Image.FromStream(ms);
+            }
+            
         }
 
         private async void extragereFunctieAsyncDB()
